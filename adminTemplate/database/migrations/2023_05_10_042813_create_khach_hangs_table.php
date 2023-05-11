@@ -18,11 +18,13 @@ return new class extends Migration
             $table->string('ten');
             $table->string('hinh');
             $table->string('sdt');
+            $table->string('email');
             $table->string('password');
             $table->string('phuongxa');
             $table->string('quanhuyen');
             $table->string('tinhtp');
-            $table->nullableTimestamps();
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

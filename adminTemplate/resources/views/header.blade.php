@@ -8,7 +8,7 @@
 
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
-                    <img src="/template/images/Hinh-nen-Luffy-Sun-God-Nika-6.jpg" alt="IMG-LOGO">
+                    <img src="/template/images/logo.jpg" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->

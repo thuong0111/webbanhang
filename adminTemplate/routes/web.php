@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
+
 // use App\Http\Controllers\MainController;
 
 use Illuminate\Support\Facades\Route;
@@ -79,3 +82,25 @@ Route::get('carts',[ App\Http\Controllers\CartController::class, 'show']);
 Route::post('update-cart',[ App\Http\Controllers\CartController::class, 'update']);
 Route::get('carts/delete/{id}',[ App\Http\Controllers\CartController::class, 'remove']);
 Route::post('carts',[ App\Http\Controllers\CartController::class, 'addCart']);
+Route::get('loginuser', function () {
+    return view('session/login-session');
+})->name('login');
+
+Route::get('static-sign-in', function () {
+    return view('static-sign-in');
+})->name('sign-in');
+
+Route::get('static-sign-up', function () {
+    return view('static-sign-up');
+})->name('sign-up');
+Route::get('/logout', [SessionsController::class, 'destroy']);
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/register', [RegisterController::class, 'create']);
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/login', [SessionsController::class, 'create']);
+    Route::post('/session', [SessionsController::class, 'store']);
+	Route::get('/login/forgot-password', [ResetController::class, 'create']);
+	Route::post('/forgot-password', [ResetController::class, 'sendEmail']);
+	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
+	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
+});

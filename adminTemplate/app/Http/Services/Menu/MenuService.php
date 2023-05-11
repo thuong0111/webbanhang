@@ -16,7 +16,7 @@ class MenuService
             ->orderbyDesc('id')
             ->get();
     }
-    
+
     public function getAll(){
         return Menu::orderbyDesc('id')->paginate(10);
     }
@@ -34,7 +34,7 @@ class MenuService
             ]);
 
             Session::flash('success', 'Add category success.');
-            
+
         } catch (\Exception $err) {
             Session::flash('error', $err->getMessage());
             return false;
@@ -48,7 +48,7 @@ class MenuService
         {
             $menu->parent_id= (int) $request->input('parent_id');
         }
-        
+
         $menu->name= (string) $request->input('name');
         $menu->description= (string) $request->input('description');
         $menu->content= (string) $request->input('content');
@@ -79,7 +79,7 @@ class MenuService
         $query = $menu->productts()
         ->select('id', 'name', 'price', 'price_sale', 'thumb')
         ->where('active', 1);
-        
+
         if($request->input('price')){
             $query->orderBy('price', $request->input('price'));
         }

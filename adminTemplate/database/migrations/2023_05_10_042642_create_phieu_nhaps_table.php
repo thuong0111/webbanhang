@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('phieu_nhaps', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nguoilap');
-            $table->datetimes('ngaylap');
+            $table->dateTime('ngaylap');
             $table->bigInteger('tongtien');
-            $table->foreignID('nha_cung_cap_id');
+            $table->foreignID('nha_cung_cap_id')->constrained();
             $table->nullableTimestamps();
         });
     }
