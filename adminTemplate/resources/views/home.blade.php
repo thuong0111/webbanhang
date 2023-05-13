@@ -3,7 +3,7 @@
     <!-- Slider -->
     <section class="section-slide">
         <div class="wrap-slick1">
-            <div class="slick1">
+            <div class="slick1" style="margin-top: 155px;">
 
                 @foreach($sliders as $slider)
 

@@ -32,4 +32,9 @@
 <link rel="stylesheet" type="text/css" href="/template/css/main.css">
 <!--===============================================================================================-->
 <link rel="stylesheet" type="text/css" href="/template/css/style.css">
+
+<link href="/template/vendor/fontawesome/css/all.min.css" rel="stylesheet"/>
+
+{{-- <link href="vendor/fontawesome/css/all.min.css" rel="stylesheet"/>
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/> --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">

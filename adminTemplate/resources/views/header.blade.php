@@ -3,18 +3,33 @@
     <!-- Header desktop -->
     <div class="container-menu-desktop">
 
-        <div class="wrap-menu-desktop">
+
+        <div class="wrap-menu-desktop" >
+            <div class="header-top">
+                <div class="col-6">
+                    <a href=""><i  class="fa fa-phone"></i>0384588072</a>
+                    <a href=""><i  class="fa fa-envelope"></i> hotro@gmail.com</a>
+                    <a href=""><i  class="fa fa-clock"></i> Từ thứ 2 - thứ 7</a>
+                </div>
+                <div class="col-6 text-right">
+                    <a href=""><i  class="social fab fa-facebook-square"></i></a>
+                    <a href=""><i  class="social fab fa-twitter"></i></a>
+                    <a href=""><i  class="social fab fa-instagram"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#loginbox"><i  class="social fa fa-users"></i></a>
+                </div>
+            </div>
+
             <nav class="limiter-menu-desktop container">
 
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
-                    <img src="/template/images/logo.jpg" alt="IMG-LOGO">
+                    <img src="/template/images/logo3.png" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu"><a href="/">Home</a> </li>
+                        <li class="active-menu"><a href="/"><i class="fa fa-home"></i>Home</a> </li>
                         {!! $menusHtml !!}
 
                         <li>
@@ -25,13 +40,17 @@
 
                 <!-- Icon header -->
                 <div class="wrap-icon-header flex-w flex-r-m">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+                    {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
-                    </div>
+                    </div> --}}
+                    <div class="logo"style="border-radius: 16px">
+                        <input type="text" style="border-radius: 16px;width:450px;padding-left:17px" id="myInput" onkeyup="myFunction()" placeholder="search" a href=""><i class="zmdi zmdi-search" style="position: relative;
+                        margin-left: -19px;"></i></a><title="Type in a name">
+                    </div
 
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                        <i class="zmdi zmdi-shopping-cart" style="font-size: 25px;"></i>
                     </div>
 
                 </div>
