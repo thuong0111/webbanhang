@@ -8,8 +8,11 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\SearchController;
 
+use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Route;
 
@@ -104,3 +107,5 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('/reset-password/{token}', [ResetController::class, 'resetPass'])->name('password.reset');
 	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 });
+Route::get('/timkiem', [SearchController::class, 'search']);
+

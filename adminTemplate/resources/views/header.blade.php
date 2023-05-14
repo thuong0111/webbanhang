@@ -43,11 +43,12 @@
                     {{-- <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                         <i class="zmdi zmdi-search"></i>
                     </div> --}}
+                    <form action="/timkiem" method="GET">
                     <div class="logo"style="border-radius: 16px">
-                        <input type="text" style="border-radius: 16px;width:450px;padding-left:17px" id="myInput" onkeyup="myFunction()" placeholder="search" a href=""><i class="zmdi zmdi-search" style="position: relative;
-                        margin-left: -19px;"></i></a><title="Type in a name">
-                    </div
-
+                        <input type="text" style="border-radius: 16px;width:460px;padding-left:18px" id="myInput" name="key" placeholder="search" a href=""><i class="zmdi zmdi-search" style="position: relative;
+                        margin-left: -24px;"></i></a><title="Type in a name">
+                    </div>
+                     </form>
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                         <i class="zmdi zmdi-shopping-cart" style="font-size: 25px;"></i>
