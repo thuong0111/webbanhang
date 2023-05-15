@@ -1,7 +1,7 @@
 @extends('main')
 @section('content')
     <div class="container p-t-80">
-        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg" style="padding: 90px 0 0 0;">
             <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
                 Home
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>

@@ -2,7 +2,7 @@
 @section('content')
 <section class="bg0 p-t-23 p-b-140">
     <div class="container">
-        <div class="p-b-10">
+        <div class="p-b-10" style="padding-top: 160px;">
             <h3 class="ltext-103 cl5">
                 Product Overview
             </h3>

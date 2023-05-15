@@ -53,17 +53,31 @@
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                         <i class="zmdi zmdi-shopping-cart" style="font-size: 25px;"></i>
                     </div>
-
                 </div>
             </nav>
         </div>
     </div>
 
     <!-- Header Mobile -->
-    {{-- <div class="wrap-header-mobile">
+    <nav>
+        <div class="header-top">
+            <div class="col-6">
+                <a href=""><i  class="fa fa-phone"></i>0384588072</a>
+                <a href=""><i  class="fa fa-envelope"></i> hotro@gmail.com</a>
+                <a href=""><i  class="fa fa-clock"></i> Từ thứ 2 - thứ 7</a>
+            </div>
+            <div class="col-6 text-right">
+                <a href=""><i  class="social fab fa-facebook-square"></i></a>
+                <a href=""><i  class="social fab fa-twitter"></i></a>
+                <a href=""><i  class="social fab fa-instagram"></i></a>
+                <a href="#" data-toggle="modal" data-target="#loginbox"><i  class="social fa fa-users"></i></a>
+            </div>
+        </div>
+    </nav>
+    <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <a href="/"><img src="/template/images/Hinh-nen-Luffy-Sun-God-Nika-6.jpg" ></a>
+            <a href="/"><img src="/template/images/logo3.png" alt="IMG-LOGO"></a>
         </div>
 
         <!-- Icon header -->
@@ -83,33 +97,37 @@
 					<span class="hamburger-inner"></span>
 				</span>
         </div>
-    </div> --}}
+    </div>
 
     <!-- Menu Mobile -->
-    {{-- <div class="menu-mobile">
+    <div class="menu-mobile">
         <ul class="main-menu-m">
-            <li class="active-menu"><a href="/">Home</a> </li>
+            <li class="active-menu">
+                <a href="/">Home</a> 
+            </li>
             {!! $menusHtml !!}
 
             <li>
                 <a href="contact.html">Contact</a>
             </li>
         </ul>
-    </div> --}}
+    </div>
 
     <!-- Modal Search -->
-    {{-- <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+    {{-- <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search"> --}}
         <div class="container-search-header">
-            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-                <img src="/template/images/icons/icon-close2.png" alt="CLOSE">
-            </button>
-
-            <form class="wrap-search-header flex-w p-l-15">
-                <button class="flex-c-m trans-04">
-                    <i class="zmdi zmdi-search"></i>
-                </button>
-                <input class="plh3" type="text" name="search" placeholder="Search...">
-            </form>
+            <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+                <div class="container-search-header">
+                    <form action="/timkiem" method="GET">
+                        <div class="logo"style="border-radius: 16px">
+                            <input type="text" style="border-radius: 16px;width:500px;padding-left:18px; margin-left: -24px;" id="myInput" name="key" placeholder="Search..." a href="">
+                                {{-- <i class="zmdi zmdi-search" style="position: relative;">
+                                </i> --}}
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div> --}}
+    {{-- </div> --}}
 </header>

@@ -4,8 +4,8 @@
     <div class="bg0 m-t-23 p-b-140 p-t-80">
         <div class="container">
             <div class="flex-w flex-sb-m p-b-52">
-                <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                   <h1>{{ $title }}</h1>
+                <div class="flex-w flex-l-m filter-tope-group m-tb-10" style="padding: 15px 0 0 0;">
+                   <h2>{{ $title }}</h2>
                 </div>
 
                 <div class="flex-w flex-c-m m-tb-10">
