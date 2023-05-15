@@ -270,11 +270,12 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ Menu ]*/
 
 .wrap-menu-desktop {
+  background-color: rgba(255,255,255,1);
   /* background: rgb(57, 218, 243); */
   position: fixed;
   z-index: 1100;
   width: 100%;
-  height: 149px;
+  height: 170px;
   top: 0px;
   left: 0px;
 
@@ -314,7 +315,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*---------------------------------------------*/
 .limiter-menu-desktop {
-  height: 75%;
+  height: 64%;
   background-color: #ffffff;
   display: -webkit-box;
   display: -webkit-flex;
@@ -379,8 +380,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu > li > a {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
+  font-family: 'PlayfairDisplay-Bold';
+  font-size: 22px;
   color: #1b1800;
   padding: 5px 0px;
   font-weight: bold;
@@ -627,8 +628,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ Fixed menu desktop ]*/
 
 .fix-menu-desktop .wrap-menu-desktop {
-  height: 70px;
-  /* background-color: rgba(255,255,255,1); */
+  height: 120px;
+  background-color: rgba(255,255,255,1);
   /* background-color: rgb(57, 218, 243); */
   box-shadow: 0 0px 3px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 0 0px 3px 0px rgba(0,0,0,0.2);
@@ -654,8 +655,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .main-menu > li.active-menu > a {
     color: #1b1800;
     font-weight: bold !important;
-    font-size: 19px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-family: 'PlayfairDisplay-Bold';
 }
 
 
@@ -2364,7 +2365,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .ltext-102 {
   font-family: Poppins-Bold;
-  font-size: 28px;
+  font-size: 35px;
   line-height: 1.1;
 }
 

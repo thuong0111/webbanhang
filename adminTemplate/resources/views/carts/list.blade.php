@@ -139,7 +139,7 @@
                 </div>
             </div>
     </form>
-    @else
-        <div class="text-center"><h2>Giỏ hàng trống</h2></div>
-    @endif
+        @else
+            <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
+        @endif
 @endsection

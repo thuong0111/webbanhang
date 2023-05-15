@@ -2,25 +2,25 @@
     @php $menusHtml = \App\Helpers\Helper::menus($menus); @endphp
     <!-- Header desktop -->
     <div class="container-menu-desktop">
-
-
-        <div class="wrap-menu-desktop" >
-            <div class="header-top">
-                <div class="col-6">
-                    <a href=""><i  class="fa fa-phone"></i>0384588072</a>
-                    <a href=""><i  class="fa fa-envelope"></i> hotro@gmail.com</a>
-                    <a href=""><i  class="fa fa-clock"></i> Từ thứ 2 - thứ 7</a>
+        <div class="wrap-menu-desktop">
+            <nav>
+                <div class="header-top">
+                    <div class="col-6">
+                        <a href=""><i  class="fa fa-phone"></i>0384588072</a>
+                        <a href=""><i  class="fa fa-envelope"></i> hotro@gmail.com</a>
+                        <a href=""><i  class="fa fa-clock"></i> Từ thứ 2 - thứ 7</a>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href=""><i  class="social fab fa-facebook-square"></i></a>
+                        <a href=""><i  class="social fab fa-twitter"></i></a>
+                        <a href=""><i  class="social fab fa-instagram"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#loginbox"><i  class="social fa fa-users"></i></a>
+                    </div>
                 </div>
-                <div class="col-6 text-right">
-                    <a href=""><i  class="social fab fa-facebook-square"></i></a>
-                    <a href=""><i  class="social fab fa-twitter"></i></a>
-                    <a href=""><i  class="social fab fa-instagram"></i></a>
-                    <a href="#" data-toggle="modal" data-target="#loginbox"><i  class="social fa fa-users"></i></a>
-                </div>
-            </div>
+            </nav>
 
             <nav class="limiter-menu-desktop container">
-
+                
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
                     <img src="/template/images/logo3.png" alt="IMG-LOGO">
@@ -29,7 +29,7 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu"><a href="/"><i class="fa fa-home"></i>Home</a> </li>
+                        <li class="active-menu"><a href="/"><i class="fa fa-home"></i> Home</a> </li>
                         {!! $menusHtml !!}
 
                         <li>
@@ -45,8 +45,8 @@
                     </div> --}}
                     <form action="/timkiem" method="GET">
                     <div class="logo"style="border-radius: 16px">
-                        <input type="text" style="border-radius: 16px;width:460px;padding-left:18px" id="myInput" name="key" placeholder="search" a href=""><i class="zmdi zmdi-search" style="position: relative;
-                        margin-left: -24px;"></i></a><title="Type in a name">
+                        <input type="text" style="border-radius: 16px;width:300px;padding-left:18px" id="myInput" name="key" placeholder="Search..." a href=""><i class="zmdi zmdi-search" style="position: relative;
+                        margin-left: -24px;"></i></a>
                     </div>
                      </form>
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
@@ -60,7 +60,7 @@
     </div>
 
     <!-- Header Mobile -->
-    <div class="wrap-header-mobile">
+    {{-- <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
             <a href="/"><img src="/template/images/Hinh-nen-Luffy-Sun-God-Nika-6.jpg" ></a>
@@ -83,11 +83,10 @@
 					<span class="hamburger-inner"></span>
 				</span>
         </div>
-    </div>
-
+    </div> --}}
 
     <!-- Menu Mobile -->
-    <div class="menu-mobile">
+    {{-- <div class="menu-mobile">
         <ul class="main-menu-m">
             <li class="active-menu"><a href="/">Home</a> </li>
             {!! $menusHtml !!}
@@ -96,10 +95,10 @@
                 <a href="contact.html">Contact</a>
             </li>
         </ul>
-    </div>
+    </div> --}}
 
     <!-- Modal Search -->
-    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+    {{-- <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div class="container-search-header">
             <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
                 <img src="/template/images/icons/icon-close2.png" alt="CLOSE">
@@ -112,5 +111,5 @@
                 <input class="plh3" type="text" name="search" placeholder="Search...">
             </form>
         </div>
-    </div>
+    </div> --}}
 </header>
