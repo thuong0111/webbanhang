@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // admin/users/login
+
+//Admin
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
 Route::middleware(['auth'])->group(function(){
@@ -78,6 +80,8 @@ Route::middleware(['auth'])->group(function(){
 
     });
 });
+//End_Admin
+
 Route::get('/',[ App\Http\Controllers\MainController::class, 'index']);
 Route::post('/services/load-product',[ App\Http\Controllers\MainController::class, 'loadProduct']);
 
