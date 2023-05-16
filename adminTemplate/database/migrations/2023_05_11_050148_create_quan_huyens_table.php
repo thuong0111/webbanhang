@@ -12,11 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('quan_huyens', function (Blueprint $table) {
+
+
+
             $table->bigIncrements('id');
-            $table->string('ten');
-            $table->foreignID('tinh_tp_id')->constrained();
+            $table->string('name');
             $table->bigInteger('TT');
-            $table->nullableTimestamps();
+            $table->unsignedBigInteger('tinh_tp_id');
+            $table->foreign('tinh_tp_id')->references('id')->on('tinh_tps')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

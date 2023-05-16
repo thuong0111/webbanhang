@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SelectController;
+use App\Http\Livewire\Assignment;
+
 
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
@@ -96,6 +99,8 @@ Route::get('static-sign-in', function () {
 Route::get('static-sign-up', function () {
     return view('static-sign-up');
 })->name('sign-up');
+
+
 Route::get('/logout', [SessionsController::class, 'destroy']);
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisterController::class, 'create']);
@@ -108,4 +113,8 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::post('/reset-password', [ChangePasswordController::class, 'changePassword'])->name('password.update');
 });
 Route::get('/timkiem', [SearchController::class, 'search']);
+Route::get('/select', [SelectController::class, 'prodfunct']);
+Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
+Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
+
 

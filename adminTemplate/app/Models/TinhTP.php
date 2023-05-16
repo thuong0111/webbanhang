@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class TinhTP extends Model
 {
     use HasFactory;
+    protected $table = 'tinh_tps';
+    public $primaryKey = 'id';
+    public $fillable = [
+        'id',
+        'ten',
+    ];
+
+    public function sections()
+    {
+        return $this->hasMany(QuanHuyen::class);
+    }
 }

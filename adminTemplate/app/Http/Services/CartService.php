@@ -48,7 +48,6 @@ class CartService
     {
         $carts = Session::get('carts');
         if(is_null($carts)) return [];
-    
         $productId = array_keys($carts);
         return Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
@@ -77,7 +76,7 @@ class CartService
             DB::beginTransaction();
 
             $carts = Session::get('carts');
-            if(is_null($carts)) 
+            if(is_null($carts))
                 return false;
 
             $customer = Customer::create([
@@ -109,13 +108,13 @@ class CartService
 
     protected function infoProductCart($carts, $customer_id)
     {
-       
+
         $productId = array_keys($carts);
         $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
             ->whereIn('id', $productId)
             ->get();
-        
+
         $data= [];
         foreach ($productts as $productt) {
             $data[] = [
@@ -127,7 +126,7 @@ class CartService
            return Cart::insert($data);
         }
     }
-    
+
     public function getCustomer()
     {
         return Customer::orderByDesc('id')->paginate(10);

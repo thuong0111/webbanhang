@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class QuanHuyen extends Model
 {
     use HasFactory;
+    public $table = 'quan_huyens';
+    public $primaryKey = 'id';
+    public $fillable = [
+        'id',
+        'ten',
+        'tinh_tp_id',
+
+    ];
+
 }
