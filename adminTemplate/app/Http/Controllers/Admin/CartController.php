@@ -37,12 +37,6 @@ class CartController extends Controller
             'title' => 'Order Detail' . $customer->name,
             'customer' => $customer,
             'carts' => $carts,
-
-
         ]);
     }
-
-	
-
-
 }

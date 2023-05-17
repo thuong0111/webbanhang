@@ -78,6 +78,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('customers',[ App\Http\Controllers\Admin\CartController::class, 'index']);
         Route::get('customers/view/{customer}',[ App\Http\Controllers\Admin\CartController::class, 'show']);
 
+        #Customer Manager
+        Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
+
     });
 });
 //End_Admin
