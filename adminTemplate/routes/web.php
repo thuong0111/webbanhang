@@ -93,7 +93,7 @@ Route::post('update-cart',[ App\Http\Controllers\CartController::class, 'update'
 Route::get('carts/delete/{id}',[ App\Http\Controllers\CartController::class, 'remove']);
 Route::post('carts',[ App\Http\Controllers\CartController::class, 'addCart']);
 Route::get('loginuser', function () {
-    return view('session/login-session');
+    return view('session.login-session');
 })->name('login');
 
 Route::get('static-sign-in', function () {

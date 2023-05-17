@@ -14,13 +14,20 @@
                         <a href=""><i  class="social fab fa-facebook-square"></i></a>
                         <a href=""><i  class="social fab fa-twitter"></i></a>
                         <a href=""><i  class="social fab fa-instagram"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#loginbox"><i  class="social fa fa-users"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#loginbox">
+                            @if (Auth::check())
+                            {{Auth::user()->name}}
+                            @else
+                            <i  class="social fa fa-users"></i>
+                            @endif
+
+                        </a>
                     </div>
                 </div>
             </nav>
 
             <nav class="limiter-menu-desktop container">
-                
+
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
                     <img src="/template/images/logo3.png" alt="IMG-LOGO">
@@ -103,7 +110,7 @@
     <div class="menu-mobile">
         <ul class="main-menu-m">
             <li class="active-menu">
-                <a href="/">Home</a> 
+                <a href="/">Home</a>
             </li>
             {!! $menusHtml !!}
 

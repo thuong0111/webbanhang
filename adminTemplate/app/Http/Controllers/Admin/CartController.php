@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Services\CartService;
 use App\Models\Customer;
+use Illuminate\Http\Request;
+use App\Models\TinhTP;
+use App\Models\QuanHuyen;
+use App\Models\PhuongXa;
+use App\Http\Controllers\SelectController;
 
 class CartController extends Controller
 {
@@ -31,7 +36,13 @@ class CartController extends Controller
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'Order Detail' . $customer->name,
             'customer' => $customer,
-            'carts' => $carts
+            'carts' => $carts,
+
+
         ]);
     }
+
+	
+
+
 }

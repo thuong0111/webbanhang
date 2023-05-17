@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use Illuminate\Support\Facades\Session;
+use App\Models\PhuongXa;
+use Illuminate\Support\Facades\DB;
+use App\Models\TinhTP;
+use App\Models\QuanHuyen;
 
 class CartController extends Controller
 {
@@ -25,13 +29,25 @@ class CartController extends Controller
     }
     public function show()
     {
+        $prod=TinhTP::all();
         $productts = $this->cartService->getProduct();
         return view('carts.list', [
             'title' => 'Shopping Cart',
             'productts'=>$productts,
-            'carts' => Session::get('carts')
+            'carts' => Session::get('carts'),
+            'prod'=>$prod
         ]);
     }
+    public function findQuanHuyen(Request $request){
+
+        $data=QuanHuyen::where('tinh_tp_id', $request->id)->get();
+        return response()->json($data);
+	}
+    public function findPhuongXa(Request $request){
+
+        $data=PhuongXa::where('quan_huyen_id', $request->id)->get();
+        return response()->json($data);
+	}
     public function update (Request $request)
     {
         $this->cartService->update($request);
@@ -49,4 +65,6 @@ class CartController extends Controller
         $this->cartService->addCart($request);
         return redirect()->back();
     }
+
+
 }
