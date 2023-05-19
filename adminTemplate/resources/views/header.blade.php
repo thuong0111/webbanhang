@@ -15,12 +15,19 @@
                         <a href=""><i  class="social fab fa-twitter"></i></a>
                         <a href=""><i  class="social fab fa-instagram"></i></a>
                         <a href="#" data-toggle="modal" data-target="#loginbox">
-                            @if (Auth::check())
+                            {{-- @if (Auth::check())
                             {{Auth::user()->name}}
                             @else
                             <i  class="social fa fa-users"></i>
-                            @endif
-
+                            @endif --}}
+                            @auth
+                                <h6 style="text-align: center;"> Hello ông  {{Auth::user()->name}}</h6>
+                                <a href="{{route('logout')}}">Logout</a>
+                            @endauth
+            
+                            @guest
+                                <a href="{{route('login')}}">Login</a>
+                            @endguest
                         </a>
                     </div>
                 </div>

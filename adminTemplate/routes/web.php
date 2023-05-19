@@ -108,7 +108,7 @@ Route::get('static-sign-up', function () {
 })->name('sign-up');
 
 
-Route::get('/logout', [SessionsController::class, 'destroy']);
+Route::get('/logout', [SessionsController::class, 'destroy'])->name('logout');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisterController::class, 'create']);
     Route::post('/register', [RegisterController::class, 'store']);

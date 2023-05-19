@@ -32,8 +32,8 @@
             @endforeach
         </tbody>
     </table>
-    {{-- <div class="card-footer clear-fix">
+    <div class="card-footer clear-fix">
         {!! $Users->links() !!}
-    </div> --}}
+    </div>
     
 @endsection
