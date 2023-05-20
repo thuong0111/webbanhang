@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PhuongXa extends Model
 {
     use HasFactory;
+    public $table = 'phuong_xas';
+    public $primaryKey = 'id';
+    public $fillable = [
+        'id',
+        'ten',
+        'quan_huyen_id',
+    ];
 }
