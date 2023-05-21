@@ -140,15 +140,4 @@ class CartService
             $query->select('id', 'name', 'thumb');
         }])->get();
     }
-
-    public function detail_adress($request)
-    {
-        $adress_customers = DB::table('customers')
-        ->where('ten', $request->ten)
-        ->join('tinh_tps', 'customers.ten', '=', 'tinh_tps.id')
-        ->join('quan_huyens', 'customers.ten', '=', 'quan_huyens.id')
-        ->join('phuong_xas', 'customers.ten', '=', 'phuong_xas.id')
-        ->select('tinh_tps.ten', 'quan_huyens.ten', 'phuong_xas.ten')
-        ->get();
-    }
 }

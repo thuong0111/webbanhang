@@ -12,7 +12,7 @@ class TinhTP extends Model
     public $primaryKey = 'id';
     public $fillable = [
         'id',
-        'ten',
+        'tenTP',
     ];
 
     public function sections()

@@ -7,9 +7,11 @@
             <li>Phone: <strong>{{ $customer->phone }}</strong></li>
             <li>Adress: <strong>{{ $customer->address }}</strong></li>
             <li>
-                CiTy: <strong>{{ $customer->city }}</strong>
-                District: <strong>{{ $customer->district }}</strong>
-                Ward: <strong>{{ $customer->ward }}</strong>
+               @foreach ($adr_customers as $adr_customer)
+                    CiTy: <strong>{{ $adr_customer->tenTP }}</strong>
+                    District: <strong>{{ $adr_customer->tenQH }}</strong>
+                    Ward: <strong>{{ $adr_customer->tenPX }}</strong>
+               @endforeach
             </li>
             <li>Email: <strong>{{ $customer->email }}</strong></li>
             <li>Content: <strong>{{ $customer->content }}</strong></li>

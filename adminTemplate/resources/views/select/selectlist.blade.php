@@ -3,7 +3,7 @@
 	<select style="width: 100%; height: 40px;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thanh Pho--</option>
 		@foreach($prod as $cat)
-			<option value="{{$cat->id}}">{{$cat->ten}}</option>
+			<option value="{{$cat->id}}">{{$cat->tenTP}}</option>
 		@endforeach
 	</select>
 	<br>
@@ -11,7 +11,7 @@
 	<select style="width: 100%; height: 40px;" class="quanhuyen" name = "district">
 		<option value="0" disabled="true" selected="true"> --Quan Huyen--</option>
 		@foreach($prod as $cat)
-			<option value="{{$cat->id}}">{{$cat->ten}}</option>
+			<option value="{{$cat->id}}">{{$cat->tenQH}}</option>
 		@endforeach
 	</select>
 	<br>
