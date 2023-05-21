@@ -10,6 +10,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectController;
+use App\Http\Controllers\ResetController;
+use App\Http\Controllers\ChangePasswordController;
+
+
+
 use App\Http\Livewire\Assignment;
 
 
@@ -94,7 +99,7 @@ Route::get('carts/delete/{id}',[ App\Http\Controllers\CartController::class, 're
 Route::post('carts',[ App\Http\Controllers\CartController::class, 'addCart']);
 Route::get('loginuser', function () {
     return view('session.login-session');
-})->name('login');
+});
 
 Route::get('static-sign-in', function () {
     return view('static-sign-in');
@@ -120,5 +125,7 @@ Route::get('/timkiem', [SearchController::class, 'search']);
 Route::get('/select', [SelectController::class, 'prodfunct']);
 Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
+
+
 
 

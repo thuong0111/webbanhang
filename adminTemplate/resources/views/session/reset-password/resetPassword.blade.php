@@ -1,4 +1,4 @@
-@extends('layouts.user_type.guest')
+@extends('forgotpassword.guest')
 
 @section('content')
 

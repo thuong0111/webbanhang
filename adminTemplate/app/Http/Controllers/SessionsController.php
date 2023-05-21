@@ -14,26 +14,22 @@ class SessionsController extends Controller
 {
     public function create()
     {
-        return view('session.create');
+        return view('session.login-session');
     }
 
-    public function store()
+    public function store(Request $req)
     {
         $attributes = request()->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
-
         if (! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => 'Your provided credentials could not be verified.'
             ]);
         }
-
         session()->regenerate();
-
         return redirect('/');
-
     }
 
     public function show(){
@@ -73,7 +69,7 @@ class SessionsController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('login')->with('status', __($status))
+                    ? redirect()->route('/')->with('status', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
     }
 
@@ -84,7 +80,7 @@ class SessionsController extends Controller
         //     return redirect('/login')->withSuccess('Bạn Đã Bị Admin Ban ,Liên Hệ 0969696969 Để Biết Thêm Thông Tin Chi Tiết');
         //  }
         auth()->logout();
-        return redirect('/loginuser');
+        return redirect('/login');
     }
 
 }
