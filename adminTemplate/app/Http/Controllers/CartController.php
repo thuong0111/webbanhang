@@ -27,6 +27,7 @@ class CartController extends Controller
         }
         return redirect('/carts');
     }
+
     public function show()
     {
         $prod=TinhTP::all();
@@ -37,21 +38,6 @@ class CartController extends Controller
             'carts' => Session::get('carts'),
             'prod'=>$prod
         ]);
-    }
-    public function findQuanHuyen(Request $request){
-
-        $data=QuanHuyen::where('tinh_tp_id', $request->id)->get();
-        return response()->json($data);
-	}
-    public function findPhuongXa(Request $request){
-
-        $data=PhuongXa::where('quan_huyen_id', $request->id)->get();
-        return response()->json($data);
-	}
-    public function update (Request $request)
-    {
-        $this->cartService->update($request);
-        return redirect('/carts');
     }
 
     public function remove($id = 0)
@@ -66,5 +52,21 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function update (Request $request)
+    {
+        $this->cartService->update($request);
+        return redirect('/carts');
+    }
 
+    public function findQuanHuyen(Request $request){
+
+        $data=QuanHuyen::where('tinh_tp_id', $request->id)->get();
+        return response()->json($data);
+	}
+
+    public function findPhuongXa(Request $request){
+
+        $data=PhuongXa::where('quan_huyen_id', $request->id)->get();
+        return response()->json($data);
+	}
 }

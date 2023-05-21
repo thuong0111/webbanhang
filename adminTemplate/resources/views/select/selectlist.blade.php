@@ -1,6 +1,6 @@
 
 <div>
-	<select style="width: 100%; height: 40px;" class="thanhpho" id="prod_cat_id">
+	<select style="width: 100%; height: 40px;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thanh Pho--</option>
 		@foreach($prod as $cat)
 			<option value="{{$cat->id}}">{{$cat->ten}}</option>
@@ -8,7 +8,7 @@
 	</select>
 	<br>
 	<br>
-	<select style="width: 100%; height: 40px;" class="quanhuyen">
+	<select style="width: 100%; height: 40px;" class="quanhuyen" name = "district">
 		<option value="0" disabled="true" selected="true"> --Quan Huyen--</option>
 		@foreach($prod as $cat)
 			<option value="{{$cat->id}}">{{$cat->ten}}</option>
@@ -16,7 +16,7 @@
 	</select>
 	<br>
 	<br>
-	<select style="width: 100%; height: 40px;" class="phuongxa">
+	<select style="width: 100%; height: 40px;" class="phuongxa" name="ward">
 		<option value="0" disabled="true" selected="true">  --Phuong Xa--</option>
 	</select>
 	<br>

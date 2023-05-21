@@ -34,7 +34,7 @@ class CartController extends Controller
         $carts = $this->cart->getProductForCart($customer);
         return view('admin.carts.detail', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
-            'title' => 'Order Detail' . $customer->name,
+            'title' => 'Order Detail > ' . $customer->name,
             'customer' => $customer,
             'carts' => $carts,
         ]);
