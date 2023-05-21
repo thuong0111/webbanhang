@@ -14,7 +14,5 @@ class QuanHuyen extends Model
         'id',
         'ten',
         'tinh_tp_id',
-
     ];
-
 }

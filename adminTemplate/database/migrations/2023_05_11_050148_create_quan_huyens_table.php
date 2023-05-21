@@ -12,9 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('quan_huyens', function (Blueprint $table) {
-
-
-
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('TT');

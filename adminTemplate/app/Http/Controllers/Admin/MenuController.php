@@ -41,7 +41,7 @@ class MenuController extends Controller
     {
         return view('admin.menu.list', [
             'icons'=>'<i class="nav-icon fas fa-tachometer-alt"></i>',
-            'title'=>'List Products',
+            'title'=>'List Category',
             'menus'=>$this->menuService->getAll()
         ]);
     }
@@ -76,7 +76,5 @@ class MenuController extends Controller
         return response()->json([
             'error'=>true,
         ]);
-    }
-
-    
+    } 
 }

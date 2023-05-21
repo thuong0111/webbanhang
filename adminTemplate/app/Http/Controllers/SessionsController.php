@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
@@ -73,14 +75,25 @@ class SessionsController extends Controller
                     : back()->withErrors(['email' => [__($status)]]);
     }
 
-    public function destroy()
+    // public function destroy()
+    // {
+
+    //     // if (auth()->user()->status == 0) {
+    //     //     auth()->logout();
+    //     //     return redirect('/login')->withSuccess('Bạn Đã Bị Admin Ban ,Liên Hệ 0969696969 Để Biết Thêm Thông Tin Chi Tiết');
+    //     //  }
+    //     auth()->logout();
+    //     return redirect('/loginuser');
+    // }
+
+    public function destroy(Request $request): RedirectResponse
     {
         // if (auth()->user()->status == 0) {
         //     auth()->logout();
         //     return redirect('/login')->withSuccess('Bạn Đã Bị Admin Ban ,Liên Hệ 0969696969 Để Biết Thêm Thông Tin Chi Tiết');
         //  }
         auth()->logout();
-        return redirect('/login');
+        return redirect('/loginuser');
     }
 
 }

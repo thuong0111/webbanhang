@@ -126,7 +126,7 @@
                                         @include('select.selectlist')
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content"></textarea>
+                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Noted"></textarea>
                                         </div>
 
                                     </div>
@@ -141,72 +141,10 @@
                 </div>
             </div>
     </form>
-        @else
-            <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
-        @endif
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(document).on('change','.productcategory',function(){
-			var cat_id=$(this).val();
-			var div=$(this).parent();
-			var op=" ";
-			$.ajax({
-				type:'get',
-				url:'{!!URL::to('findProductName')!!}',
-				data:{'id':cat_id},
-				success:function(data){
-					op+='<option value="0" selected disabled>chose product</option>';
-					for(var i=0;i<data.length;i++){
-					op+='<option value="'+data[i].id+'">'+data[i].name+'</option>';
-				   }
-				   div.find('.productname').html(" ");
-				   div.find('.productname').append(op);
-				},
-				error:function(){
-				}
-			});
-		});
+    @else
+        <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
+    @endif
 
-	});
-</script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-
-		$(document).on('change','.productname',function(){
-			console.log(" its change");
-
-			var cat_id=$(this).val();
-			var div=$(this).parent();
-
-			var op=" ";
-
-			$.ajax({
-				type:'get',
-				url:'{!!URL::to('findPhuongXa')!!}',
-				data:{'id':cat_id},
-				success:function(data){
-					//console.log('success');
-
-					//console.log(data);
-
-					//console.log(data.length);
-					op+='<option value="0" selected disabled>chose product</option>';
-					for(var i=0;i<data.length;i++){
-					op+='<option value="'+data[i].id+'">'+data[i].ten+'</option>';
-				   }
-
-				   div.find('.phuongxa').html(" ");
-				   div.find('.phuongxa').append(op);
-				},
-				error:function(){
-
-				}
-			});
-		});
-	});
-</script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 @endsection

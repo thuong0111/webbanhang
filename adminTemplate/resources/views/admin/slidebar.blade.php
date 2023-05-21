@@ -106,6 +106,7 @@
 
             </ul>
           </li>
+
           {{-- ShoppingCart --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -119,6 +120,24 @@
                     <a href="/admin/customers" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>List Order</p>
+                    </a>
+                </li>
+            </ul>
+          </li>
+
+          {{-- Manager User--}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                <p> USER MANAGER
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/customermanagers" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>List User</p>
                     </a>
                 </li>
             </ul>

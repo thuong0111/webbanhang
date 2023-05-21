@@ -83,6 +83,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('customers',[ App\Http\Controllers\Admin\CartController::class, 'index']);
         Route::get('customers/view/{customer}',[ App\Http\Controllers\Admin\CartController::class, 'show']);
 
+        #Customer Manager
+        Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
+
     });
 });
 //End_Admin
@@ -110,7 +113,7 @@ Route::get('static-sign-up', function () {
 })->name('sign-up');
 
 
-Route::get('/logout', [SessionsController::class, 'destroy']);
+Route::get('/logout', [SessionsController::class, 'destroy'])->name('logout');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisterController::class, 'create']);
     Route::post('/register', [RegisterController::class, 'store']);
