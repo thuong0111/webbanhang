@@ -37,7 +37,7 @@
 				success:function(data){
 					op+='<option value="0" selected disabled> Chose Quan Huyen</option>';
 					for(var i=0;i<data.length;i++){
-					op+='<option value="'+data[i].id+'">'+data[i].ten+'</option>';
+					op+='<option value="'+data[i].id+'">'+data[i].tenQH+'</option>';
 				   }
 				   div.find('.quanhuyen').html(" ");
 				   div.find('.quanhuyen').append(op);
@@ -73,7 +73,7 @@
 					//console.log(data.length);
 					op+='<option value="0" selected disabled> chose Phuong Xa</option>';
 					for(var i=0;i<data.length;i++){
-						op+='<option value="'+data[i].id+'">'+data[i].ten+'</option>';
+						op+='<option value="'+data[i].id+'">'+data[i].tenPX+'</option>';
 				   }
 
 				   div.find('.phuongxa').html(" ");
