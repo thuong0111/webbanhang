@@ -3,7 +3,7 @@
 	<select style="width: 100%; height: 40px;" class="thanhpho" id="prod_cat_id">
 		<option value="0" disabled="true" selected="true"> --Thanh Pho--</option>
 		@foreach($prod as $cat)
-			<option value="{{$cat->id}}">{{$cat->ten}}</option>
+			<option value="{{$cat->id}}">{{$cat->tentp}}</option>
 		@endforeach
 	</select>
 	<br>
@@ -11,7 +11,7 @@
 	<select style="width: 100%; height: 40px;" class="quanhuyen">
 		<option value="0" disabled="true" selected="true"> --Quan Huyen--</option>
 		@foreach($prod as $cat)
-			<option value="{{$cat->id}}">{{$cat->ten}}</option>
+			<option value="{{$cat->id}}">{{$cat->tenqh}}</option>
 		@endforeach
 	</select>
 	<br>
@@ -37,7 +37,7 @@
 				success:function(data){
 					op+='<option value="0" selected disabled> Chose Quan Huyen</option>';
 					for(var i=0;i<data.length;i++){
-					op+='<option value="'+data[i].id+'">'+data[i].ten+'</option>';
+					op+='<option value="'+data[i].id+'">'+data[i].tenqh+'</option>';
 				   }
 				   div.find('.quanhuyen').html(" ");
 				   div.find('.quanhuyen').append(op);
@@ -73,7 +73,7 @@
 					//console.log(data.length);
 					op+='<option value="0" selected disabled> chose Phuong Xa</option>';
 					for(var i=0;i<data.length;i++){
-						op+='<option value="'+data[i].id+'">'+data[i].ten+'</option>';
+						op+='<option value="'+data[i].id+'">'+data[i].tenpx+'</option>';
 				   }
 
 				   div.find('.phuongxa').html(" ");

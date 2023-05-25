@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('quan_huyens', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('tenqh');
             $table->bigInteger('TT');
             $table->unsignedBigInteger('tinh_tp_id');
             $table->foreign('tinh_tp_id')->references('id')->on('tinh_tps')->onDelete('cascade');

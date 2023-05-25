@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
@@ -12,9 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
-
-
-
+use App\Http\Controllers\OnlineCheckoutController;
 use App\Http\Livewire\Assignment;
 
 
@@ -128,6 +127,12 @@ Route::get('/timkiem', [SearchController::class, 'search']);
 Route::get('/select', [SelectController::class, 'prodfunct']);
 Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
+Route::get('/tt', [OnlineCheckoutController::class, 'create']);
+Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
+Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
+
+
+
 
 
 

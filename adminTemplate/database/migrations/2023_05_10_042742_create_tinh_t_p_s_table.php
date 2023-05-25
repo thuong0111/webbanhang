@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('tinh_tps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ten');
+            $table->string('tentp');
             $table->bigInteger('TT');
-            $table->nullableTimestamps(); 
+            $table->nullableTimestamps();
         });
     }
 

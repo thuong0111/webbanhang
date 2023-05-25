@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Session;
 use App\Models\PhuongXa;
 use Illuminate\Support\Facades\DB;
+use App\Models\Customer;
+use App\Models\Productt;
 use App\Models\TinhTP;
 use App\Models\QuanHuyen;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -66,5 +70,18 @@ class CartController extends Controller
         return redirect()->back();
     }
 
+    public function history()
+    {
+        $customers = DB::table('carts')
+            ->join('productts', 'productts.id', '=', 'carts.product_id')
+            ->join('customers', 'customers.id', '=', 'carts.customer_id')
+            ->get();
+        return view('history.history', [
+            // 'title' => 'Order Detail' . $customer->name,
+            'customers' => $customers,
+            // 'carts' => $carts,
+
+        ]);
+    }
 
 }

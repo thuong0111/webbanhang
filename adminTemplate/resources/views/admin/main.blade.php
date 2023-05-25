@@ -29,7 +29,7 @@
 
   <!-- slidebar.blade.php -->
   @include('admin.slidebar')
- 
+
   <div class="content-wrapper">
 
     <!-- Main content -->
@@ -42,13 +42,13 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-                
-                <h3 class="card-title">{!!$icons!!} {{$title}}</h3>
-                
+
+                {{-- <h3 class="card-title">{!!$icons!!} {{$title}}</h3> --}}
+
               </div>
 
               @yield('content')
-              
+
             </div>
             <!-- /.card -->
             </div>

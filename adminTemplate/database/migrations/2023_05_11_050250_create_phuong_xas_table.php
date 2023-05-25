@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('phuong_xas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ten');
+            $table->string('tenpx');
             $table->foreignID('quan_huyen_id')->constrained();
             $table->bigInteger('TT');
             $table->nullableTimestamps();
