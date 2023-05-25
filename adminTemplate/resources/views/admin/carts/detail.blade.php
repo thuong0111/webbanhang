@@ -6,6 +6,13 @@
             <li>Customer Name: <strong>{{ $customer->name }}</strong></li>
             <li>Phone: <strong>{{ $customer->phone }}</strong></li>
             <li>Adress: <strong>{{ $customer->address }}</strong></li>
+            <li>
+               @foreach ($adr_customers as $adr_customer)
+                    CiTy: <strong>{{ $adr_customer->tenTP }}</strong>
+                    District: <strong>{{ $adr_customer->tenQH }}</strong>
+                    Ward: <strong>{{ $adr_customer->tenPX }}</strong>
+               @endforeach
+            </li>
             <li>Email: <strong>{{ $customer->email }}</strong></li>
             <li>Content: <strong>{{ $customer->content }}</strong></li>
         </ul>
@@ -41,7 +48,7 @@
                 </tr>
             @endforeach
                 <tr>
-                    <td colspan="4" class="text-right">Tổng Tiền</td>
+                    <td colspan="4" class="text-right">Total Money</td>
                     <td>{{ number_format($total, 0, '', '.') }}</td>
                 </tr>
             </tbody>

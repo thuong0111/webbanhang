@@ -15,7 +15,6 @@
                     <div class="block2-txt-child1 flex-col-l ">
                         <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html"
                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                           
                             {{ $productt->name }}
                         </a>
 

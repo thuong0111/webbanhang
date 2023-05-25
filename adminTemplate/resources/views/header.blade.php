@@ -21,12 +21,14 @@
                             <i  class="social fa fa-users"></i>
                             @endif --}}
                             @auth
-                                <h6 style="text-align: center;"> Hello ông  {{Auth::user()->name}}</h6>
+                                <h6 style="text-align: center;"> 
+                                    Hello ông  {{Auth::user()->name}}
+                                </h6>
                                 <a href="{{route('logout')}}">Logout</a>
                             @endauth
             
                             @guest
-                                <a href="{{route('login')}}">Login</a>
+                                <a href="{{route('login_user')}}">Login</a>
                             @endguest
                         </a>
                     </div>

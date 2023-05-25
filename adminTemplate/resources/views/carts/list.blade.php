@@ -126,8 +126,12 @@
                                         @include('select.selectlist')
 
                                         <div class="bor8 bg0 m-b-12">
+<<<<<<< HEAD
                                             <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Noted"></textarea>
 
+=======
+                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" ></textarea>
+>>>>>>> 267e447744c89348d9b33a96791c3bb366a506a0
                                         </div>
 
                                     </div>

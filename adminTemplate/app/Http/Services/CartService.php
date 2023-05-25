@@ -83,17 +83,19 @@ class CartService
                 'name' => $request->input('name'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),
+                'city' => $request->input('city'),
+                'district' => $request->input('district'),
+                'ward' => $request->input('ward'),
                 'email' => $request->input('email'),
                 'content' => $request->input('content'),
             ]);
-
             $this->infoProductCart($carts, $customer->id);
 
             DB::commit();
             Session::flash('success', 'Orders success.');
 
             #Queue
-            SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
+            // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
 
 
             Session::forget('carts');

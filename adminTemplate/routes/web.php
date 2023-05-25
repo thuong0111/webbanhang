@@ -99,9 +99,6 @@ Route::get('carts',[ App\Http\Controllers\CartController::class, 'show']);
 Route::post('update-cart',[ App\Http\Controllers\CartController::class, 'update']);
 Route::get('carts/delete/{id}',[ App\Http\Controllers\CartController::class, 'remove']);
 Route::post('carts',[ App\Http\Controllers\CartController::class, 'addCart']);
-Route::get('loginuser', function () {
-    return view('session.login-session');
-});
 
 Route::get('static-sign-in', function () {
     return view('static-sign-in');
@@ -111,7 +108,7 @@ Route::get('static-sign-up', function () {
     return view('static-sign-up');
 })->name('sign-up');
 
-
+Route::get('/loginuser', [SessionsController::class, 'create'])->name('login_user');
 Route::get('/logout', [SessionsController::class, 'destroy'])->name('logout');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [RegisterController::class, 'create']);

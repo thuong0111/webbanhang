@@ -12,7 +12,7 @@ class QuanHuyen extends Model
     public $primaryKey = 'id';
     public $fillable = [
         'id',
-        'ten',
+        'tenQH',
         'tinh_tp_id',
     ];
 }

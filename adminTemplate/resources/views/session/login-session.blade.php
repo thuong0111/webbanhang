@@ -13,8 +13,8 @@
                   <h3 class="font-weight-bolder text-info text-gradient">Welcome Login</h3>
                   <p class="mb-0">Tạo một tài khoản mới<br></p>
                   <p class="mb-0">Hoặc đăng nhập bằng thông tin sau:</p>
-                  <p class="mb-0">Email <b>congthuong@gmail.com</b></p>
-                  <p class="mb-0">Password <b>123456</b></p>
+                  <p class="mb-0">Email <b>test@gmail.com</b></p>
+                  <p class="mb-0">Password <b>123456789</b></p>
                 </div>
                 <div class="card-body">
                   <form role="form" method="POST" action="/session">

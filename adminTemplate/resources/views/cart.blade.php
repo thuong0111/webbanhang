@@ -31,7 +31,7 @@
                                 </a>
 
                                 <span class="header-cart-item-info">
-                                       {!! $price !!}
+                                    {!! $price !!}
                                 </span>
                             </div>
                         </li>

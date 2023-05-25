@@ -75,25 +75,21 @@ class SessionsController extends Controller
                     : back()->withErrors(['email' => [__($status)]]);
     }
 
-    // public function destroy()
-    // {
-
-    //     // if (auth()->user()->status == 0) {
-    //     //     auth()->logout();
-    //     //     return redirect('/login')->withSuccess('Bạn Đã Bị Admin Ban ,Liên Hệ 0969696969 Để Biết Thêm Thông Tin Chi Tiết');
-    //     //  }
-    //     auth()->logout();
-    //     return redirect('/loginuser');
-    // }
-
     public function destroy(Request $request): RedirectResponse
     {
         // if (auth()->user()->status == 0) {
         //     auth()->logout();
         //     return redirect('/login')->withSuccess('Bạn Đã Bị Admin Ban ,Liên Hệ 0969696969 Để Biết Thêm Thông Tin Chi Tiết');
         //  }
-        auth()->logout();
-        return redirect('/loginuser');
+        // auth()->logout();
+        // return redirect('/loginuser');
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
 }
