@@ -3,11 +3,7 @@
 	<select style="width: 100%; height: 40px;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thanh Pho--</option>
 		@foreach($prod as $cat)
-<<<<<<< HEAD
 			<option value="{{$cat->id}}">{{$cat->tentp}}</option>
-=======
-			<option value="{{$cat->id}}">{{$cat->tenTP}}</option>
->>>>>>> 267e447744c89348d9b33a96791c3bb366a506a0
 		@endforeach
 	</select>
 	<br>
@@ -15,11 +11,7 @@
 	<select style="width: 100%; height: 40px;" class="quanhuyen" name = "district">
 		<option value="0" disabled="true" selected="true"> --Quan Huyen--</option>
 		@foreach($prod as $cat)
-<<<<<<< HEAD
 			<option value="{{$cat->id}}">{{$cat->tenqh}}</option>
-=======
-			<option value="{{$cat->id}}">{{$cat->tenQH}}</option>
->>>>>>> 267e447744c89348d9b33a96791c3bb366a506a0
 		@endforeach
 	</select>
 	<br>
@@ -45,11 +37,7 @@
 				success:function(data){
 					op+='<option value="0" selected disabled> Chose Quan Huyen</option>';
 					for(var i=0;i<data.length;i++){
-<<<<<<< HEAD
 					op+='<option value="'+data[i].id+'">'+data[i].tenqh+'</option>';
-=======
-					op+='<option value="'+data[i].id+'">'+data[i].tenQH+'</option>';
->>>>>>> 267e447744c89348d9b33a96791c3bb366a506a0
 				   }
 				   div.find('.quanhuyen').html(" ");
 				   div.find('.quanhuyen').append(op);
@@ -85,11 +73,7 @@
 					//console.log(data.length);
 					op+='<option value="0" selected disabled> chose Phuong Xa</option>';
 					for(var i=0;i<data.length;i++){
-<<<<<<< HEAD
 						op+='<option value="'+data[i].id+'">'+data[i].tenpx+'</option>';
-=======
-						op+='<option value="'+data[i].id+'">'+data[i].tenPX+'</option>';
->>>>>>> 267e447744c89348d9b33a96791c3bb366a506a0
 				   }
 
 				   div.find('.phuongxa').html(" ");

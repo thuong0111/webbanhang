@@ -12,7 +12,7 @@ class PhuongXa extends Model
     public $primaryKey = 'id';
     public $fillable = [
         'id',
-        'tenPX',
+        'tenpx',
         'quan_huyen_id',
     ];
 }
