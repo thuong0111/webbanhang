@@ -56,7 +56,6 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-<<<<<<< HEAD
     public function history()
     {
         $customers = DB::table('carts')
@@ -68,13 +67,11 @@ class CartController extends Controller
             'customers' => $customers,
             // 'carts' => $carts,
 
-        ]);
-=======
+        ]);}
     public function update (Request $request)
     {
         $this->cartService->update($request);
         return redirect('/carts');
->>>>>>> 267e447744c89348d9b33a96791c3bb366a506a0
     }
 
     public function findQuanHuyen(Request $request){
