@@ -19,6 +19,8 @@ class MainController extends Controller
         $this->productt = $productt;
     }
 
+    
+
     public function index()
     {
         return view('home', [
@@ -34,10 +36,10 @@ class MainController extends Controller
         $result = $this->productt->get($page);
         if(count($result) != 0){
             $html = view('productts.list', ['productts' => $result])->render();
-           
+
             return response()->json([
                 'html'=> $html
-            ]);            
+            ]);
         }
         return response()->json(['html'=>'']);
     }

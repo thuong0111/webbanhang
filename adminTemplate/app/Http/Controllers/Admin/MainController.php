@@ -13,4 +13,5 @@ class MainController extends Controller
             'title'=>'Admin Pages'
         ]);
     }
+
 }

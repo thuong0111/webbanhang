@@ -14,6 +14,8 @@ use App\Http\Controllers\SelectController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\OnlineCheckoutController;
+use App\Http\Controllers\ImportController;
+use App\Http\Controllers\InforUserController;
 use App\Http\Livewire\Assignment;
 
 
@@ -127,6 +129,15 @@ Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
 Route::get('/tt', [OnlineCheckoutController::class, 'create']);
 Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
+Route::get('/ip', [ImportController::class, 'create']);
+Route::post('/import', [ImportController::class, 'upload']);
+Route::get('/profile', function () {
+    return view('profile.profile');
+})->name('profile');
+
+Route::post('/inforuser/{id}', [InforUserController::class, 'update']);
+
+Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
 
 
 

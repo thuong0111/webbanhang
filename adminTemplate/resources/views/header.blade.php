@@ -14,19 +14,35 @@
                         <a href=""><i  class="social fab fa-facebook-square"></i></a>
                         <a href=""><i  class="social fab fa-twitter"></i></a>
                         <a href=""><i  class="social fab fa-instagram"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#loginbox">
+                        {{-- <a href="#" data-toggle="modal" data-target="#loginbox"> --}}
                             {{-- @if (Auth::check())
                             {{Auth::user()->name}}
                             @else
                             <i  class="social fa fa-users"></i>
                             @endif --}}
                             @auth
-                                <h6 style="text-align: center;"> 
-                                    Hello ông  {{Auth::user()->name}}
-                                </h6>
-                                <a href="{{route('logout')}}">Logout</a>
+                                <div class="top-nav clearfix" style="display:inline-flex;">
+                                    <!--search & user info start-->
+                                    <ul class="nav pull-right top-menu">
+
+                                        <!-- user login dropdown start-->
+                                        <li class="dropdown">
+                                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                    {{Auth::user()->name}}
+                                            </a>
+                                            <ul class="dropdown-menu extended logout">
+                                                <li><a href="{{route('profile')}}" style="color:#9ca71e"><i class=" fa fa-suitcase" style="margin-right: 25px;"></i>Profile</a></li>
+                                                <li><a href="" style="color:#9ca71e"><i class="fa fa-cog" style="margin-right: 20px;"></i> Cài đặt</a></li>
+                                                <li><a href="{{route('logout')}}" style="color:#9ca71e"><i class="fa fa-key" style="margin-right: 25px;"></i>Logout</a></li>
+                                            </ul>
+                                        </li>
+                                        <!-- user login dropdown end -->
+                                    </ul>
+                                    <!--search & user info end-->
+                                </div>
+                                {{-- <a href="{{route('logout')}}">Logout</a> --}}
                             @endauth
-            
+
                             @guest
                                 <a href="{{route('login_user')}}">Login</a>
                             @endguest

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->longText('content');
             $table->string('slug',255)->unique();
             $table->integer('active');
-            
+
             $table->timestamps();
         });
     }

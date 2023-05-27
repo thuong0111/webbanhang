@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('menu_id');
             $table->integer('price')->nullable();
             $table->integer('price_sale')->nullable();
+            $table->bigInteger('SL');
+            // $table->foreignID('loai_san_pham_id')->constrained();
+            // $table->foreignID('bien_the_id')->constrained();
             $table->integer('active');
             $table->timestamps();
         });
