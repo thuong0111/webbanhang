@@ -56,18 +56,18 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function history()
-    {
-        $customers = DB::table('carts')
-            ->join('productts', 'productts.id', '=', 'carts.product_id')
-            ->join('customers', 'customers.id', '=', 'carts.customer_id')
-            ->get();
-        return view('history.history', [
-            // 'title' => 'Order Detail' . $customer->name,
-            'customers' => $customers,
-            // 'carts' => $carts,
+    // public function history()
+    // {
+    //     $customers = DB::table('carts')
+    //         ->join('productts', 'productts.id', '=', 'carts.product_id')
+    //         ->join('customers', 'customers.id', '=', 'carts.customer_id')
+    //         ->get();
+    //     return view('history.history', [
+    //         // 'title' => 'Order Detail' . $customer->name,
+    //         'customers' => $customers,
+    //         // 'carts' => $carts,
 
-        ]);}
+    //     ]);}
     public function update (Request $request)
     {
         $this->cartService->update($request);
