@@ -27,6 +27,8 @@
 
                                         <!-- user login dropdown start-->
                                         <li class="dropdown">
+                                            @php($profile_image = auth()->user()->profile_image)
+                                            <img class="img" width="50px" style="width: 50px; height: 50px; border-radius: 50%;" src="@if($profile_image == null) https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg  @else {{ asset("storage/$profile_image") }} @endif"/>
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                                     {{Auth::user()->name}}
                                             </a>
@@ -61,7 +63,10 @@
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu"><a href="/"><i class="fa fa-home"></i> Home</a> </li>
+                        <li class="active-menu"><a href="/">
+                            <i class="fa fa-home"></i> Home</a> 
+                        </li>
+
                         {!! $menusHtml !!}
 
                         <li>
@@ -118,7 +123,8 @@
                 <i class="zmdi zmdi-search"></i>
             </div>
 
-            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" 
+                data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                 <i class="zmdi zmdi-shopping-cart"></i>
             </div>
         </div>
@@ -137,8 +143,8 @@
             <li class="active-menu">
                 <a href="/">Home</a>
             </li>
-            {!! $menusHtml !!}
-
+            {!! $menusHtml !!}    
+            
             <li>
                 <a href="contact.html">Contact</a>
             </li>

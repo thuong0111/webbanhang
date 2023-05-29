@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\InforUserService;
-use App\Http\Services\Productt\ProducttAdminService;
-use App\Http\Services\Productt\ProducttService;
-use App\Models\User;
+use App\Models\PhuongXa;
+use App\Models\QuanHuyen;
+use App\Models\TinhTP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -14,6 +13,29 @@ use Illuminate\Support\Facades\Validator;
 class InforUserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    { $prod=TinhTP::all();
+        return view('profile.profile', [
+            'prod'=>$prod
+        ]);
+
+    }
+
+    public function findQuanHuyen(Request $request){
+
+        $data=QuanHuyen::where('tinh_tp_id', $request->id)->get();
+        return response()->json($data);
+	}
+    public function findPhuongXa(Request $request){
+
+        $data=PhuongXa::where('quan_huyen_id', $request->id)->get();
+        return response()->json($data);
+	}
     public function updateProfile(Request $request)
     {
         $validated = Validator::make($request->all(), [

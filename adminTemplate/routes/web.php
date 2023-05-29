@@ -17,8 +17,7 @@ use App\Http\Controllers\OnlineCheckoutController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InforUserController;
 use App\Http\Livewire\Assignment;
-
-
+use App\Models\TinhTP;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\DB;
@@ -131,11 +130,10 @@ Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
-Route::get('/profile', function () {
-    return view('profile.profile');
-})->name('profile');
-
-Route::post('/inforuser/{id}', [InforUserController::class, 'update']);
+// Route::get('/profile', function () {
+//     return view('profile.profile');
+// })->name('profile');
+Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
 

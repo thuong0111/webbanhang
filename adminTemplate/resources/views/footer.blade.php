@@ -155,7 +155,6 @@
 <!-- Modal1 -->
 <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
     <div class="overlay-modal1 js-hide-modal1"></div>
-
     <div class="container">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
             <button class="how-pos3 hov3 trans-04 js-hide-modal1">
@@ -211,8 +210,8 @@
                         </h4>
 
                         <span class="mtext-106 cl2">
-								$58.79
-							</span>
+                             $58.79
+                        </span>
 
                         <p class="stext-102 cl3 p-t-23">
                             Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
@@ -305,7 +304,6 @@
         </div>
     </div>
 </div>
-
 <!--===============================================================================================-->
 <script src="/template/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
@@ -360,7 +358,7 @@
     $('.js-addwish-b2').each(function(){
         var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
         $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "is added to wishlist pro!", "success");
 
             $(this).addClass('js-addedwish-b2');
             $(this).off('click');
@@ -371,7 +369,7 @@
         var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
         $(this).on('click', function(){
-            swal(nameProduct, "is added to wishlist !", "success");
+            swal(nameProduct, "is added to wishlist 111 !", "success");
 
             $(this).addClass('js-addedwish-detail');
             $(this).off('click');
@@ -383,7 +381,7 @@
     $('.js-addcart-detail').each(function(){
         var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
         $(this).on('click', function(){
-            swal(nameProduct, "is added to cart !", "success");
+            swal(nameProduct, "is added to cart gio hang !", "success");
         });
     });
 

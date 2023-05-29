@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Productt\ProducttService;
+use App\Models\Productt;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -22,5 +23,15 @@ class ProductController extends Controller
             'productt'=>$productt,
             'productts'=>$productsMore
         ]);
+    }
+    public function quickview(Request $request)
+    {
+        $id = $request->id;
+        $product = Productt::find($id);
+       
+        $output['name'] = $this->$product->name;
+        $output['id'] = $this->$product->id;
+        dd($output);
+        echo json_encode($output);
     }
 }
