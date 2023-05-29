@@ -131,11 +131,10 @@ Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
+
 Route::get('/profile', function () {
     return view('profile.profile');
 })->name('profile');
-
-Route::post('/inforuser/{id}', [InforUserController::class, 'update']);
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
 

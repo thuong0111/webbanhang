@@ -27,6 +27,8 @@
 
                                         <!-- user login dropdown start-->
                                         <li class="dropdown">
+                                            @php($profile_image = auth()->user()->profile_image)
+                                            <img class="img" width="50px" style="width: 50px; height: 50px; border-radius: 50%;" src="@if($profile_image == null) https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg  @else {{ asset("storage/$profile_image") }} @endif"/>
                                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                                     {{Auth::user()->name}}
                                             </a>

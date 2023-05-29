@@ -1,11 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Services\InforUserService;
-use App\Http\Services\Productt\ProducttAdminService;
-use App\Http\Services\Productt\ProducttService;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -14,6 +9,15 @@ use Illuminate\Support\Facades\Validator;
 class InforUserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    // public function index()
+    // {
+    //     return view('profile.profile');
+    // }
     public function updateProfile(Request $request)
     {
         $validated = Validator::make($request->all(), [

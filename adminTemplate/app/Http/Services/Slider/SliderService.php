@@ -31,8 +31,8 @@ class SliderService
     {
         try {
             $slider->fill($request->input());
-        $slider->save();
-        Session::flash('success', 'Update success');
+            $slider->save();
+            Session::flash('success', 'Update success');
         } catch (\Exception $err) {
             Session::flash('success', 'Update fail.');
             Log::info($err->getMessage());
