@@ -7,9 +7,10 @@
                 <div class="block2-pic hov-img0">
                     <img src="{{ $productt->thumb }}" alt="{{ $productt->name }}" height="390px">
                 </div>
-                {{-- <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
+                <button value="{{$productt->id}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                     Quick view
-                </a> --}}
+                </button>
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
                         <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html"
@@ -27,53 +28,33 @@
             </div>
         </div>
     @endforeach
-      {{-- <!-- Modal -->
-      <div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title quickview_title" id="">
-
-                <span id="quickview_title"></span>
-                Modal
-
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            ...
-            </div>
-            <div class="row">
-                <div class="col-md-5">
-                    ID: <span id="quickview_id"></span>
-                </div>
-                <div class="col-md-7">
-
-                </div>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        $('.quickview').click(function(){
-            var id = $(this).data('id');
-            var token = $('input[name="_token"]').val();
-            $.ajax({
-                url: "{{url('/quickview')}}",
-                method: "POST",
-                dataType: "JSON",
-                data: {id:id, _token:_token},
-                success: function(data){
-                    $('#quickview_title').html(data.name);
-                    $('#quickview_id').html(data.id);
-                }
-            })
-        })
-    </script> --}}
+     
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(function($){
+        $(".block2-btn").on('click', function(){
+           var obj = $(this).val();
+
+          $.ajax({
+            url: "/api/quickviewAPI",
+                method: "GET",
+                dataType: "JSON",
+                data: {"data":obj},
+            success:function(data){
+               
+            }
+          }).then(res => {
+            console.log(res)
+
+            $.each(res, function(key, val){
+                 console.log(val.thumb);
+                let name = document.getElementById("name-product").innerHTML = val.name;
+                let price_sale = document.getElementById("pricesale-product").innerHTML = val.price_sale;
+                let content = document.getElementById("content-product").innerHTML = val.content;
+                let img = document.getElementById("img-product").src = val.thumb;
+            });
+          });
+        });
+    });
+</script>

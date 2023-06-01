@@ -21,7 +21,7 @@ class ProducttAdminService
         if ($request->input('price') != 0 && $request->input('price_sale') != 0
             && $request->input('price_sale') >= $request->input('price')
         ) {
-            Session::flash('error', '   Giá giảm phải nhỏ hơn giá gốc');
+            Session::flash('error', 'Giá giảm phải nhỏ hơn giá gốc');
             return false;
         }
 

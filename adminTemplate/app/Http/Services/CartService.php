@@ -125,8 +125,8 @@ class CartService
                 'pty' => $carts[$productt->id],
                 'price' => $productt->price_sale != 0 ? $productt->price_sale : $productt->price
             ];
-           return Cart::insert($data);
         }
+        return Cart::insert($data);
     }
 
     public function getCustomer()

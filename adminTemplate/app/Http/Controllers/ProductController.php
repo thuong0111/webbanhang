@@ -24,14 +24,9 @@ class ProductController extends Controller
             'productts'=>$productsMore
         ]);
     }
-    public function quickview(Request $request)
-    {
-        $id = $request->id;
-        $product = Productt::find($id);
-       
-        $output['name'] = $this->$product->name;
-        $output['id'] = $this->$product->id;
-        dd($output);
-        echo json_encode($output);
+
+    public function quickviewAPI(Request $request){
+        $data = Productt::where('id',$request->data)->get();
+        return response()->json($data);
     }
 }
