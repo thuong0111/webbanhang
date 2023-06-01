@@ -24,6 +24,11 @@
       </div>
 
       <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" name="SL" value="{{$productt->SL}}" class="form-control">
+      </div>
+
+      <div class="form-group">
         <label>Price</label>
         <input type="number" name="price" value="{{$productt->price}}" class="form-control">
       </div>

@@ -7,6 +7,7 @@
                 <th style="width: 50px">ID</th>
                 <th>Name Product</th>
                 <th>Category</th>
+                <th>Quantity</th>
                 <th>Price</th>
                 <th>Price Sale</th>
                 <th>Active</th>
@@ -20,6 +21,7 @@
                     <td>{{$productt->id}}</td>
                     <td>{{$productt->name}}</td>
                     <td>{{$productt->menu->name}}</td>
+                    <td>{{$productt->SL}}</td>
                     <td>{{$productt->price}}</td>
                     <td>{{$productt->price_sale}}</td>
                     <td>{!! \App\Helpers\Helper::active($productt->active) !!}</td>

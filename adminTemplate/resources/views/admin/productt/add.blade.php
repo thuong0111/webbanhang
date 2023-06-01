@@ -20,6 +20,10 @@
             @endforeach
         </select>
       </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" name="SL" value="{{old('SL')}}" class="form-control">
+      </div>
 
       <div class="form-group">
         <label>Price</label>

@@ -12,6 +12,7 @@ class Productt extends Model
         'name',
         'description',
         'content',
+        'SL',
         'menu_id',
         'price',
         'price_sale',

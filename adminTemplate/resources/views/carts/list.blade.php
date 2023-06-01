@@ -27,6 +27,7 @@
                                             $price = $productt->price_sale != 0 ? $productt->price_sale : $productt->price;
                                             $priceEnd = $price * $carts[$productt->id];
                                             $total += $priceEnd;
+                                           
                                         @endphp
                                         <tr class="table_row">
                                             <td class="column-1">
@@ -54,6 +55,7 @@
                                             <td class="p-r-15">
                                                 <a href="/carts/delete/{{ $productt->id }}">Xóa</a>
                                             </td>
+                                          
                                         </tr>
                                     @endforeach
                                     </tbody>

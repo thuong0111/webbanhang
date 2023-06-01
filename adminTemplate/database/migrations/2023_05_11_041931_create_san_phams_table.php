@@ -19,7 +19,7 @@ return new class extends Migration
             $table->bigInteger('SL');
             $table->bigInteger('gia');
             $table->foreignID('loai_san_pham_id')->constrained();
-            $table->foreignID('bien_the_id')->constrained();
+           
             $table->bigInteger('TT');
             $table->nullableTimestamps();
         });
