@@ -20,6 +20,7 @@ use App\Http\Controllers\InforUserController;
 use App\Http\Controllers\MauController;
 use App\Http\Controllers\SizeController;
 use App\Http\Livewire\Assignment;
+use App\Http\Services\Productt\ProducttService;
 use App\Models\TinhTP;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
@@ -158,6 +159,7 @@ Route::group(['middleware' => 'guest'], function () {
 Route::get('/timkiem', [SearchController::class, 'search']);
 Route::get('/select', [SelectController::class, 'prodfunct']);
 Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
+
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
 Route::get('/tt', [OnlineCheckoutController::class, 'create']);
 Route::post('/momo', [OnlineCheckoutController::class, 'momo']);

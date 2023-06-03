@@ -82,6 +82,46 @@
                             {{ $productt->description }}
                         </p>
 
+                        <div class="flex-w flex-r-m p-b-10">
+                            <div class="size-203 flex-c-m respon6">
+                                Size
+                            </div>
+
+                            <div class="size-204 respon6-next">
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="time">
+                                        <option value="0" disabled="true" selected="true"> --Chọn Size--</option>
+                                        @foreach($sizes as $size)
+                                        @for ($i=0; $i < count($size); $i++)
+                                        <option value="{{$size[$i]->id}}">{{$size[$i]->tensize}}</option>
+                                        @endfor
+                                        @endforeach
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-w flex-r-m p-b-10">
+                            <div class="size-203 flex-c-m respon6">
+                                Color
+                            </div>
+
+                            <div class="size-204 respon6-next">
+                                <div class="rs1-select2 bor8 bg0">
+                                    <select class="js-select2" name="time">
+                                        <option value="0" disabled="true" selected="true"> --Chọn Size--</option>
+                                        @foreach($maus as $mau)
+                                        @for ($i=0; $i < count($mau); $i++)
+                                        <option value="{{$mau[$i]->id}}">{{$mau[$i]->tenmau}}</option>
+                                        @endfor
+                                        @endforeach
+                                    </select>
+                                    <div class="dropDownSelect2"></div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!--  -->
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
@@ -343,5 +383,32 @@
             @include('productts.list')
         </div>
     </section>
+
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(document).on('change','.js-select2',function(){
+			var cat_id=$(this).val();
+			var div=$(this).parent();
+			var op=" ";
+			$.ajax({
+				type:'get',
+				url:'{!!URL::to('findSize')!!}',
+				data:{'id':cat_id},
+				success:function(data){
+					op+='<option value="0" selected disabled> Chose Size</option>';
+					for(var i=0;i<data.length;i++){
+					op+='<option value="'+data[i].id+'">'+data[i].tenmau+'</option>';
+				   }
+				   div.find('.mau').html(" ");
+				   div.find('.mau').append(op);
+				},
+				error:function(){
+				}
+			});
+		});
+
+	});
+</script> --}}
 
 @endsection

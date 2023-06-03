@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Productt\ProducttService;
+use App\Models\Mau;
 use App\Models\Productt;
+use App\Models\Size;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -18,10 +21,15 @@ class ProductController extends Controller
     {
         $productt = $this->producttService->show($id);
         $productsMore = $this->producttService->more($id);
+        $productsize=$this->producttService->getSize($id);
+        $productmau=$this->producttService->getMau($id);
+       
         return view('productts.content', [
             'title'=>$productt->name,
             'productt'=>$productt,
-            'productts'=>$productsMore
+            'productts'=>$productsMore,
+            'sizes'=>$productsize,
+            'maus'=>$productmau
         ]);
     }
 
@@ -29,4 +37,13 @@ class ProductController extends Controller
         $data = Productt::where('id',$request->data)->get();
         return response()->json($data);
     }
+
+   
+
+	public function findMau(Request $request){
+
+        $data=Mau::where('size_text_id', $request->id)->get();
+        return response()->json($data);
+	}
+  
 }
