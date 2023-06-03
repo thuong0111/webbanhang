@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\BienTheController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SearchController;
@@ -16,6 +17,8 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\OnlineCheckoutController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InforUserController;
+use App\Http\Controllers\MauController;
+use App\Http\Controllers\SizeController;
 use App\Http\Livewire\Assignment;
 use App\Models\TinhTP;
 use Illuminate\Http\Request;
@@ -66,6 +69,18 @@ Route::middleware(['auth'])->group(function(){
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
         });
 
+
+         #Product
+
+         Route::prefix('ctsp')->group(function(){
+            Route::get('add', [BienTheController::class, 'create']);
+            Route::post('add', [BienTheController::class, 'store']);
+            Route::get('list', [BienTheController::class, 'index']);
+            Route::get('edit/{ctsp}', [BienTheController::class, 'show']);
+            Route::post('edit/{ctsp}', [BienTheController::class, 'update']);
+            Route::DELETE('destroy', [BienTheController::class, 'destroy']);
+        });
+
         #Upload
         Route::post('upload/services',[UploadController::class, 'store']);
 
@@ -77,6 +92,25 @@ Route::middleware(['auth'])->group(function(){
             Route::get('edit/{slider}', [SliderController::class, 'show']);
             Route::post('edit/{slider}', [SliderController::class, 'update']);
             Route::DELETE('destroy', [SliderController::class, 'destroy']);
+        });
+        #size
+        Route::prefix('size')->group(function(){
+            Route::get('add', [SizeController::class, 'create']);
+            Route::post('add', [SizeController::class, 'store']);
+            Route::get('list', [SizeController::class, 'index']);
+            Route::get('edit/{size}', [SizeController::class, 'show']);
+            Route::post('edit/{size}', [SizeController::class, 'update']);
+            Route::DELETE('destroy', [SizeController::class, 'destroy']);
+        });
+
+        #mau
+        Route::prefix('mau')->group(function(){
+            Route::get('add', [MauController::class, 'create']);
+            Route::post('add', [MauController::class, 'store']);
+            Route::get('list', [MauController::class, 'index']);
+            Route::get('edit/{mau}', [MauController::class, 'show']);
+            Route::post('edit/{mau}', [MauController::class, 'update']);
+            Route::DELETE('destroy', [MauController::class, 'destroy']);
         });
 
         #Customer

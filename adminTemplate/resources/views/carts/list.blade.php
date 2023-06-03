@@ -27,6 +27,7 @@
                                             $price = $productt->price_sale != 0 ? $productt->price_sale : $productt->price;
                                             $priceEnd = $price * $carts[$productt->id];
                                             $total += $priceEnd;
+                                           
                                         @endphp
                                         <tr class="table_row">
                                             <td class="column-1">
@@ -54,6 +55,7 @@
                                             <td class="p-r-15">
                                                 <a href="/carts/delete/{{ $productt->id }}">Xóa</a>
                                             </td>
+                                          
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -108,25 +110,26 @@
                                         </span>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Name Client" {{old('name')}}>
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Name Client">
                                         </div>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Number Phone" {{old('phone')}}>
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Number Phone">
                                         </div>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Delivery Address" {{old('address')}}>
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Delivery Address">
                                         </div>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="Email Contact" {{old('email')}}>
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="Email Contact">
                                         </div>
 
                                         @include('select.selectlist')
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Noted" {{old('content')}}></textarea>                                        </div>
+                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Noted"></textarea>                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -85,31 +85,4 @@
 		});
 	});
 </script>
-{{-- <script type="text/javascript">
-	$(document).ready(function(){
-	$(document).on('change','#prod_cat_id',function(){
-		let e = document.getElementById("prod_cat_id");
-		let giaTri = e.options[e.selectedIndex].text;
-        document.getElementById('tp').setAttribute('value', giaTri);
-});
-});
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	$(document).on('change','#quanhuyen',function(){
-		let e = document.getElementById("quanhuyen");
-		let giaTri = e.options[e.selectedIndex].text;
-        document.getElementById('tp').setAttribute('value', giaTri);
-});
-});
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	$(document).on('change','#phuongxa',function(){
-		let e = document.getElementById("phuongxa");
-		let giaTri = e.options[e.selectedIndex].text;
-        document.getElementById('tp').setAttribute('value', giaTri);
-});
-});
-</script> --}}
 

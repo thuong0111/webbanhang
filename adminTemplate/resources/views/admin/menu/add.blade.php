@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Name Category</label>
+        <label for="menu"></label>
         <input type="text" name="name" class="form-control" placeholder="Enter name">
       </div>
 

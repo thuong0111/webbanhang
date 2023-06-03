@@ -74,11 +74,9 @@ class CartService
     {
         try {
             DB::beginTransaction();
-
             $carts = Session::get('carts');
             if(is_null($carts))
                 return false;
-
             $customer = Customer::create([
                 'name' => $request->input('name'),
                 'phone' => $request->input('phone'),
@@ -90,13 +88,11 @@ class CartService
                 'content' => $request->input('content'),
             ]);
             $this->infoProductCart($carts, $customer->id);
-
             DB::commit();
             Session::flash('success', 'Orders success.');
 
             #Queue
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
-
 
             Session::forget('carts');
         } catch (\Exception $err) {
@@ -110,13 +106,12 @@ class CartService
 
     protected function infoProductCart($carts, $customer_id)
     {
-
         $productId = array_keys($carts);
+
         $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
             ->whereIn('id', $productId)
             ->get();
-
         $data= [];
         foreach ($productts as $productt) {
             $data[] = [
@@ -125,6 +120,10 @@ class CartService
                 'pty' => $carts[$productt->id],
                 'price' => $productt->price_sale != 0 ? $productt->price_sale : $productt->price
             ];
+        //    $slcart=$carts[$productt->id];
+        //    $sl=Productt::select('SL')->where('id',$productt->id)->get();
+        //    $slupdate=$sl-$slcart;
+        //    Productt::where('id',$productt->id)->update(['SL'=>$slupdate]);
         }
         return Cart::insert($data);
     }

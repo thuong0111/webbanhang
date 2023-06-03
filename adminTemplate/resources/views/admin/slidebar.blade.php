@@ -142,6 +142,82 @@
                 </li>
             </ul>
           </li>
+
+          {{-- Manager Size--}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-link" aria-hidden="true"></i>
+                <p> Size
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/size/add" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Size</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/size/list" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>List Size</p>
+                    </a>
+                </li>
+
+            </ul>
+          </li>
+
+          {{-- Manager Mau--}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-link" aria-hidden="true"></i>
+                <p> Mau
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/mau/add" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add Mau</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/mau/list" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>List Mau</p>
+                    </a>
+                </li>
+
+            </ul>
+          </li>
+
+
+           {{-- Manager CTSP--}}
+           <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-link" aria-hidden="true"></i>
+                <p> CTSP
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/ctsp/add" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Add CTSP</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/ctsp/list" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>List CTSP</p>
+                    </a>
+                </li>
+
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

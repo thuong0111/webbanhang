@@ -147,7 +147,6 @@
                  
              </div>
              <div class="row mt-2">
-                
                 @include("select.selectlist_profile")
             </div>
                 

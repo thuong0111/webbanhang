@@ -2,7 +2,7 @@
 Project:
 Version:
 Last change:
-Assigned to:  Le Xuan Bach
+Assigned to: 
 Primary use:  Company
 -------------------------------------------------------------------*/
 /*------------------------------------------------------------------
@@ -2728,6 +2728,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .bor8 {
   border: 1px solid #e6e6e6;
+  width:58%;
   border-radius: 2px;
   width: 350px;
   /* width: 58%; */

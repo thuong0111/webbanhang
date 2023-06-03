@@ -1,4 +1,4 @@
-
+{{-- 
 	<select style="width: 343px; height: 40px;text-align:center;margin-top: 15px;margin-left: 12px;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thanh Pho--</option>
 		@foreach($prod as $cat)
@@ -102,4 +102,4 @@
 });
 });
 </script>
-
+ --}}
