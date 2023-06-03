@@ -4,7 +4,12 @@
 namespace App\Http\Services\Productt;
 
 
+use App\Models\BienThe;
+use App\Models\Mau;
 use App\Models\Productt;
+use App\Models\Size;
+use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Type\Integer;
 
 class ProducttService
 {
@@ -27,6 +32,25 @@ class ProducttService
         ->where('active', 1)
         ->with('menu')
         ->firstOrFail();
+    }
+
+    public function getSize($id)
+    {
+       $idsize=BienThe::select('size_id')->where('san_pham_id', '=', $id)->get();
+       foreach($idsize as $ids){
+        $tam[]=Size::select('id', 'tensize')->where('id',$ids->size_id)->get();
+        
+
+       }
+        return $tam;
+    }
+    public function getMau($id)
+    {
+       $idmau=BienThe::select('mau_id')->where('san_pham_id', '=', $id)->get();
+       foreach($idmau as $idm){
+        $tam[]=Mau::select('id', 'tenmau')->where('id',$idm->mau_id)->get();
+       }
+        return $tam;
     }
 
     public function more($id)
