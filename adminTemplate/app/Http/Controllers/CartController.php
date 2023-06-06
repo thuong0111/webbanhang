@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
+use App\Models\Mau;
 use Illuminate\Support\Facades\Session;
 use App\Models\PhuongXa;
 use Illuminate\Support\Facades\DB;
 use App\Models\TinhTP;
 use App\Models\QuanHuyen;
+use App\Models\Size;
 
 class CartController extends Controller
 {
@@ -21,22 +23,31 @@ class CartController extends Controller
     public function index(Request $request)
     {
         $result = $this->cartService->create($request);
+        $size_id =(int)$request->input('size_id');
+        $mau_id =(int)$request->input('mau_id');
         if($result === false)
         {
             return redirect()->back();
         }
         
-        return redirect('/carts');
+        return redirect('/carts')->with('sizes', $size_id)->with('maus', $mau_id);
     }
 
     public function show()
     {
         $prod=TinhTP::all();
         $productts = $this->cartService->getProduct();
+        $size_product=Session::get('sizes');
+        $mau_product=Session::get('maus');
+        $tensize=Size::where('id',$size_product)->get();
+        $tenmau=Mau::where('id',$mau_product)->get();
+
         return view('carts.list', [
             'title' => 'Shopping Cart',
             'productts'=>$productts,
             'carts' => Session::get('carts'),
+            'sizesss'=>$tensize,
+            'mausss'=>$tenmau,
             'prod'=>$prod
         ]);
     }

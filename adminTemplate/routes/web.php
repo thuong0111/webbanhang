@@ -158,6 +158,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 Route::get('/timkiem', [SearchController::class, 'search']);
 Route::get('/select', [SelectController::class, 'prodfunct']);
+Route::get('/selectlist', [SelectController::class, 'selectList']);
 Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
 
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);

@@ -1,4 +1,4 @@
-{{-- 
+
 	<select style="width: 343px; height: 40px;text-align:center;margin-top: 15px;margin-left: 12px;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thanh Pho--</option>
 		@foreach($prod as $cat)
@@ -15,6 +15,12 @@
 	<select style="width: 343px;margin-left: 191px; height: 40px;margin-top: 15px;text-align: center" class="phuongxa" name="ward" id="phuongxa">
 		<option value="0" disabled="true" selected="true">  --Phuong Xa--</option>
 	</select>
+
+	<div class="bor8 bg0 m-b-12">
+        <input class="stext-111 cl8 plh3 size-111 p-lr-15 " type="text" name="diachi" id="diachi" placeholder="Địa chỉ nhà">
+    </div>
+	
+
 	
 	
 
@@ -83,23 +89,27 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		let dl,dl1,dl2,dl3;
+		let dl,dl1,dl2,dl3,y;
 	$(document).on('change','#prod_cat_id',function(){
 		let e = document.getElementById("prod_cat_id");
 		let giaTriTp = e.options[e.selectedIndex].text;
-		dl=giaTriTp;
+		// dl=giaTriTp;
 	$(document).on('change','#quanhuyen',function(){
 		let a = document.getElementById("quanhuyen");
 		let giaTriQh = a.options[a.selectedIndex].text;
-		dl+=', '+giaTriQh;
+		// dl+=', '+giaTriQh;
 	$(document).on('change','#phuongxa',function(){
 		let x = document.getElementById("phuongxa");
 		let giaTriPx = x.options[x.selectedIndex].text;
-		dl+=', '+giaTriPx; 
+		// dl+=', '+giaTriPx; 
+	$(document).on('change','#diachi',function(){
+		let y = document.getElementById("diachi").value;
+		dl=y+', '+giaTriPx+', '+giaTriQh+', '+giaTriTp;
 	document.getElementById('address').setAttribute('value', dl);
+	});
 });
 });
 });
 });
 </script>
- --}}
+

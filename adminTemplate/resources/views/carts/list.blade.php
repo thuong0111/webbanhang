@@ -14,12 +14,16 @@
                                 <table class="table-shopping-cart">
                                     <tbody>
                                     <tr class="table_head">
-                                        <th class="column-1">Product</th>
+                                        <th class="column-1">Sản Phẩm</th>
                                         <th class="column-2"></th>
-                                        <th class="column-3">Price</th>
-                                        <th class="column-4">Quantity</th>
-                                        <th class="column-5">Total</th>
-                                        <th class="column-6">&nbsp;</th>
+                                        <th class="column-3">Giá</th>
+                                        <th class="column-4">Số Lượng</th>
+                                        <th class="column-5">Thành Tiền</th>
+                                        <th class="column-6" style="width: 60px; text-align: center">Size</th>
+                                        <th class="column-7" style="width: 60px; text-align: center">Mau</th>
+                                        <th class="column-8" >&nbsp;</th>
+
+
                                     </tr>
 
                                     @foreach($productts as $key => $productt)
@@ -52,9 +56,25 @@
                                                 </div>
                                             </td>
                                             <td class="column-5">{{ number_format($priceEnd, 0, '', '.') }}</td>
-                                            <td class="p-r-15">
+                                            
+                                           
+                                            <td class="column-6" style="width: 60px; text-align: center" >
+                                                @foreach ($sizesss as $key=>$size )
+                                                <input type="hidden" name="mau" value="{{$size->id }}">
+                                                <lable name="tensize">{{$size->tensize }}</lable>
+                                                @endforeach
+                                               
+                                            </td>
+                                            <td class="column-7" style="width: 60px; text-align: center">@foreach ($mausss as $key=>$mau )
+                                                <input type="hidden" name="size" value="{{$mau->id }}">
+                                                <lable name="tenmau">{{$mau->tenmau }}</lable>
+                                            @endforeach</td>
+                                            <td class="p-r-15" >
                                                 <a href="/carts/delete/{{ $productt->id }}">Xóa</a>
                                             </td>
+
+
+
                                           
                                         </tr>
                                     @endforeach
@@ -65,15 +85,15 @@
                             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                                 <div class="flex-w flex-m m-r-20 m-tb-5">
                                     <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
-                                           name="coupon" placeholder="Coupon Code">
+                                           name="coupon" placeholder="Mã Giảm Giá">
 
                                     <div
                                         class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                        Apply coupon
+                                        Xác Nhận Mã
                                     </div>
                                 </div>
 
-                                <input type="submit" value="Update Cart" formaction="/update-cart"
+                                <input type="submit" value="Cập Nhật Sản Phẩm" formaction="/update-cart"
                                     class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
                                 @csrf
                             </div>
@@ -89,7 +109,7 @@
                             <div class="flex-w flex-t p-t-27 p-b-33">
                                 <div class="size-208">
                                     <span class="mtext-101 cl2">
-                                        Total:
+                                        Tổng Tiền:
                                     </span>
                                 </div>
 
@@ -106,36 +126,36 @@
 
                                     <div class="p-t-15">
                                         <span class="stext-112 cl8">
-                                            Infor Client
+                                            Thông Tin Người Mua
                                         </span>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Name Client">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Họ và Tên">
                                         </div>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Number Phone">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Số điện thoại">
                                         </div>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Delivery Address">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Địa chỉ nhà">
                                         </div>
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="Email Contact">
+                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="email">
                                         </div>
 
                                         @include('select.selectlist')
 
                                         <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Noted"></textarea>                                        
+                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                               Order
+                               Đặt Hàng
                             </button>
                         </div>
                     </div>

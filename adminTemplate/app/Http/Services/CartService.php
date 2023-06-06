@@ -3,7 +3,10 @@
 namespace App\Http\Services;
 
 use App\Jobs\SendMail;
+use App\Models\BienThe;
 use App\Models\Cart;
+use Illuminate\Http\Request;
+
 use App\Models\Customer;
 use App\Models\Productt;
 use Illuminate\Support\Facades\Session;
@@ -16,20 +19,25 @@ class CartService
     {
         $qty =(int)$request->input('num_product');
         $product_id =(int)$request->input('product_id');
+        // $size_id =(int)$request->input('size_id');
+        // $mau_id =(int)$request->input('mau_id');
+        // $ctsp=BienThe::select('id')->where([
+        //     ['size_id', '=', $size_id],
+        //     ['mau_id', '=', $mau_id],
+        //     ['san_pham_id', '=', $product_id]
+        // ])->get();
         if($qty <= 0 || $product_id <= 0)
         {
             Session::flash('error', 'The quantity is incorrect.');
             return false;
         }
-
         $carts = Session::get('carts');
         if(is_null($carts)){
             Session::put('carts', [
-                $product_id => $qty
+                $product_id => $qty,
             ]);
             return true;
-        }
-
+        }       
         $exists = Arr::exists($carts, $product_id);
         if($exists){
 
@@ -37,10 +45,10 @@ class CartService
             Session::put('carts', $carts);
             return true;
         }
-
         $carts[$product_id] = $qty;
-        Session::put('carts', $carts);
+       
 
+        Session::put('carts', $carts);
         return true;
     }
 
@@ -54,6 +62,7 @@ class CartService
             ->whereIn('id', $productId)
             ->get();
     }
+   
 
     public function update($request)
     {
@@ -87,7 +96,10 @@ class CartService
                 'email' => $request->input('email'),
                 'content' => $request->input('content'),
             ]);
-            $this->infoProductCart($carts, $customer->id);
+            $size=$request->input('size');
+            $mau=$request->input('mau');
+
+            $this->infoProductCart($carts, $customer->id,$size,$mau);
             DB::commit();
             Session::flash('success', 'Orders success.');
 
@@ -104,10 +116,9 @@ class CartService
         return true;
     }
 
-    protected function infoProductCart($carts, $customer_id)
+    protected function infoProductCart($carts, $customer_id,$size,$mau)
     {
         $productId = array_keys($carts);
-
         $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
             ->where('active', 1)
             ->whereIn('id', $productId)
@@ -118,7 +129,9 @@ class CartService
                 'customer_id' => $customer_id,
                 'product_id' => $productt->id,
                 'pty' => $carts[$productt->id],
-                'price' => $productt->price_sale != 0 ? $productt->price_sale : $productt->price
+                'price' => $productt->price_sale != 0 ? $productt->price_sale : $productt->price,
+                'size' =>$size,
+                'mau' =>$mau,
             ];
         //    $slcart=$carts[$productt->id];
         //    $sl=Productt::select('SL')->where('id',$productt->id)->get();

@@ -23,13 +23,15 @@ class ProductController extends Controller
         $productsMore = $this->producttService->more($id);
         $productsize=$this->producttService->getSize($id);
         $productmau=$this->producttService->getMau($id);
+        $productRelated=$this->producttService->getRelated($id);
        
         return view('productts.content', [
             'title'=>$productt->name,
             'productt'=>$productt,
             'productts'=>$productsMore,
             'sizes'=>$productsize,
-            'maus'=>$productmau
+            'maus'=>$productmau,
+            'related'=>$productRelated
         ]);
     }
 

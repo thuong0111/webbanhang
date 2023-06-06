@@ -70,7 +70,7 @@
                         {!! $menusHtml !!}
 
                         <li>
-                            <a href="contact.html">Contact</a>
+                            <a href="contact.html">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>

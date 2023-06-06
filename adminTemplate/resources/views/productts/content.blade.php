@@ -89,7 +89,7 @@
 
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
+                                    <select class="js-select2" name="time" id="sizes">
                                         <option value="0" disabled="true" selected="true"> --Chọn Size--</option>
                                         @foreach($sizes as $size)
                                         @for ($i=0; $i < count($size); $i++)
@@ -104,13 +104,13 @@
 
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-203 flex-c-m respon6">
-                                Color
+                                Màu
                             </div>
 
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time">
-                                        <option value="0" disabled="true" selected="true"> --Chọn Size--</option>
+                                    <select class="js-select2" name="time" id="maus" >
+                                        <option value="0" disabled="true" selected="true"> --Chọn Màu--</option>
                                         @foreach($maus as $mau)
                                         @for ($i=0; $i < count($mau); $i++)
                                         <option value="{{$mau[$i]->id}}">{{$mau[$i]->tenmau}}</option>
@@ -147,6 +147,9 @@
                                                 Add to cart
                                             </button>
                                             <input type="hidden" name="product_id" value="{{ $productt->id }}">
+                                            <input type="hidden" id="size_s" name="size_id"value="">
+                                            <input type="hidden" id="mau_s" name="mau_id" value="">
+
                                         @endif
                                         @csrf
                                     </form>
@@ -317,7 +320,7 @@
 
                                             <div class="flex-w flex-m p-t-50 p-b-23">
 												<span class="stext-102 cl3 m-r-16">
-													Your Rating
+													Số Sao
 												</span>
 
                                                 <span class="wrap-rating fs-18 cl11 pointer">
@@ -332,13 +335,13 @@
 
                                             <div class="row p-b-25">
                                                 <div class="col-12 p-b-5">
-                                                    <label class="stext-102 cl3" for="review">Your review</label>
+                                                    <label class="stext-102 cl3" for="review">Đánh giá của bạn</label>
                                                     <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
                                                               id="review" name="review"></textarea>
                                                 </div>
 
                                                 <div class="col-sm-6 p-b-5">
-                                                    <label class="stext-102 cl3" for="name">Name</label>
+                                                    <label class="stext-102 cl3" for="name">Tên</label>
                                                     <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name"
                                                            type="text" name="name">
                                                 </div>
@@ -367,7 +370,7 @@
         <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
 
             <span class="stext-107 cl6 p-lr-25">
-				Categories: {{ $productt->menu->name }}
+				Loại Sản Phẩm: {{ $productt->menu->name }}
 			</span>
         </div>
     </section>
@@ -376,8 +379,33 @@
         <div class="container">
             <div class="p-b-45">
                 <h3 class="ltext-106 cl5 txt-center">
-                    Related Products
+                    Sản Phẩm Liên Quan
                 </h3>
+                @foreach ($related as $relate)
+                <div class="block2">
+                    @csrf
+                    <div class="block2-pic hov-img0">
+                        <img src="{{ $relate->thumb }}" alt="{{ $relate->name }}" height="390px">
+                    </div>
+                    {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
+                    <button value="{{$relate->id}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                        Quick view
+                    </button>
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1 flex-col-l ">
+                            <a href="/san-pham/{{ $relate->id }}-{{ Str::slug($relate->name, '-') }}.html"
+                               class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                {{ $relate->name }}
+                            </a>
+    
+                            <span class="stext-105 cl3">
+                                {!! \App\Helpers\Helper::price($relate->price, $relate->price_sale) !!}
+                            </span>
+                        </div>
+                        
+                    </div>
+                </div>
+                @endforeach
             </div>
 
             @include('productts.list')
@@ -410,5 +438,25 @@
 
 	});
 </script> --}}
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	$(document).on('change','#sizes',function(){
+		let e = document.getElementById("sizes");
+		let giaTriSize = e.options[e.selectedIndex].value;
+    
+	document.getElementById('size_s').setAttribute('value', giaTriSize);
+	});
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$(document).on('change','#maus',function(){
+		let b = document.getElementById("maus");
+		let giaTriMau = b.options[b.selectedIndex].value;
+	document.getElementById('mau_s').setAttribute('value', giaTriMau);
+	});
+});
+</script>
 
 @endsection

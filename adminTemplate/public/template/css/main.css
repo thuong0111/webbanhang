@@ -1940,29 +1940,29 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .column-1 {
-  width: 133px;
-  padding-left: 50px;
+  width: 80px;
+  padding-left: 20px;
 }
 
 .table-shopping-cart .column-2 {
-  width: 220px;
+  width: 95px;
   font-size: 15px;
 }
 
 .table-shopping-cart .column-3 {
-  width: 120px;
+  width: 59px;
   font-size: 16px;
+  text-align: center;
 }
 
 .table-shopping-cart .column-4 {
   width: 145px;
-  text-align: right;
+  text-align: center;
 }
 
 .table-shopping-cart .column-5 {
-  width: 172px;
-  padding-right: 50px;
-  text-align: right;
+  width: 113px;
+  text-align: center;
   font-size: 16px;
 }
 

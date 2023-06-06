@@ -52,6 +52,13 @@ class ProducttService
        }
         return $tam;
     }
+    public function getRelated($id)
+    {
+       $lienquan=Productt::select('menu_id')->where('id',$id)->get();
+       $lay=Productt::where('menu_id',$lienquan)->whereNotIn('id',[$id])->get();
+        return $lay;
+    }
+
 
     public function more($id)
     {

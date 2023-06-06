@@ -19,6 +19,13 @@ class SelectController extends Controller
 
 	}
 
+    public function selectList(){
+
+		$prod=TinhTP::all();//get data from table
+		return view('select.selectlist_profile',compact('prod'));//sent data to view
+
+	}
+
 	public function findQuanHuyen(Request $request){
 
         $data=QuanHuyen::where('tinh_tp_id', $request->id)->get();
