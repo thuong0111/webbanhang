@@ -10,7 +10,9 @@
                     <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
                         <div class="m-l-25 m-r--38 m-lr-0-xl">
                             <div class="wrap-table-shopping-cart">
-                                @php $total = 0; @endphp
+                                @php $total = 0;  
+                                $content = Cart::content();
+                                @endphp
                                 <table class="table-shopping-cart">
                                     <tbody>
                                     <tr class="table_head">
@@ -26,17 +28,20 @@
 
                                     </tr>
 
-                                    @foreach($productts as $key => $productt)
+
+                                    @foreach($content as $productt)
                                         @php
-                                            $price = $productt->price_sale != 0 ? $productt->price_sale : $productt->price;
-                                            $priceEnd = $price * $carts[$productt->id];
+                                            // $price = $productt->price_sale != 0 ? $productt->price_sale : $productt->price;
+                                            $price=$productt->price;
+                                            // $priceEnd = $price * $carts[$productt->id];
+                                            $priceEnd = $price * $productt->qty;
                                             $total += $priceEnd;
                                            
                                         @endphp
                                         <tr class="table_row">
                                             <td class="column-1">
                                                 <div class="how-itemcart1">
-                                                    <img src="{{ $productt->thumb }}" alt="IMG">
+                                                    <img src="{{$productt->options->image}}" alt="IMG">
                                                 </div>
                                             </td>
                                             <td class="column-2">{{ $productt->name }}</td>
@@ -48,7 +53,7 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $productt->id }}]" value="{{ $carts[$productt->id] }}">
+                                                           name="num_product[{{ $productt->id }}]" value="{{ $productt->qty }}">
 
                                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                         <i class="fs-16 zmdi zmdi-plus"></i>
@@ -59,18 +64,20 @@
                                             
                                            
                                             <td class="column-6" style="width: 60px; text-align: center" >
-                                                @foreach ($sizesss as $key=>$size )
-                                                <input type="hidden" name="mau" value="{{$size->id }}">
-                                                <lable name="tensize">{{$size->tensize }}</lable>
-                                                @endforeach
+                      
+                                                {{-- <input type="hidden" name="mau" value="{{$size->id }}"> --}}
+                                                <lable name="tensize">{{$productt->options->sizes}}</lable>
+                                               
                                                
                                             </td>
-                                            <td class="column-7" style="width: 60px; text-align: center">@foreach ($mausss as $key=>$mau )
-                                                <input type="hidden" name="size" value="{{$mau->id }}">
-                                                <lable name="tenmau">{{$mau->tenmau }}</lable>
-                                            @endforeach</td>
-                                            <td class="p-r-15" >
-                                                <a href="/carts/delete/{{ $productt->id }}">Xóa</a>
+                                            <td class="column-7" style="width: 60px; text-align: center">
+                                                {{-- <input type="hidden" name="size" value="{{$mau->id }}"> --}}
+                                                <lable name="tenmau">{{$productt->options->colors}}</lable>
+                                           </td>
+                                            <td class="p-r-15">
+                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
+                                                <input type="hidden" name="id_product" value="{{$productt->id }}">
+                                                <a href="/carts/delete/{{ $productt->rowId}}">Xóa</a>
                                             </td>
 
 

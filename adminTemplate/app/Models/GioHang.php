@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class GioHang extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'user_id',
+        'product_id',
+        'size_id',
+        'mau_id',
+
+    ];
 }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Customer;
 use App\Models\Productt;
+use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -19,38 +20,42 @@ class CartService
     {
         $qty =(int)$request->input('num_product');
         $product_id =(int)$request->input('product_id');
-        // $size_id =(int)$request->input('size_id');
-        // $mau_id =(int)$request->input('mau_id');
-        // $ctsp=BienThe::select('id')->where([
-        //     ['size_id', '=', $size_id],
-        //     ['mau_id', '=', $mau_id],
-        //     ['san_pham_id', '=', $product_id]
-        // ])->get();
+        $size_id =(int)$request->input('size_id');
+        // $mau_id =(int)$request->input('mau_id');        
         if($qty <= 0 || $product_id <= 0)
         {
             Session::flash('error', 'The quantity is incorrect.');
             return false;
         }
         $carts = Session::get('carts');
-        if(is_null($carts)){
-            Session::put('carts', [
-                $product_id => $qty,
-            ]);
-            return true;
-        }       
+        $size_products = Session::get('sizess');
+            if(is_null($carts)){
+                Session::put('carts', [
+                    $product_id => $qty,
+                ]);
+                Session::put('sizess', [
+                    $size_id => $qty,
+                ]);
+                return true;    
+            } 
         $exists = Arr::exists($carts, $product_id);
-        if($exists){
-
+        $exists_size = Arr::exists($size_products, $size_id);
+        if($exists and $exists_size) {
             $carts[$product_id] = $carts[$product_id] + $qty;
             Session::put('carts', $carts);
             return true;
         }
-        $carts[$product_id] = $qty;
-       
 
+        // $size_products[$size_id] = $product_id;
+        // dd($size_products[$size_id]);
+        // Session::put('sizess', $size_products);
+        $carts[$product_id] = $qty;
         Session::put('carts', $carts);
+        
         return true;
     }
+
+    
 
     public function getProduct()
     {
@@ -78,6 +83,7 @@ class CartService
         Session::put('carts', $carts);
         return true;
     }
+    
 
     public function addCart($request)
     {
@@ -86,7 +92,7 @@ class CartService
             $carts = Session::get('carts');
             if(is_null($carts))
                 return false;
-            $customer = Customer::create([
+             $customer = Customer::create([
                 'name' => $request->input('name'),
                 'phone' => $request->input('phone'),
                 'address' => $request->input('address'),

@@ -13,7 +13,7 @@ use Ramsey\Uuid\Type\Integer;
 
 class ProducttService
 {
-    const LIMIT = 10;
+    const LIMIT = 12;
 
     public function get($page = null)
     {
@@ -43,6 +43,7 @@ class ProducttService
 
        }
         return $tam;
+
     }
     public function getMau($id)
     {

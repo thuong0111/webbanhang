@@ -5,12 +5,12 @@
             <div class="block2">
                 @csrf
                 <div class="block2-pic hov-img0">
-                    <img src="{{ $productt->thumb }}" alt="{{ $productt->name }}" height="390px">
+                    <img src="{{ $productt->thumb }}" alt="{{ $productt->name }}">
                 </div>
                 {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
-                <button value="{{$productt->id}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                {{-- <button value="{{$productt->id}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                     Quick view
-                </button>
+                </button> --}}
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
                         <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html"
