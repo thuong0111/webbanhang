@@ -66,16 +66,15 @@
                                             <td class="column-6" style="width: 60px; text-align: center" >
                       
                                                 {{-- <input type="hidden" name="mau" value="{{$size->id }}"> --}}
-                                                <lable name="tensize">{{$productt->options->sizes}}</lable>
+                                                <b>{{$productt->options->sizes}}</b>
                                                
                                                
                                             </td>
                                             <td class="column-7" style="width: 60px; text-align: center">
                                                 {{-- <input type="hidden" name="size" value="{{$mau->id }}"> --}}
-                                                <lable name="tenmau">{{$productt->options->colors}}</lable>
+                                                <b>{{$productt->options->colors}}</b>
                                            </td>
                                             <td class="p-r-15">
-                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
                                                 <input type="hidden" name="id_product" value="{{$productt->id }}">
                                                 <a href="/carts/delete/{{ $productt->rowId}}">Xóa</a>
                                             </td>
