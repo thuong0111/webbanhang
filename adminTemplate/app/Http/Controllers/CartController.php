@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Http\View\Composers\CartComposer;
-use App\Models\GioHang;
 use App\Models\Mau;
 use App\Models\PhuongXa;
 use App\Models\Productt;
@@ -43,11 +42,9 @@ class CartController extends Controller
         }
         foreach($tensize as $tam){
             $laytensize=$tam->tensize;
-            
         }
         foreach($tenmau as $tam){
-            $laytenmau=$tam->tenmau;
-            
+            $laytenmau=$tam->tenmau;   
         }
         $qty=$carts[$product_id];
         $data['id'] = $product_id;

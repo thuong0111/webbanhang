@@ -6,10 +6,8 @@ use App\Jobs\SendMail;
 use App\Models\BienThe;
 use App\Models\Cart;
 use Illuminate\Http\Request;
-
 use App\Models\Customer;
 use App\Models\Productt;
-use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -20,36 +18,30 @@ class CartService
     {
         $qty =(int)$request->input('num_product');
         $product_id =(int)$request->input('product_id');
-        $size_id =(int)$request->input('size_id');
-        // $mau_id =(int)$request->input('mau_id');   
-        //test     
+        $size_id =(int)$request->input('size_id');   
         if($qty <= 0 || $product_id <= 0)
         {
             Session::flash('error', 'The quantity is incorrect.');
             return false;
         }
         $carts = Session::get('carts');
-        $size_products = Session::get('sizess');
+        // $size_products = Session::get('sizess');
             if(is_null($carts)){
                 Session::put('carts', [
                     $product_id => $qty,
                 ]);
-                Session::put('sizess', [
-                    $size_id => $qty,
-                ]);
+                // Session::put('sizess', [
+                //     $size_id => $qty,
+                // ]);
                 return true;    
             } 
         $exists = Arr::exists($carts, $product_id);
-        $exists_size = Arr::exists($size_products, $size_id);
-        if($exists and $exists_size) {
+        // $exists_size = Arr::exists($size_products, $size_id);
+        if($exists) {
             $carts[$product_id] = $carts[$product_id] + $qty;
             Session::put('carts', $carts);
             return true;
         }
-
-        // $size_products[$size_id] = $product_id;
-        // dd($size_products[$size_id]);
-        // Session::put('sizess', $size_products);
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
         

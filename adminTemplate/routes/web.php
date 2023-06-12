@@ -71,7 +71,7 @@ Route::middleware(['auth'])->group(function(){
         });
 
 
-         #Product
+         #Detail Product
 
          Route::prefix('ctsp')->group(function(){
             Route::get('add', [BienTheController::class, 'create']);

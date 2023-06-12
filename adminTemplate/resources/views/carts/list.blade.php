@@ -31,12 +31,9 @@
 
                                     @foreach($content as $productt)
                                         @php
-                                            // $price = $productt->price_sale != 0 ? $productt->price_sale : $productt->price;
                                             $price=$productt->price;
-                                            // $priceEnd = $price * $carts[$productt->id];
                                             $priceEnd = $price * $productt->qty;
                                             $total += $priceEnd;
-                                           
                                         @endphp
                                         <tr class="table_row">
                                             <td class="column-1">
@@ -66,13 +63,13 @@
                                             <td class="column-6" style="width: 60px; text-align: center" >
                       
                                                 {{-- <input type="hidden" name="mau" value="{{$size->id }}"> --}}
-                                                <lable name="tensize">{{$productt->options->sizes}}</lable>
+                                                <label name="tensize">{{$productt->options->sizes}}</label>
                                                
                                                
                                             </td>
                                             <td class="column-7" style="width: 60px; text-align: center">
                                                 {{-- <input type="hidden" name="size" value="{{$mau->id }}"> --}}
-                                                <lable name="tenmau">{{$productt->options->colors}}</lable>
+                                                <label name="tenmau">{{$productt->options->colors}}</label>
                                            </td>
                                             <td class="p-r-15">
                                                 <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
