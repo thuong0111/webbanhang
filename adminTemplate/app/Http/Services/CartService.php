@@ -21,7 +21,8 @@ class CartService
         $qty =(int)$request->input('num_product');
         $product_id =(int)$request->input('product_id');
         $size_id =(int)$request->input('size_id');
-        // $mau_id =(int)$request->input('mau_id');        
+        // $mau_id =(int)$request->input('mau_id');   
+        //test     
         if($qty <= 0 || $product_id <= 0)
         {
             Session::flash('error', 'The quantity is incorrect.');
