@@ -31,10 +31,10 @@
       </div>
 
       <div class="form-group">
-        <label >Màu</label>
+        <label>Tên Màu</label>
         <select class="form-control" name="mau_id">
             @foreach ($maus as $mau)
-                <option value="{{$sp->id}}" {{$ctsp->mau_id == $mau->id ? 'selected' : ''}}>
+                <option value="{{$mau->id}}" {{$ctsp->mau_id == $mau->id ? 'selected' : ''}}>
                     {{$mau->tenmau}}
                 </option>
             @endforeach

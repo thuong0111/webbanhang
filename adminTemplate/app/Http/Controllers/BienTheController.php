@@ -6,6 +6,7 @@ use App\Models\Productt;
 use App\Http\Requests\StoreBienTheRequest;
 use App\Http\Requests\UpdateBienTheRequest;
 use App\Http\Services\Bienthe\BTService;
+use App\Models\BienThe;
 use Illuminate\Http\Request;
 
 class BienTheController extends Controller
@@ -44,20 +45,20 @@ class BienTheController extends Controller
         // return redirect()->back();
     }
 
-    public function show(Productt $productt)
+    public function show(BienThe $ctsp)
     {
-        return view('admin.productt.edit', [
+        return view('admin.ctsp.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
-            'title' => 'Edit Products: ',
-            'productt' => $productt,
-            'sps' => $this->btService->getSize(),
+            'title' => 'Edit CTSP: ',
+            'ctsp' => $ctsp,
+            'sps' => $this->btService->getSP(),
             'sizes' => $this->btService->getSize(),
             'maus' => $this->btService->getMau()
         ]);
     }
-    public function update(Request $request, Productt $productt)
+    public function update(Request $request, BienThe $ctsp)
     {
-        $result = $this->btService->update($request, $productt);
+        $result = $this->btService->update($request, $ctsp);
         if($result)
         {
             return redirect('/admin/ctsp/list');

@@ -18,7 +18,7 @@
                     <td>{{$mau->id}}</td>
                     <td>{{$mau->tenmau}}</td>                    
                     <td>{!! \App\Helpers\Helper::active($mau->active) !!}</td>
-                    <td style="text-align: center;">
+                    <td style="text-align: center; display: flex;">
                         <a class="btn btn-primary btn-sm" href="/admin/mau/edit/{{$mau->id}}" style="width:30px">
                             <i class="fas fa-edit"></i>
                         </a>

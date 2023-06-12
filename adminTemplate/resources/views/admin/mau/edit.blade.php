@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Tên Mau</label>
+        <label for="menu">Tên Màu</label>
         <input type="text" name="tenmau" value="{{$mau->tenmau}}" class="form-control" placeholder="Enter Mau">
       </div>
 
