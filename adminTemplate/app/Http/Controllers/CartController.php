@@ -25,13 +25,14 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
+        $qty =(int)$request->input('num_product');
         $result = $this->cartService->create($request);
         $size_id =(int)$request->input('size_id');
         $mau_id =(int)$request->input('mau_id');
         $tensize=Size::where('id',$size_id)->get();
         $tenmau=Mau::where('id',$mau_id)->get();
         $product_id =(int)$request->input('product_id');
-        $carts = Session::get('carts');
+        // $carts = Session::get('carts');
         $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
         ->where('id', $product_id)
         ->get();
@@ -46,7 +47,7 @@ class CartController extends Controller
         foreach($tenmau as $tam){
             $laytenmau=$tam->tenmau;   
         }
-        $qty=$carts[$product_id];
+        // $qty=$carts[$product_id];
         $data['id'] = $product_id;
         $data['qty'] = $qty;
         $data['options']['colors'] =$laytenmau;

@@ -72,7 +72,6 @@
                                                 <label name="tenmau">{{$productt->options->colors}}</label>
                                            </td>
                                             <td class="p-r-15">
-                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
                                                 <input type="hidden" name="id_product" value="{{$productt->id }}">
                                                 <a href="/carts/delete/{{ $productt->rowId}}">Xóa</a>
                                             </td>
