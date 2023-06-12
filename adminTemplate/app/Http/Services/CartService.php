@@ -11,6 +11,7 @@ use App\Models\Productt;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 
 class CartService
 {
@@ -18,36 +19,27 @@ class CartService
     {
         $qty =(int)$request->input('num_product');
         $product_id =(int)$request->input('product_id');
-        $size_id =(int)$request->input('size_id');
-        // $mau_id =(int)$request->input('mau_id');   
-        //test     
+  
         if($qty <= 0 || $product_id <= 0)
         {
             Session::flash('error', 'The quantity is incorrect.');
             return false;
         }
         $carts = Session::get('carts');
-        $size_products = Session::get('sizess');
             if(is_null($carts)){
                 Session::put('carts', [
                     $product_id => $qty,
                 ]);
-                Session::put('sizess', [
-                    $size_id => $qty,
-                ]);
                 return true;    
             } 
-        $exists = Arr::exists($carts, $product_id);
-        $exists_size = Arr::exists($size_products, $size_id);
-        if($exists and $exists_size) {
-            $carts[$product_id] = $carts[$product_id] + $qty;
-            Session::put('carts', $carts);
-            return true;
-        }
+        // $exists = Arr::exists($carts, $product_id);
+        // $exists_size = Arr::exists($size_products, $size_id);
+        // if($exists and $exists_size) {
+        //     $carts[$product_id] = $carts[$product_id] + $qty;
+        //     Session::put('carts', $carts);
+        //     return true;
+        // }
 
-        // $size_products[$size_id] = $product_id;
-        // dd($size_products[$size_id]);
-        // Session::put('sizess', $size_products);
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
         
@@ -106,16 +98,7 @@ class CartService
                 'email' => $request->input('email'),
                 'content' => $request->input('content'),
             ]);
-            
-           
-                // $order_details_data['customer_id'] = $customer->id;
-                // $order_details_data['product_id'] = $v_content->id;
-                // $order_details_data['qty'] = $v_content->qty;
-                // $order_details_data['price'] = $v_content->price;
-                // $order_details_data['size'] = $v_content->options->sizes;
-                // $order_details_data['mau'] = $v_content->options->colors;
-            // $size=$request->input('size');
-            // $mau=$request->input('mau');
+
              $this->infoProductCart($customer->id);
              FacadesCart::destroy();
             DB::commit();

@@ -63,13 +63,13 @@
                                             <td class="column-6" style="width: 60px; text-align: center" >
                       
                                                 {{-- <input type="hidden" name="mau" value="{{$size->id }}"> --}}
-                                                <label name="tensize">{{$productt->options->sizes}}</label>
+                                                <b>{{$productt->options->sizes}}</b>
                                                
                                                
                                             </td>
                                             <td class="column-7" style="width: 60px; text-align: center">
                                                 {{-- <input type="hidden" name="size" value="{{$mau->id }}"> --}}
-                                                <label name="tenmau">{{$productt->options->colors}}</label>
+                                                <b>{{$productt->options->colors}}</b>
                                            </td>
                                             <td class="p-r-15">
                                                 <input type="hidden" name="id_product" value="{{$productt->id }}">
