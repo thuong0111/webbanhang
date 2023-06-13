@@ -152,23 +152,6 @@ class CartService
 
     protected function infoProductCart($customer_id)
     {
-        // $productId = array_keys($carts);
-        // $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
-        //     ->where('active', 1)
-        //     ->whereIn('id', $productId)
-        //     ->get();
-        // $data= [];
-        // foreach ($productts as $productt) {
-        //     $data[] = [
-        //         'customer_id' => $customer_id,
-        //         'product_id' => $productt->id,
-        //         'pty' => $carts[$productt->id],
-        //         'price' => $productt->price_sale != 0 ? $productt->price_sale : $productt->price,
-        //         'size' =>$size,
-        //         'mau' =>$mau,
-        //     ];
-        
-        // }
         $content = FacadesCart::content();
             $data=[];
             foreach($content as $v_content){

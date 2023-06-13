@@ -135,22 +135,28 @@
 
                                         @if (Auth::check())
                                             <div class="bor8 bg0 m-b-12">
-                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"  value=" {{Auth::user()->name}}">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"
+                                                id="input1" onkeypress="moveToNext(event, 'input2')" value="{{Auth::user()->name}}">
                                             </div>
 
                                             <div class="bor8 bg0 m-b-12">
-                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone"  value=" {{Auth::user()->phone}}">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" title="Số điện thoại không đúng định dạng !"
+                                                maxlength="11" pattern="(\+84|0)\d{9,10}" type="text" name="phone"  value="{{Auth::user()->phone}}"
+                                                id="input2" onkeypress="moveToNext(event, 'input3')">
                                             </div>
 
                                             <div class="bor8 bg0 m-b-12">
-                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value=" {{Auth::user()->address}}">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value="{{Auth::user()->address}}"
+                                                id="input3" onkeypress="moveToNext(event, 'input4')">
                                             </div>
 
                                             <div class="bor8 bg0 m-b-12">
-                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value=" {{Auth::user()->email}}">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value="{{Auth::user()->email}}"
+                                                id="input4" onkeypress="moveToNext(event, 'input5')">
                                             </div>
                                             <div class="bor8 bg0 m-b-12">
-                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
+                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"
+                                                id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>                                        
                                             </div>
                                         @else
                                         
@@ -160,14 +166,10 @@
                                             </div>
 
                                             <div class="bor8 bg0 m-b-12">
-                                                <input title="chi duoc nhap so" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" pattern="(\+84|0)\d{9,10}"
-                                                 id="input2" onkeypress="moveToNext(event, 'input3')" placeholder="Số điện thoại">
+                                                <input title="Số điện thoại không đúng định dạng !" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" pattern="(\+84|0)\d{9,10}"
+                                                id="input2" onkeypress="moveToNext(event, 'input3')" placeholder="Số điện thoại">
                                             </div>
-                                            {{-- <div class="bor8 bg0 m-b-12">
-                                                <input class="test" type="text" maxlength="11" pattern="(\+84|0)\d{9,10}" name="phone" 
-                                                placeholder="Số điện thoại">
-                                            </div> --}}
-
+                                            
                                             <div class="bor8 bg0 m-b-12">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" 
                                                 id="input3" onkeypress="moveToNext(event, 'input4')" placeholder="Địa chỉ nhà">
@@ -184,10 +186,7 @@
                                                 <textarea class="cl8 plh3 size-111 p-lr-15" name="content" 
                                                 id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                                        
                                             </div>
-                                        @endif
-                                            
-                                        
-                                        
+                                        @endif               
                                     </div>
                                 </div>
                             </div>
@@ -204,8 +203,9 @@
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
     @endif
-    {{-- Chuyen huong vao o tiep theo --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    {{-- Chuyen huong vao o tiep theo --}}
     <script>
         function moveToNext(event, nextInputId) {
           if (event.key === 'Enter') {
@@ -214,15 +214,4 @@
           }
         }
       </script>
-    {{-- Chan nhap ky tu --}}
-    <script>
-        function isNumberKey(event) {
-          const charCode = event.which ? event.which : event.keyCode;
-          if (charCode < 48 || charCode > 57) {
-            event.preventDefault();
-            return false;
-          }
-          return true;
-        }
-    </script>
 @endsection
