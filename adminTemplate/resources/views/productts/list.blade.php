@@ -22,8 +22,6 @@
 							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
                         </span>
                     </div>
-                    {{-- <input type="button" data-toggle="modal" data-target="#quickview" value="Quick View"
-                    class="btn btn-default quickview" data-id="{{$productt->id}}"> --}}
                 </div>
             </div>
         </div>

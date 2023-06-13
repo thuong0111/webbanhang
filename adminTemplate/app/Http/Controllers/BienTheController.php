@@ -42,7 +42,6 @@ class BienTheController extends Controller
         $this->btService->insert($request);
 
         return redirect('/admin/ctsp/list');
-        // return redirect()->back();
     }
 
     public function show(BienThe $ctsp)

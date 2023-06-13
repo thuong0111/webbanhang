@@ -38,8 +38,7 @@ class ProductController extends Controller
     {
         $this->productService->insert($request);
 
-        return redirect('/admin/productts/list');
-        // return redirect()->back();
+        return redirect('/admin/ctsp/add');
     }
 
     public function show(Productt $productt)

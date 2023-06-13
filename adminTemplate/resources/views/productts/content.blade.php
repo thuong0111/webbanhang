@@ -3,7 +3,7 @@
     <div class="container p-t-80">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg" style="padding: 90px 0 0 0;">
             <a href="/" class="stext-109 cl8 hov-cl1 trans-04">
-                Home
+                Trang Chủ
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
 
@@ -143,7 +143,7 @@
 
                                             <button type="submit"
                                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
-                                                Add to cart
+                                                Thêm Vào Giỏ
                                             </button>
                                             <input type="hidden" name="product_id" value="{{ $productt->id }}">
                                             <input type="hidden" id="size_s" name="size_id"value="">
@@ -195,8 +195,7 @@
                         </li>
 
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">Thông Tin Chi Tiết
-                                Thông Tin</a>
+                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">Thông Tin Chi Tiết</a>
                         </li>
 
                         <li class="nav-item p-b-10">
@@ -388,7 +387,7 @@
                     </div>
                     {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
                     <button value="{{$relate->id}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                        Quick view
+                        Xem Nhanh
                     </button>
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">

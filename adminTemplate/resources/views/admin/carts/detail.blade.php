@@ -27,7 +27,9 @@
                 <th class="column-2">Product</th>
                 <th class="column-3">Price</th>
                 <th class="column-4">Quantity</th>
-                <th class="column-5">Total</th>
+                <th class="column-5">Size</th>
+                <th class="column-5">Color</th>
+                <th class="column-6">Total</th>
             </tr>
 
             @foreach($carts as $key => $cart)
@@ -44,12 +46,21 @@
                     <td class="column-2">{{ $cart->product->name }}</td>
                     <td class="column-3">{{ number_format($cart->price, 0, '', '.') }}</td>
                     <td class="column-4">{{ $cart->pty }}</td>
-                    <td class="column-5">{{ number_format($price, 0, '', '.') }}</td>
+                    <td class="column-5">{{ $cart->size}}</td>
+                    <td class="column-5">{{ $cart->mau }}</td>
+                    <td class="column-6">{{ number_format($price, 0, '', '.') }}</td>
                 </tr>
             @endforeach
                 <tr>
-                    <td colspan="4" class="text-right">Total Money</td>
-                    <td>{{ number_format($total, 0, '', '.') }}</td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="4" class="text-right" style="font-size:20px; font-family: emoji;
+                        font-weight: bold;">
+                        Total Money
+                    </td>
+                    <td style="font-size:20px; font-family: emoji; font-weight: bold;">
+                        {{ number_format($total, 0, '', '.') }}
+                    </td>
                 </tr>
             </tbody>
         </table>
