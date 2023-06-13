@@ -22,7 +22,7 @@
                                         <th class="column-4">Số Lượng</th>
                                         <th class="column-5">Thành Tiền</th>
                                         <th class="column-6" style="width: 60px; text-align: center">Size</th>
-                                        <th class="column-7" style="width: 60px; text-align: center">Mau</th>
+                                        <th class="column-7" style="width: 60px; text-align: center">Màu</th>
                                         <th class="column-8" >&nbsp;</th>
 
 
@@ -132,47 +132,54 @@
                                         <span class="stext-112 cl8">
                                             Thông Tin Người Mua
                                         </span>
+
                                         @if (Auth::check())
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"  value=" {{Auth::user()->name}}">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"  value=" {{Auth::user()->name}}">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone"  value=" {{Auth::user()->phone}}">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone"  value=" {{Auth::user()->phone}}">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value=" {{Auth::user()->address}}">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value=" {{Auth::user()->address}}">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value=" {{Auth::user()->email}}">
-                                        </div>
-                                        <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value=" {{Auth::user()->email}}">
+                                            </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
+                                            </div>
                                         @else
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Họ và Tên">
-                                        </div>
+                                        
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" 
+                                                id="input1" onkeypress="moveToNext(event, 'input2')" placeholder="Họ và Tên">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Số điện thoại">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" 
+                                                 id="input2" onkeypress="moveToNext(event, 'input3'); return isNumberKey(event)" placeholder="Số điện thoại">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Địa chỉ nhà">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" 
+                                                id="input3" onkeypress="moveToNext(event, 'input4')" placeholder="Địa chỉ nhà">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="email">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" 
+                                                id="input4" onkeypress="moveToNext(event, 'input5')" placeholder="email">
+                                            </div>
 
-                                        @include('select.selectlist')
+                                            @include('select.selectlist')
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" 
+                                                id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                                        
+                                            </div>
                                         @endif
                                             
                                         
@@ -193,6 +200,25 @@
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
     @endif
-
+    {{-- Chuyen huong vao o tiep theo --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function moveToNext(event, nextInputId) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            document.getElementById(nextInputId).focus();
+          }
+        }
+      </script>
+    {{-- Chan nhap ky tu --}}
+    <script>
+        function isNumberKey(event) {
+          const charCode = event.which ? event.which : event.keyCode;
+          if (charCode < 48 || charCode > 57) {
+            event.preventDefault();
+            return false;
+          }
+          return true;
+        }
+      </script>
 @endsection
