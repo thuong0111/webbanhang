@@ -5,13 +5,17 @@ namespace App\Http\Services;
 use App\Jobs\SendMail;
 use App\Models\BienThe;
 use App\Models\Cart;
+use App\Models\CTHoaDon;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\HoaDon;
 use App\Models\Productt;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
+use Illuminate\Support\Facades\Auth;
+use ZipStream\Bigint;
 
 class CartService
 {
@@ -88,19 +92,47 @@ class CartService
             // $carts = Session::get('carts');
             // if(is_null($carts))
             //     return false;
-             $customer = Customer::create([
-                'name' => $request->input('name'),
-                'phone' => $request->input('phone'),
-                'address' => $request->input('address'),
-                'city' => $request->input('city'),
-                'district' => $request->input('district'),
-                'ward' => $request->input('ward'),
-                'email' => $request->input('email'),
-                'content' => $request->input('content'),
-            ]);
+            if(Auth::check()){
+                $hd = HoaDon::create([
+                    'user_id' => Auth::user()->id,
+                    'tongtien' => (int)$request->input('tongtien'),
+                ]);
+                $content = FacadesCart::content();
+                $data=[];
+                foreach($content as $v_content){
+                    $data[] = [
+                        'name' => $request->input('name'),
+                        'phone' => $request->input('phone'),
+                        'address' => $request->input('address'),
+                        'email' => $request->input('email'),
+                        'content' => $request->input('content'),
+                        'hoa_don_id' => $hd->id,
+                        'product_id'=>$v_content->id,
+                        'size'=>$v_content->options->sizes,
+                        'mau'=>$v_content->options->colors,
+                        'SL'=>$v_content->qty,
+                        'gia'=>(int)$v_content->price,
+                        'thanhtien'=>(int)$request->input('thanhtien')
+                    ];
+                }
+                CTHoaDon::insert($data);
+                FacadesCart::destroy();
+            }else{
+                $customer = Customer::create([
+                    'name' => $request->input('name'),
+                    'phone' => $request->input('phone'),
+                    'address' => $request->input('address'),
+                    'city' => $request->input('city'),
+                    'district' => $request->input('district'),
+                    'ward' => $request->input('ward'),
+                    'email' => $request->input('email'),
+                    'content' => $request->input('content'),
+                ]);
 
-             $this->infoProductCart($customer->id);
-             FacadesCart::destroy();
+                $this->infoProductCart($customer->id);
+                FacadesCart::destroy();
+            }
+
             DB::commit();
             Session::flash('success', 'Orders success.');
 
