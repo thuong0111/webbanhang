@@ -160,9 +160,13 @@
                                             </div>
 
                                             <div class="bor8 bg0 m-b-12">
-                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" 
-                                                 id="input2" onkeypress="moveToNext(event, 'input3'); return isNumberKey(event)" placeholder="Số điện thoại">
+                                                <input title="chi duoc nhap so" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" pattern="(\+84|0)\d{9,10}"
+                                                 id="input2" onkeypress="moveToNext(event, 'input3')" placeholder="Số điện thoại">
                                             </div>
+                                            {{-- <div class="bor8 bg0 m-b-12">
+                                                <input class="test" type="text" maxlength="11" pattern="(\+84|0)\d{9,10}" name="phone" 
+                                                placeholder="Số điện thoại">
+                                            </div> --}}
 
                                             <div class="bor8 bg0 m-b-12">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" 
@@ -220,5 +224,5 @@
           }
           return true;
         }
-      </script>
+    </script>
 @endsection
