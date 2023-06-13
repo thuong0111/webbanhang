@@ -133,13 +133,8 @@ class CartService
                 FacadesCart::destroy();
             }
 
-<<<<<<< HEAD
-=======
-             $this->infoProductCart($customer->id);
->>>>>>> ccbd6a7738acdedab403b9220a682e70c399be89
+            
             DB::commit();
-            FacadesCart::destroy();
-
             Session::flash('success', 'Orders success.');
 
             #Queue
