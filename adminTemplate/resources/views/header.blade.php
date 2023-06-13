@@ -33,9 +33,10 @@
                                                     {{Auth::user()->name}}
                                             </a>
                                             <ul class="dropdown-menu extended logout">
-                                                <li><a href="{{route('profile')}}" style="color:#9ca71e"><i class=" fa fa-suitcase" style="margin-right: 25px;"></i>Profile</a></li>
+                                                <li><a href="{{route('profile')}}" style="color:#9ca71e"><i class=" fa fa-suitcase" style="margin-right: 25px;"></i>Thông tin</a></li>
+                                                <li><a href="{{route('history_order')}}" style="color:#9ca71e; display: flex;"><i class=" fa fa-shopping-cart" style="margin-right: 25px;"></i>Sản phẩm đang mua</a></li>
                                                 <li><a href="" style="color:#9ca71e"><i class="fa fa-cog" style="margin-right: 20px;"></i> Cài đặt</a></li>
-                                                <li><a href="{{route('logout')}}" style="color:#9ca71e"><i class="fa fa-key" style="margin-right: 25px;"></i>Logout</a></li>
+                                                <li><a href="{{route('logout')}}" style="color:#9ca71e"><i class="fa fa-key" style="margin-right: 25px;"></i>Đăng xuất</a></li>
                                             </ul>
                                         </li>
                                         <!-- user login dropdown end -->
@@ -46,7 +47,7 @@
                             @endauth
 
                             @guest
-                                <a href="{{route('login_user')}}">Login</a>
+                                <a href="{{route('login_user')}}">Đăng nhập</a>
                             @endguest
                         </a>
                     </div>
@@ -64,7 +65,7 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu"><a href="/">
-                            <i class="fa fa-home"></i> Home</a> 
+                            <i class="fa fa-home"></i> Trang Chủ</a> 
                         </li>
 
                         {!! $menusHtml !!}
@@ -141,12 +142,12 @@
     <div class="menu-mobile">
         <ul class="main-menu-m">
             <li class="active-menu">
-                <a href="/">Home</a>
+                <a href="/">Trang Chủ</a>
             </li>
             {!! $menusHtml !!}    
             
             <li>
-                <a href="contact.html">Contact</a>
+                <a href="contact.html">Liên Hệ</a>
             </li>
         </ul>
     </div>

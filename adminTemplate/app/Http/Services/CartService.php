@@ -100,8 +100,9 @@ class CartService
             ]);
 
              $this->infoProductCart($customer->id);
-             FacadesCart::destroy();
             DB::commit();
+            FacadesCart::destroy();
+
             Session::flash('success', 'Orders success.');
 
             #Queue

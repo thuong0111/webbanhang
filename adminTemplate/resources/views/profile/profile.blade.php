@@ -50,9 +50,10 @@
             <div class="container">
                 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class='fas fa-angle-left' style='font-size:36px'></i>                </a>
+                    <i class='fas fa-angle-left' style='font-size:36px'></i>                
+                </a>
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Change User 
+                    Thông Tin Người Dùng 
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -62,45 +63,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
  
-                    </ul>
- 
-                    <!-- Right Side Of Navbar -->
-                    {{-- <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
- 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
- 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
- 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul> --}}
- 
-                    
+                    </ul>  
                 </div>
             </div>
         </nav>
@@ -121,27 +84,27 @@
                 <div class="col-md-8 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
+                        <h4 class="text-right">Cài đặt thông tin</h4>
                     </div>
                 <div class="row" id="res"></div>
                 <div class="row mt-2">
 
                     <div class="col-md-6">
-                        <label class="labels">Name</label>
+                        <label class="labels">Tên</label>
                         <input type="text" name="name" class="form-control" placeholder="first name" value="{{ auth()->user()->name }}">
                     </div>
                     <div class="col-md-6">
-                        <label class="labels">Email</label>
+                        <label class="labels">Mail</label>
                         <input type="text" name="email" disabled class="form-control" value="{{ auth()->user()->email }}" placeholder="Email">
                     </div>
                 </div>
              <div class="row mt-2">
                  <div class="col-md-6">
-                     <label class="labels">Phone</label>
+                     <label class="labels">Số Điện Thoại</label>
                      <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}">
                  </div>
                  <div class="col-md-6">
-                     <label class="labels">Address</label>
+                     <label class="labels">Địa Chỉ</label>
                      <input type="text" name="address" id="address" class="form-control" value="{{ auth()->user()->address }}" placeholder="Address">
                  </div>
                  
@@ -152,7 +115,7 @@
                 
             </div>
             
-             <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+             <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Lưu</button></div>
          </div>
      </div>
     

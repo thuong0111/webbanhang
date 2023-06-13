@@ -168,9 +168,9 @@ Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
-// Route::get('/profile', function () {
-//     return view('profile.profile');
-// })->name('profile');
+Route::get('/history', function () {
+    return view('history.history_order');
+})->name('history_order');
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
