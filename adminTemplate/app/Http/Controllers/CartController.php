@@ -103,11 +103,19 @@ class CartController extends Controller
 
    
     
-    public function update (Request $request)
+    public function update(Request $request)
     {
         $this->cartService->update($request);
         return redirect('/carts');
     }
+    public function update_cart_quantity(Request $request){
+        $rowId = $request->id;
+        $qty = $request->sl;
+        dd($qty);
+        Cart::update($rowId, $qty);
+        return redirect('/carts');
+    }
+
 
     public function findQuanHuyen(Request $request){
 

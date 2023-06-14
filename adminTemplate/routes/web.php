@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\BienTheController;
+use App\Http\Controllers\CartController as ControllersCartController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SearchController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\MauController;
 use App\Http\Controllers\SizeController;
 use App\Http\Livewire\Assignment;
 use App\Http\Services\Productt\ProducttService;
+use App\Models\Cart;
 use App\Models\TinhTP;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
@@ -174,6 +176,7 @@ Route::get('/history', function () {
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
+Route::get('/update-cart-quantity/{id}/{sl}', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
 
 
 

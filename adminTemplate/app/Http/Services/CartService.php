@@ -67,11 +67,10 @@ class CartService
     public function update($request)
     {
         for($i=0;$i<FacadesCart::count();$i++){
-        $rowId = $request->input('rowId_cart');
+         $rowId = $request->input('rowId_cart');
          $qty = $request->input('num_product');
          FacadesCart::update($rowId, $qty);
         }
-        
         return true;
     }
 

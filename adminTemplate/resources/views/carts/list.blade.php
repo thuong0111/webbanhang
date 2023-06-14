@@ -50,9 +50,9 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $productt->id }}]" value="{{ $productt->qty }}">
+                                                           name="num_product[{{ $productt->id }}]" id="slhang" value="{{ $productt->qty }}">
 
-                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" id="slupdate">
                                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                                     </div>
                                                 </div>
@@ -74,11 +74,12 @@
                                             <td class="p-r-15">
                                                 <input type="hidden" name="id_product" value="{{$productt->id }}">
                                                 <a href="/carts/delete/{{ $productt->rowId}}">Xóa</a>
+                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
+                                                    <a href="" id="href">cap nhat</a>
+                                                    <input type="hidden" name="slcart" id="slcart">
+                                                    <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
+                                                    
                                             </td>
-
-
-
-                                          
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -195,4 +196,25 @@
     @endif
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    //     $(document).ready(function(){
+    //     $(document).on('change','#slupdate',function(){
+    //         let e = document.getElementById('slupdate').value;
+    //         
+
+    //     });
+    // });
+    $(function($) {
+        let sl=Number(document.getElementById('slhang').value);
+        
+        $('#slupdate').on('click',function(){
+            sl=sl+1;
+            document.getElementById('slcart').setAttribute('value', sl);
+
+        });
+        let a = document.getElementById('href');
+        // let b='/update-cart-quantity/'id'/'sl;
+        a.setAttribute("href", "somelink url");
+    });
+    </script>
 @endsection
