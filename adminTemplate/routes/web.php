@@ -19,6 +19,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InforUserController;
 use App\Http\Controllers\MauController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\HistoryControllerController;
 use App\Http\Livewire\Assignment;
 use App\Http\Services\Productt\ProducttService;
 use App\Models\TinhTP;
@@ -168,9 +169,7 @@ Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
-Route::get('/history', function () {
-    return view('history.history_order');
-})->name('history_order');
+Route::get('/history',[HistoryControllerController::class, 'index'])->name('history_order');
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
