@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Http\View\Composers\CartComposer;
+use App\Models\BienThe;
 use App\Models\Mau;
 use App\Models\PhuongXa;
 use App\Models\Productt;
@@ -69,16 +70,16 @@ class CartController extends Controller
     {
         $prod=TinhTP::all();
          $productts = $this->cartService->getProduct();
-        // $size_product=Session::get('sizes');
-        // $mau_product=Session::get('maus');
+        $size_product=Session::get('sizes');
+        $mau_product=Session::get('maus');
         // $tensize=Size::where('id',$size_product)->get();
         // $tenmau=Mau::where('id',$mau_product)->get();
         return view('carts.list', [
             'title' => 'Shopping Cart',
             'productts'=>$productts,
             'carts' => Session::get('carts'),
-            // 'sizesss'=>$tensize,
-            // 'mausss'=>$tenmau,
+            'sizesss'=>$size_product,
+            'mausss'=>$mau_product,
             'prod'=>$prod
         ]);
     }
@@ -89,6 +90,7 @@ class CartController extends Controller
         return redirect('/carts');
     }
     public function delete_to_cart($rowId,$id = 0){
+        Session::forget('carts');
         Cart::update($rowId, 0);
         $this->cartService->remove($id);
        
@@ -103,11 +105,27 @@ class CartController extends Controller
 
    
     
-    public function update (Request $request)
+    public function update(Request $request)
     {
         $this->cartService->update($request);
         return redirect('/carts');
     }
+    public function update_cart_quantity(Request $request){
+        $rowId = $request->id;
+        $qty = $request->sl;
+        Cart::update($rowId, $qty);
+        return redirect('/carts');
+    }
+    public function findmau(Request $request){
+        
+        $data= DB::table('bien_thes')
+        -> where('san_pham_id', $request->idpro)
+        ->where('size_id', $request->id)
+        ->join('maus', 'maus.id', '=', 'bien_thes.mau_id')
+        ->select('maus.id', 'maus.tenmau')
+        ->get();
+        return response()->json($data);
+	}
 
     public function findQuanHuyen(Request $request){
 

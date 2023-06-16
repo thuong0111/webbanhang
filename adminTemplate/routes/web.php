@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\BienTheController;
+use App\Http\Controllers\CartController as ControllersCartController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SearchController;
@@ -22,6 +23,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\HistoryControllerController;
 use App\Http\Livewire\Assignment;
 use App\Http\Services\Productt\ProducttService;
+use App\Models\Cart;
 use App\Models\TinhTP;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
@@ -162,6 +164,7 @@ Route::get('/timkiem', [SearchController::class, 'search']);
 Route::get('/select', [SelectController::class, 'prodfunct']);
 Route::get('/selectlist', [SelectController::class, 'selectList']);
 Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
+Route::get('/findsize', [App\Http\Controllers\CartController::class, 'findmau']);
 
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
 Route::get('/tt', [OnlineCheckoutController::class, 'create']);
@@ -173,6 +176,7 @@ Route::get('/history',[HistoryControllerController::class, 'index'])->name('hist
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
+Route::get('/update-cart-quantity/{id}/{sl}', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
 
 
 

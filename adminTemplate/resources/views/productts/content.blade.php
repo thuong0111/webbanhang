@@ -89,7 +89,7 @@
 
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time" id="sizes">
+                                    <select class="js-select2 chonsizedc" name="time" id="sizes">
                                         <option value="0" disabled="true" selected="true"> --Chọn Size--</option>
                                         @foreach($sizes as $size)
                                         @for ($i=0; $i < count($size); $i++)
@@ -109,16 +109,18 @@
 
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="time" id="maus" >
-                                        <option value="0" disabled="true" selected="true"> --Chọn Màu--</option>
+                                    <select class="js-select2 chonmaudc" name="time" id="maus">
+                                        {{-- <option value="0" disabled="true" selected="true"> --Chọn Màu--</option>
                                         @foreach($maus as $mau)
                                         @for ($i=0; $i < count($mau); $i++)
                                         <option value="{{$mau[$i]->id}}">{{$mau[$i]->tenmau}}</option>
                                         @endfor
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
+                                    
                                     <div class="dropDownSelect2"></div>
                                 </div>
+                                
                             </div>
                         </div>
 
@@ -145,7 +147,7 @@
                                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
                                                 Thêm Vào Giỏ
                                             </button>
-                                            <input type="hidden" name="product_id" value="{{ $productt->id }}">
+                                            <input type="hidden" id="idproduct" name="product_id" value="{{ $productt->id }}">
                                             <input type="hidden" id="size_s" name="size_id"value="">
                                             <input type="hidden" id="mau_s" name="mau_id" value="">
 
@@ -410,8 +412,8 @@
         </div>
     </section>
 
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+{{-- <script type="text/javascript">
 	$(document).ready(function(){
 		$(document).on('change','.js-select2',function(){
 			var cat_id=$(this).val();
@@ -436,13 +438,42 @@
 
 	});
 </script> --}}
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		$(document).on('change','.chonsizedc',function(){
+            var idpro=document.getElementById("idproduct").value;
+			var size_id=$(this).val();
+			var div=$(".chonmaudc").parent();
+			var op=" ";
+           
+			$.ajax({
+				type:'get',
+				url:'{!!URL::to('findsize')!!}',
+				data:{'id':size_id,'idpro':idpro},
+				success:function(data){
+                    op+='<option value="0" selected disabled> Chose Mau</option>';
+					for(var i=0;i<data.length;i++){
+                        op+='<option value="'+data[i].id+'">'+data[i].tenmau+'</option>';
+				   }
+                   console.log(op);
+				   div.find('.chonmaudc').html(" ");
+                   console.log(div.find('.chonmaudc').html(" "));
+				   div.find('.chonmaudc').append(op);
+				},
+				error:function(){
+				}
+			});
+		});
+	});
+</script>
+
 
 <script type="text/javascript">
 	$(document).ready(function(){
 	$(document).on('change','#sizes',function(){
 		let e = document.getElementById("sizes");
 		let giaTriSize = e.options[e.selectedIndex].value;
-    
 	document.getElementById('size_s').setAttribute('value', giaTriSize);
 	});
 });
