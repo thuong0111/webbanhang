@@ -66,12 +66,13 @@ class CartService
 
     public function update($request)
     {
-        for($i=0;$i<FacadesCart::count();$i++){
-         $rowId = $request->input('rowId_cart');
-         $qty = $request->input('num_product');
-         FacadesCart::update($rowId, $qty);
-        }
-        return true;
+        // for($i=0;$i<FacadesCart::count();$i++){
+        //  $rowId = $request->input('rowId_cart');
+        //  $qty = $request->input('num_product');
+        //  FacadesCart::update($rowId, $qty);
+        // }
+        // return true;
+        
     }
 
     public function remove($id)
@@ -87,10 +88,11 @@ class CartService
     public function addCart($request)
     {
         try {
-            DB::beginTransaction();
+            // DB::beginTransaction();
             // $carts = Session::get('carts');
             // if(is_null($carts))
             //     return false;
+
             if(Auth::check()){
                 $hd = HoaDon::create([
                     'user_id' => Auth::user()->id,
@@ -107,14 +109,18 @@ class CartService
                         'content' => $request->input('content'),
                         'hoa_don_id' => $hd->id,
                         'product_id'=>$v_content->id,
-                        'size'=>$v_content->options->sizes,
-                        'mau'=>$v_content->options->colors,
+                        'size'=>(int)$request->input('sizessss'),
+                        'mau'=>(int)$request->input('maussss'),
                         'SL'=>$v_content->qty,
                         'gia'=>(int)$v_content->price,
                         'thanhtien'=>(int)$request->input('thanhtien')
                     ];
                 }
                 CTHoaDon::insert($data);
+                // BienThe::where('san_pham_id',$data['product_id'])
+                // ->where('size_id',$data['size_id'])
+                // ->where('mau_id',$data['mau'])
+                // ->update();
                 FacadesCart::destroy();
             }else{
                 $customer = Customer::create([
@@ -133,7 +139,7 @@ class CartService
             }
 
             
-            DB::commit();
+            // DB::commit();
             Session::flash('success', 'Orders success.');
 
             #Queue
@@ -151,23 +157,6 @@ class CartService
 
     protected function infoProductCart($customer_id)
     {
-        // $productId = array_keys($carts);
-        // $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
-        //     ->where('active', 1)
-        //     ->whereIn('id', $productId)
-        //     ->get();
-        // $data= [];
-        // foreach ($productts as $productt) {
-        //     $data[] = [
-        //         'customer_id' => $customer_id,
-        //         'product_id' => $productt->id,
-        //         'pty' => $carts[$productt->id],
-        //         'price' => $productt->price_sale != 0 ? $productt->price_sale : $productt->price,
-        //         'size' =>$size,
-        //         'mau' =>$mau,
-        //     ];
-        
-        // }
         $content = FacadesCart::content();
             $data=[];
             foreach($content as $v_content){

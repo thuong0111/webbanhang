@@ -22,7 +22,7 @@
                                         <th class="column-4">Số Lượng</th>
                                         <th class="column-5">Thành Tiền</th>
                                         <th class="column-6" style="width: 60px; text-align: center">Size</th>
-                                        <th class="column-7" style="width: 60px; text-align: center">Mau</th>
+                                        <th class="column-7" style="width: 60px; text-align: center">Màu</th>
                                         <th class="column-8" >&nbsp;</th>
 
 
@@ -50,9 +50,9 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $productt->id }}]" id="slhang" value="{{ $productt->qty }}">
+                                                           name="num_product[{{ $productt->id }}]"  value="{{ $productt->qty }}">
 
-                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" id="slupdate">
+                                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" >
                                                         <i class="fs-16 zmdi zmdi-plus"></i>
                                                     </div>
                                                 </div>
@@ -62,22 +62,22 @@
                                            
                                             <td class="column-6" style="width: 60px; text-align: center" >
                       
-                                                {{-- <input type="hidden" name="mau" value="{{$size->id }}"> --}}
+                                                <input type="hidden" name="sizessss" value="{{$sizesss}}">
                                                 <b>{{$productt->options->sizes}}</b>
                                                
                                                
                                             </td>
                                             <td class="column-7" style="width: 60px; text-align: center">
-                                                {{-- <input type="hidden" name="size" value="{{$mau->id }}"> --}}
+                                                <input type="hidden" name="maussss" value="{{$mausss}}">
                                                 <b>{{$productt->options->colors}}</b>
                                            </td>
                                             <td class="p-r-15">
                                                 <input type="hidden" name="id_product" value="{{$productt->id }}">
                                                 <a href="/carts/delete/{{ $productt->rowId}}">Xóa</a>
                                                 <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
-                                                    <a href="" id="href">cap nhat</a>
+                                                    {{-- <a href="" id="href">cap nhat</a>
                                                     <input type="hidden" name="slcart" id="slcart">
-                                                    <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
+                                                    <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control"> --}}
                                                     
                                             </td>
                                         </tr>
@@ -133,51 +133,61 @@
                                         <span class="stext-112 cl8">
                                             Thông Tin Người Mua
                                         </span>
+
                                         @if (Auth::check())
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"  value=" {{Auth::user()->name}}">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"
+                                                id="input1" onkeypress="moveToNext(event, 'input2')" value="{{Auth::user()->name}}">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone"  value=" {{Auth::user()->phone}}">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" title="Số điện thoại không đúng định dạng !"
+                                                maxlength="11" pattern="(\+84|0)\d{9,10}" type="text" name="phone"  value="{{Auth::user()->phone}}"
+                                                id="input2" onkeypress="moveToNext(event, 'input3')">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value=" {{Auth::user()->address}}">
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value="{{Auth::user()->address}}"
+                                                id="input3" onkeypress="moveToNext(event, 'input4')">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value=" {{Auth::user()->email}}">
-                                        </div>
-                                        <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
-                                        </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value="{{Auth::user()->email}}"
+                                                id="input4" onkeypress="moveToNext(event, 'input5')">
+                                            </div>
+                                            <div class="bor8 bg0 m-b-12">
+                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"
+                                                id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>                                        
+                                            </div>
                                         @else
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" placeholder="Họ và Tên">
-                                        </div>
+                                        
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" 
+                                                id="input1" onkeypress="moveToNext(event, 'input2')" placeholder="Họ và Tên">
+                                            </div>
 
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="phone" placeholder="Số điện thoại">
-                                        </div>
-
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" placeholder="Địa chỉ nhà">
-                                        </div>
-
-                                        <div class="bor8 bg0 m-b-12">
-                                            <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" placeholder="email">
-                                        </div>
-
-                                        @include('select.selectlist')
-
-                                        <div class="bor8 bg0 m-b-12">
-                                            <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"></textarea>                                        
-                                        </div>
-                                        @endif
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input title="Số điện thoại không đúng định dạng !" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" pattern="(\+84|0)\d{9,10}"
+                                                id="input2" onkeypress="moveToNext(event, 'input3')" placeholder="Số điện thoại">
+                                            </div>
                                             
-                                        
-                                        
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" 
+                                                id="input3" onkeypress="moveToNext(event, 'input4')" placeholder="Địa chỉ nhà">
+                                            </div>
+
+                                            <div class="bor8 bg0 m-b-12">
+                                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" 
+                                                id="input4" onkeypress="moveToNext(event, 'input5')" placeholder="email">
+                                            </div>
+
+                                            @include('select.selectlist')
+
+                                            <div class="bor8 bg0 m-b-12">
+                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" 
+                                                id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                                        
+                                            </div>
+                                        @endif               
                                     </div>
                                 </div>
                             </div>
@@ -194,16 +204,15 @@
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
     @endif
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    //     $(document).ready(function(){
-    //     $(document).on('change','#slupdate',function(){
-    //         let e = document.getElementById('slupdate').value;
-    //         
+    {{-- <script type="text/javascript">
+        $(document).ready(function(){
+        $(document).on('change','#slupdate',function(){
+            let e = document.getElementById('slupdate').value;
+            
 
-    //     });
-    // });
+        });
+    });
     $(function($) {
         let sl=Number(document.getElementById('slhang').value);
         
@@ -213,8 +222,19 @@
 
         });
         let a = document.getElementById('href');
-        // let b='/update-cart-quantity/'id'/'sl;
+         let b='/update-cart-quantity/'id'/'sl;
         a.setAttribute("href", "somelink url");
     });
-    </script>
+    </script> --}}
+
+    
+    {{-- Chuyen huong vao o tiep theo --}}
+    <script>
+        function moveToNext(event, nextInputId) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            document.getElementById(nextInputId).focus();
+          }
+        }
+      </script>
 @endsection
