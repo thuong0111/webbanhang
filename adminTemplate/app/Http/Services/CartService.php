@@ -133,8 +133,9 @@ class CartService
                     'email' => $request->input('email'),
                     'content' => $request->input('content'),
                 ]);
-
-                $this->infoProductCart($customer->id);
+                $size_ctm = $request->input('sizessss');
+                $mau_ctm = $request->input('maussss');
+                $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
                 FacadesCart::destroy();
             }
 
@@ -155,18 +156,21 @@ class CartService
         return true;
     }
 
-    protected function infoProductCart($customer_id)
+    protected function infoProductCart($customer_id, $size ,$mau)
     {
+
+
         $content = FacadesCart::content();
             $data=[];
+
             foreach($content as $v_content){
                 $data[]=[
                     'customer_id'=>$customer_id,
                     'product_id'=>$v_content->id,
                     'pty'=>$v_content->qty,
                     'price'=>$v_content->price,
-                    'size'=>$v_content->options->sizes,
-                    'mau'=>$v_content->options->colors,
+                    'size'=>$size,
+                    'mau'=>$mau,
                 ];
             }
         return Cart::insert($data);

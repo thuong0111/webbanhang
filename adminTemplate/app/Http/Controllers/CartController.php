@@ -69,7 +69,7 @@ class CartController extends Controller
     public function show()
     {
         $prod=TinhTP::all();
-         $productts = $this->cartService->getProduct();
+        $productts = $this->cartService->getProduct();
         $size_product=Session::get('sizes');
         $mau_product=Session::get('maus');
         // $tensize=Size::where('id',$size_product)->get();

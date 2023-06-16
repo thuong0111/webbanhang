@@ -39,13 +39,27 @@ class CartController extends Controller
         ->select('tinh_tps.tenTP', 'quan_huyens.tenQH', 'phuong_xas.tenPX')
         ->get();
 
+        $Size_customers = DB::table('carts')
+        ->where('carts.customer_id', $customer->id)
+        ->join('sizes', 'carts.size', '=', 'sizes.id')
+        ->select('sizes.tensize')
+        ->get();
+
+        $Mau_customers = DB::table('carts')
+        ->where('carts.customer_id', $customer->id)
+        ->join('maus', 'carts.mau', '=', 'maus.id')
+        ->select('maus.tenmau')
+        ->get();
+
         $carts = $this->cart->getProductForCart($customer);
         return view('admin.carts.detail', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'Order Detail > ' . $customer->name,
             'customer' => $customer,
             'carts' => $carts,
-            'adr_customers' => $adr_customers
+            'adr_customers' => $adr_customers,
+            'S_customers' => $Size_customers,
+            'M_customers' => $Mau_customers,
         ]);
     }
    
