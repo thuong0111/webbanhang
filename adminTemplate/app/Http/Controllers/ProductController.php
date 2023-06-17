@@ -23,7 +23,7 @@ class ProductController extends Controller
         $productt = $this->producttService->show($id);
         $productsMore = $this->producttService->more($id);
         $productsize=$this->producttService->getSize($id);
-        // $productmau=$this->producttService->getMau($id);
+        $productmau=$this->producttService->getMau($id);
         $productRelated=$this->producttService->getRelated($id);
        
         return view('productts.content', [
@@ -31,7 +31,7 @@ class ProductController extends Controller
             'productt'=>$productt,
             'productts'=>$productsMore,
             'sizes'=>$productsize,
-            // 'maus'=>$productmau,
+            'maus'=>$productmau,
             'related'=>$productRelated
         ]);
     }

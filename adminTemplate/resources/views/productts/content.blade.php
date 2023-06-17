@@ -110,12 +110,12 @@
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2 chonmaudc" name="time" id="maus">
-                                        {{-- <option value="0" disabled="true" selected="true"> --Chọn Màu--</option>
+                                        <option value="0" disabled="true" selected="true"> --Chọn Màu--</option>
                                         @foreach($maus as $mau)
                                         @for ($i=0; $i < count($mau); $i++)
                                         <option value="{{$mau[$i]->id}}">{{$mau[$i]->tenmau}}</option>
                                         @endfor
-                                        @endforeach --}}
+                                        @endforeach
                                     </select>
                                     
                                     <div class="dropDownSelect2"></div>
@@ -449,7 +449,7 @@
            
 			$.ajax({
 				type:'get',
-				url:'{!!URL::to('findsize')!!}',
+				url:'{!!URL::to('findmau')!!}',
 				data:{'id':size_id,'idpro':idpro},
 				success:function(data){
                     op+='<option value="0" selected disabled> Chose Mau</option>';
@@ -467,6 +467,36 @@
 		});
 	});
 </script>
+
+{{-- <script type="text/javascript">
+	$(document).ready(function(){
+
+		$(document).on('change','.chonmaudc',function(){
+            var idpro=document.getElementById("idproduct").value;
+			var mau_id=$(this).val();
+			var div=$(".chonsizedc").parent();
+			var op=" ";
+           
+			$.ajax({
+				type:'get',
+				url:'{!!URL::to('findmau')!!}',
+				data:{'id':mau_id,'idpro':idpro},
+				success:function(data){
+                    op+='<option value="0" selected disabled> Chọn Size</option>';
+					for(var i=0;i<data.length;i++){
+                        op+='<option value="'+data[i].id+'">'+data[i].tensize+'</option>';
+				   }
+                   console.log(op);
+				   div.find('.chonsizedc').html(" ");
+                   console.log(div.find('.chonsizedc').html(" "));
+				   div.find('.chonsizedc').append(op);
+				},
+				error:function(){
+				}
+			});
+		});
+	});
+</script> --}}
 
 
 <script type="text/javascript">

@@ -88,7 +88,7 @@ class CartService
     public function addCart($request)
     {
         try {
-            // DB::beginTransaction();
+            DB::beginTransaction();
             // $carts = Session::get('carts');
             // if(is_null($carts))
             //     return false;
@@ -115,12 +115,12 @@ class CartService
                         'gia'=>(int)$v_content->price,
                         'thanhtien'=>(int)$request->input('thanhtien')
                     ];
+                    $size_cart=(int)$request->input('sizessss');
+                    $mau_cart=(int)$request->input('maussss');
+                    $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
+                    
                 }
                 CTHoaDon::insert($data);
-                // BienThe::where('san_pham_id',$data['product_id'])
-                // ->where('size_id',$data['size_id'])
-                // ->where('mau_id',$data['mau'])
-                // ->update();
                 FacadesCart::destroy();
             }else{
                 $customer = Customer::create([
@@ -139,7 +139,7 @@ class CartService
             }
 
             
-            // DB::commit();
+            DB::commit();
             Session::flash('success', 'Orders success.');
 
             #Queue
@@ -152,6 +152,32 @@ class CartService
             return false;
         }
 
+        return true;
+    }
+
+
+    public function addsl($sp,$size,$mau,$sl3){
+        $sl=BienThe::Where('san_pham_id',$sp)
+        ->where('size_id',$size)
+        ->where('mau_id',$mau)
+        ->get();
+        $slend=0;
+        
+        foreach($sl as $sll) {
+            $slend=$sll->SL-=$sl3; 
+        }
+                    BienThe::where('san_pham_id',$sp)
+                    ->where('size_id',$size)
+                    ->where('mau_id',$mau)
+                    ->update(['SL'=>$slend]);
+        $slsp=Productt::Where('id',$sp)->get();
+        $slspend=0;
+        foreach($slsp as $sllsp) {
+        $slspend=$sllsp->SL-=$sl3; 
+        }
+                 Productt::where('id',$sp)
+                ->update(['SL'=>$slspend]); 
+          
         return true;
     }
 

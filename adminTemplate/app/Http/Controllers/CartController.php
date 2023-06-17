@@ -89,6 +89,7 @@ class CartController extends Controller
         $this->cartService->remove($id);
         return redirect('/carts');
     }
+    
     public function delete_to_cart($rowId,$id = 0){
         Session::forget('carts');
         Cart::update($rowId, 0);
@@ -123,6 +124,17 @@ class CartController extends Controller
         ->where('size_id', $request->id)
         ->join('maus', 'maus.id', '=', 'bien_thes.mau_id')
         ->select('maus.id', 'maus.tenmau')
+        ->get();
+        return response()->json($data);
+	}
+
+    public function findsize(Request $request){
+        
+        $data= DB::table('bien_thes')
+        -> where('san_pham_id', $request->idpro)
+        ->where('mau_id', $request->id)
+        ->join('sizes', 'sizes.id', '=', 'bien_thes.size_id')
+        ->select('sizes.id', 'sizes.tensize')
         ->get();
         return response()->json($data);
 	}

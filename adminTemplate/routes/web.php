@@ -163,7 +163,8 @@ Route::get('/timkiem', [SearchController::class, 'search']);
 Route::get('/select', [SelectController::class, 'prodfunct']);
 Route::get('/selectlist', [SelectController::class, 'selectList']);
 Route::get('/findProductName', [SelectController::class, 'findQuanHuyen']);
-Route::get('/findsize', [App\Http\Controllers\CartController::class, 'findmau']);
+Route::get('/findmau', [App\Http\Controllers\CartController::class, 'findmau']);
+// Route::get('/findmau', [App\Http\Controllers\CartController::class, 'findsize']);
 
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
 Route::get('/tt', [OnlineCheckoutController::class, 'create']);
