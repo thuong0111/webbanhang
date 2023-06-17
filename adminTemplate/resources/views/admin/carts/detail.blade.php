@@ -46,8 +46,16 @@
                     <td class="column-2">{{ $cart->product->name }}</td>
                     <td class="column-3">{{ number_format($cart->price, 0, '', '.') }}</td>
                     <td class="column-4">{{ $cart->pty }}</td>
-                    <td class="column-5">{{ $cart->size}}</td>
-                    <td class="column-5">{{ $cart->mau }}</td>
+                    <td class="column-5">
+                        @foreach ($S_customers as $key => $Size)
+                            {{$Size->tensize}}
+                        @endforeach
+                    </td>
+                    <td class="column-5">
+                        @foreach ($M_customers as $key => $Mau)
+                            {{$Mau->tenmau}}
+                        @endforeach
+                    </td>
                     <td class="column-6">{{ number_format($price, 0, '', '.') }}</td>
                 </tr>
             @endforeach

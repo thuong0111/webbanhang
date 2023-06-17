@@ -42,7 +42,7 @@
                                                 </div>
                                             </td>
                                             <td class="column-2">{{ $productt->name }}</td>
-                                            <td class="column-3">{{$price}}</td>
+                                            <td class="column-3">{{ number_format($price, '0', '', '.') }}</td>
                                             <td class="column-4">
                                                 <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                                     <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -57,7 +57,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="column-5">{{$priceEnd}}</td>
+                                            <td class="column-5">{{ number_format($priceEnd, '0', '', '.') }}</td>
                                             <input type="hidden" name="thanhtien" value="{{$priceEnd}}">
                                            
                                             <td class="column-6" style="width: 60px; text-align: center" >
@@ -119,7 +119,7 @@
 
                                 <div class="size-209 p-t-1">
                                     <span class="mtext-110 cl2">
-                                        {{$total}}
+                                        {{ number_format($total, '0', '', '.') }}
                                     </span>
                                     <input type="hidden" name="tongtien" value="{{$total}}">
                                 </div>
