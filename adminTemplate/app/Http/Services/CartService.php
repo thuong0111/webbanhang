@@ -36,14 +36,6 @@ class CartService
                 ]);
                 return true;    
             } 
-        // $exists = Arr::exists($carts, $product_id);
-        // $exists_size = Arr::exists($size_products, $size_id);
-        // if($exists and $exists_size) {
-        //     $carts[$product_id] = $carts[$product_id] + $qty;
-        //     Session::put('carts', $carts);
-        //     return true;
-        // }
-
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
         
@@ -89,10 +81,6 @@ class CartService
     {
         try {
             DB::beginTransaction();
-            // $carts = Session::get('carts');
-            // if(is_null($carts))
-            //     return false;
-
             if(Auth::check()){
                 $hd = HoaDon::create([
                     'user_id' => Auth::user()->id,
