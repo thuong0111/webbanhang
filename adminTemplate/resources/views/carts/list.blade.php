@@ -156,7 +156,7 @@
                                                 id="input4" onkeypress="moveToNext(event, 'input5')">
                                             </div>
                                             <div class="bor8 bg0 m-b-12">
-                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" placeholder="Ghi Chú"
+                                                <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" placeholder="Ghi Chú"
                                                 id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>                                        
                                             </div>
                                         @else
@@ -184,7 +184,7 @@
                                             @include('select.selectlist')
 
                                             <div class="bor8 bg0 m-b-12">
-                                                <textarea class="cl8 plh3 size-111 p-lr-15" name="content" 
+                                                <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" 
                                                 id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                                        
                                             </div>
                                         @endif               
@@ -200,6 +200,8 @@
                 </div>
             </div>
     </form>
+        @include('demott')
+    
 
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
