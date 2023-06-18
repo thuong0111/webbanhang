@@ -11,7 +11,7 @@ background-color: #f3f3f3;">Thanh Toan MoMo</button>
 <form action="{{ url('/vnpay') }}" method="POST">
     @csrf
     <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
-<input type="hidden" name="tongtienvnpay" value="{{$total}}">
+    <input type="hidden" name="tongtienvnpay" value="{{$total}}">
     <input type="hidden" name="namevnpay" value="{{Auth::user()->name}}">
 
     <input type="hidden" name="phonevnpay"  value="{{Auth::user()->phone}}">
@@ -26,11 +26,5 @@ background-color: #f3f3f3;">Thanh Toan MoMo</button>
     background-color: #f3f3f3;">Thanh Toan VNPay</button>
     
     </form>
-<script type="text/javascript">
-    $(document).ready(function(){
-	$(document).on('change','.textarea',function(){
-		let e = document.getElementById("input5").value;
-	document.getElementById('textarealay').setAttribute('value', e);
-	});});
-</script>
+
     

@@ -4,6 +4,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers;
+use App\Models\BienThe;
+use App\Models\Cart as ModelsCart;
+use App\Models\CTHoaDon;
+use App\Models\Customer;
+use App\Models\HoaDon;
+use App\Models\Productt;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Session;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class OnlineCheckoutController extends Controller
 {
 
@@ -12,13 +24,71 @@ class OnlineCheckoutController extends Controller
     {
         return view('demott');
     }
-    public function vnpay(){
+    public function vnpay(Request $request){
+       
+            DB::beginTransaction();
+            if(Auth::check()){
+                $hd = HoaDon::create([
+                    'user_id' => Auth::user()->id,
+                    'tongtien' => (int)$request->input('tongtienvnpay'),
+                ]);
+                $content = Cart::content();
+                $data=[];
+                foreach($content as $v_content){
+                    $data[] = [
+                        'name' => $request->input('namevnpay'),
+                        'phone' => $request->input('phonevnpay'),
+                        'address' => $request->input('addressvnpay'),
+                        'email' => $request->input('emailvnpay'),
+                        'content' => $request->input('contentvnpay'),
+                        'hoa_don_id' => $hd->id,
+                        'product_id'=>$v_content->id,
+                        'size'=>(int)$request->input('sizessssvnpay'),
+                        'mau'=>(int)$request->input('maussssvnpay'),
+                        'SL'=>$v_content->qty,
+                        'gia'=>(int)$v_content->price,
+                        'thanhtien'=>(int)$request->input('thanhtienvnpay')
+                    ];
+                    $size_cart=(int)$request->input('sizessssvnpay');
+                    $mau_cart=(int)$request->input('maussssvnpay');
+                    $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
+                    
+                }
+                CTHoaDon::insert($data);
+                Cart::destroy();
+            }else{
+                $customer = Customer::create([
+                    'name' => $request->input('namevnpay'),
+                    'phone' => $request->input('phonevnpay'),
+                    'address' => $request->input('addressvnpay'),
+                    'city' => $request->input('city'),
+                    'district' => $request->input('district'),
+                    'ward' => $request->input('ward'),
+                    'email' => $request->input('emailvnpay'),
+                    'content' => $request->input('contentvnpay'),
+                ]);
+                $size_ctm = $request->input('sizessss');
+                $mau_ctm = $request->input('maussss');
+                $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
+                Cart::destroy();
+            }
+
+            // DB::commit();
+            // Session::flash('success', 'Orders success.');
+            #Queue
+            // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
+            Session::forget('carts');
+            // DB::rollBack();
+            // Session::flash('error', 'Orders fail.');
+            // return false;
+        
+
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
             $vnp_Returnurl = "http://localhost:8000/";
             $vnp_TmnCode = "70EQN4UN";//Mã website tại VNPAY 
             $vnp_HashSecret = "WQUTQTGBQZQKMQQFONPXCGKOSANAINQH"; //Chuỗi bí mật
 
-            $vnp_TxnRef ='1256' ; //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_TxnRef = 'HD'.time(); //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
             $vnp_OrderInfo ='Thanh Toan Don Hang Test';
             $vnp_OrderType = 'billpayment';
             $vnp_Amount = 20000 * 100;
@@ -114,6 +184,50 @@ class OnlineCheckoutController extends Controller
                 } else {
                     echo json_encode($returnData);
                 }
+    }
+
+    public function addsl($sp,$size,$mau,$sl3){
+        $sl=BienThe::Where('san_pham_id',$sp)
+        ->where('size_id',$size)
+        ->where('mau_id',$mau)
+        ->get();
+        $slend=0;
+        
+        foreach($sl as $sll) {
+            $slend=$sll->SL-=$sl3; 
+        }
+                    BienThe::where('san_pham_id',$sp)
+                    ->where('size_id',$size)
+                    ->where('mau_id',$mau)
+                    ->update(['SL'=>$slend]);
+        $slsp=Productt::Where('id',$sp)->get();
+        $slspend=0;
+        foreach($slsp as $sllsp) {
+        $slspend=$sllsp->SL-=$sl3; 
+        }
+                 Productt::where('id',$sp)
+                ->update(['SL'=>$slspend]); 
+          
+        return true;
+    }
+
+    protected function infoProductCart($customer_id, $size ,$mau)
+    {
+
+        $content = Cart::content();
+            $data=[];
+
+            foreach($content as $v_content){
+                $data[]=[
+                    'customer_id'=>$customer_id,
+                    'product_id'=>$v_content->id,
+                    'pty'=>$v_content->qty,
+                    'price'=>$v_content->price,
+                    'size'=>$size,
+                    'mau'=>$mau,
+                ];
+            }
+        return ModelsCart::insert($data);
     }
 
    public function execPostRequest($url, $data)
