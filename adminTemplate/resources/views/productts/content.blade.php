@@ -281,44 +281,21 @@
                                 <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                     <div class="p-b-30 m-lr-15-sm">
                                         <!-- Review -->
-                                        <div class="flex-w flex-t p-b-68">
-                                            <div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                                                <img src="images/avatar-01.jpg" alt="AVATAR">
-                                            </div>
-
-                                            <div class="size-207">
-                                                <div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20">
-														Ariana Grande
-													</span>
-
-                                                    <span class="fs-18 cl11">
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star"></i>
-														<i class="zmdi zmdi-star-half"></i>
-													</span>
-                                                </div>
-
-                                                <p class="stext-102 cl6">
-                                                    Quod autem in homine praestantissimum atque optimum est, id
-                                                    deseruit. Apud ceteros autem philosophos
-                                                </p>
-                                            </div>
-                                        </div>
+                                        <h5>Tất Cả Nhận Xét</h5>
+                                        <br>
+                                        <form>
+                                            @csrf
+                                            <input type="hidden" name="comment_product" class="comment_product" value="{{$productt->id}}">
+                                            <div id="show_comment"></div>
+                                        </form>
 
                                         <!-- Add review -->
-                                        <form class="w-full">
-                                            <h5 class="mtext-108 cl2 p-b-7">
-                                                Add a review
-                                            </h5>
+                                        <form action="#">
+                                            <h3 class="mtext-108 cl2 p-b-7">
+                                                Thêm nhận xét
+                                            </h3>
 
-                                            <p class="stext-102 cl6">
-                                                Your email address will not be published. Required fields are marked *
-                                            </p>
-
-                                            <div class="flex-w flex-m p-t-50 p-b-23">
+                                            {{-- <div class="flex-w flex-m p-t-50 p-b-23">
 												<span class="stext-102 cl3 m-r-16">
 													Số Sao
 												</span>
@@ -331,31 +308,22 @@
 													<i class="item-rating pointer zmdi zmdi-star-outline"></i>
 													<input class="dis-none" type="number" name="rating">
 												</span>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="row p-b-25">
+                                                <div class="col-sm-6 p-b-5">
+                                                    <label>Tên</label>
+                                                    <input class="comment_name" type="text" placeholder="Tên của bạn">
+                                                </div>
                                                 <div class="col-12 p-b-5">
-                                                    <label class="stext-102 cl3" for="review">Đánh giá của bạn</label>
-                                                    <textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-                                                              id="review" name="review"></textarea>
-                                                </div>
-
-                                                <div class="col-sm-6 p-b-5">
-                                                    <label class="stext-102 cl3" for="name">Tên</label>
-                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name"
-                                                           type="text" name="name">
-                                                </div>
-
-                                                <div class="col-sm-6 p-b-5">
-                                                    <label class="stext-102 cl3" for="email">Email</label>
-                                                    <input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email"
-                                                           type="text" name="email">
+                                                    <label>Nhận xét của bạn</label>
+                                                    <textarea class="comment_ct" name="comment" style="height: 125px; width:100%;" 
+                                                    placeholder="Nhận xét của bạn"></textarea>
                                                 </div>
                                             </div>
-
-                                            <button
-                                                class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                                                Submit
+                                            <div id="err_cm"></div>
+                                            <button type="button" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10 send-comment">
+                                                Gửi nhận xét
                                             </button>
                                         </form>
                                     </div>
@@ -468,35 +436,42 @@
 	});
 </script>
 
-{{-- <script type="text/javascript">
+<script type="text/javascript">
 	$(document).ready(function(){
-
-		$(document).on('change','.chonmaudc',function(){
-            var idpro=document.getElementById("idproduct").value;
-			var mau_id=$(this).val();
-			var div=$(".chonsizedc").parent();
-			var op=" ";
-           
-			$.ajax({
-				type:'get',
-				url:'{!!URL::to('findmau')!!}',
-				data:{'id':mau_id,'idpro':idpro},
+        load_comment();
+        // alert(product_id);
+        function load_comment(){
+            var product_id = $('.comment_product').val();
+            var _token = $('.input[name="_token"]').val();
+            $.ajax({
+				url:"{{url('/load-comment')}}",
+                method:"POST",
+				data:{product_id:product_id, _token:_token},
 				success:function(data){
-                    op+='<option value="0" selected disabled> Chọn Size</option>';
-					for(var i=0;i<data.length;i++){
-                        op+='<option value="'+data[i].id+'">'+data[i].tensize+'</option>';
-				   }
-                   console.log(op);
-				   div.find('.chonsizedc').html(" ");
-                   console.log(div.find('.chonsizedc').html(" "));
-				   div.find('.chonsizedc').append(op);
+                    $('#show_comment').html(data);
 				},
-				error:function(){
+			});
+        }
+        $('.send-comment').click(function(){
+            var product_id = $('.comment_product').val();
+            var comment_name = $('.comment_name').val();
+            var comment_ct = $('.comment_ct').val();
+            var _token = $('.input[name="_token"]').val();
+            $.ajax({
+				url:"{{url('/send-comment')}}",
+                method:"POST",
+				data:{product_id:product_id, comment_name:comment_name, comment_ct:comment_ct, _token:_token},
+				success:function(data){
+                    $('#err_cm').html('<p class="text text-success">Thêm Bình Luận Thành Công</p>');
+                    load_comment();
+                    $('#err_cm').fadeOut(2000);
+                    $('.comment_name').val('');
+                    $('.comment_ct').val('');
 				}
 			});
-		});
+        });
 	});
-</script> --}}
+</script>
 
 
 <script type="text/javascript">

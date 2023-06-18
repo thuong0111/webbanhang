@@ -26,6 +26,7 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
+        $message='tt k hop le';
         $qty =(int)$request->input('num_product');
         $result = $this->cartService->create($request);
         $size_id =(int)$request->input('size_id');
@@ -37,27 +38,34 @@ class CartController extends Controller
         $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
         ->where('id', $product_id)
         ->get();
-        foreach($productts as $tam){
-            $name=$tam->name;
-            $price=$tam->price;
-            $thumb=$tam->thumb;
+        if (empty($size_id) || empty($mau_id) || $qty <= 0) {
+            
+            return $message;
         }
-        foreach($tensize as $tam){
-            $laytensize=$tam->tensize;
+        else{
+            foreach($productts as $tam){
+                $name=$tam->name;
+                $price=$tam->price;
+                $thumb=$tam->thumb;
+            }
+            foreach($tensize as $tam){
+                $laytensize=$tam->tensize;
+            }
+            foreach($tenmau as $tam){
+                $laytenmau=$tam->tenmau;   
+            }
+            // $qty=$carts[$product_id];
+            $data['id'] = $product_id;
+            $data['qty'] = $qty;
+            $data['options']['colors'] =$laytenmau;
+            $data['options']['sizes'] = $laytensize;
+            $data['name'] = $name;
+            $data['price'] = $price;
+            $data['weight'] = '170';
+            $data['options']['image'] = $thumb;
+            Cart::add($data);
         }
-        foreach($tenmau as $tam){
-            $laytenmau=$tam->tenmau;   
-        }
-        // $qty=$carts[$product_id];
-        $data['id'] = $product_id;
-        $data['qty'] = $qty;
-        $data['options']['colors'] =$laytenmau;
-        $data['options']['sizes'] = $laytensize;
-        $data['name'] = $name;
-        $data['price'] = $price;
-        $data['weight'] = '170';
-        $data['options']['image'] = $thumb;
-        Cart::add($data);
+        
         if($result === false)
         {
             return redirect()->back();

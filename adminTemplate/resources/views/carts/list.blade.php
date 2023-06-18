@@ -61,11 +61,8 @@
                                             <input type="hidden" name="thanhtien" value="{{$priceEnd}}">
                                            
                                             <td class="column-6" style="width: 60px; text-align: center" >
-                      
                                                 <input type="hidden" name="sizessss" value="{{$sizesss}}">
-                                                <b>{{$productt->options->sizes}}</b>
-                                               
-                                               
+                                                <b>{{$productt->options->sizes}}</b>                                  
                                             </td>
                                             <td class="column-7" style="width: 60px; text-align: center">
                                                 <input type="hidden" name="maussss" value="{{$mausss}}">

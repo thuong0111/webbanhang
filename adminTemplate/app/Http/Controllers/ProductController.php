@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\Productt\ProducttService;
 use App\Models\BienThe;
+use App\Models\Comment;
 use App\Models\Mau;
 use App\Models\Productt;
 use App\Models\Size;
@@ -42,7 +43,40 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-   
+    public function send_comment(Request $request){
+        $product_id = $request->product_id;
+        $comment_name = $request->comment_name;
+        $comment_ct = $request->comment_ct;
+
+        $comment = new Comment();
+        
+        $comment->comment_ct = $comment_ct;
+        $comment->comment_name = $comment_name;
+        $comment->comment_product = $product_id;
+        $comment->save();
+    }
+
+    public function load_comment(Request $request){
+        $product_id = $request->product_id;
+        $comment = Comment::where('comment_product', $product_id)->get();
+        $show='';
+        foreach($comment as $comm){
+            $show.= '
+            <div class="row style_comment" style="background: #FFFFCC; border-radius:10px; 
+                margin-bottom: 20px; border:1px;">
+            <div class="col-md-2">
+                <img src = "/template/images/logo02.png" alt="AVATAR" style="width: 100%;"
+                class="img img-responsive img-thumbnail">
+            </div>
+            <div class="col-md-10">
+                <p style="font-weight: bold;">'.$comm->comment_name.' ('.$comm->comment_time.')</p>
+                <p>'.$comm->comment_ct.'</p>
+            </div>
+        </div>
+            ';
+        }
+        echo$show;
+    }
 
 	public function findMau(Request $request){
 
