@@ -244,4 +244,18 @@
 	document.getElementById('textarealay').setAttribute('value', e);
 	});});
 </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('change','.textarea',function(){
+		let e = document.getElementById("input5").value;
+	document.getElementById('textarealay').setAttribute('value', e);
+	});});
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('change','.textarea',function(){
+		let e = document.getElementById("input5").value;
+	document.getElementById('textarealay').setAttribute('value', e);
+	});});
+</script>
 @endsection

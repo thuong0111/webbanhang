@@ -20,6 +20,9 @@ background-color: #f3f3f3;">Thanh Toan MoMo</button>
 
     <input type="hidden" name="emailvnpay" value="{{Auth::user()->email}}">
     <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
+    <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
+    <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
+
     <button type="submit" name="redirect" style="margin: -564px 0px 42px 500px;position: absolute;border: 1px solid;
     border-radius: 50px;
     width: 177px;

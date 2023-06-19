@@ -172,7 +172,7 @@ Route::get('/findmau', [App\Http\Controllers\CartController::class, 'findmau']);
 
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
 Route::get('/tt', [OnlineCheckoutController::class, 'create']);
-Route::post('/vnpay', [OnlineCheckoutController::class, 'vnpay']);
+Route::post('/vnpay', [OnlineCheckoutController::class, 'create']);
 
 Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);

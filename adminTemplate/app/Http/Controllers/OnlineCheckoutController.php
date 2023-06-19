@@ -20,13 +20,10 @@ class OnlineCheckoutController extends Controller
 {
 
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('demott');
-    }
-    public function vnpay(Request $request){
-       
-            DB::beginTransaction();
+        try{
+        DB::beginTransaction();
             if(Auth::check()){
                 $hd = HoaDon::create([
                     'user_id' => Auth::user()->id,
@@ -43,14 +40,14 @@ class OnlineCheckoutController extends Controller
                         'content' => $request->input('contentvnpay'),
                         'hoa_don_id' => $hd->id,
                         'product_id'=>$v_content->id,
-                        'size'=>(int)$request->input('sizessssvnpay'),
-                        'mau'=>(int)$request->input('maussssvnpay'),
+                        'size'=>(int)$request->input('sizevnpay'),
+                        'mau'=>(int)$request->input('mauvnpay'),
                         'SL'=>$v_content->qty,
                         'gia'=>(int)$v_content->price,
                         'thanhtien'=>(int)$request->input('thanhtienvnpay')
                     ];
-                    $size_cart=(int)$request->input('sizessssvnpay');
-                    $mau_cart=(int)$request->input('maussssvnpay');
+                    $size_cart=(int)$request->input('sizevnpay');
+                    $mau_cart=(int)$request->input('mauvnpay');
                     $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
                     
                 }
@@ -73,21 +70,26 @@ class OnlineCheckoutController extends Controller
                 Cart::destroy();
             }
 
-            // DB::commit();
-            // Session::flash('success', 'Orders success.');
+            DB::commit();
+            Session::forget('carts');
+            Session::flash('success', 'Orders success.');
             #Queue
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
-            Session::forget('carts');
-            // DB::rollBack();
-            // Session::flash('error', 'Orders fail.');
-            // return false;
-        
+        }catch(\Exception $err){
+            DB::rollBack();
+            Session::flash('error', 'Orders fail.');
+            return false;
+        }
+        return $this->vnpay();
+
+           
+    }
+    public function vnpay(){
 
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-            $vnp_Returnurl = "http://localhost:8000/";
+            $vnp_Returnurl = "http://localhost:8000/history";
             $vnp_TmnCode = "70EQN4UN";//Mã website tại VNPAY 
             $vnp_HashSecret = "WQUTQTGBQZQKMQQFONPXCGKOSANAINQH"; //Chuỗi bí mật
-
             $vnp_TxnRef = 'HD'.time(); //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
             $vnp_OrderInfo ='Thanh Toan Don Hang Test';
             $vnp_OrderType = 'billpayment';
@@ -207,7 +209,6 @@ class OnlineCheckoutController extends Controller
         }
                  Productt::where('id',$sp)
                 ->update(['SL'=>$slspend]); 
-          
         return true;
     }
 
