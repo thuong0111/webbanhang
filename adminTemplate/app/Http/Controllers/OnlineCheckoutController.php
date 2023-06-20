@@ -5,12 +5,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers;
 use App\Models\BienThe;
-use App\Models\Cart as ModelsCart;
+use App\Models\Cart;
 use App\Models\CTHoaDon;
 use App\Models\Customer;
 use App\Models\HoaDon;
 use App\Models\Productt;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use Gloudemans\Shoppingcart\Facades;
+use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Support\Facades\Session;
 
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,7 @@ class OnlineCheckoutController extends Controller
                     'user_id' => Auth::user()->id,
                     'tongtien' => (int)$request->input('tongtienvnpay'),
                 ]);
-                $content = Cart::content();
+                $content = FacadesCart::content();
                 $data=[];
                 foreach($content as $v_content){
                     $data[] = [
@@ -52,7 +53,6 @@ class OnlineCheckoutController extends Controller
                     
                 }
                 CTHoaDon::insert($data);
-                Cart::destroy();
             }else{
                 $customer = Customer::create([
                     'name' => $request->input('namevnpay'),
@@ -67,11 +67,11 @@ class OnlineCheckoutController extends Controller
                 $size_ctm = $request->input('sizessss');
                 $mau_ctm = $request->input('maussss');
                 $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
-                Cart::destroy();
+                FacadesCart::destroy();
             }
 
             DB::commit();
-            Session::forget('carts');
+           
             Session::flash('success', 'Orders success.');
             #Queue
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
@@ -88,6 +88,8 @@ class OnlineCheckoutController extends Controller
 
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
             $vnp_Returnurl = "http://localhost:8000/history";
+            FacadesCart::destroy();
+            Session::forget('carts');
             $vnp_TmnCode = "70EQN4UN";//Mã website tại VNPAY 
             $vnp_HashSecret = "WQUTQTGBQZQKMQQFONPXCGKOSANAINQH"; //Chuỗi bí mật
             $vnp_TxnRef = 'HD'.time(); //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
@@ -228,7 +230,7 @@ class OnlineCheckoutController extends Controller
                     'mau'=>$mau,
                 ];
             }
-        return ModelsCart::insert($data);
+        return Cart::insert($data);
     }
 
    public function execPostRequest($url, $data)

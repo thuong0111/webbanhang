@@ -24,6 +24,8 @@
                                         <th class="column-6" style="width: 60px; text-align: center">Size</th>
                                         <th class="column-7" style="width: 60px; text-align: center">Màu</th>
                                         <th class="column-8" >&nbsp;</th>
+                                        <th class="column-8" >&nbsp;</th>
+
 
 
                                     </tr>
@@ -50,10 +52,10 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $productt->id }}]"  value="{{ $productt->qty }}">
+                                                           name="num_product[{{ $productt->id }}]" id="slhang" value="{{ $productt->qty }}">
 
                                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" >
-                                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                                        <i class="fs-16 zmdi zmdi-plus" id="slupdate"></i>
                                                     </div>
                                                 </div>
                                             </td>
@@ -68,14 +70,19 @@
                                                 <input type="hidden" name="maussss" value="{{$mausss}}">
                                                 <b>{{$productt->options->colors}}</b>
                                            </td>
-                                            <td class="p-r-15">
-                                                <input type="hidden" name="id_product" value="{{$productt->id }}">
-                                                <a href="/carts/delete/{{ $productt->rowId}}">Xóa</a>
-                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control">
-                                                    {{-- <a href="" id="href">cap nhat</a>
-                                                    <input type="hidden" name="slcart" id="slcart">
-                                                    <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart" class="form control"> --}}
+                                            <td class="p-r-15" style="width:59px">
+                                                
+                                                <input type="hidden" id="layid_product" name="id_product{{$productt->id }}" value="{{$productt->id }}">
+                                                <a href="/carts/delete/{{ $productt->rowId}}" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Xóa</a>
+                                                
                                                     
+                                            </td>
+                                            <td style="width:78px">
+                                                
+
+                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart[{{$productt->id }}]" id="rowid" class="form control">
+                                                <a href="/update-cart-quantity/{{ $productt->qty }}/{{$productt->rowId}}" id="href" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Cập Nhật</a>
+                                                <input type="hidden" name="slcart" id="slupdatecart" value="">                                                
                                             </td>
                                         </tr>
                                     @endforeach
@@ -154,7 +161,8 @@
                                             </div>
                                             <div class="bor8 bg0 m-b-12">
                                                 <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" placeholder="Ghi Chú"
-                                                id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>                                        
+                                                id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>
+                                                <input type="hidden" name="pttt" value="1">                                          
                                             </div>
                                         @else
                                         
@@ -182,7 +190,7 @@
 
                                             <div class="bor8 bg0 m-b-12">
                                                 <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" 
-                                                id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                                        
+                                                id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                               
                                             </div>
                                         @endif               
                                     </div>
@@ -204,27 +212,23 @@
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
     @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function(){
-        $(document).on('change','#slupdate',function(){
-            let e = document.getElementById('slupdate').value;
-            
-
+        $(document).on('click','#slupdate',function(){
+            let sl=Number(document.getElementById('slhang').value);
+            document.getElementById('slupdatecart').setAttribute('value', sl);
+            let a=document.getElementById('slupdatecart').value;
+            console.log(a);
+          let row= document.getElementById('rowid').value;
+          console.log(row);
+           var link = document.getElementById('href');
+           console.log(link);
+         let b='/update-cart-quantity/'+sl+'/'+row;
+         console.log(b);
+        link.setAttribute("href",b);
         });
     });
-    $(function($) {
-        let sl=Number(document.getElementById('slhang').value);
-        
-        $('#slupdate').on('click',function(){
-            sl=sl+1;
-            document.getElementById('slcart').setAttribute('value', sl);
-
-        });
-        let a = document.getElementById('href');
-         let b='/update-cart-quantity/'id'/'sl;
-        a.setAttribute("href", "somelink url");
-    });
-    </script> --}}
+    </script>
 
     
     {{-- Chuyen huong vao o tiep theo --}}
@@ -244,7 +248,7 @@
 	document.getElementById('textarealay').setAttribute('value', e);
 	});});
 </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     $(document).ready(function(){
 	$(document).on('change','.textarea',function(){
 		let e = document.getElementById("input5").value;
@@ -257,5 +261,5 @@
 		let e = document.getElementById("input5").value;
 	document.getElementById('textarealay').setAttribute('value', e);
 	});});
-</script>
+</script> --}}
 @endsection
