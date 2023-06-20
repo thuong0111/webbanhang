@@ -172,7 +172,8 @@ Route::get('/findmau', [App\Http\Controllers\CartController::class, 'findmau']);
 
 Route::get('/findPhuongXa', [SelectController::class, 'findPhuongXa']);
 Route::get('/tt', [OnlineCheckoutController::class, 'create']);
-Route::post('/vnpay', [OnlineCheckoutController::class, 'create']);
+Route::post('/vnpay', [App\Http\Controllers\CartController::class, 'vnpay']);
+Route::get('/thanhcong', [App\Http\Controllers\CartController::class, 'thanhcong']);
 
 Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
@@ -182,7 +183,7 @@ Route::get('/history',[CTHoaDonController::class, 'index'])->name('history_order
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
-Route::get('/update-cart-quantity/{id}/{sl}', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
+Route::get('/update-cart-quantity/{sl}/{row}', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
 
 
 

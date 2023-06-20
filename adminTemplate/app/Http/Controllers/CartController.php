@@ -39,7 +39,7 @@ class CartController extends Controller
         ->where('id', $product_id)
         ->get();
         if (empty($size_id) || empty($mau_id) || $qty <= 0) {
-            
+
             return $message;
         }
         else{
@@ -52,7 +52,7 @@ class CartController extends Controller
                 $laytensize=$tam->tensize;
             }
             foreach($tenmau as $tam){
-                $laytenmau=$tam->tenmau;   
+                $laytenmau=$tam->tenmau;
             }
             // $qty=$carts[$product_id];
             $data['id'] = $product_id;
@@ -65,12 +65,12 @@ class CartController extends Controller
             $data['options']['image'] = $thumb;
             Cart::add($data);
         }
-        
+
         if($result === false)
         {
             return redirect()->back();
         }
-        
+
         return redirect('/carts')->with('sizes', $size_id)->with('maus', $mau_id);
     }
 
@@ -92,17 +92,34 @@ class CartController extends Controller
         ]);
     }
 
+    public function vnpay(Request $request)
+    {
+        $this->cartService->createvnpay($request);
+        return redirect('/carts');
+    }
+    public function thanhcong()
+    {
+        Cart::destroy();
+        Session::forget('carts');
+        Session::flash('success', 'Orders success.');
+
+        return redirect('/carts');
+    }
     public function remove($id = 0)
     {
         $this->cartService->remove($id);
         return redirect('/carts');
     }
-    
-    public function delete_to_cart($rowId,$id = 0){
-        Session::forget('carts');
+
+    public function delete_to_cart($rowId){
+        // Session::forget('carts');
         Cart::update($rowId, 0);
-        $this->cartService->remove($id);
-       
+        // $this->cartService->remove($id);
+        if(Cart::Count()==0){
+            Session::forget('carts');
+        }
+
+
         return redirect('/carts');
     }
 
@@ -112,21 +129,30 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-   
-    
+
+
     public function update(Request $request)
     {
+        // $rowId=$request->input('rowId_cart');
+        // $product_id=(string)$request->input('id_product');
+        // $product_ids=$request->input($product_id);
+        // dd($product_ids);
+        // $carts=(Session::get('carts'));
+        // $sl=$carts[$product_id];
         $this->cartService->update($request);
+        // Cart::update($rowId,['qty'=>$sl]);
         return redirect('/carts');
     }
     public function update_cart_quantity(Request $request){
-        $rowId = $request->id;
+        $rowId = $request->row;
         $qty = $request->sl;
+        // $rowId = $request->input('rowId_cart');
+        // $qty = $request->input('slcart');
         Cart::update($rowId, $qty);
         return redirect('/carts');
     }
     public function findmau(Request $request){
-        
+
         $data= DB::table('bien_thes')
         -> where('san_pham_id', $request->idpro)
         ->where('size_id', $request->id)
@@ -137,7 +163,7 @@ class CartController extends Controller
 	}
 
     public function findsize(Request $request){
-        
+
         $data= DB::table('bien_thes')
         -> where('san_pham_id', $request->idpro)
         ->where('mau_id', $request->id)
