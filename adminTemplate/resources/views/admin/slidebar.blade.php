@@ -142,6 +142,23 @@
                 </li>
             </ul>
           </li>
+          {{-- Manager User Login--}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                <p> USER MANAGER LOGIN
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="/admin/customermanagers" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>List User_Lg</p>
+                    </a>
+                </li>
+            </ul>
+          </li>
 
           {{-- Manager Size--}}
           <li class="nav-item">
@@ -180,13 +197,13 @@
                 <li class="nav-item">
                     <a href="/admin/mau/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Add Mau</p>
+                        <p>Add Colors</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/mau/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Mau</p>
+                        <p>List Colors</p>
                     </a>
                 </li>
 
@@ -198,7 +215,7 @@
            <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> CTSP
+                <p> DETAIL PRODUCTS
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -206,13 +223,13 @@
                 <li class="nav-item">
                     <a href="/admin/ctsp/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Add CTSP</p>
+                        <p>Add Detail Products</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/ctsp/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List CTSP</p>
+                        <p>List Detail Products</p>
                     </a>
                 </li>
 
