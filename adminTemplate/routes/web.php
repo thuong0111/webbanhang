@@ -183,7 +183,7 @@ Route::get('/history',[CTHoaDonController::class, 'index'])->name('history_order
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
-Route::get('/update-cart-quantity/{sl}/{row}', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
+Route::post('/update-cart-quantity', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
 
 
 

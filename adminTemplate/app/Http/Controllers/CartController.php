@@ -144,11 +144,11 @@ class CartController extends Controller
         return redirect('/carts');
     }
     public function update_cart_quantity(Request $request){
-        $rowId = $request->row;
-        $qty = $request->sl;
-        // $rowId = $request->input('rowId_cart');
-        // $qty = $request->input('slcart');
-        Cart::update($rowId, $qty);
+        $rowId = $request->input('rowId_cart');
+        $qty = $request->input('num_product');
+        foreach ($rowId as $row){
+            Cart::update($row,$qty[$row]);
+        }
         return redirect('/carts');
     }
     public function findmau(Request $request){

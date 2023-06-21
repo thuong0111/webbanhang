@@ -52,7 +52,7 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $productt->id }}]" id="slhang" value="{{ $productt->qty }}">
+                                                           name="num_product[{{ $productt->rowId }}]" id="slhang" value="{{ $productt->qty }}">
 
                                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" >
                                                         <i class="fs-16 zmdi zmdi-plus" id="slupdate"></i>
@@ -72,7 +72,7 @@
                                            </td>
                                             <td class="p-r-15" style="width:59px">
                                                 
-                                                <input type="hidden" id="layid_product" name="id_product{{$productt->id }}" value="{{$productt->id }}">
+                                                <input type="hidden" id="layid_product" name="id_product[{{$productt->id }}]" value="{{$productt->id }}">
                                                 <a href="/carts/delete/{{ $productt->rowId}}" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Xóa</a>
                                                 
                                                     
@@ -81,8 +81,9 @@
                                                 
 
                                                 <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart[{{$productt->id }}]" id="rowid" class="form control">
-                                                <a href="/update-cart-quantity/{{ $productt->qty }}/{{$productt->rowId}}" id="href" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Cập Nhật</a>
-                                                <input type="hidden" name="slcart" id="slupdatecart" value="">                                                
+                                                {{-- <a href="/update-cart-quantity/{{ $productt->qty }}/{{$productt->rowId}}" id="href" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Cập Nhật</a> --}}
+                                                
+                                                {{-- <input type="hidden" name="slcart" id="slupdatecart" value="">                                                 --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -101,9 +102,8 @@
                                     </div>
                                 </div>
 
-                                <input type="submit" value="Cập Nhật Sản Phẩm" formaction="/update-cart"
-                                    class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                                @csrf
+                                <input type="submit" value="Cập Nhật Sản Phẩm" formaction="/update-cart-quantity" method="post" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+                                                 @csrf
                             </div>
                         </div>
                     </div>
@@ -212,10 +212,13 @@
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
     @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(document).ready(function(){
-        $(document).on('click','#slupdate',function(){
-            let sl=Number(document.getElementById('slhang').value);
+        $(document).on('change','#slhang',function(){
+            var sl=Number(document.getElementById('slhang').value);
+            
+            document.getElementById('slhang').setAttribute('value', sl);
+
             document.getElementById('slupdatecart').setAttribute('value', sl);
             let a=document.getElementById('slupdatecart').value;
             console.log(a);
@@ -228,7 +231,7 @@
         link.setAttribute("href",b);
         });
     });
-    </script>
+    </script> --}}
 
     
     {{-- Chuyen huong vao o tiep theo --}}
