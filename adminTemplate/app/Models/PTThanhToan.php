@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PTThanhToan extends Model
 {
+    protected $table = 'pt_thanh_toans';
     use HasFactory;
-}
+    protected $fillable = [
+        'tenthanhtoan',
+        'mota',
+    ];}

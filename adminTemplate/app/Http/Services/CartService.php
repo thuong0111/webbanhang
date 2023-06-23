@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Support\Facades\Auth;
 use ZipStream\Bigint;
+use Carbon\Carbon;
 
 class CartService
 {
@@ -157,6 +158,8 @@ class CartService
                 $hd = HoaDon::create([
                     'user_id' => Auth::user()->id,
                     'pt_thanh_toan_id'=>$request->input('ptttvnpay'),
+                    'ds_trang_thai_id'=>$request->input('dsttvnpay'),
+                    'thoigian'=>Carbon::now('Asia/Ho_Chi_Minh'),
                     'tongtien' => (int)$request->input('tongtienvnpay'),
                 ]);
                 $content = FacadesCart::content();

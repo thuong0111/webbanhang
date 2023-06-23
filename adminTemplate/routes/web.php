@@ -22,9 +22,12 @@ use App\Http\Controllers\InforUserController;
 use App\Http\Controllers\MauController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\HistoryControllerController;
+use App\Http\Controllers\HoaDonController;
 use App\Http\Livewire\Assignment;
 use App\Http\Services\Productt\ProducttService;
 use App\Models\Cart;
+use App\Models\CTHoaDon;
+use App\Models\HoaDon;
 use App\Models\TinhTP;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
@@ -121,6 +124,11 @@ Route::middleware(['auth'])->group(function(){
         #Customer
         Route::get('customers',[ App\Http\Controllers\Admin\CartController::class, 'index']);
         Route::get('customers/view/{customer}',[ App\Http\Controllers\Admin\CartController::class, 'show']);
+            
+        #Customer Login
+
+        Route::get('customerslog',[ App\Http\Controllers\Admin\CartController::class, 'indexlog']);
+        Route::get('customerslog/viewlog/{hoadon}',[ App\Http\Controllers\Admin\CartController::class, 'showlog']);
 
         #Customer Manager
         Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
@@ -179,11 +187,22 @@ Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
 Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
-Route::get('/history',[CTHoaDonController::class, 'index'])->name('history_order');
+Route::get('/history',[HoaDonController::class, 'index'])->name('history_order');
+Route::get('/history/{hoadon}',[HoaDonController::class, 'showdetail']);
+
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
 Route::post('/update-cart-quantity', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
+Route::get('/tab', function () {
+    return view('tabhistory');
+})->name('tab');
+
+Route::post('/capnhat2', [ App\Http\Controllers\Admin\CartController::class, 'danggiao']);
+Route::post('/capnhat3', [ App\Http\Controllers\Admin\CartController::class, 'hoanthanh']);
+Route::post('/capnhathuy', [ HoaDonController::class, 'dahuy']);
+
+
 
 
 
