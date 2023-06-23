@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\CartService;
+use App\Models\CTHoaDon;
 use App\Models\Customer;
+use App\Models\HoaDon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class CartController extends Controller
 {
@@ -26,6 +31,23 @@ class CartController extends Controller
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'List Product Orders',
             'customers'=>$this->cart->getCustomer()
+        ]);
+    }
+
+    public function indexlog()
+    {
+        // $hd=HoaDon::orderByDesc('id')->paginate(10);
+
+        $hd = DB::table('hoa_dons')
+        ->join('users', 'hoa_dons.user_id', '=', 'users.id')
+        ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
+        ->get();
+        return view('admin.carts.customerlog',[
+            'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
+            'title' => 'List Product Orders',
+            'hoadons'=>$hd
         ]);
     }
 
@@ -61,6 +83,59 @@ class CartController extends Controller
             'S_customers' => $Size_customers,
             'M_customers' => $Mau_customers,
         ]);
+    }
+
+    public function showlog(HoaDon $hoadon)
+    {
+        $cthd = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        ->select('ct_hoa_dons.name','ct_hoa_dons.phone','ct_hoa_dons.email','ct_hoa_dons.address','ct_hoa_dons.content')
+        ->get();
+        
+        $cthd_product = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
+        ->select('productts.thumb','productts.name','productts.price','ct_hoa_dons.SL','ct_hoa_dons.thanhtien' )
+        ->get();
+
+        $Size_user = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        ->join('sizes', 'ct_hoa_dons.size', '=', 'sizes.id')
+        ->select('sizes.tensize')
+        ->get();
+
+        $Mau_user = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        ->join('maus', 'ct_hoa_dons.mau', '=', 'maus.id')
+        ->select('maus.tenmau')
+        ->get();
+
+        return view('admin.carts.detaillog', [
+            'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
+            'cthd' => $cthd,
+            'ctproducts' => $cthd_product,
+            'maus' => $Mau_user,
+            'sizes' => $Size_user,
+        ]);
+    }
+
+    public function danggiao(Request $request)
+    {
+        $capnhat=$request->input('trangthaihd');
+        $id=$request->input('id');
+        HoaDon::where('id',$id)
+        ->update(['ds_trang_thai_id'=>$capnhat]);
+        Session::flash('success', 'Cập nhật trạng thái thành công');
+        return redirect('/admin/customerslog');
+    }
+    public function hoanthanh(Request $request)
+    {
+        $capnhat=$request->input('trangthaihd3');
+        $id=$request->input('idhoanthanh');
+        HoaDon::where('id',$id)
+        ->update(['ds_trang_thai_id'=>$capnhat]);
+        Session::flash('success', 'Cập nhật trạng thái thành công');
+        return redirect('/admin/customerslog');
     }
    
 }

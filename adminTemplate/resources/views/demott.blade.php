@@ -9,6 +9,7 @@
     <input type="hidden" name="emailvnpay" value="{{Auth::user()->email}}">
     <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
     <input type="hidden" name="ptttvnpay" value="2"> 
+    <input type="hidden" name="dsttvnpay" value="1"> 
     <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
     <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
 
