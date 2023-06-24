@@ -18,6 +18,5 @@
     width: 177px;
     background-color: #f3f3f3;">Thanh Toan VNPay</button>
     
-    </form>
+</form>
 
-    

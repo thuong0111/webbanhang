@@ -200,13 +200,34 @@
                             <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                                Đặt Hàng
                             </button>
+                            <br>
+                            <br>
                         </div>
                     </div>
                 </div>
             </div>
     </form>
-        @include('demott')
-    
+        @if(Auth::check())
+            <form action="{{ url('/vnpay') }}" method="POST" style="margin: -210px 0 0 1042px;">
+                @csrf
+                <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
+                <input type="hidden" name="tongtienvnpay" value="{{$total}}">
+                <input type="hidden" name="namevnpay" value="{{Auth::user()->name}}">
+                <input type="hidden" name="phonevnpay"  value="{{Auth::user()->phone}}">
+                <input type="hidden" name="addressvnpay" value="{{Auth::user()->address}}">
+                <input type="hidden" name="emailvnpay" value="{{Auth::user()->email}}">
+                <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
+                <input type="hidden" name="ptttvnpay" value="2"> 
+                <input type="hidden" name="dsttvnpay" value="1"> 
+                <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
+                <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
+            
+                <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"
+                    style="margin: 0 0 60px -107px;">
+                    Thanh Toan VNPay
+                </button>
+            </form>
+        @endif
 
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
