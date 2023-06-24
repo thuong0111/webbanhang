@@ -1,7 +1,14 @@
-@extends('admin.main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @include('head')
+</head>
 
-@section('content')
-    <div class="customer mt-3">
+    <body >
+
+        <!-- Header -->
+        @include('header')
+        {{-- <div class="customer mt-3" style="padding: 125px 0 0 0;">
         <ul>
             @foreach ( $cthd as $cthds)
             <li>Tên: <strong>{{ $cthds->name }}</strong></li>
@@ -11,10 +18,11 @@
             <li>Ghi Chú: <strong>{{ $cthds->content }}</strong></li>
             @endforeach
         </ul>
-    </div>
+        </div> --}}
 
-    <div class="carts">
-        
+    <div class="carts" style="padding: 125px 0 0 0;">
+        @include('tabhistory')
+
         <table class="table">
             <tbody>
             <tr class="table_head">
@@ -65,6 +73,8 @@
             </tbody>
         </table>
     </div>
-@endsection
+        <!-- Footer -->
+        @include('footer')
 
-
+    </body>
+</html>

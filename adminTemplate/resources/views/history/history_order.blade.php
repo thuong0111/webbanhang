@@ -1,4 +1,3 @@
-{{-- @extends('main') --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +51,9 @@
                                                     @csrf
                                                     <input type="hidden" name="trangthaihd4" value="4">
                                                     <input type="hidden" name="idhoadonhuy" value="{{$hoadon->id}}">
-                                                    <button type="submit">4</button>
+                                                    <button type="submit" style="background: red; border: none; width: 30px; 
+                                                        height: 30px; border-radius: 3px;"><i class="fas fa-trash" style="color: white"></i>
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -72,7 +73,6 @@
 </html>
 @section('content')
     <form class="bg0 p-t-130 p-b-85">
-        {{-- @include('admin.alert') --}}
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -99,9 +99,5 @@
                 </div>
             </div>
     </form>
-
-    {{-- @else
-        <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
-    @endif --}}
 
 @endsection

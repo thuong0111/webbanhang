@@ -37,7 +37,10 @@
                             @csrf
                             <input type="hidden" name="trangthaihd" value="2">
                             <input type="hidden" name="id" value="{{$hoadon->id}}">
-                            <button type="submit">2</button>
+                            <button type="submit" style="background: #007bff; border: none; width: 30px; 
+                                height: 30px; border-radius: 3px;">
+                                <i class="fa fa-truck" style="color: white"></i>
+                            </button>
                         </form>
                     </td>
                     <td>
@@ -45,7 +48,9 @@
                             @csrf
                             <input type="hidden" name="trangthaihd3" value="3">
                             <input type="hidden" name="idhoanthanh" value="{{$hoadon->id}}">
-                            <button type="submit">3</button>
+                            <button type="submit" style="background: #007bff; border: none; width: 30px; 
+                                height: 30px; border-radius: 3px;">
+                                <i class="fa fa-check" style="color: rgb(120, 243, 120)"></i></button>
                         </form>
                     </td>
                     

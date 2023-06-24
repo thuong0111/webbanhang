@@ -1,4 +1,4 @@
-{{-- 
+
 <form action="{{ url('/vnpay') }}" method="POST">
     @csrf
     <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
@@ -18,6 +18,5 @@
     width: 177px;
     background-color: #f3f3f3;">Thanh Toan VNPay</button>
     
-    </form>
+</form>
 
-     --}}
