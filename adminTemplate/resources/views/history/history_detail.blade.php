@@ -40,12 +40,12 @@
                     <td class="column-4">{{ $ctproduct->SL }}</td>
                     <td class="column-5">
                         @foreach ($sizes as $key => $Size)
-                            {{$Size->tensize}}
+                            {{$Size->size}}
                         @endforeach
                     </td>
                     <td class="column-5">
                         @foreach ($maus as $key => $Mau)
-                            {{$Mau->tenmau}}
+                            {{$Mau->mau}}
                         @endforeach
                     </td>
                     <td class="column-6">{{ number_format($ctproduct->thanhtien, 0, '', '.') }}</td>

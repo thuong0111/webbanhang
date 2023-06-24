@@ -103,14 +103,16 @@ class CartService
                         'content' => $request->input('content'),
                         'hoa_don_id' => $hd->id,
                         'product_id'=>$v_content->id,
-                        'size'=>(int)$request->input('sizessss'),
-                        'mau'=>(int)$request->input('maussss'),
+                        // 'size'=>(int)$request->input('sizessss'),
+                        // 'mau'=>(int)$request->input('maussss'),
+                        'size'=>$v_content->options->sizes,
+                        'mau'=> $v_content->options->colors,
                         'SL'=>$v_content->qty,
                         'gia'=>(int)$v_content->price,
                         'thanhtien'=>(int)$request->input('thanhtien')
                     ];
-                    $size_cart=(int)$request->input('sizessss');
-                    $mau_cart=(int)$request->input('maussss');
+                    $size_cart=$v_content->options->sizes;
+                    $mau_cart=$v_content->options->colors;
                     $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
                     
                 }
@@ -173,14 +175,18 @@ class CartService
                         'content' => $request->input('contentvnpay'),
                         'hoa_don_id' => $hd->id,
                         'product_id'=>$v_content->id,
-                        'size'=>(int)$request->input('sizevnpay'),
-                        'mau'=>(int)$request->input('mauvnpay'),
+                        // 'size'=>(int)$request->input('sizevnpay'),
+                        // 'mau'=>(int)$request->input('mauvnpay'),
+                         'size'=>$v_content->options->sizes,
+                        'mau'=>$v_content->options->colors,
                         'SL'=>$v_content->qty,
                         'gia'=>(int)$v_content->price,
                         'thanhtien'=>(int)$request->input('thanhtienvnpay')
                     ];
-                    $size_cart=(int)$request->input('sizevnpay');
-                    $mau_cart=(int)$request->input('mauvnpay');
+                    // $size_cart=(int)$request->input('sizevnpay');
+                    // $mau_cart=(int)$request->input('mauvnpay');
+                     $size_cart=$v_content->options->sizes;
+                    $mau_cart=$v_content->options->colors;
                     $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
                     
                 }
@@ -326,19 +332,30 @@ class CartService
 
 
     public function addsl($sp,$size,$mau,$sl3){
-        $sl=BienThe::Where('san_pham_id',$sp)
-        ->where('size_id',$size)
-        ->where('mau_id',$mau)
+        $bienthe = DB::table('bien_thes')
+        ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
+        ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
+        ->where('san_pham_id',$sp)
+        ->where('sizes.tensize',$size)
+        ->where('maus.tenmau',$mau)
         ->get();
+
         $slend=0;
-        
-        foreach($sl as $sll) {
-            $slend=$sll->SL-=$sl3; 
+        foreach($bienthe as $bienthes) {
+            $slend=$bienthes->SL-=$sl3; 
         }
-                    BienThe::where('san_pham_id',$sp)
-                    ->where('size_id',$size)
-                    ->where('mau_id',$mau)
-                    ->update(['SL'=>$slend]);
+
+        DB::table('bien_thes')
+        ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
+        ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
+        ->where('san_pham_id',$sp)
+        ->where('sizes.tensize',$size)
+        ->where('maus.tenmau',$mau)
+        ->update(['SL'=>$slend]);
+                    // BienThe::where('san_pham_id',$sp)
+                    // ->where('size_id',$size)
+                    // ->where('mau_id',$mau)
+                    // ->update(['SL'=>$slend]);
         $slsp=Productt::Where('id',$sp)->get();
         $slspend=0;
         foreach($slsp as $sllsp) {

@@ -63,14 +63,12 @@ class HoaDonController extends Controller
 
         $Size_user = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
-        ->join('sizes', 'ct_hoa_dons.size', '=', 'sizes.id')
-        ->select('sizes.tensize')
+        ->select('ct_hoa_dons.size')
         ->get();
 
         $Mau_user = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
-        ->join('maus', 'ct_hoa_dons.mau', '=', 'maus.id')
-        ->select('maus.tenmau')
+        ->select('ct_hoa_dons.mau')
         ->get();
 
         return view('history.history_detail', [
