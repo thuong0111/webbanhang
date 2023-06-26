@@ -31,6 +31,72 @@ class HoaDonController extends Controller
             'hoadons' => $layhd,
         ]);
     }
+    public function DangXuLy()
+    {
+        
+        $user_id = Auth::user()->id;
+        $layhd = DB::table('hoa_dons')
+        ->where('user_id','=', $user_id)
+        ->where('ds_trang_thai_id','=', 1)
+        ->join('users', 'hoa_dons.user_id', '=', 'users.id')
+        ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
+        ->get();
+        return view('history.dang_xu_ly',[
+            'hoadons_dxl' => $layhd,
+        ]);
+    }
+
+    public function DaHuyHD()
+    {
+        
+        $user_id = Auth::user()->id;
+        $layhd = DB::table('hoa_dons')
+        ->where('user_id', $user_id)
+        ->where('ds_trang_thai_id', 4)
+        ->join('users', 'hoa_dons.user_id', '=', 'users.id')
+        ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
+        ->get();
+        return view('history.da_huy',[
+            'hoadons_dh' => $layhd,
+        ]);
+    }
+
+    public function DangGiaoHang()
+    {
+        
+        $user_id = Auth::user()->id;
+        $layhd = DB::table('hoa_dons')
+        ->where('user_id', $user_id)
+        ->where('ds_trang_thai_id', 2)
+        ->join('users', 'hoa_dons.user_id', '=', 'users.id')
+        ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
+        ->get();
+        return view('history.dang_giao',[
+            'hoadons_dg' => $layhd,
+        ]);
+    }
+
+    public function HoaDonDaHoanThanh()
+    {
+        $user_id = Auth::user()->id;
+        $layhd = DB::table('hoa_dons')
+        ->where('user_id', $user_id)
+        ->where('ds_trang_thai_id', 3)
+        ->join('users', 'hoa_dons.user_id', '=', 'users.id')
+        ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
+        ->get();
+        return view('history.da_hoan_thanh',[
+            'hoadons_ht' => $layhd,
+        ]);
+    }
 
     public function showdetail(HoaDon $hoadon)
     {
