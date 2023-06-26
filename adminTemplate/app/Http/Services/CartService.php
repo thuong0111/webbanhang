@@ -90,6 +90,7 @@ class CartService
                 $hd = HoaDon::create([
                     'user_id' => Auth::user()->id,
                     'pt_thanh_toan_id'=>$request->input('pttt'),
+                    'ds_trang_thai_id'=>$request->input('dstt'),
                     'tongtien' => (int)$request->input('tongtien'),
                 ]);
                 $content = FacadesCart::content();
@@ -177,7 +178,7 @@ class CartService
                         'product_id'=>$v_content->id,
                         // 'size'=>(int)$request->input('sizevnpay'),
                         // 'mau'=>(int)$request->input('mauvnpay'),
-                         'size'=>$v_content->options->sizes,
+                        'size'=>$v_content->options->sizes,
                         'mau'=>$v_content->options->colors,
                         'SL'=>$v_content->qty,
                         'gia'=>(int)$v_content->price,

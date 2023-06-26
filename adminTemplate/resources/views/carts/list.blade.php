@@ -103,7 +103,7 @@
                                 </div>
 
                                 <input type="submit" value="Cập Nhật Sản Phẩm" formaction="/update-cart-quantity" method="post" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                                                 @csrf
+                                @csrf
                             </div>
                         </div>
                     </div>
@@ -163,6 +163,7 @@
                                                 <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" placeholder="Ghi Chú"
                                                 id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>
                                                 <input type="hidden" name="pttt" value="1">                                          
+                                                <input type="hidden" name="dstt" value="1">                                          
                                             </div>
                                         @else
                                         
@@ -207,7 +208,7 @@
                 </div>
             </div>
     </form>
-        @if(Auth::check())
+        {{-- @if(Auth::check())
             <form action="{{ url('/vnpay') }}" method="POST" style="margin: -210px 0 0 1042px;">
                 @csrf
                 <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
@@ -227,7 +228,7 @@
                     Thanh Toan VNPay
                 </button>
             </form>
-        @endif
+        @endif --}}
 
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
