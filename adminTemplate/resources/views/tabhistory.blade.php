@@ -50,12 +50,11 @@
 }
 </style>
 <div class="VYJdTQ">
-    <a href="" class="OFl2GI gAImis" style="">
+    <a href="/history" class="OFl2GI gAImis" style="">
         <span class="_20hgQK">Tất cả</span>
     </a>
-    <a href="/history" class="OFl2GI"><span class="_20hgQK">Đang xử lý</span></a>
-    <a href="" class="OFl2GI"><span class="_20hgQK">Đang giao</span></a>
-    <a href="" class="OFl2GI"><span class="_20hgQK">Hoàn thành</span></a>
-    <a href="" class="OFl2GI"><span class="_20hgQK">Đã hủy</span></a>
-
+    <a href="/HoaDonDangXuLy" class="OFl2GI"><span class="_20hgQK">Đang xử lý</span></a>
+    <a href="/HoaDonDangGiao" class="OFl2GI"><span class="_20hgQK">Đang giao</span></a>
+    <a href="/HoaDonDaHoanThanh" class="OFl2GI"><span class="_20hgQK">Hoàn thành</span></a>
+    <a href="/HoaDonDaHuy" class="OFl2GI"><span class="_20hgQK">Đã hủy</span></a>
 </div>

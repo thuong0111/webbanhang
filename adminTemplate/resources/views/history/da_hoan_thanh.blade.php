@@ -12,7 +12,15 @@
             {{-- @include('admin.alert') --}}
                 <div class="container">
                     <div class="row" style="margin-top: 134px;">
-                        @include('tabhistory')
+                         <div class="VYJdTQ">
+                             <a href="/history" class="OFl2GI" style="">
+                                 <span class="_20hgQK">Tất cả</span>
+                             </a>
+                             <a href="/HoaDonDangXuLy" class="OFl2GI"><span class="_20hgQK">Đang xử lý</span></a>
+                             <a href="/HoaDonDangGiao" class="OFl2GI"><span class="_20hgQK">Đang giao</span></a>
+                             <a href="/HoaDonDaHoanThanh" class="OFl2GI gAImis"><span class="_20hgQK">Hoàn thành</span></a>
+                             <a href="/HoaDonDaHuy" class="OFl2GI"><span class="_20hgQK">Đã hủy</span></a>
+                         </div>
                         <div class="col-lg-10 m-lr-auto m-b-50">
                             <div class="m-l-25 m-r--38 m-lr-0-xl">
                                 <div class="wrap-table-shopping-cart">
@@ -20,9 +28,6 @@
                                         <tbody>
                                         <tr class="table_head">
                                             <th class="column-1" style="width:50px; text-align: center">Mã HD</th>
-                                            {{-- <th class="column-2" style="text-align: center">Tên Khách Hàng</th> --}}
-                                            {{-- <th class="column-3">SĐT</th>
-                                            <th class="column-4">Email</th> --}}
                                             <th class="column-5" style="text-align: center">Thời Gian</th>
                                             <th class="column-6" style="text-align: center">Thanh Toán</th>
                                             <th class="column-7" style="text-align: center">Trạng Thái HD</th>
@@ -31,12 +36,9 @@
                                             <td style="width: 50px;text-align: center">&nbsp;</td>
                                             <td style="width: 50px;text-align: center">&nbsp;</td>
                                         </tr>
-                                        @foreach ($hoadons as $key =>$hoadon)
+                                        @foreach ($hoadons_ht as $key =>$hoadon)
                                         <tr>
                                             <td style="text-align: center">{{$hoadon->id}}</td>
-                                            {{-- <td style="text-align: center">{{$hoadon->name}}</td> --}}
-                                            {{-- <td>{{$hoadon->phone}}</td>
-                                            <td>{{$hoadon->email}}</td> --}}
                                             <td style="text-align: center">{{$hoadon->thoigian}}</td>
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>

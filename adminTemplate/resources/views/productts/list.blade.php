@@ -7,20 +7,22 @@
                 <div class="block2-pic hov-img0">
                     <img src="{{ $productt->thumb }}" alt="{{ $productt->name }}">
                 </div>
-                {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
-                {{-- <button value="{{$productt->id}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                    Quick view
-                </button> --}}
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
                         <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html"
                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             {{ $productt->name }}
                         </a>
-
                         <span class="stext-105 cl3">
 							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
                         </span>
+                        {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
+                    <div class="btn-qv" style="padding: 0 0 0 100px;">
+                        <button value="{{$productt->id}}" class="js-show-modal1 hov-btn1" style="background: #89e5ff;
+                             width: 100px;height: 35px; border-radius: 30px;">
+                            Quick View
+                        </button>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -31,7 +33,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
     $(function($){
-        $(".block2-btn").on('click', function(){
+        $(".js-show-modal1").on('click', function(){
            var obj = $(this).val();
 
           $.ajax({

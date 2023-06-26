@@ -158,7 +158,7 @@
     <div class="container" id="qv">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
             <button class="how-pos3 hov3 trans-04 js-hide-modal1">
-                <img src="C:\Users\Admin\OneDrive\Hình ảnh\icon_DoAn\close.png" alt="CLOSE">
+                <img style="color: white" src="C:\Users\Admin\OneDrive\Hình ảnh\icon_DoAn\close.png" alt="CLOSE">
             </button>
 
             <div class="row">
@@ -179,7 +179,7 @@
                                     </div>
                                 </div>
 
-                                <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
+                                {{-- <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                     <div class="wrap-pic-w pos-relative">
                                         <img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
 
@@ -187,9 +187,9 @@
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
 
-                                <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
+                                {{-- <div class="item-slick3" data-thumb="images/product-detail-03.jpg">
                                     <div class="wrap-pic-w pos-relative">
                                         <img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
 
@@ -197,7 +197,7 @@
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

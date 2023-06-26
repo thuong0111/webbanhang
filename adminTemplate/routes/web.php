@@ -188,6 +188,10 @@ Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
 Route::get('/history',[HoaDonController::class, 'index'])->name('history_order');
+Route::get('/HoaDonDangXuLy',[HoaDonController::class, 'DangXuLy']);
+Route::get('/HoaDonDaHuy',[HoaDonController::class, 'DaHuyHD']);
+Route::get('/HoaDonDangGiao',[HoaDonController::class, 'DangGiaoHang']);
+Route::get('/HoaDonDaHoanThanh',[HoaDonController::class, 'HoaDonDaHoanThanh']);
 Route::get('/history/{hoadon}',[HoaDonController::class, 'showdetail']);
 
 Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
