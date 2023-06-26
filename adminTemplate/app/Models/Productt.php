@@ -17,7 +17,8 @@ class Productt extends Model
         'price_sale',
         'active',
         'thumb',
-        'SL'
+        'SL',
+        'view'
     ];
     public function menu()
     {

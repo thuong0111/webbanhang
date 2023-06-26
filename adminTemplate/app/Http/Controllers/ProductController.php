@@ -26,7 +26,9 @@ class ProductController extends Controller
         $productsize=$this->producttService->getSize($id);
         $productmau=$this->producttService->getMau($id);
         $productRelated=$this->producttService->getRelated($id);
-       
+        $slview=$productt->view;
+        $slview+=1;
+        Productt::where('id',$productt->id)->update(['view'=>$slview]);
         return view('productts.content', [
             'title'=>$productt->name,
             'productt'=>$productt,

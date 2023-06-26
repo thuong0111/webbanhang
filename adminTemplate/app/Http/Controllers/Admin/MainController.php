@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\HoaDon;
 use App\Models\Productt;
 use App\Models\User;
@@ -14,14 +15,18 @@ class MainController extends Controller
         $sp=Productt::all()->count();
         $hd=HoaDon::all()->count();
         $user=User::all()->count();
-
-
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.home', [
             'icons'=>'<i class="fa fa-home" aria-hidden="true"></i>',
             'title'=>'Admin Pages',
-            'sps'=>$sp,
+            'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
+
+
         ]);
     }
 

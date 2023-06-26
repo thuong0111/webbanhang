@@ -13,6 +13,7 @@
                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             {{ $productt->name }}
                         </a>
+                        {{-- <input type="hidden" id="idsp" value="{{ $productt->id }}"> --}}
                         <span class="stext-105 cl3">
 							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
                         </span>
@@ -57,4 +58,20 @@
           });
         });
     });
+</script>
+
+{{-- <script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('click','#clicksp',function(){
+	var idsp=document.getElementById('idsp').value;
+        $.ajax({
+                    url:"{{url('/update-view')}}",
+                    method:"POST",
+                    data:{idsp:idsp},
+                    success:function(data){
+                       
+                }
+        });
+	});
+}); --}}
 </script>

@@ -7,6 +7,10 @@ use App\Http\Requests\StoreSizeRequest;
 use App\Http\Requests\UpdateSizeRequest;
 use Illuminate\Http\Request;
 use App\Http\Services\Size\SizeService;
+use App\Models\Cart;
+use App\Models\HoaDon;
+use App\Models\Productt;
+use App\Models\User;
 
 class SizeController extends Controller
 {
@@ -19,11 +23,20 @@ class SizeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    { $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.size.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
             'title' => 'List Size',
-            'sizes'=>$this->size->get()
+            'sizes'=>$this->size->get(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -32,10 +45,19 @@ class SizeController extends Controller
      */
 
     public function create()
-    {
+    { $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.size.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
             'title' => 'Add New Size',
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -61,10 +83,20 @@ class SizeController extends Controller
      */
     public function show(Size $size)
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.size.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
             'title' => 'Edit Size: ',
             'size' => $size,
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 

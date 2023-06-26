@@ -29,11 +29,26 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-xs-12">
-      <p class="title_thongke">Thong ke tong san pham don hang</p>
+      <p class="title_thongke">Thống kê tổng sản phẩm đơn hàng</p>
       <div class="morris-donus-inverse" id="donut"></div>
 
     </div>
-  </div>
 
+    <div class="col-md-4 col-xs-12">
+      <p class="title_thongke">Thống kê lượt xem</p>
+     <ol class="list-view">
+      @foreach ($sp_view as $key=>$sp)
+        <li>
+          <b>
+            {{ $sp->name }} Có:|
+            <span style="color: black">{{ $sp->view }} lượt xem.</span>
+        </b>
+        </li>
+      @endforeach
+     </ol>
+
+    </div>
+  </div>
+  
 
 @endsection

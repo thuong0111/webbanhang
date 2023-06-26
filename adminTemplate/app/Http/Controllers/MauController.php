@@ -7,6 +7,10 @@ use App\Http\Requests\StoreSizeRequest;
 use App\Http\Requests\UpdateSizeRequest;
 use Illuminate\Http\Request;
 use App\Http\Services\Mau\MauService;
+use App\Models\Cart;
+use App\Models\HoaDon;
+use App\Models\Productt;
+use App\Models\User;
 
 class MauController extends Controller
 {
@@ -20,10 +24,20 @@ class MauController extends Controller
      */
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.mau.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
             'title' => 'List Mau',
-            'maus'=>$this->mau->get()
+            'maus'=>$this->mau->get(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -33,9 +47,19 @@ class MauController extends Controller
 
     public function create()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.mau.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
             'title' => 'Add New Mau',
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -61,10 +85,20 @@ class MauController extends Controller
      */
     public function show(Mau $mau)
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.mau.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
             'title' => 'Edit Mau: ',
             'mau' => $mau,
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 

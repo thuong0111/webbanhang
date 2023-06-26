@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Slider\SliderService;
+use App\Models\Cart;
+use App\Models\HoaDon;
+use App\Models\Productt;
 use App\Models\Slider;
+use App\Models\User;
 
 class SliderController extends Controller
 {
@@ -19,10 +23,21 @@ class SliderController extends Controller
      */
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.slider.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
             'title' => 'List Slider',
-            'sliders'=>$this->slider->get()
+            'sliders'=>$this->slider->get(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
+
         ]);
     }
 
@@ -32,9 +47,19 @@ class SliderController extends Controller
 
     public function create()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.slider.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
             'title' => 'Add New Slider',
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -59,11 +84,20 @@ class SliderController extends Controller
      * Display the specified resource.
      */
     public function show(Slider $slider)
-    {
+    { $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.slider.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
             'title' => 'Edit Sliders: ',
             'slider' => $slider,
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 

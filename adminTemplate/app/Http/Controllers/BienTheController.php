@@ -7,6 +7,9 @@ use App\Http\Requests\StoreBienTheRequest;
 use App\Http\Requests\UpdateBienTheRequest;
 use App\Http\Services\Bienthe\BTService;
 use App\Models\BienThe;
+use App\Models\Cart;
+use App\Models\HoaDon;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class BienTheController extends Controller
@@ -20,21 +23,41 @@ class BienTheController extends Controller
 
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.ctsp.list', [
             'icons'=>'<i class="nav-icon fas fa-store-alt"></i>',
             'title' => 'List CTSP',
-            'ctsps' => $this->btService->get()
+            'ctsps' => $this->btService->get(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
     public function create()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.ctsp.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
             'title' => 'Add New CTSP',
             'sps' => $this->btService->getSP(),
             'sizes' => $this->btService->getSize(),
             'maus' => $this->btService->getMau(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
     public function store(Request $request)
@@ -46,13 +69,24 @@ class BienTheController extends Controller
 
     public function show(BienThe $ctsp)
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.ctsp.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
             'title' => 'Edit CTSP: ',
             'ctsp' => $ctsp,
             'sps' => $this->btService->getSP(),
             'sizes' => $this->btService->getSize(),
-            'maus' => $this->btService->getMau()
+            'maus' => $this->btService->getMau(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
+
         ]);
     }
     public function update(Request $request, BienThe $ctsp)

@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Menu\CreateFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Services\Menu\MenuService;
+use App\Models\Cart;
+use App\Models\HoaDon;
 use App\Models\Menu;
+use App\Models\Productt;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 
 
@@ -22,10 +26,20 @@ class MenuController extends Controller
 
     public function create()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.menu.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
             'title'=>'Add New Category',
-            'menus'=> $this->menuService->getParent()
+            'menus'=> $this->menuService->getParent(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -39,20 +53,39 @@ class MenuController extends Controller
 
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.menu.list', [
             'icons'=>'<i class="nav-icon fas fa-tachometer-alt"></i>',
             'title'=>'List Category',
-            'menus'=>$this->menuService->getAll()
+            'menus'=>$this->menuService->getAll(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
     public function show(Menu $menu)
-    {
+    {$sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.menu.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
             'title'=>'Edit Category: ' . $menu->name,
             'menu'=>$menu,
-            'menus'=> $this->menuService->getParent()
+            'menus'=> $this->menuService->getParent(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 

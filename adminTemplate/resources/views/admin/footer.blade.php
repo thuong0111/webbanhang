@@ -102,8 +102,9 @@
         ],
         
         data: [
-            {label:"San Pham", value: {{$sps}} , color:colorDanger},
+            {label:"San Pham", value: {{$spss}} , color:colorDanger},
             {label:"Don hang", value: {{$hds}} },
+            {label:"Don hang van lai", value: {{$hdvls}} },
             {label:"Khach Hang", value: {{$users}}}
         ]
         });

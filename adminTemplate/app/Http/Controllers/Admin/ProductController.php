@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Productt\ProducttRequest;
 use App\Http\Services\Productt\ProducttAdminService;
+use App\Models\Cart;
+use App\Models\HoaDon;
 use App\Models\Productt;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,19 +22,39 @@ class ProductController extends Controller
 
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.productt.list', [
             'icons'=>'<i class="nav-icon fas fa-store-alt"></i>',
             'title' => 'List Products',
-            'productts' => $this->productService->get()
+            'productts' => $this->productService->get(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
     public function create()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.productt.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
             'title' => 'Add New Products',
             'menus' => $this->productService->getMenu(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
     public function store(ProducttRequest $request)
@@ -43,11 +66,21 @@ class ProductController extends Controller
 
     public function show(Productt $productt)
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.productt.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
             'title' => 'Edit Products: ',
             'productt' => $productt,
-            'menus' => $this->productService->getMenu()
+            'menus' => $this->productService->getMenu(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
     public function update(Request $request, Productt $productt)
@@ -72,4 +105,6 @@ class ProductController extends Controller
         return response()->json(['error'=>true]);
 
     }
+
+   
 }

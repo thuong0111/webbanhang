@@ -210,6 +210,8 @@ Route::post('/capnhathuy', [ HoaDonController::class, 'dahuy']);
 Route::post('/filterbydate', [ HoaDonController::class, 'filterbydate']);
 Route::post('/dashboard-filter', [ HoaDonController::class, 'dashboard_filter']);
 Route::post('/days-order', [ HoaDonController::class, 'days_order']);
+Route::post('/update-view', [ ProductController::class, 'update_view']);
+
 
 
 

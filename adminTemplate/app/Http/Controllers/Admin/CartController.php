@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\CartService;
+use App\Models\Cart;
 use App\Models\CTHoaDon;
 use App\Models\Customer;
 use App\Models\HoaDon;
+use App\Models\Productt;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -27,10 +30,20 @@ class CartController extends Controller
 
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.carts.customer',[
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'List Product Orders',
-            'customers'=>$this->cart->getCustomer()
+            'customers'=>$this->cart->getCustomer(),
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -44,10 +57,21 @@ class CartController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
         ->get();
+
+        $sp=Productt::all()->count();
+        $hd2=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.carts.customerlog',[
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'List Product Orders',
-            'hoadons'=>$hd
+            'hoadons'=>$hd,
+            'spss'=>$sp,
+            'hds'=>$hd2,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -74,6 +98,13 @@ class CartController extends Controller
         ->get();
 
         $carts = $this->cart->getProductForCart($customer);
+
+
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.carts.detail', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'Order Detail > ' . $customer->name,
@@ -82,6 +113,11 @@ class CartController extends Controller
             'adr_customers' => $adr_customers,
             'S_customers' => $Size_customers,
             'M_customers' => $Mau_customers,
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
@@ -107,12 +143,22 @@ class CartController extends Controller
         ->select('ct_hoa_dons.mau')
         ->get();
 
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.carts.detaillog', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'cthd' => $cthd,
             'ctproducts' => $cthd_product,
             'maus' => $Mau_user,
             'sizes' => $Size_user,
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
