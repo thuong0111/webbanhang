@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreHoaDonRequest;
 use App\Http\Requests\UpdateHoaDonRequest;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -26,23 +27,6 @@ class HoaDonController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien')
         ->get();
-        // $hoaDon_id = HoaDon::select('id')->where('user_id', $user_id)->get();
-        // $data = [];
-        // foreach($hoaDon_id as $hoadonsp){
-        //     $data [] = CTHoaDon::select('id', 'name')
-        //     ->where('hoa_don_id', $hoadonsp->id)->get();
-        // }
-        // $htr_s = $data;
-        // $hoaDon_id = DB::table('hoa_dons')
-        // ->where('user_id', $user_id)
-        // ->join('ct_hoa_dons', 'hoa_dons.id', '=', 'ct_hoa_dons.hoa_don_id')
-        // ->join('productts','ct_hoa_dons.product_id', '=', 'productts.id')
-        // ->join('sizes', 'ct_hoa_dons.size', '=', 'sizes.id')
-        // ->join('maus', 'ct_hoa_dons.mau', '=', 'maus.id')
-        // ->select('productts.name', 'productts.price','productts.thumb','ct_hoa_dons.SL'
-        //     ,'ct_hoa_dons.thanhtien', 'sizes.tensize', 'maus.tenmau', 'hoa_dons.tongtien'
-        //     ,'hoa_dons.id')
-        // ->get();
         return view('history.history_order',[
             'hoadons' => $layhd,
         ]);
@@ -84,11 +68,105 @@ class HoaDonController extends Controller
     {
         $capnhat=$request->input('trangthaihd4');
         $id=$request->input('idhoadonhuy');
+        $laysp = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $id)
+        ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
+        ->select('productts.id','ct_hoa_dons.size','ct_hoa_dons.mau')
+        ->get();
+        $sl3 = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $id)
+        ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
+        ->select('ct_hoa_dons.SL')
+        ->get();
+
+        foreach ($laysp as $laysps){
+        $bienthe = DB::table('bien_thes')
+        ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
+        ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
+        ->where('san_pham_id',$laysps->id)
+        ->where('sizes.tensize',$laysps->size)
+        ->where('maus.tenmau',$laysps->mau)
+        ->get();
+        }
+
+        $slend=0;
+        foreach($bienthe as $bienthes) {
+            foreach($sl3 as $sl){
+            $slend=$bienthes->SL+=$sl->SL; 
+            }
+        }
+
+        DB::table('bien_thes')
+        ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
+        ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
+        ->where('san_pham_id',$laysps->id)
+        ->where('sizes.tensize',$laysps->size)
+        ->where('maus.tenmau',$laysps->mau)
+        ->update(['SL'=>$slend]);
+
         HoaDon::where('id',$id)
         ->update(['ds_trang_thai_id'=>$capnhat]);
         Session::flash('success', 'Cập nhật trạng thái thành công');
         return redirect('/history');
     }
+
+    public function filterbydate(Request $request)
+    {
+     $data = $request->all();
+     $from_date=$data['from_date'];
+     $to_date=$data['to_date'];
+     $get=HoaDon::whereBetween('thoigian', [$from_date, $to_date])->orderBy('thoigian', 'ASC')->get();
+     foreach($get as $key=> $val){
+        $chart_data[] = array(
+        'thoigian'=> $val->thoigian,
+        'tongtien'=>$val->tongtien
+        );
+        } 
+         echo $data=json_encode($chart_data);        
+    }
+
+    public function dashboard_filter(Request $request)
+    {
+        $data = $request->all();
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
+        $cuoi_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth()->toDateString();
+        $sub7days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(7)->toDateString();
+        $sub365days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(365)->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+            if($data['dashboard_value']=='7ngay'){
+            $get = HoaDon::whereBetween('thoigian', [$sub7days, $now])->orderBy('thoigian', 'ASC')->get();
+            }elseif ($data['dashboard_value']=='thangtruoc'){
+            $get = HoaDon::whereBetween('thoigian', [$dau_thangtruoc, $cuoi_thangtruoc])->orderBy('thoigian', 'ASC')->get();
+            }elseif($data['dashboard_value']== 'thangnay'){
+            $get = HoaDon::whereBetween('thoigian', [$dauthangnay, $now])->orderBy('thoigian', 'ASC')->get();
+            }else{
+            $get =HoaDon::whereBetween('thoigian', [$sub365days, $now])->orderBy('thoigian', 'ASC')->get(); }
+            
+            foreach($get as $key=> $val){
+                $chart_data[] = array(
+                'thoigian'=> $val->thoigian,
+                'tongtien'=>$val->tongtien
+                );
+                } 
+                echo $data=json_encode($chart_data);        
+            }
+    
+
+            public function days_order(Request $request)
+            {
+                $sub30days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(30)->toDateString();
+                $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+                
+                $get=HoaDon::whereBetween('thoigian', [$sub30days, $now])->orderBy('thoigian', 'ASC')->get();
+                foreach($get as $key=> $val){
+                    $chart_data[] = array(
+                    'thoigian'=> $val->thoigian,
+                    'tongtien'=>$val->tongtien
+                    );
+                 } 
+                    echo $data=json_encode($chart_data);        
+            }
 
 
    
@@ -96,10 +174,7 @@ class HoaDonController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.

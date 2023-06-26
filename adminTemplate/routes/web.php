@@ -29,11 +29,13 @@ use App\Models\Cart;
 use App\Models\CTHoaDon;
 use App\Models\HoaDon;
 use App\Models\TinhTP;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Console\Input\Input;
 
 /*
 |--------------------------------------------------------------------------
@@ -201,6 +203,13 @@ Route::get('/tab', function () {
 Route::post('/capnhat2', [ App\Http\Controllers\Admin\CartController::class, 'danggiao']);
 Route::post('/capnhat3', [ App\Http\Controllers\Admin\CartController::class, 'hoanthanh']);
 Route::post('/capnhathuy', [ HoaDonController::class, 'dahuy']);
+Route::post('/filterbydate', [ HoaDonController::class, 'filterbydate']);
+Route::post('/dashboard-filter', [ HoaDonController::class, 'dashboard_filter']);
+Route::post('/days-order', [ HoaDonController::class, 'days_order']);
+
+
+
+
 
 
 
