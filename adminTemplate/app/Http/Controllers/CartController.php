@@ -155,7 +155,7 @@ class CartController extends Controller
     public function findmau(Request $request){
 
         $data= DB::table('bien_thes')
-        -> where('san_pham_id', $request->idpro)
+        ->where('san_pham_id', $request->idpro)
         ->where('size_id', $request->id)
         ->join('maus', 'maus.id', '=', 'bien_thes.mau_id')
         ->select('maus.id', 'maus.tenmau')
