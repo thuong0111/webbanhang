@@ -197,9 +197,9 @@ class CartService
                     'name' => $request->input('namevnpay'),
                     'phone' => $request->input('phonevnpay'),
                     'address' => $request->input('addressvnpay'),
-                    'city' => $request->input('city'),
-                    'district' => $request->input('district'),
-                    'ward' => $request->input('ward'),
+                    'city' => $request->input('cityvnpay'),
+                    'district' => $request->input('quanhuyenvnpay'),
+                    'ward' => $request->input('phuongxavnpay'),
                     'email' => $request->input('emailvnpay'),
                     'content' => $request->input('contentvnpay'),
                 ]);

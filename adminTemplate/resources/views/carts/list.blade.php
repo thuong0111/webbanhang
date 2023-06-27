@@ -199,7 +199,7 @@
                             </div>
 
                             <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                               Đặt Hàng
+                               Thanh Toán Khi Nhận Hàng
                             </button>
                             <br>
                             <br>
@@ -229,31 +229,52 @@
                 </button>
             </form>
         @endif
+            @if(Auth::check())
+                <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
+                    @csrf
+                    <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
+                    <input type="hidden" name="tongtienvnpay" value="{{$total}}">
+                    <input type="hidden" name="namevnpay" value="{{Auth::user()->name}}">
+                    <input type="hidden" name="phonevnpay"  value="{{Auth::user()->phone}}">
+                    <input type="hidden" name="addressvnpay" value="{{Auth::user()->address}}">
+                    <input type="hidden" name="emailvnpay" value="{{Auth::user()->email}}">
+                    <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
+                    <input type="hidden" name="ptttvnpay" value="2"> 
+                    <input type="hidden" name="dsttvnpay" value="1"> 
+                    <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
+                    <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
+                    <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Thanh Toan VNPay
+                    </button>
+                </form>   
+            @else
+                <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
+                    @csrf
+                    {{-- <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
+                    <input type="hidden" name="tongtienvnpay" value="{{$total}}"> --}}
+                    <input type="hidden" id="inputname" name="namevnpay">
+                    <input type="hidden" id="inputphone" name="phonevnpay">
+                    <input type="hidden" id="inputaddress" name="addressvnpay">
+                    <input type="hidden" id="inputemail" name="emailvnpay">
+                    <input type="hidden" id="tinh" name="cityvnpay">
+                    <input type="hidden" id="huyen" name="quanhuyenvnpay">
+                    <input type="hidden" id="xa" name="phuongxavnpay">
+                    <input type="hidden" id="inputcontent" name="contentvnpay">
 
+                    {{-- <input type="hidden" name="ptttvnpay" value="1">  --}}
+                    {{-- <input type="hidden" name="dsttvnpay" value="1">  --}}
+                    <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
+                    <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
+                    <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Thanh Toan VNPay
+                    </button>
+                </form>
+            @endif
     @else
+           
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
     @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    {{-- <script type="text/javascript">
-        $(document).ready(function(){
-        $(document).on('change','#slhang',function(){
-            var sl=Number(document.getElementById('slhang').value);
-            
-            document.getElementById('slhang').setAttribute('value', sl);
-
-            document.getElementById('slupdatecart').setAttribute('value', sl);
-            let a=document.getElementById('slupdatecart').value;
-            console.log(a);
-          let row= document.getElementById('rowid').value;
-          console.log(row);
-           var link = document.getElementById('href');
-           console.log(link);
-         let b='/update-cart-quantity/'+sl+'/'+row;
-         console.log(b);
-        link.setAttribute("href",b);
-        });
-    });
-    </script> --}}
 
     
     {{-- Chuyen huong vao o tiep theo --}}
@@ -266,6 +287,7 @@
         }
       </script>
 
+{{-- vnpay_login --}}
 <script type="text/javascript">
     $(document).ready(function(){
 	$(document).on('change','.textarea',function(){
@@ -273,18 +295,74 @@
 	document.getElementById('textarealay').setAttribute('value', e);
 	});});
 </script>
-{{-- <script type="text/javascript">
-    $(document).ready(function(){
-	$(document).on('change','.textarea',function(){
-		let e = document.getElementById("input5").value;
-	document.getElementById('textarealay').setAttribute('value', e);
-	});});
-</script>
+
+{{-- vnpay_nologin --}}
 <script type="text/javascript">
     $(document).ready(function(){
-	$(document).on('change','.textarea',function(){
-		let e = document.getElementById("input5").value;
-	document.getElementById('textarealay').setAttribute('value', e);
+	$(document).on('change','#input1',function(){
+		let e = document.getElementById("input1").value;
+	document.getElementById('inputname').setAttribute('value', e);
 	});});
-</script> --}}
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('change','#input2',function(){
+		let e = document.getElementById("input2").value;
+	document.getElementById('inputphone').setAttribute('value', e);
+	});});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('change','#input3',function(){
+		let e = document.getElementById("input3").value;
+	document.getElementById('inputaddress').setAttribute('value', e);
+	});});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('change','#input4',function(){
+		let e = document.getElementById("input4").value;
+	document.getElementById('inputemail').setAttribute('value', e);
+	});});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(document).on('change','#input5',function(){
+		let e = document.getElementById("input5").value;
+	document.getElementById('inputcontent').setAttribute('value', e);
+	});});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	$(document).on('change','#prod_cat_id',function(){
+		let e = document.getElementById("prod_cat_id");
+		let giaTri = e.options[e.selectedIndex].value;
+        console.log(giaTri)
+	document.getElementById('tinh').setAttribute('value', giaTri);
+	});
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$(document).on('change','#quanhuyen',function(){
+		let e = document.getElementById("quanhuyen");
+		let giaTriSize = e.options[e.selectedIndex].value;
+	document.getElementById('huyen').setAttribute('value', giaTriSize);
+	});
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$(document).on('change','#phuongxa',function(){
+		let e = document.getElementById("phuongxa");
+		let giaTriSize = e.options[e.selectedIndex].value;
+	document.getElementById('xa').setAttribute('value', giaTriSize);
+	});
+});
+</script>
 @endsection

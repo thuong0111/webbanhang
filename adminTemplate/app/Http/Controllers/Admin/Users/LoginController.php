@@ -6,16 +6,31 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\Cart;
+use App\Models\HoaDon;
+use App\Models\Menu;
+use App\Models\Productt;
+use App\Models\User;
 class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
         return view('admin.users.login', [
-            'title' =>'Login systems'
+            'title' =>'Login systems',
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl
         ]);
     }
 
