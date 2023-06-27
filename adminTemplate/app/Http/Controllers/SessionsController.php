@@ -63,7 +63,7 @@ class SessionsController extends Controller
                 $user->forceFill([
                     'password' => ($password)
                 ])->setRememberToken(String::random(60));
-
+                    
                 $user->save();
 
                 event(new PasswordReset($user));
@@ -71,7 +71,7 @@ class SessionsController extends Controller
         );
 
         return $status === Password::PASSWORD_RESET
-                    ? redirect()->route('/')->with('status', __($status))
+                    ? redirect()->route('/loginuser')->with('status', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
     }
 

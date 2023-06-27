@@ -220,23 +220,23 @@ class CartService
             return false;
         }
 
-        FacadesCart::destroy();
-        Session::forget('carts');
-        return $this->vnpay();
+        // FacadesCart::destroy();
+        // Session::forget('carts');
+        return $this->vnpay($hd->id,$hd->tongtien);
 
            
     }
-    public function vnpay(){
+    public function vnpay($id,$tongtien){
 
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
             $vnp_Returnurl = "http://localhost:8000/thanhcong";
            
             $vnp_TmnCode = "70EQN4UN";//Mã website tại VNPAY 
             $vnp_HashSecret = "WQUTQTGBQZQKMQQFONPXCGKOSANAINQH"; //Chuỗi bí mật
-            $vnp_TxnRef = 'HD'.time(); //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+            $vnp_TxnRef = $id; //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
             $vnp_OrderInfo ='Thanh Toan Don Hang Test';
             $vnp_OrderType = 'billpayment';
-            $vnp_Amount = 20000 * 100;
+            $vnp_Amount = $tongtien * 100;
             $vnp_Locale = 'vn';
             $vnp_BankCode ='NCB';
             $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];

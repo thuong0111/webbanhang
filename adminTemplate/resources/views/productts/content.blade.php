@@ -144,7 +144,7 @@
 
 
                                             <button type="submit"
-                                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 " id="add-to-cart">
                                                 Thêm Vào Giỏ
                                             </button>
                                             <input type="hidden" id="idproduct" name="product_id" value="{{ $productt->id }}">
@@ -492,5 +492,16 @@
 	});
 });
 </script>
+{{-- <script type="text/javascript">
+	$(document).ready(function(){
+	$(document).on('click','#add-to-cart',function(){
+		swal({
+            title: "Thêm giỏ hàng thành công !",
+            icon: "success",
+            button: "Đi tới giỏ hàng",
+    });
+	});
+});
+</script> --}}
 
 @endsection

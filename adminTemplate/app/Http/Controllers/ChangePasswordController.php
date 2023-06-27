@@ -25,17 +25,14 @@ class ChangePasswordController extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
-                ]);
-
+                    'password' => ($password)
+                ])->setRememberToken(Str::random(60));
                 $user->save();
-
                 event(new PasswordReset($user));
             }
         );
-
         return $status === Password::PASSWORD_RESET
-                    ? redirect('/')->with('success', __($status))
+                    ? redirect('/loginuser')->with('success', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
     }
 }

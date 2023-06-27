@@ -208,7 +208,7 @@
                 </div>
             </div>
     </form>
-        {{-- @if(Auth::check())
+        @if(Auth::check())
             <form action="{{ url('/vnpay') }}" method="POST" style="margin: -210px 0 0 1042px;">
                 @csrf
                 <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
@@ -228,7 +228,7 @@
                     Thanh Toan VNPay
                 </button>
             </form>
-        @endif --}}
+        @endif
 
     @else
         <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
