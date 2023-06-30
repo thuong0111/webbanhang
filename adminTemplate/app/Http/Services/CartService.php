@@ -91,6 +91,7 @@ class CartService
                     'user_id' => Auth::user()->id,
                     'pt_thanh_toan_id'=>$request->input('pttt'),
                     'ds_trang_thai_id'=>$request->input('dstt'),
+                    'thoigian'=>Carbon::now('Asia/Ho_Chi_Minh'),
                     'tongtien' => (int)$request->input('tongtien'),
                 ]);
                 $content = FacadesCart::content();
@@ -132,7 +133,9 @@ class CartService
                 ]);
                 $size_ctm = $request->input('sizessss');
                 $mau_ctm = $request->input('maussss');
-                $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
+                $pttt = $request->input('pttt');
+                $dstt = $request->input('dstt');
+                $this->infoProductCart($customer->id, $size_ctm, $mau_ctm,$pttt,$dstt);
                 FacadesCart::destroy();
             }
 
@@ -205,8 +208,9 @@ class CartService
                 ]);
                 $size_ctm = $request->input('sizessss');
                 $mau_ctm = $request->input('maussss');
-                $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
+                // $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
                 FacadesCart::destroy();
+                return redirect('/thanhcong');
             }
 
             DB::commit();
@@ -368,7 +372,7 @@ class CartService
         return true;
     }
 
-    protected function infoProductCart($customer_id, $size ,$mau)
+    protected function infoProductCart($customer_id, $size ,$mau,$pttt,$dstt)
     {
 
         $content = FacadesCart::content();
@@ -382,6 +386,8 @@ class CartService
                     'price'=>$v_content->price,
                     'size'=>$size,
                     'mau'=>$mau,
+                    'pt_thanh_toan_id'=>$pttt,
+                    'ds_trang_thai_id'=>$dstt,
                 ];
             }
         return Cart::insert($data);

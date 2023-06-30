@@ -40,7 +40,7 @@
                                         <tr class="table_row">
                                             <td class="column-1">
                                                 <div class="how-itemcart1">
-                                                    <img src="{{$productt->options->image}}" alt="IMG">
+                                                    <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html" style="position: absolute;margin-top:-22px"> <img src="{{$productt->options->image}}" alt="IMG"></a>
                                                 </div>
                                             </td>
                                             <td class="column-2">{{ $productt->name }}</td>
@@ -186,6 +186,8 @@
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" 
                                                 id="input4" onkeypress="moveToNext(event, 'input5')" placeholder="email">
                                             </div>
+                                            <input type="hidden" name="pttt" value="1">                                          
+                                            <input type="hidden" name="dstt" value="1">    
 
                                             @include('select.selectlist')
 
@@ -208,50 +210,51 @@
                 </div>
             </div>
     </form>
-        @if(Auth::check())
-            <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
-                @csrf
-                <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
-                <input type="hidden" name="tongtienvnpay" value="{{$total}}">
-                <input type="hidden" name="namevnpay" value="{{Auth::user()->name}}">
-                <input type="hidden" name="phonevnpay"  value="{{Auth::user()->phone}}">
-                <input type="hidden" name="addressvnpay" value="{{Auth::user()->address}}">
-                <input type="hidden" name="emailvnpay" value="{{Auth::user()->email}}">
-                <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
-                <input type="hidden" name="ptttvnpay" value="2"> 
-                <input type="hidden" name="dsttvnpay" value="1"> 
-                <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
-                <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
-                <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                    Thanh Toan VNPay
-                </button>
-            </form>   
-        @else
-            <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
-                @csrf
-                {{-- <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
-                <input type="hidden" name="tongtienvnpay" value="{{$total}}"> --}}
-                <input type="hidden" id="inputname" name="namevnpay">
-                <input type="hidden" id="inputphone" name="phonevnpay">
-                <input type="hidden" id="inputaddress" name="addressvnpay">
-                <input type="hidden" id="inputemail" name="emailvnpay">
-                <input type="hidden" id="tinh" name="cityvnpay">
-                <input type="hidden" id="huyen" name="quanhuyenvnpay">
-                <input type="hidden" id="xa" name="phuongxavnpay">
-                <input type="hidden" id="inputcontent" name="contentvnpay">
+            @if(Auth::check())
+                <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
+                    @csrf
+                    <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
+                    <input type="hidden" name="tongtienvnpay" value="{{$total}}">
+                    <input type="hidden" name="namevnpay" value="{{Auth::user()->name}}">
+                    <input type="hidden" name="phonevnpay"  value="{{Auth::user()->phone}}">
+                    <input type="hidden" name="addressvnpay" value="{{Auth::user()->address}}">
+                    <input type="hidden" name="emailvnpay" value="{{Auth::user()->email}}">
+                    <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
+                    <input type="hidden" name="ptttvnpay" value="2"> 
+                    <input type="hidden" name="dsttvnpay" value="1"> 
+                    <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
+                    <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
+                    <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Thanh Toan VNPay
+                    </button>
+                </form>   
+            @else
+                <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
+                    @csrf
+                    {{-- <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
+                    <input type="hidden" name="tongtienvnpay" value="{{$total}}"> --}}
+                    <input type="hidden" id="inputname" name="namevnpay">
+                    <input type="hidden" id="inputphone" name="phonevnpay">
+                    <input type="hidden" id="inputaddress" name="addressvnpay">
+                    <input type="hidden" id="inputemail" name="emailvnpay">
+                    <input type="hidden" id="tinh" name="cityvnpay">
+                    <input type="hidden" id="huyen" name="quanhuyenvnpay">
+                    <input type="hidden" id="xa" name="phuongxavnpay">
+                    <input type="hidden" id="inputcontent" name="contentvnpay">
 
-                {{-- <input type="hidden" name="ptttvnpay" value="1">  --}}
-                {{-- <input type="hidden" name="dsttvnpay" value="1">  --}}
-                <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
-                <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
-                <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                    Thanh Toan VNPay
-                </button>
-            </form>
-        @endif
-        @else 
-            <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
-        @endif
+                    {{-- <input type="hidden" name="ptttvnpay" value="1">  --}}
+                    {{-- <input type="hidden" name="dsttvnpay" value="1">  --}}
+                    <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
+                    <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
+                    <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                        Thanh Toan VNPay
+                    </button>
+                </form>
+            @endif
+    @else
+           
+        <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
+    @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     

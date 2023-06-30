@@ -14,7 +14,9 @@ class Cart extends Model
         'pty',
         'price',
         'size',
-        'mau'
+        'mau',
+        'pt_thanh_toan_id',
+        'ds_trang_thai_id',
     ];
 
     public function product()

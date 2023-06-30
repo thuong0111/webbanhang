@@ -49,6 +49,7 @@
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
+                                            @if ($hoadon->ds_trang_thai_id<3)
                                             <td style="text-align: center">
                                                 <form action="/capnhathuy" method="POST">
                                                     @csrf
@@ -59,6 +60,7 @@
                                                     </button>
                                                 </form>
                                             </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                         </tbody>

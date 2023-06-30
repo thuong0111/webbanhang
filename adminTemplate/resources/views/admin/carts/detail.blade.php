@@ -29,6 +29,8 @@
                 <th class="column-4">Quantity</th>
                 <th class="column-5">Size</th>
                 <th class="column-5">Color</th>
+                <th class="column-5">PT Thanh Toan</th>
+                <th class="column-5">Trang Thai HD</th>
                 <th class="column-6">Total</th>
             </tr>
 
@@ -56,7 +58,17 @@
                             {{$Mau->tenmau}}
                         @endforeach
                     </td>
-                    <td class="column-6">{{ number_format($price, 0, '', '.') }}</td>
+                    <td class="column-6">
+                        @foreach ($ctcart as $key => $cts)
+                        {{$cts->tenthanhtoan}}
+                    @endforeach
+                        
+                    <td class="column-7">
+                        @foreach ($ctcart as $key => $cts)
+                        {{$cts->tenTT}}
+                    @endforeach
+                    </td>
+                    <td class="column-8">{{ number_format($price, 0, '', '.') }}</td>
                 </tr>
             @endforeach
                 <tr>

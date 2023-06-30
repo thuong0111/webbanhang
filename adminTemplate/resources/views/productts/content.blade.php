@@ -420,7 +420,7 @@
 				url:'{!!URL::to('findmau')!!}',
 				data:{'id':size_id,'idpro':idpro},
 				success:function(data){
-                    op+='<option value="0" selected disabled> Chose Mau</option>';
+                    op+='<option value="0" selected disabled> Chọn Màu</option>';
 					for(var i=0;i<data.length;i++){
                         op+='<option value="'+data[i].id+'">'+data[i].tenmau+'</option>';
 				   }

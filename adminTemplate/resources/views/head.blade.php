@@ -4,7 +4,7 @@
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="/template/images/icons/favicon.png"/>
 
-<link rel="stylesheet" type="text/css" href="/template/images"/>
+{{-- <link rel="stylesheet" type="text/css" href="/template/images"/> --}}
 <!--=====================================/==========================================================-->
 <link rel="stylesheet" type="text/css" href="/template/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->

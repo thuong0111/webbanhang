@@ -157,9 +157,9 @@
     <div class="overlay-modal1 js-hide-modal1"></div>
     <div class="container" id="qv">
         <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+            {{-- <button class="how-pos3 hov3 trans-04 js-hide-modal1">
                 <img style="color: white" src="C:\Users\Admin\OneDrive\Hình ảnh\icon_DoAn\close.png" alt="CLOSE">
-            </button>
+            </button> --}}
 
             <div class="row">
                 <div class="col-md-6 col-lg-7 p-b-30">
@@ -169,7 +169,7 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                {{-- <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
                                     <div class="wrap-pic-w pos-relative" >
                                         <img id ="img-product" src="" alt="IMG-PRODUCT">
 
@@ -177,7 +177,7 @@
                                             <i class="fa fa-expand"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- <div class="item-slick3" data-thumb="images/product-detail-02.jpg">
                                     <div class="wrap-pic-w pos-relative">
