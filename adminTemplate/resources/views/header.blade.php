@@ -15,11 +15,6 @@
                         <a href=""><i  class="social fab fa-twitter"></i></a>
                         <a href=""><i  class="social fab fa-instagram"></i></a>
                         {{-- <a href="#" data-toggle="modal" data-target="#loginbox"> --}}
-                            {{-- @if (Auth::check())
-                            {{Auth::user()->name}}
-                            @else
-                            <i  class="social fa fa-users"></i>
-                            @endif --}}
                             @auth
                                 <div class="top-nav clearfix" style="display:inline-flex;">
                                     <!--search & user info start-->
@@ -43,7 +38,6 @@
                                     </ul>
                                     <!--search & user info end-->
                                 </div>
-                                {{-- <a href="{{route('logout')}}">Logout</a> --}}
                             @endauth
 
                             @guest
@@ -71,7 +65,7 @@
                         {!! $menusHtml !!}
 
                         <li>
-                            <a href="contact.html">Liên Hệ</a>
+                            <a href="/lien-he">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -147,7 +141,7 @@
             {!! $menusHtml !!}    
             
             <li>
-                <a href="contact.html">Liên Hệ</a>
+                <a href="/lien-he">Liên Hệ</a>
             </li>
         </ul>
     </div>

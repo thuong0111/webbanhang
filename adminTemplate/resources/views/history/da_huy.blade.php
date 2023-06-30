@@ -49,12 +49,12 @@
                                                 </a>
                                             </td>
                                             <td style="text-align: center">
-                                                <form action="/capnhathuy" method="POST">
+                                                <form action="/mualai" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="trangthaihd4" value="4">
-                                                    <input type="hidden" name="idhoadonhuy" value="{{$hoadon->id}}">
+                                                    <input type="hidden" name="trangthai_dxl" value="1">
+                                                    <input type="hidden" name="idhoadon_dxl" value="{{$hoadon->id}}">
                                                     <button type="submit" style="background: red; border: none; width: 30px; 
-                                                        height: 30px; border-radius: 3px;"><i class="fas fa-trash" style="color: white"></i>
+                                                        height: 30px; border-radius: 3px;"><i class='fas fa-undo' style='color:white'></i>
                                                     </button>
                                                 </form>
                                             </td>

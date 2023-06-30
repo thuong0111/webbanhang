@@ -16,6 +16,7 @@ use App\Http\Controllers\SelectController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CTHoaDonController;
+use App\Http\Controllers\CTPhieuNhapController;
 use App\Http\Controllers\OnlineCheckoutController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\InforUserController;
@@ -207,10 +208,12 @@ Route::get('/tab', function () {
 Route::post('/capnhat2', [ App\Http\Controllers\Admin\CartController::class, 'danggiao']);
 Route::post('/capnhat3', [ App\Http\Controllers\Admin\CartController::class, 'hoanthanh']);
 Route::post('/capnhathuy', [ HoaDonController::class, 'dahuy']);
+Route::post('/mualai', [ HoaDonController::class, 'ud_dangxuly']);
 Route::post('/filterbydate', [ HoaDonController::class, 'filterbydate']);
 Route::post('/dashboard-filter', [ HoaDonController::class, 'dashboard_filter']);
 Route::post('/days-order', [ HoaDonController::class, 'days_order']);
 Route::post('/update-view', [ ProductController::class, 'update_view']);
+Route::get('/lien-he', [ CTPhieuNhapController::class, 'index']);
 
 
 

@@ -1,6 +1,6 @@
 <div class="row isotope-grid">
     @foreach($productts as $key => $productt)
-        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 m-l-70 isotope-item women">
             <!-- Block2 -->
             <div class="block2">
                 @csrf
@@ -13,17 +13,17 @@
                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             {{ $productt->name }}
                         </a>
-                        {{-- <input type="hidden" id="idsp" value="{{ $productt->id }}"> --}}
-                        <span class="stext-105 cl3">
+                        <span class="stext-105 cl3" style="display: flex">
 							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
+                            <p style="text-decoration: line-through;">{!! \App\Helpers\Helper::price($productt->price) !!}</p>
                         </span>
-                        {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
-                    <div class="btn-qv" style="padding: 0 0 0 100px;">
+                    </div>
+                    {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
+                    <div class="btn-qv" style="padding: 0 0 0 90px;">
                         <button value="{{$productt->id}}" class="js-show-modal1 hov-btn1" style="background: #89e5ff;
                              width: 100px;height: 35px; border-radius: 30px;">
-                            Quick View
+                            Xem Nhanh
                         </button>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -73,5 +73,5 @@
                 }
         });
 	});
-}); --}}
-</script>
+}); 
+</script>--}}

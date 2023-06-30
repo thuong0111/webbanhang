@@ -21,7 +21,7 @@
     user-select: none;
     padding: 16px 0;
     font-size: 20px;
-    line-height: 19px;
+    line-height: 22px;
     text-align: center;
     color: rgba(0,0,0,.8);
     background: #fff;

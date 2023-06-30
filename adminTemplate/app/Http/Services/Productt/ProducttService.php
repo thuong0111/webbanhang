@@ -13,7 +13,7 @@ use Ramsey\Uuid\Type\Integer;
 
 class ProducttService
 {
-    const LIMIT = 12;
+    const LIMIT = 9;
 
     public function get($page = null)
     {
@@ -67,7 +67,7 @@ class ProducttService
             ->where('active', 1)
             ->where('id', '!=', $id)
             ->orderByDesc('id')
-            ->limit(4)
+            ->limit(3)
             ->get();
     }
 }

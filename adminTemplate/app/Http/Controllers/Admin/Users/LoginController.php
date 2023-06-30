@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\Cart;
 use App\Models\HoaDon;
-use App\Models\Menu;
 use App\Models\Productt;
 use App\Models\User;
 class LoginController extends Controller
