@@ -40,7 +40,7 @@
                                         <tr class="table_row">
                                             <td class="column-1">
                                                 <div class="how-itemcart1">
-                                                    <img src="{{$productt->options->image}}" alt="IMG">
+                                                    <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html" style="position: absolute;margin-top:-22px"> <img src="{{$productt->options->image}}" alt="IMG"></a>
                                                 </div>
                                             </td>
                                             <td class="column-2">{{ $productt->name }}</td>
@@ -186,6 +186,8 @@
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" 
                                                 id="input4" onkeypress="moveToNext(event, 'input5')" placeholder="email">
                                             </div>
+                                            <input type="hidden" name="pttt" value="1">                                          
+                                            <input type="hidden" name="dstt" value="1">    
 
                                             @include('select.selectlist')
 
@@ -208,7 +210,7 @@
                 </div>
             </div>
     </form>
-        @if(Auth::check())
+        {{-- @if(Auth::check())
             <form action="{{ url('/vnpay') }}" method="POST" style="margin: -210px 0 0 1042px;">
                 @csrf
                 <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
@@ -228,7 +230,7 @@
                     Thanh Toan VNPay
                 </button>
             </form>
-        @endif
+        @endif --}}
             @if(Auth::check())
                 <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
                     @csrf

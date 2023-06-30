@@ -9,6 +9,8 @@
                 <th>Phone</th>
                 <th>Email</th>
                 <th>The order date</th>
+                {{-- <th>PT Thanh Toán</th>
+                <th>Trạng Thái ĐH</th> --}}
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>
@@ -20,6 +22,8 @@
                     <td>{{$customer->phone}}</td>
                     <td>{{$customer->email}}</td>
                     <td>{{$customer->created_at}}</td>
+                    {{-- <td>{{$customer->pt_thanh_toan_id}}</td>
+                    <td>{{$customer->ds_trang_thai_id}}</td> --}}
                     <td>&nbsp;</td>
                     <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{$customer->id}}" style="width:30px">

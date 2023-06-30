@@ -35,6 +35,8 @@ class CartController extends Controller
         $user=User::all()->count();
         $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
         $hdvl=Cart::all()->count();
+
+       
         return view('admin.carts.customer',[
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'List Product Orders',
@@ -98,7 +100,12 @@ class CartController extends Controller
         ->get();
 
         $carts = $this->cart->getProductForCart($customer);
-
+        $ctcart = DB::table('carts')
+        ->where('carts.customer_id', $customer->id)
+        ->join('pt_thanh_toans', 'carts.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'carts.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select('pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT')
+        ->get();
 
         $sp=Productt::all()->count();
         $hd=HoaDon::all()->count();
@@ -109,6 +116,7 @@ class CartController extends Controller
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
             'title' => 'Order Detail > ' . $customer->name,
             'customer' => $customer,
+            'ctcart' =>$ctcart,
             'carts' => $carts,
             'adr_customers' => $adr_customers,
             'S_customers' => $Size_customers,

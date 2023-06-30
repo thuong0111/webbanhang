@@ -83,7 +83,7 @@
                     </div> --}}
                     <form action="/timkiem" method="GET">
                     <div class="logo"style="border-radius: 16px">
-                        <input type="text" style="border-radius: 16px;width:300px;padding-left:18px" id="myInput" name="key" placeholder="Search..." a href=""><i class="zmdi zmdi-search" style="position: relative;
+                        <input type="text" style="border-radius: 16px;width:300px;padding-left:18px" id="myInput" name="key" placeholder="Tìm kiếm..." a href=""><i class="zmdi zmdi-search" style="position: relative;
                         margin-left: -24px;"></i></a>
                     </div>
                      </form>
