@@ -59,17 +59,3 @@
         });
     });
 </script>
-
-{{-- <script type="text/javascript">
-    $(document).ready(function(){
-	$(document).on('click','#clicksp',function(){
-	var idsp=document.getElementById('idsp').value;
-        $.ajax({
-                    url:"{{url('/update-view')}}",
-                    method:"POST",
-                    data:{idsp:idsp},
-                    success:function(data){
-                       
-                }
-        });
-	});
