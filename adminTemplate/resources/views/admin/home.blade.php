@@ -26,6 +26,8 @@
       </div>
     </form>
     <div class="col-md-12" id="chart" style="height: 250px;"></div>
+
+    <div class="col-md-12" id="chart-sp" style="height: 250px;"></div>
   </div>
   <div class="row">
     <div class="col-md-4 col-xs-12">
@@ -49,6 +51,8 @@
 
     </div>
   </div>
+  
+  
   
 
 @endsection

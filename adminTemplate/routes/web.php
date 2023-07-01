@@ -133,6 +133,7 @@ Route::middleware(['auth'])->group(function(){
         Route::get('customerslog',[ App\Http\Controllers\Admin\CartController::class, 'indexlog']);
         Route::get('customerslog/viewlog/{hoadon}',[ App\Http\Controllers\Admin\CartController::class, 'showlog']);
 
+
         #Customer Manager
         Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
 
@@ -212,8 +213,15 @@ Route::post('/mualai', [ HoaDonController::class, 'ud_dangxuly']);
 Route::post('/filterbydate', [ HoaDonController::class, 'filterbydate']);
 Route::post('/dashboard-filter', [ HoaDonController::class, 'dashboard_filter']);
 Route::post('/days-order', [ HoaDonController::class, 'days_order']);
+Route::get('/days-order', [ HoaDonController::class, 'days_order']);
+
+
+Route::post('/chart-sp', [ HoaDonController::class, 'chart_sp']);
+Route::get('/chart-sp', [ HoaDonController::class, 'chart_sp']);
 Route::post('/update-view', [ ProductController::class, 'update_view']);
 Route::get('/lien-he', [ CTPhieuNhapController::class, 'index']);
+Route::get('/print/{hoadon}', [ App\Http\Controllers\Admin\CartController::class, 'convert_html_pdf']);
+
 
 
 

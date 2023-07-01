@@ -13,7 +13,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
+use Barryvdh\DomPDF\PDF;
+use Illuminate\Support\Facades\App;
 
 class CartController extends Controller
 {
@@ -187,6 +188,125 @@ class CartController extends Controller
         ->update(['ds_trang_thai_id'=>$capnhat]);
         Session::flash('success', 'Cập nhật trạng thái thành công');
         return redirect('/admin/customerslog');
+    }
+    public function convert_html_pdf(HoaDon $hoadon){
+
+        $pdf=App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->print($hoadon));
+        return $pdf->stream();
+
+    }
+
+    public function print($hoadon)
+    {   
+        $users = DB::table('hoa_dons')
+        ->where('hoa_dons.id', $hoadon->id)
+        ->join('ct_hoa_dons', 'hoa_dons.id', '=', 'ct_hoa_dons.hoa_don_id')
+        ->select('ct_hoa_dons.name','ct_hoa_dons.phone','ct_hoa_dons.email','ct_hoa_dons.address','ct_hoa_dons.content')
+        ->first();
+        $hds=DB::table('hoa_dons')
+        ->where('hoa_dons.id', $hoadon->id)
+        ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
+        ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
+        ->select('hoa_dons.id','hoa_dons.thoigian','hoa_dons.tongtien','pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT')
+        ->get();
+        $dls = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        ->join('productts', 'ct_hoa_dons.product_id', '=', 'productts.id')
+        ->select('ct_hoa_dons.size','ct_hoa_dons.mau','ct_hoa_dons.SL','ct_hoa_dons.gia','ct_hoa_dons.thanhtien','productts.name')
+        ->get();
+        $print='';
+        $print.='
+
+        <style>
+            body{
+                font-family: DeJavu Sans
+            }
+           
+        </style>
+                <h1 style="text-align:center">Shop ARB</h1>
+                <h3 style="text-align:center">Thông Tin Hóa Đơn Đặt Hàng</h3>';
+                foreach($hds as $key=>$hd){
+                    $print.='   <b>Mã Hóa Đơn:  </b><span>' .$hd->id .'</span></br>';
+                }
+
+        $print.='
+
+                <b>Tên Người Nhận:  </b><span>' .$users->name .'</span></br>
+                <b>Số Điện Thoại Người Nhận:  </b><span>' .$users->phone .'</span></br>
+                <b>Email Người Nhận:  </b><span>' .$users->email .'</span></br>
+                <b>Địa Chỉ Người Nhận:  </b><span>' .$users->address .'</span></br>
+                <b>Ghi Chú:  </b><span>' .$users->content .'</span></br>
+        ';
+
+        foreach($hds as $key=>$hd){
+        $print.='
+        <b>Thời Gian Đặt Hàng:  </b><span>' .$hd->thoigian .'</span></br>
+        <b>Phương Thức Thanh Toán:  </b><span>' .$hd->tenthanhtoan .'</span></br>
+        ';
+        }
+        $print.='
+        <table class="table" style="border: 1px solid #000000">
+        <thead>
+            <tr>
+                <th style="margin-right:500px">Tên Sản Phẩm</th>
+                <th>Size</th>
+                <th>Màu</th>
+                <th>Số Lượng</th>
+                <th>Đơn Giá</th>
+                <th>Thành Tiền</th>
+            </tr>
+        </thead>
+        <tbody>';
+            foreach ($dls as $key =>$dl){
+            $print.='
+                <tr>
+                    <td style="text-align:center">'.$dl->name.'</td>
+                    <td style="text-align:center">'.$dl->size.'</td>
+                    <td style="text-align:center">'.$dl->mau.'</td>
+                    <td style="text-align:center">'.$dl->SL.'</td>
+                    <td style="text-align:center">'.$dl->gia.'</td>
+                    <td style="text-align:center">'.$dl->thanhtien.'</td>
+                </tr>';
+                    }
+                    foreach($hds as $key=>$hd){
+            $print.='
+            <tr></tr>
+            <tr>
+                td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>';
+                $print.=' <td><b>Tổng Tiền:</b>'.$hd->tongtien.'</td>
+            </tr>
+            ';
+        }
+        $print.='
+        </tbody>
+        </table>
+        ';
+
+        $print.='
+        
+        <table class="table">
+        <thead>
+            <tr>
+                <td style="width:200px; padding-top:50px"></td>
+                <td style="width:800px; text-align:center; padding-top:50px">........,Ngày......Tháng......Năm.......</td>
+            </tr>
+
+            <tr>
+                <td style="width:200px; padding-top:10px">Người nhận</td>
+                <td style="width:800px; text-align:center; padding-top:10px">Người lập hóa đơn</td>
+            </tr>
+            <tr>
+            <td style="width:200px; padding-top:10px"></td>
+            <td style="width:800px; text-align:center; padding-top:10px; font-size:12px">(ký và ghi rõ họ tên)</td>
+            </tr>
+        </table>
+        ';
+        return $print;
     }
    
 }

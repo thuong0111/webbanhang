@@ -14,7 +14,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
         chart30daysorder();
-        var chart=new Morris.Bar({
+        chartsp();
+        var chart=new Morris.Area({
         element: 'chart',
         lineColors: ['#819C79','#FF6541'],
         // pointFillColors: ['#ffffff'],
@@ -28,6 +29,22 @@
         labels: ['Tổng Tiền']
         });
 
+        var chartsp=new Morris.Bar({
+        element: 'chart-sp',
+        lineColors: ['#819C79','#FF6541'],
+        // pointFillColors: ['#ffffff'],
+        // pointStrokeColors: ['black'],
+        // fillOpacity: 0.6,
+        parseTime: false,
+        hideHover: 'auto',
+        xkey: 'product_id',
+        ykeys: ['sumsl'],
+        // behaveLikeLine: true,
+        labels: ['Tổng SL']
+        });
+
+
+
 
         function chart30daysorder(){
             var _token=$('input[name="_token"]').val();
@@ -39,6 +56,21 @@
             success:function(data)
             {
              chart.setData(data);
+            }
+            });
+        }
+
+
+        function chartsp(){
+            var _token=$('input[name="_token"]').val();
+            $.ajax({
+            url:" {{url('/chart-sp')}}", 
+            method: "POST",
+            dataType: "JSON",
+            data: {_token:_token},
+            success:function(data)
+            {
+                chartsp.setData(data);
             }
             });
         }

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreHoaDonRequest;
 use App\Http\Requests\UpdateHoaDonRequest;
+use App\Models\CTHoaDon;
+use App\Models\Productt;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\Constraint\Count;
 
 class HoaDonController extends Controller
 {
@@ -253,7 +256,7 @@ class HoaDonController extends Controller
             $get = HoaDon::whereBetween('thoigian', [$sub7days, $now])->orderBy('thoigian', 'ASC')->get();
             }elseif ($data['dashboard_value']=='thangtruoc'){
             $get = HoaDon::whereBetween('thoigian', [$dau_thangtruoc, $cuoi_thangtruoc])->orderBy('thoigian', 'ASC')->get();
-            }elseif($data['dashboard_value']== 'thangnay'){
+            }elseif($data['dashboard_value']=='thangnay'){
             $get = HoaDon::whereBetween('thoigian', [$dauthangnay, $now])->orderBy('thoigian', 'ASC')->get();
             }else{
             $get =HoaDon::whereBetween('thoigian', [$sub365days, $now])->orderBy('thoigian', 'ASC')->get(); }
@@ -280,6 +283,25 @@ class HoaDonController extends Controller
                     'tongtien'=>$val->tongtien
                     );
                  } 
+                    echo $data=json_encode($chart_data);        
+            }
+
+
+            public function chart_sp(Request $request)
+            {
+                $get=CTHoaDon::select('product_id')
+                ->selectRaw('sum(SL) as sumsl')
+                ->groupBy('product_id')
+                ->get();
+                foreach($get as $key=> $val){
+                    $nameproduct=Productt::where('id',$val->product_id)->select('name')->get();
+                    foreach($nameproduct as $key=>$sp){
+                    $chart_data[] = array(
+                    'product_id'=> $sp->name,
+                    'sumsl'=>$val->sumsl
+                    );
+                    }
+                 }
                     echo $data=json_encode($chart_data);        
             }
 

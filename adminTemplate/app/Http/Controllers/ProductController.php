@@ -28,6 +28,7 @@ class ProductController extends Controller
         $productRelated=$this->producttService->getRelated($id);
         $slview=$productt->view;
         $slview+=1;
+       
         Productt::where('id',$productt->id)->update(['view'=>$slview]);
         return view('productts.content', [
             'title'=>$productt->name,

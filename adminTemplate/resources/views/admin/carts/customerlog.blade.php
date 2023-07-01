@@ -53,6 +53,11 @@
                                 <i class="fa fa-check" style="color: rgb(120, 243, 120)"></i></button>
                         </form>
                     </td>
+                    <td style="text-align: center">
+                        <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px">
+                            <i class="fa fa-print"></i>
+                        </a>
+                    </td>
                     
                 </tr>
             @endforeach
