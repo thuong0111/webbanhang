@@ -230,6 +230,8 @@ Route::get('/days-order', [ HoaDonController::class, 'days_order']);
 
 Route::post('/chart-sp', [ HoaDonController::class, 'chart_sp']);
 Route::get('/chart-sp', [ HoaDonController::class, 'chart_sp']);
+Route::get('/test', [ HoaDonController::class, 'test']);
+
 Route::post('/update-view', [ ProductController::class, 'update_view']);
 Route::get('/lien-he', [ CTPhieuNhapController::class, 'index']);
 Route::get('/print/{hoadon}', [ App\Http\Controllers\Admin\CartController::class, 'convert_html_pdf']);

@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Jobs\SendMail;
 use App\Models\BienThe;
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\CTHoaDon;
 use Illuminate\Http\Request;
 use App\Models\Customer;
@@ -95,7 +96,6 @@ class CartService
                     'tongtien' => (int)$request->input('tongtien'),
                     'tiengg' => (int)$request->input('tiengg'),
                     'tientra' => (int)$request->input('tientra'),
-
                 ]);
                 $content = FacadesCart::content();
                 $data=[];
@@ -144,7 +144,8 @@ class CartService
 
             
             DB::commit();
-            Session::flash('success', 'Orders success.');
+            Session::flash('success', 'Đặt Hàng Thành Công.');
+            // return redirect('/thanhcong');
 
             #Queue
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
@@ -152,7 +153,7 @@ class CartService
             Session::forget('carts');
         } catch (\Exception $err) {
             DB::rollBack();
-            Session::flash('error', 'Orders fail.');
+            Session::flash('error', 'Đặt Hàng Thất Bại.');
             return false;
         }
 
@@ -173,6 +174,7 @@ class CartService
                     'tiengg' => (int)$request->input('tiengg'),
                     'tientra' => (int)$request->input('tientra'),
                 ]);
+
                 $content = FacadesCart::content();
                 $data=[];
                 foreach($content as $v_content){
@@ -200,23 +202,23 @@ class CartService
                     
                 }
                 CTHoaDon::insert($data);
-            }else{
-                $customer = Customer::create([
-                    'name' => $request->input('namevnpay'),
-                    'phone' => $request->input('phonevnpay'),
-                    'address' => $request->input('addressvnpay'),
-                    'city' => $request->input('cityvnpay'),
-                    'district' => $request->input('quanhuyenvnpay'),
-                    'ward' => $request->input('phuongxavnpay'),
-                    'email' => $request->input('emailvnpay'),
-                    'content' => $request->input('contentvnpay'),
-                ]);
-                $size_ctm = $request->input('sizessss');
-                $mau_ctm = $request->input('maussss');
-                // $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
-                FacadesCart::destroy();
-                return redirect('/thanhcong');
             }
+            // else{
+            //     $customer = Customer::create([
+            //         'name' => $request->input('namevnpay'),
+            //         'phone' => $request->input('phonevnpay'),
+            //         'address' => $request->input('addressvnpay'),
+            //         'city' => $request->input('cityvnpay'),
+            //         'district' => $request->input('quanhuyenvnpay'),
+            //         'ward' => $request->input('phuongxavnpay'),
+            //         'email' => $request->input('emailvnpay'),
+            //         'content' => $request->input('contentvnpay'),
+            //     ]);
+            //     $size_ctm = $request->input('sizessss');
+            //     $mau_ctm = $request->input('maussss');
+            //     // $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
+            //     FacadesCart::destroy();
+            // }
 
             DB::commit();
             
@@ -225,7 +227,7 @@ class CartService
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
         }catch(\Exception $err){
             DB::rollBack();
-            Session::flash('error', 'Orders fail.');
+            Session::flash('error', 'Đặt Hàng Thất Bại.');
             return false;
         }
 

@@ -19,6 +19,9 @@ class HoaDonController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function test()
+    { Session::forget('coupon');
+    }
     public function index()
     {
         

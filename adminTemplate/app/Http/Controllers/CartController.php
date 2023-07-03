@@ -104,6 +104,7 @@ class CartController extends Controller
         
         Cart::destroy();
         Session::forget('carts');
+        Session::forget('coupon');
         Session::flash('success', 'Orders success.');
         return redirect('/carts');
     }
@@ -189,33 +190,43 @@ class CartController extends Controller
 
     public function giamgia(Request $request){
         $data = $request->all();
+        $magiamgia=$data['coupon'];
         $coupon = Coupon::where('magg',$data['coupon'])->first();
         if($coupon){
-            $count_coupon = $coupon->count();
-            if($count_coupon>0){
-                $coupon_session = Session::get('coupon');
-                if($coupon_session == true){
-                    $is_avaiable = 0;
-                    if($is_avaiable == 0){
-                        $cou[] = array(
-                        'magg'>$coupon->magg,
-                        'tngg'=> $coupon->tngg,
-                        'sotiengg' => $coupon->sotiengg,
-                        );
+            if($coupon->slgg<=0){
+                return redirect()->back()->with('error', 'Mã giảm gia đã hết!!!');
+            }
+                    $count_coupon = $coupon->count();
+                    if($count_coupon>0){
+                        $coupon_session = Session::get('coupon');
+                        if($coupon_session == true){
+                            $is_avaiable = 0;
+                            if($is_avaiable == 0){
+                                $cou[] = array(
+                                'magg'>$coupon->magg,
+                                'tngg'=> $coupon->tngg,
+                                'sotiengg' => $coupon->sotiengg,
+                                );
+                                Session::put('coupon',$cou);
+                            }
+                        }
+                            else{
+                                $cou[] = array(
+                                    'magg'>$coupon->magg,
+                                    'tngg'=> $coupon->tngg,
+                                    'sotiengg' => $coupon->sotiengg,
+                            );
                         Session::put('coupon',$cou);
                     }
-                }
-                else{
-                    $cou[] = array(
-                        'magg'>$coupon->magg,
-                        'tngg'=> $coupon->tngg,
-                        'sotiengg' => $coupon->sotiengg,
-                );
-                Session::put('coupon',$cou);
-            }
-                Session::save();
-                return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
-            }
+                        Session::save();
+                                $slgiamgia=0;
+                                $slgg=Coupon::where('magg',$data['coupon'])->select('slgg')->get();
+                                foreach($slgg as $sl){
+                                $slgiamgia=$sl->slgg-1;
+                                }
+                        Coupon::where('magg',$data['coupon'])->update(['slgg'=>$slgiamgia]);
+                        return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
+                    }
         }else{
             return redirect()->back()->with('error', 'Mã giảm giá không chính xác!!!');
         }

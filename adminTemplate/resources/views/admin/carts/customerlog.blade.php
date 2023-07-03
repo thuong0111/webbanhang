@@ -12,6 +12,8 @@
                 <th>Thanh toán</th>
                 <th>Trạng thái HD</th>
                 <th>Tổng tiền</th>
+                <th>Tiền Giảm Giá</th>
+                <th>Tiền Phải Trả</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>
@@ -26,6 +28,8 @@
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
                     <td>{{$hoadon->tongtien}}</td>
+                    <td>{{$hoadon->tiengg}}</td>
+                    <td>{{$hoadon->tientra}}</td>
                     <td>&nbsp;</td>
                     <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px">

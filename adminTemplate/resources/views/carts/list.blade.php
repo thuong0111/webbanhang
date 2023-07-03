@@ -29,7 +29,8 @@
                     <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
                         <div class="m-l-25 m-r--38 m-lr-0-xl">
                             <div class="wrap-table-shopping-cart">
-                                @php $total = 0;  
+                                @php $total = 0; 
+                                
                                 $content = Cart::content();
                                 @endphp
                                 <table class="table-shopping-cart">
@@ -167,6 +168,7 @@
                                             @endphp
                                             <li>Tổng đã giảm :{{number_format($totalend,0,',','.')}} VND </li>
                                             <input type="hidden" name="tientra" value="{{$totalend}}">
+    
 
 
                                         </p>
@@ -222,7 +224,11 @@
                                                 <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" placeholder="Ghi Chú"
                                                 id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>
                                                 <input type="hidden" name="pttt" value="1">                                          
-                                                <input type="hidden" name="dstt" value="1">                                          
+                                                <input type="hidden" name="dstt" value="1">
+                                                @if(Session::get('coupon')==false)
+                                                <input type="hidden" name="tiengg" value="0"> 
+                                                <input type="hidden" name="tientra" value="{{$total}}">  
+                                                @endif                                         
                                             </div>
                                         @else
                                         
@@ -282,19 +288,23 @@
                     <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
                     <input type="hidden" name="ptttvnpay" value="2"> 
                     <input type="hidden" name="dsttvnpay" value="1"> 
+                    @if(Session::get('coupon'))
                     <input type="hidden" name="tiengg" value="{{ $total_coupon }}"> 
                     <input type="hidden" name="tientra" value="{{$totalend}}"> 
+                    @else
+                    <input type="hidden" name="tiengg" value="0"> 
+                    <input type="hidden" name="tientra" value="{{$total}}"> 
+                    @endif
                     <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
                     <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
                     <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Thanh Toan VNPay
                     </button>
                 </form>   
-            @else
+            {{-- @else
                 <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
                     @csrf
-                    {{-- <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
-                    <input type="hidden" name="tongtienvnpay" value="{{$total}}"> --}}
+                    
                     <input type="hidden" id="inputname" name="namevnpay">
                     <input type="hidden" id="inputphone" name="phonevnpay">
                     <input type="hidden" id="inputaddress" name="addressvnpay">
@@ -304,14 +314,13 @@
                     <input type="hidden" id="xa" name="phuongxavnpay">
                     <input type="hidden" id="inputcontent" name="contentvnpay">
 
-                    {{-- <input type="hidden" name="ptttvnpay" value="1">  --}}
-                    {{-- <input type="hidden" name="dsttvnpay" value="1">  --}}
+                    
                     <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
                     <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
                     <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
                         Thanh Toan VNPay
                     </button>
-                </form>
+                </form> --}}
             @endif
     @else
            
