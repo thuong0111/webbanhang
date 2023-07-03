@@ -15,6 +15,8 @@ class HoaDon extends Model
         'ds_trang_thai_id',
         'thoigian',
         'tongtien',
+        'tiengg',
+        'tientra',
         'id',
         // 'ds_trang_thai_id',
         

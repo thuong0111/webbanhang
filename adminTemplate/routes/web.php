@@ -15,6 +15,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CTHoaDonController;
 use App\Http\Controllers\CTPhieuNhapController;
 use App\Http\Controllers\OnlineCheckoutController;
@@ -31,6 +32,7 @@ use App\Models\CTHoaDon;
 use App\Models\HoaDon;
 use App\Models\TinhTP;
 use Carbon\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Http\Request;
 // use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\DB;
@@ -122,6 +124,16 @@ Route::middleware(['auth'])->group(function(){
             Route::get('edit/{mau}', [MauController::class, 'show']);
             Route::post('edit/{mau}', [MauController::class, 'update']);
             Route::DELETE('destroy', [MauController::class, 'destroy']);
+        });
+
+         #giamgia
+         Route::prefix('giamgia')->group(function(){
+            Route::get('add', [CouponController::class, 'create']);
+            Route::post('add', [CouponController::class, 'store']);
+            Route::get('list', [CouponController::class, 'index']);
+            Route::get('edit/{giamgia}', [CouponController::class, 'show']);
+            Route::post('edit/{giamgia}', [CouponController::class, 'update']);
+            Route::DELETE('destroy', [CouponController::class, 'destroy']);
         });
 
         #Customer
@@ -221,6 +233,8 @@ Route::get('/chart-sp', [ HoaDonController::class, 'chart_sp']);
 Route::post('/update-view', [ ProductController::class, 'update_view']);
 Route::get('/lien-he', [ CTPhieuNhapController::class, 'index']);
 Route::get('/print/{hoadon}', [ App\Http\Controllers\Admin\CartController::class, 'convert_html_pdf']);
+Route::post('/check-coupon', [App\Http\Controllers\CartController::class, 'giamgia']);
+
 
 
 

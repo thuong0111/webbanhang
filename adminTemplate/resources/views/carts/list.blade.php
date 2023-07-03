@@ -1,7 +1,26 @@
 @extends('main')
 
 @section('content')
-    <form class="bg0 p-t-130 p-b-85" method="post">
+       
+
+    <form action="/check-coupon" method="POST" style="padding-top: 150px">
+        @csrf
+        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Mã Giảm Giá">
+         <button type="submit" name="check-coupon">
+             Xác Nhận Mã
+         </button>
+    </form>
+
+    @if(session()->has('message'))
+    <div class="alert alert-success">
+        {!!session()->get('message')!!}
+    </div>
+    @elseif(session()->has('error'))
+    <div class="alert alert-danger">
+        {!!session()->get('error')!!}
+    </div>
+    @endif
+    <form class="bg0 p-b-85" method="post">
         @include('admin.alert')
 
         @if (count($productts) != 0)
@@ -118,7 +137,7 @@
                                 <div class="size-208">
                                     <span class="mtext-101 cl2">
                                         Tổng Tiền:
-                                    </span>
+                                    </span> 
                                 </div>
 
                                 <div class="size-209 p-t-1">
@@ -128,6 +147,46 @@
                                     <input type="hidden" name="tongtien" value="{{$total}}">
                                 </div>
                             </div>
+
+                            <li>
+                                @if(Session::get('coupon'))
+                                    @foreach(Session::get('coupon') as $key => $cou)
+                                        @if($cou['tngg']==1)
+                                        Mã giảm : {{$cou['sotiengg']}} %
+                                        <p>
+                                            @php
+                                            $total_coupon = ($total * $cou['sotiengg'])/100;
+                                            echo '<p><li>Tổng giảm:'.number_format($total_coupon,0,',','.').' VND</li></p>';
+                                            @endphp
+                                            <input type="hidden" name="tiengg" value="{{$total_coupon}}">
+
+                                        </p>
+                                        <p>
+                                            @php
+                                               $totalend=$total-$total_coupon;
+                                            @endphp
+                                            <li>Tổng đã giảm :{{number_format($totalend,0,',','.')}} VND </li>
+                                            <input type="hidden" name="tientra" value="{{$totalend}}">
+
+
+                                        </p>
+                                        @elseif($cou['tngg']==2)
+                                            Mã giảm : {{number_format($cou['sotiengg'],0,',','.')}} VND
+                                            <p>
+                                                
+                                               @php
+                                               $total_coupon=$cou['sotiengg'];
+                                                $totalend = $total - $cou['sotiengg'];
+                                                @endphp
+                                                <input type="hidden" name="tiengg" value="{{$total_coupon}}">
+                                            </p>
+                                            <p><li>Số tiền cần phải thanh toán:{{ number_format($totalend,0,',','.')}} VND</li></p>
+                                            <input type="hidden" name="tientra" value="{{$totalend}}">
+
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </li>
 
                             <div class="flex-w flex-t bor12 p-t-15 p-b-30">
 
@@ -210,6 +269,7 @@
                 </div>
             </div>
     </form>
+    
             @if(Auth::check())
                 <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
                     @csrf
@@ -222,6 +282,8 @@
                     <input type="hidden" name="contentvnpay" id="textarealay" value=""> 
                     <input type="hidden" name="ptttvnpay" value="2"> 
                     <input type="hidden" name="dsttvnpay" value="1"> 
+                    <input type="hidden" name="tiengg" value="{{ $total_coupon }}"> 
+                    <input type="hidden" name="tientra" value="{{$totalend}}"> 
                     <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
                     <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
                     <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">

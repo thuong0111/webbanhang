@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\CartService;
 use App\Http\View\Composers\CartComposer;
 use App\Models\BienThe;
+use App\Models\Coupon;
 use App\Models\Mau;
 use App\Models\PhuongXa;
 use App\Models\Productt;
@@ -185,4 +186,38 @@ class CartController extends Controller
         $data=PhuongXa::where('quan_huyen_id', $request->id)->get();
         return response()->json($data);
 	}
+
+    public function giamgia(Request $request){
+        $data = $request->all();
+        $coupon = Coupon::where('magg',$data['coupon'])->first();
+        if($coupon){
+            $count_coupon = $coupon->count();
+            if($count_coupon>0){
+                $coupon_session = Session::get('coupon');
+                if($coupon_session == true){
+                    $is_avaiable = 0;
+                    if($is_avaiable == 0){
+                        $cou[] = array(
+                        'magg'>$coupon->magg,
+                        'tngg'=> $coupon->tngg,
+                        'sotiengg' => $coupon->sotiengg,
+                        );
+                        Session::put('coupon',$cou);
+                    }
+                }
+                else{
+                    $cou[] = array(
+                        'magg'>$coupon->magg,
+                        'tngg'=> $coupon->tngg,
+                        'sotiengg' => $coupon->sotiengg,
+                );
+                Session::put('coupon',$cou);
+            }
+                Session::save();
+                return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
+            }
+        }else{
+            return redirect()->back()->with('error', 'Mã giảm giá không chính xác!!!');
+        }
+    }
 }

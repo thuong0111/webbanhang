@@ -93,6 +93,9 @@ class CartService
                     'ds_trang_thai_id'=>$request->input('dstt'),
                     'thoigian'=>Carbon::now('Asia/Ho_Chi_Minh'),
                     'tongtien' => (int)$request->input('tongtien'),
+                    'tiengg' => (int)$request->input('tiengg'),
+                    'tientra' => (int)$request->input('tientra'),
+
                 ]);
                 $content = FacadesCart::content();
                 $data=[];
@@ -167,6 +170,8 @@ class CartService
                     'ds_trang_thai_id'=>$request->input('dsttvnpay'),
                     'thoigian'=>Carbon::now('Asia/Ho_Chi_Minh'),
                     'tongtien' => (int)$request->input('tongtienvnpay'),
+                    'tiengg' => (int)$request->input('tiengg'),
+                    'tientra' => (int)$request->input('tientra'),
                 ]);
                 $content = FacadesCart::content();
                 $data=[];
