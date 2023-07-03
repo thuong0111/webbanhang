@@ -29,11 +29,11 @@
                     <td>&nbsp;</td>
                     <td style="text-align: center;">
                         <a class="btn btn-primary btn-sm" href="/admin/productts/edit/{{$productt->id}}" style="width:30px">
-                            <i class="fas fa-edit"></i>
+                            <span class="icon" title="Edit Product"><i class="fas fa-edit"></i></span>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 
                             onclick="removeRow({{$productt->id}}, '/admin/productts/destroy')" style="width:30px">
-                            <i class="fas fa-trash"></i>
+                            <span class="icon" title="Delete Product"><i class="fas fa-trash"></i></span>
                         </a>
                     </td>
                 </tr>

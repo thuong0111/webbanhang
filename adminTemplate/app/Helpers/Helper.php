@@ -23,11 +23,11 @@ class Helper
                         <td>&nbsp;</th>
                         <td>
                             <a class="btn btn-primary btn-sm" href="/admin/menus/edit/' . $menu->id . '">
-                                <i class="fas fa-edit"></i>
+                                <span class="icon" title="Edit Category"><i class="fas fa-edit"></i></span>
                             </a>
                             <a class="btn btn-danger btn-sm" href="#" 
                                 onclick="removeRow(' . $menu->id . ', \'/admin/menus/destroy\')">
-                                <i class="fas fa-trash"></i>
+                                <span class="icon" title="Delete Category"><i class="fas fa-trash"></i></span>
                             </a>
                         </td>
                     </tr>

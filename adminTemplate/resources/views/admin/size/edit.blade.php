@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Tên Size</label>
+        <label for="menu">Name Size</label>
         <input type="text" name="tensize" value="{{$size->tensize}}" class="form-control" placeholder="Enter name">
       </div>
 

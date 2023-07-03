@@ -19,7 +19,7 @@
                     <td>{{$User->email}}</td>
                     <td>{{$User->password}}</td>
                     <td>&nbsp;</td>
-                    <td style="text-align: center">
+                    {{-- <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/Users/view/{{$User->id}}" style="width:30px">
                             <i class="fas fa-eye"></i>
                         </a>
@@ -27,7 +27,7 @@
                             onclick="removeRow({{$User->id}}, '/admin/Users/destroy')" style="width:30px">
                             <i class="fas fa-trash"></i>
                         </a>
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
         </tbody>

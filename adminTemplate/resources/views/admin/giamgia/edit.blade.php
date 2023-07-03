@@ -8,27 +8,27 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="">Tên Giảm Giá</label>
+        <label for="">Name Discount</label>
         <input type="text" name="tengg" value="{{$size->tengg}}" class="form-control" >
       </div>
       <div class="form-group">
-        <label for="">Mã Giảm Giá</label>
+        <label for="">Discount Code</label>
         <input type="text" name="magg" value="{{$size->magg}}" class="form-control" >
       </div>
       <div class="form-group">
-        <label for="">Số Lượng</label>
+        <label for="">Quantity</label>
         <input type="text" name="slgg" value="{{$size->slgg}}" class="form-control" >
       </div>
       <div class="form-group">
-        <label for="">Tính Năng Giảm Giá</label>
+        <label for="">Code Feature</label>
         <select class="form-control" name="tngg" value="{{$size->tngg}}">
-            <option value="0">--- Chọn ---</option>
-              <option value="1">Giảm theo %</option>
-              <option value="2">Giảm theo tiền</option>
+            <option value="0">--- Choose ---</option>
+              <option value="1">Reduce by Percent (%)</option>
+              <option value="2">Reduce by moneys</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="">Số Tiền hoặc % Giảm Giá</label>
+        <label for="">Enter percentage(%) or moneys reduce</label>
         <input type="text" name="sotiengg" value="{{$size->sotiengg}}" class="form-control" >
       </div>
 
@@ -48,7 +48,7 @@
       </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Update Giamr Giá</button>
+      <button type="submit" class="btn btn-primary">Update Discount</button>
     </div>
     @csrf
   </form>

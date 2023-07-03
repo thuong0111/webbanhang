@@ -164,7 +164,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Size
+                <p> SIZE
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -189,7 +189,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Mau
+                <p> COLOR
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -241,7 +241,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Hóa Đơn ĐN
+                <p> BILL LOGIN
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -250,7 +250,7 @@
                 <li class="nav-item">
                     <a href="/admin/customerslog" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>DS Hóa Đơn</p>
+                        <p>List Bill</p>
                     </a>
                 </li>
 
@@ -260,7 +260,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Giam Gia
+                <p> DISCOUNT
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -268,13 +268,13 @@
                 <li class="nav-item">
                     <a href="/admin/giamgia/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Them Ma</p>
+                        <p>Add Discount Code</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/giamgia/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Giam Gia</p>
+                        <p>List Distcount Code</p>
                     </a>
                 </li>
 

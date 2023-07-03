@@ -4,7 +4,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Tên Mau</label>
+        <label for="menu">Name Color</label>
         <input type="text" name="tenmau" class="form-control" value="{{old('tenmau')}}" placeholder="Enter ">
       </div>
 
@@ -21,7 +21,7 @@
       </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Add Size</button>
+      <button type="submit" class="btn btn-primary">Add Color</button>
     </div>
     @csrf
   </form>

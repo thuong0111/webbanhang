@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label >Tên Sản Phẩm</label>
+        <label>Name Product</label>
         <select class="form-control" name="san_pham_id">
             @foreach ($sps as $sp)
                 <option value="{{$sp->id}}" {{$ctsp->san_pham_id == $sp->id ? 'selected' : ''}}>
@@ -20,7 +20,7 @@
       
 
       <div class="form-group">
-        <label >Tên Size</label>
+        <label >Name Size</label>
         <select class="form-control" name="size_id">
             @foreach ($sizes as $size)
                 <option value="{{$size->id}}" {{$ctsp->size_id == $size->id ? 'selected' : ''}}>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="form-group">
-        <label>Tên Màu</label>
+        <label>Name Color</label>
         <select class="form-control" name="mau_id">
             @foreach ($maus as $mau)
                 <option value="{{$mau->id}}" {{$ctsp->mau_id == $mau->id ? 'selected' : ''}}>
@@ -49,7 +49,7 @@
       
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Update CTSP</button>
+      <button type="submit" class="btn btn-primary">Update Detail</button>
     </div>
     @csrf
   </form>

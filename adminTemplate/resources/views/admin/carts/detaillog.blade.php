@@ -18,13 +18,13 @@
         <table class="table">
             <tbody>
             <tr class="table_head">
-                <th class="column-1">Hình</th>
-                <th class="column-2">Tên SP</th>
-                <th class="column-3">Gia</th>
-                <th class="column-4">SL</th>
+                <th class="column-1">Image</th>
+                <th class="column-2">Name Product</th>
+                <th class="column-3">Price</th>
+                <th class="column-4">Quantity</th>
                 <th class="column-5">Size</th>
-                <th class="column-5">Màu</th>
-                <th class="column-6">Thành tiền</th>
+                <th class="column-5">Color</th>
+                <th class="column-6">Total</th>
             </tr>
 
             @foreach($ctproducts as $key => $ctproduct)

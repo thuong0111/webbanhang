@@ -7,7 +7,7 @@
 @section('content')
 <form action="" method="POST">
   <div class="form-group">
-    <label >Sản Phẩm</label>
+    <label >Product</label>
     <select class="form-control" name="san_pham_id">
         @foreach ($sps as $sp)
           <option value="{{$sp->id}}">{{$sp->name}}</option>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="form-group">
-    <label >Màu</label>
+    <label >Color</label>
     <select class="form-control" name="mau_id">
         @foreach ($maus as $mau)
           <option value="{{$mau->id}}">{{$mau->tenmau}}</option>
@@ -38,7 +38,7 @@
   </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Add CTSP</button>
+      <button type="submit" class="btn btn-primary">Add Detail</button>
     </div>
     @csrf
   </form>

@@ -28,7 +28,6 @@
                     </td>
                     <td>{!! \App\Helpers\Helper::active($slider->active) !!}</td>
                     <td>{{$slider->updated_at}}</td>
-                    <td>&nbsp;</td>
                     <td style="text-align: center;">
                         <a class="btn btn-primary btn-sm" href="/admin/sliders/edit/{{$slider->id}}" style="width:30px">
                             <i class="fas fa-edit"></i>
@@ -38,6 +37,7 @@
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
+                    <td>&nbsp;</td>
                 </tr>
             @endforeach
         </tbody>

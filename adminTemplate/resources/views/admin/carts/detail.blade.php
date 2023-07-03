@@ -29,8 +29,8 @@
                 <th class="column-4">Quantity</th>
                 <th class="column-5">Size</th>
                 <th class="column-5">Color</th>
-                <th class="column-5">PT Thanh Toan</th>
-                <th class="column-5">Trang Thai HD</th>
+                <th class="column-5">Payment Pethods</th>
+                <th class="column-5">Active</th>
                 <th class="column-6">Total</th>
             </tr>
 
@@ -76,7 +76,7 @@
                     <td></td>
                     <td colspan="4" class="text-right" style="font-size:20px; font-family: emoji;
                         font-weight: bold;">
-                        Total Money
+                        Total Money:
                     </td>
                     <td style="font-size:20px; font-family: emoji; font-weight: bold;">
                         {{ number_format($total, 0, '', '.') }}

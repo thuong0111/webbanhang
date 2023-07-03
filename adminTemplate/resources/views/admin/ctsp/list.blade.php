@@ -5,10 +5,10 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Tên SP</th>
-                <th>Tên Size</th>
-                <th>Tên Màu</th>
-                <th>SL</th>
+                <th>Name Product</th>
+                <th>Name Size</th>
+                <th>Name Color</th>
+                <th>Quantity</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>
@@ -22,13 +22,14 @@
                     <td>{{$ctsp->SL}}</td>
                     <td style="text-align: center; display: flex;">
                         <a class="btn btn-primary btn-sm" href="/admin/ctsp/edit/{{$ctsp->id}}" style="width:30px">
-                            <i class="fas fa-edit"></i>
+                            <span class="icon" title="Edit"><i class="fas fa-edit"></i></span>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 
                             onclick="removeRow({{$ctsp->id}}, '/admin/ctsp/destroy')" style="width:30px">
-                            <i class="fas fa-trash"></i>
+                            <span class="icon" title="Delete"><i class="fas fa-trash"></i></span>
                         </a>
                     </td>
+                    <th>&nbsp;</th>
                 </tr>
             @endforeach
         </tbody>
