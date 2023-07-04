@@ -21,7 +21,10 @@
                     <td>{{$ctsp->tenmau}}</td>
                     <td>{{$ctsp->SL}}</td>
                     <td style="text-align: center; display: flex;">
-                        <a class="btn btn-primary btn-sm" href="/admin/ctsp/edit/{{$ctsp->id}}" style="width:30px">
+                        <a class="btn btn-primary btn-sm" href="/admin/ctsp/add" style="width:30px">
+                            <span class="icon" title="Add"><i class="fas fa-plus"></i></span>
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="/admin/ctsp/edit/{{$ctsp->id}}" style="width:30px; margin: 0 2px 0 2px;">
                             <span class="icon" title="Edit"><i class="fas fa-edit"></i></span>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 

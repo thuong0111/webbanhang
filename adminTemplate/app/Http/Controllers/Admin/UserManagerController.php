@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\HoaDon;
 use App\Models\Productt;
 use App\Models\User;
+
 use Illuminate\Http\Request;
 
 class UserManagerController extends Controller
@@ -34,6 +35,26 @@ class UserManagerController extends Controller
             'users'=>$user,
             'sp_view'=>$view_sp,
             'hdvls'=>$hdvl
+        ]);
+    }
+
+    public function show(User $users)
+    {
+
+        $sp=Productt::all()->count();
+        $hd=HoaDon::all()->count();
+        $user=User::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $hdvl=Cart::all()->count();
+        return view('admin.manager_user.detail_customer', [
+            'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
+            'title' => 'Infor >'. $users->name,
+            'spss'=>$sp,
+            'hds'=>$hd,
+            'users'=>$user,
+            'sp_view'=>$view_sp,
+            'hdvls'=>$hdvl,
+            'users'=> $users
         ]);
     }
 

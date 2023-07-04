@@ -13,17 +13,17 @@
                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             {{ $productt->name }}
                         </a>
-                        <span class="stext-105 cl3" style="display: flex">
+                        <em style="text-decoration: line-through; padding:0 0 0 110px">{!! \App\Helpers\Helper::price($productt->price) !!}</em>
+                        <span class="stext-105 cl3" style=" padding:0 0 0 110px">
 							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
-                            <p style="text-decoration: line-through;">{!! \App\Helpers\Helper::price($productt->price) !!}</p>
                         </span>
                     </div>
                     {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
                     <div class="btn-qv" style="padding: 0 0 0 90px;">
-                        <button value="{{$productt->id}}" class="js-show-modal1 hov-btn1" style="background: #89e5ff;
-                             width: 100px;height: 35px; border-radius: 30px;">
+                        {{-- <button value="{{$productt->id}}" class="js-show-modal1 hov-btn1" style="background: #89e5ff;
+                             width: 90px;height: 35px; border-radius: 30px;">
                             Xem Nhanh
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>

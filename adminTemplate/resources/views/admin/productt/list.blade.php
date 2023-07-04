@@ -26,8 +26,11 @@
                     <td>{{$productt->price_sale}}</td>
                     <td>{!! \App\Helpers\Helper::active($productt->active) !!}</td>
                     <td>{{$productt->updated_at}}</td>
-                    <td>&nbsp;</td>
+                    
                     <td style="text-align: center;">
+                        <a class="btn btn-primary btn-sm" href="/admin/productts/add" style="width:30px">
+                            <span class="icon" title="Add Product"><i class="fas fa-plus"></i></span>
+                        </a>
                         <a class="btn btn-primary btn-sm" href="/admin/productts/edit/{{$productt->id}}" style="width:30px">
                             <span class="icon" title="Edit Product"><i class="fas fa-edit"></i></span>
                         </a>
@@ -36,6 +39,7 @@
                             <span class="icon" title="Delete Product"><i class="fas fa-trash"></i></span>
                         </a>
                     </td>
+                    <td>&nbsp;</td>
                 </tr>
             @endforeach
         </tbody>

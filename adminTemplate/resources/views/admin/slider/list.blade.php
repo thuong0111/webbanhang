@@ -28,13 +28,16 @@
                     </td>
                     <td>{!! \App\Helpers\Helper::active($slider->active) !!}</td>
                     <td>{{$slider->updated_at}}</td>
-                    <td style="text-align: center;">
-                        <a class="btn btn-primary btn-sm" href="/admin/sliders/edit/{{$slider->id}}" style="width:30px">
-                            <i class="fas fa-edit"></i>
+                    <td style="text-align: center; display:flex">
+                        <a class="btn btn-primary btn-sm" href="/admin/sliders/add" style="width:30px">
+                            <span class="icon" title="Add Slider"><i class="fas fa-plus"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="/admin/sliders/edit/{{$slider->id}}" style="width:30px;margin: 0 2px 0 2px;">
+                            <span class="icon" title="Edit Slider"><i class="fas fa-edit"></i>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 
                             onclick="removeRow({{$slider->id}}, '/admin/sliders/destroy')" style="width:30px">
-                            <i class="fas fa-trash"></i>
+                            <span class="icon" title="Delete Slider"><i class="fas fa-trash"></i>
                         </a>
                     </td>
                     <td>&nbsp;</td>
