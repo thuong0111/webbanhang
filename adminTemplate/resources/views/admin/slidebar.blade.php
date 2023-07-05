@@ -58,6 +58,7 @@
               </li>
             </ul>
           </li>
+
           {{-- Product --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -79,9 +80,84 @@
                         <p>List Products</p>
                     </a>
                 </li>
-
             </ul>
           </li>
+
+        {{-- Manager Size--}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa fa-link" aria-hidden="true"></i>
+              <p> SIZE
+                  <i class="right fas fa-angle-left"></i>
+              </p>
+          </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="/admin/size/add" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add Size</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="/admin/size/list" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>List Size</p>
+                  </a>
+              </li>
+
+          </ul>
+        </li>
+
+        {{-- Manager Mau--}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa fa-link" aria-hidden="true"></i>
+              <p> COLOR
+                  <i class="right fas fa-angle-left"></i>
+              </p>
+          </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="/admin/mau/add" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add Colors</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="/admin/mau/list" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>List Colors</p>
+                  </a>
+              </li>
+
+          </ul>
+        </li>
+
+        {{-- Manager CTSP--}}
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa fa-link" aria-hidden="true"></i>
+              <p> DETAIL PRODUCTS
+                  <i class="right fas fa-angle-left"></i>
+              </p>
+          </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="/admin/ctsp/add" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Add Detail Products</p>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="/admin/ctsp/list" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>List Detail Products</p>
+                  </a>
+              </li>
+
+          </ul>
+        </li>
+        
           {{-- Slider --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -101,6 +177,26 @@
                     <a href="/admin/sliders/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>List Slider</p>
+                    </a>
+                </li>
+
+            </ul>
+          </li>
+
+          {{--Bill Login--}}
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fa fa-link" aria-hidden="true"></i>
+                <p> BILL LOGIN
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                
+                <li class="nav-item">
+                    <a href="/admin/customerslog" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>List Bill</p>
                     </a>
                 </li>
 
@@ -142,6 +238,7 @@
                 </li>
             </ul>
           </li>
+          
           {{-- Manager User Login--}}
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -160,107 +257,11 @@
             </ul>
           </li>
 
-          {{-- Manager Size--}}
+          {{-- Disount --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Size
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/admin/size/add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Add Size</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/size/list" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>List Size</p>
-                    </a>
-                </li>
-
-            </ul>
-          </li>
-
-          {{-- Manager Mau--}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Mau
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/admin/mau/add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Add Colors</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/mau/list" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>List Colors</p>
-                    </a>
-                </li>
-
-            </ul>
-          </li>
-
-
-           {{-- Manager CTSP--}}
-           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
-                <p> DETAIL PRODUCTS
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/admin/ctsp/add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Add Detail Products</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/admin/ctsp/list" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>List Detail Products</p>
-                    </a>
-                </li>
-
-            </ul>
-          </li>
-
-
-           {{--Hoa Don Dang Nhap--}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Hóa Đơn ĐN
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                
-                <li class="nav-item">
-                    <a href="/admin/customerslog" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>DS Hóa Đơn</p>
-                    </a>
-                </li>
-
-            </ul>
-          </li>
-          {{-- giam gia --}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
-                <p> Giam Gia
+                <p> DISCOUNT
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -268,13 +269,13 @@
                 <li class="nav-item">
                     <a href="/admin/giamgia/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Them Ma</p>
+                        <p>Add Discount Code</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/giamgia/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Giam Gia</p>
+                        <p>List Distcount Code</p>
                     </a>
                 </li>
 

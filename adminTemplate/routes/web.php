@@ -143,11 +143,16 @@ Route::middleware(['auth'])->group(function(){
         #Customer Login
 
         Route::get('customerslog',[ App\Http\Controllers\Admin\CartController::class, 'indexlog']);
+        Route::get('bill_processing',[ App\Http\Controllers\Admin\CartController::class, 'dangxuly_admin']);
+        Route::get('bill_delivering',[ App\Http\Controllers\Admin\CartController::class, 'danggiao_admin']);
+        Route::get('bill_finish',[ App\Http\Controllers\Admin\CartController::class, 'hoanthanh_admin']);
+        Route::get('bill_cancel',[ App\Http\Controllers\Admin\CartController::class, 'dahuy_admin']);
         Route::get('customerslog/viewlog/{hoadon}',[ App\Http\Controllers\Admin\CartController::class, 'showlog']);
 
 
         #Customer Manager
         Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
+        Route::get('customermanagers/view/{user}',[ App\Http\Controllers\Admin\UserManagerController::class, 'show']);
 
     });
 });

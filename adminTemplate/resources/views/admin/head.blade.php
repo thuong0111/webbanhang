@@ -25,4 +25,8 @@
     .hidden{
         display: none;
     }
+    .icon {
+      cursor: pointer;
+    }
 </style>
+

@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Tên Màu</label>
+        <label for="menu">Name Color</label>
         <input type="text" name="tenmau" value="{{$mau->tenmau}}" class="form-control" placeholder="Enter Mau">
       </div>
 
@@ -28,7 +28,7 @@
       </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Update Mau</button>
+      <button type="submit" class="btn btn-primary">Update Color</button>
     </div>
     @csrf
   </form>

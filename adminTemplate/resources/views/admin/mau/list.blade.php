@@ -4,8 +4,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th style="width: 50px">ID</th>
-                <th>Tên Mau</th>
+                <th style="width: 50px">Id</th>
+                <th>Name Color</th>
                 <th>Active</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
@@ -19,12 +19,15 @@
                     <td>{{$mau->tenmau}}</td>                    
                     <td>{!! \App\Helpers\Helper::active($mau->active) !!}</td>
                     <td style="text-align: center; display: flex;">
+                        <a class="btn btn-primary btn-sm" href="/admin/mau/add" style="width:30px; margin: 0 2px 0 2px;">
+                            <span class="icon" title="Add Color"><i class="fas fa-plus"></i></span>
+                        </a>
                         <a class="btn btn-primary btn-sm" href="/admin/mau/edit/{{$mau->id}}" style="width:30px">
-                            <i class="fas fa-edit"></i>
+                            <span class="icon" title="Edit Color"><i class="fas fa-edit"></i></span>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 
                             onclick="removeRow({{$mau->id}}, '/admin/mau/destroy')" style="width:30px">
-                            <i class="fas fa-trash"></i>
+                            <span class="icon" title="Delete Color"><i class="fas fa-trash"></i></span>
                         </a>
                     </td>
                 </tr>

@@ -27,11 +27,11 @@
                     <td>&nbsp;</td>
                     <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customers/view/{{$customer->id}}" style="width:30px">
-                            <i class="fas fa-eye"></i>
+                            <span class="icon" title="View"><i class="fas fa-eye"></i></span>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 
                             onclick="removeRow({{$customer->id}}, '/admin/customers/destroy')" style="width:30px">
-                            <i class="fas fa-trash"></i>
+                            <span class="icon" title="Delete"><i class="fas fa-trash"></i></span>
                         </a>
                     </td>
                 </tr>

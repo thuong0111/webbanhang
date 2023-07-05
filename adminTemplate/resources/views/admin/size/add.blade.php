@@ -4,7 +4,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Tên Size</label>
+        <label for="menu">Name Size</label>
         <input type="text" name="tensize" class="form-control" value="{{old('tensize')}}" placeholder="Enter ">
       </div>
 

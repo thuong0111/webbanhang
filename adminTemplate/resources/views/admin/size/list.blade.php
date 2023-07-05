@@ -19,12 +19,15 @@
                     <td>{{$size->tensize}}</td>                    
                     <td>{!! \App\Helpers\Helper::active($size->active) !!}</td>
                     <td style="text-align: center;display: flex;">
-                        <a class="btn btn-primary btn-sm" href="/admin/size/edit/{{$size->id}}" style="width:30px">
-                            <i class="fas fa-edit"></i>
+                        <a class="btn btn-primary btn-sm" href="/admin/size/add" style="width:30px">
+                            <span class="icon" title="Add Size"><i class="fas fa-plus"></i></span>
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="/admin/size/edit/{{$size->id}}" style="width:30px; margin: 0 2px 0 2px;">
+                            <span class="icon" title="Edit Size"><i class="fas fa-edit"></i></span>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#" 
                             onclick="removeRow({{$size->id}}, '/admin/size/destroy')" style="width:30px">
-                            <i class="fas fa-trash"></i>
+                            <span class="icon" title="Delete Size"><i class="fas fa-trash"></i></span>
                         </a>
                     </td>
                 </tr>
