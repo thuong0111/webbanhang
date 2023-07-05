@@ -27,9 +27,9 @@
                     <td>{{$hoadon->thoigian}}</td>
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
-                    <td>{{$hoadon->tongtien}}</td>
-                    <td>{{$hoadon->tiengg}}</td>
-                    <td>{{$hoadon->tientra}}</td>
+                    <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
+                    <td>{{number_format($hoadon->tiengg).' '.' VND'}}</td>
+                    <td>{{number_format($hoadon->tientra).' '.' VND'}}</td>
                     <td>&nbsp;</td>
                     <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px">

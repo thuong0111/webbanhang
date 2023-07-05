@@ -230,6 +230,13 @@ Route::get('/days-order', [ HoaDonController::class, 'days_order']);
 
 Route::post('/chart-sp', [ HoaDonController::class, 'chart_sp']);
 Route::get('/chart-sp', [ HoaDonController::class, 'chart_sp']);
+
+Route::post('/tonkho', [ HoaDonController::class, 'tonkho']);
+Route::get('/tonkho', [ HoaDonController::class, 'tonkho']);
+
+Route::post('/trangthai', [ HoaDonController::class, 'trangthai']);
+Route::get('/trangthai', [ HoaDonController::class, 'trangthai']);
+
 Route::get('/test', [ HoaDonController::class, 'test']);
 
 Route::post('/update-view', [ ProductController::class, 'update_view']);
