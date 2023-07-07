@@ -208,7 +208,7 @@ class CartController extends Controller
         ->where('hoa_dons.id', $hoadon->id)
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
-        ->select('hoa_dons.id','hoa_dons.thoigian','hoa_dons.tongtien','pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT')
+        ->select('hoa_dons.id','hoa_dons.thoigian','hoa_dons.tongtien','pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.tiengg','hoa_dons.tientra')
         ->get();
         $dls = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
@@ -227,7 +227,9 @@ class CartController extends Controller
                 <h1 style="text-align:center">Shop ARB</h1>
                 <h3 style="text-align:center">Thông Tin Hóa Đơn Đặt Hàng</h3>';
                 foreach($hds as $key=>$hd){
-                    $print.='   <b>Mã Hóa Đơn:  </b><span>' .$hd->id .'</span></br>';
+                    $print.='   <b>Mã Hóa Đơn:  </b><span>' .$hd->id .'</span></br>
+                    
+                    ';
                 }
 
         $print.='
@@ -269,7 +271,14 @@ class CartController extends Controller
                     <td style="text-align:center">'.$dl->thanhtien.'</td>
                 </tr>';
                     }
-                    foreach($hds as $key=>$hd){
+                   
+        $print.='
+        </tbody>
+        </table>
+        ';
+        $print.='
+          <table style="border: 1px solid #000000; margin-top: 20px">';
+          foreach($hds as $key=>$hd){
             $print.='
             <tr></tr>
             <tr>
@@ -280,29 +289,44 @@ class CartController extends Controller
                 <td></td>';
                 $print.=' <td><b>Tổng Tiền:</b>'.$hd->tongtien.'</td>
             </tr>
+
+            <tr>
+                td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>';
+                $print.=' <td><b>Tiền Giảm:</b>'.$hd->tiengg.'</td>
+            </tr>
+
+            <tr>
+                td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>';
+                $print.=' <td><b>Tiền Phải Trả:</b>'.$hd->tientra.'</td>            </tr>
             ';
         }
-        $print.='
-        </tbody>
-        </table>
+        $print.='</table>               
         ';
 
         $print.='
         
-        <table class="table">
+        <table class="table" style="margin-top: 20px">>
         <thead>
             <tr>
-                <td style="width:200px; padding-top:50px"></td>
-                <td style="width:800px; text-align:center; padding-top:50px">........,Ngày......Tháng......Năm.......</td>
+                <td style="width: 200px; padding-top: 50px"></td>
+                <td style="width: 800px; text-align: center; padding-top: 50px">........,Ngày......Tháng......Năm.......</td>
             </tr>
 
             <tr>
-                <td style="width:200px; padding-top:10px">Người nhận</td>
-                <td style="width:800px; text-align:center; padding-top:10px">Người lập hóa đơn</td>
+                <td style="width: 200px; padding-top: 10px">Người nhận</td>
+                <td style="width: 800px; text-align: center; padding-top: 10px">Người lập hóa đơn</td>
             </tr>
             <tr>
-            <td style="width:200px; padding-top:10px"></td>
-            <td style="width:800px; text-align:center; padding-top:10px; font-size:12px">(ký và ghi rõ họ tên)</td>
+            <td style="width: 200px; padding-top: 10px"></td>
+            <td style="width: 800px; text-align: center; padding-top: 10px; font-size: 12px">(ký và ghi rõ họ tên)</td>
             </tr>
         </table>
         ';

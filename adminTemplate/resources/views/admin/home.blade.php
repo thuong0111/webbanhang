@@ -26,23 +26,31 @@
       </div>
     </form>
     <div class="col-md-12" id="chart" style="height: 250px;"></div>
-
+    <div style="width: 610px"><b style="float: right">Biểu đồ thống kê doanh thu từng ngày</b></div>
     <div class="col-md-12" id="chart-sp" style="height: 250px;"></div>
+    <div style="width: 610px; margin-bottom: 50px"><b style="float: right">Biểu đồ thống kê sản phẩm bán chạy nhất</b></div>
+
+    <div class="col-md-12" id="tonkho" style="height: 250px;"></div>
+    <div style="width: 610px; margin-bottom: 50px"><b style="float: right">Biểu đồ thống kê số lượng sản phẩm tồn kho</b></div>
+
+    <div class="col-md-12" id="trangthai" style="height: 250px;"></div>
+    <div style="width: 610px; margin-bottom: 50px"><b style="float: right">Biểu đồ thống kê trạng thái hóa đơn</b></div>
+
   </div>
   <div class="row">
     <div class="col-md-4 col-xs-12">
-      <p class="title_thongke">Thống kê tổng sản phẩm đơn hàng</p>
+      <b class="title_thongke">Thống kê tổng sản phẩm đơn hàng</b>
       <div class="morris-donus-inverse" id="donut"></div>
 
     </div>
 
     <div class="col-md-4 col-xs-12">
-      <p class="title_thongke">Thống kê lượt xem</p>
+      <b class="title_thongke">Thống kê 10 sản phẩm được xem nhiều nhất</b>
      <ol class="list-view">
       @foreach ($sp_view as $key=>$sp)
         <li>
           <b>
-            {{ $sp->name }} Có:|
+            {{ $sp->name }} Có:
             <span style="color: black">{{ $sp->view }} lượt xem.</span>
         </b>
         </li>

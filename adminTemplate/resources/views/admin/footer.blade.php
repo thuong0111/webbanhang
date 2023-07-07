@@ -15,6 +15,8 @@
 	$(document).ready(function(){
         chart30daysorder();
         chartsp();
+        tonkho();
+        trangthai();
         var chart=new Morris.Area({
         element: 'chart',
         lineColors: ['#819C79','#FF6541'],
@@ -42,6 +44,35 @@
         // behaveLikeLine: true,
         labels: ['Tổng SL']
         });
+
+
+        var tonkho=new Morris.Area({
+        element: 'tonkho',
+        lineColors: ['#819C79','#FF6541'],
+        parseTime: false,
+        hideHover: 'auto',
+        xkey: 'name',
+        ykeys: ['SL'],
+        // behaveLikeLine: true,
+        labels: ['SL']
+        });
+
+
+
+        var trangthai=new Morris.Bar({
+        element: 'trangthai',
+        lineColors: ['#819C79','#FF6541'],
+        // pointFillColors: ['#ffffff'],
+        // pointStrokeColors: ['black'],
+        // fillOpacity: 0.6,
+        parseTime: false,
+        hideHover: 'auto',
+        xkey: 'tentt',
+        ykeys: ['sl'],
+        // behaveLikeLine: true,
+        labels: ['SL']
+        });
+
 
 
 
@@ -75,6 +106,34 @@
             });
         }
 
+
+        function tonkho(){
+            var _token=$('input[name="_token"]').val();
+            $.ajax({
+            url:" {{url('/tonkho')}}", 
+            method: "POST",
+            dataType: "JSON",
+            data: {_token:_token},
+            success:function(data)
+            {
+                tonkho.setData(data);
+            }
+            });
+        }
+
+        function trangthai(){
+            var _token=$('input[name="_token"]').val();
+            $.ajax({
+            url:" {{url('/trangthai')}}", 
+            method: "POST",
+            dataType: "JSON",
+            data: {_token:_token},
+            success:function(data)
+            {
+                trangthai.setData(data);
+            }
+            });
+        }
 
 
         $('.dashboard-filter').change(function(){

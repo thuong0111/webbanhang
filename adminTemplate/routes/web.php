@@ -238,6 +238,13 @@ Route::get('/days-order', [ HoaDonController::class, 'days_order']);
 
 Route::post('/chart-sp', [ HoaDonController::class, 'chart_sp']);
 Route::get('/chart-sp', [ HoaDonController::class, 'chart_sp']);
+
+Route::post('/tonkho', [ HoaDonController::class, 'tonkho']);
+Route::get('/tonkho', [ HoaDonController::class, 'tonkho']);
+
+Route::post('/trangthai', [ HoaDonController::class, 'trangthai']);
+Route::get('/trangthai', [ HoaDonController::class, 'trangthai']);
+
 Route::get('/test', [ HoaDonController::class, 'test']);
 
 Route::post('/update-view', [ ProductController::class, 'update_view']);
@@ -254,6 +261,15 @@ Route::post('/tim-kiem-discount', [App\Http\Controllers\Admin\SearchController::
 Route::post('/tim-kiem-bill', [App\Http\Controllers\Admin\SearchController::class, 'search_bill']);
 Route::post('/tim-kiem-user', [App\Http\Controllers\Admin\SearchController::class, 'search_user']);
 Route::post('/tim-kiem-uservl', [App\Http\Controllers\Admin\SearchController::class, 'search_uservl']);
+
+
+Route::get('/viewdoimk', [SessionsController::class, 'viewdoimk']);
+Route::post('/doimk', [ SessionsController::class, 'doimk']);
+
+
+Route::get('/slidebar', function () {
+    return view('slidebarprofile');
+});
 
 
 

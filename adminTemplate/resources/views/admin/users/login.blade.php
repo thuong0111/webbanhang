@@ -4,7 +4,7 @@
 <head>
   @include('admin.head')
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color: #b7ffb6;">
     <div class="login-box">
     <div class="login-logo">
         <a href=""><b>Admin</b></a>

@@ -49,7 +49,7 @@
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
-                                            @if ($hoadon->ds_trang_thai_id<3)
+                                            @if ($hoadon->ds_trang_thai_id<2)
                                             <td style="text-align: center">
                                                 <form action="/capnhathuy" method="POST">
                                                     @csrf

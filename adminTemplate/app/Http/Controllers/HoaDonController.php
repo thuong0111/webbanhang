@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreHoaDonRequest;
 use App\Http\Requests\UpdateHoaDonRequest;
 use App\Models\CTHoaDon;
+use App\Models\DSTrangThai;
 use App\Models\Productt;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -307,6 +308,39 @@ class HoaDonController extends Controller
                  }
                     echo $data=json_encode($chart_data);        
             }
+
+
+            public function tonkho(Request $request)
+            {
+                $get=Productt::all();
+                foreach($get as $key=> $val){
+                    $chart_data[] = array(
+                    'name'=> $val->name,
+                    'SL'=>$val->SL
+                    );
+                    }
+                    echo $data=json_encode($chart_data);        
+            }
+
+
+            public function trangthai(Request $request)
+            {
+                $get=HoaDon::select('ds_trang_thai_id')
+                ->selectRaw('count(id) as sl')
+                ->groupBy('ds_trang_thai_id')
+                ->get();
+                foreach($get as $key=> $val){
+                    $namett=DSTrangThai::where('id',$val->ds_trang_thai_id)->select('tenTT')->get();
+                    foreach($namett as $key=>$tt){
+                    $chart_data[] = array(
+                    'tentt'=>$tt->tenTT,
+                    'sl'=>$val->sl
+                    );
+                    }
+                 }
+                echo $data=json_encode($chart_data);        
+            }
+
 
 
    
