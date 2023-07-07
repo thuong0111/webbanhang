@@ -8,10 +8,11 @@
 
         <!-- Header -->
         @include('header')
-
+        @extends('slidebarprofile')
+        @section('main-admin')
             {{-- @include('admin.alert') --}}
                 <div class="container">
-                    <div class="row" style="margin-top: 134px;">
+                    <div class="row" style="">
                         @include('tabhistory')
                         <div class="col-lg-10 m-lr-auto m-b-50">
                             <div class="m-l-25 m-r--38 m-lr-0-xl">
@@ -47,7 +48,7 @@
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </td>
-                                            @if ($hoadon->ds_trang_thai_id<3)
+                                            @if ($hoadon->ds_trang_thai_id<2)
                                             <td style="text-align: center">
                                                 <form action="/capnhathuy" method="POST">
                                                     @csrf
@@ -68,9 +69,8 @@
                         </div>
                     </div>
                 </div>
-
+                @endsection
         <!-- Footer -->
-        @include('footer')
 
     </body>
 </html>

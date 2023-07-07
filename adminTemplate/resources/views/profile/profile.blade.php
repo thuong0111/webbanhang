@@ -46,6 +46,9 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 </head>
 <body>
+    @include('header')
+    @extends('slidebarprofile')
+    @section('main-admin')
  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 
@@ -122,10 +125,15 @@
  </div>   
        
      </form>
+
+     <form action="/viewdoimk" method="get">
+        <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Đổi Mật Khẩu</button></div>
+     </form>
     </div>
  
    
      
 <script src="{{ asset('js/profileupdate.js') }}"></script>
+@endsection
 </body>
 </html> 

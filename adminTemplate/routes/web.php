@@ -250,6 +250,15 @@ Route::get('/print/{hoadon}', [ App\Http\Controllers\Admin\CartController::class
 Route::post('/check-coupon', [App\Http\Controllers\CartController::class, 'giamgia']);
 
 
+Route::get('/viewdoimk', [SessionsController::class, 'viewdoimk']);
+Route::post('/doimk', [ SessionsController::class, 'doimk']);
+
+
+Route::get('/slidebar', function () {
+    return view('slidebarprofile');
+});
+
+
 
 
 

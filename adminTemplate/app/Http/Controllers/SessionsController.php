@@ -11,6 +11,9 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash as FacadesHash;
+use Illuminate\Support\Facades\Session;
+
 
 class SessionsController extends Controller
 {
@@ -91,5 +94,26 @@ class SessionsController extends Controller
 
         return redirect('/');
     }
+
+
+    public function viewdoimk()
+    {
+        return view('doimk');
+    }
+    public function doimk(Request $request)
+    {
+        $customer_id = Auth()->user()->id;
+        $pass = $request->password;
+        $repass = $request->password_confirmation;
+        $newpass = FacadesHash::make($pass);
+        if($pass ==  $repass){
+            User::where('id',$customer_id)->update(['password'=>$newpass]);
+            Session::put('message','Cập nhật mật khẩu thành công.');
+        }else{
+            Session::put('message','Mật khẩu không trùng khớp.');
+        }
+        return redirect('/viewdoimk');   
+     }
+
 
 }
