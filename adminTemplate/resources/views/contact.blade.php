@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-
+    @include('admin.alert')
     @include('header')
     <div class="site_page" style="padding: 125px 0 0 0;">
         
@@ -39,18 +39,17 @@
             <p><a href="http://online.gov.vn/HomePage/CustomWebsiteDisplay.aspx?DocId=39917"><span><img src="https://78store.vn/upload/20150827110756-dathongbao.png" alt="" width="300" height="114" /></span></a></p>      
         </div>
         <div class="col-md-6">
-            <div id="lienhe">
-                <form method="post" name="frm" action="lien-he.html" onsubmit="return js_submit();">
-                <!---
+            <div>
+                <form action="/contactadd" method="POST">
                     <div class="form-group">
                         <p>
                             Quý khách có thể liên hệ với chúng tôi bằng việc điền đầy đủ các thông tin
                             dưới đây. Chúng tôi sẽ liên hệ lại sau khi đã nhận được thư liên hệ của quý
-                            khách. Cảm ơn!</p>
+                            khách. Cảm ơn!
+                        </p>
                     </div>
-                    -->
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control" id="name" size="50"
+                        <input name="ten" type="text" class="form-control" id="name" size="50"
                             placeholder="Họ và tên *"/>
                     </div>
                     <div class="form-group">
@@ -74,8 +73,11 @@
                                 style="background-color:#FFFFFF;" placeholder="Nội dung *"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="submit" name="btn_lienhe" value="Gửi" class="btn btn-success"
-                            style="margin-right:20px;"/>
+                        <button class="flex-c-m stext-101 cl0 size-30 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" type="submit">
+                            Gửi
+                        </button>
+                        {{-- <input type="submit" name="btn_lienhe" value="Gửi" class="btn btn-success"
+                            style="margin-right:20px;"/> --}}
                         <input type="reset" name="btn_Reset" value="Nhập lại" class="btn btn-warning"/>
                     </div>
                 </form>
@@ -126,7 +128,7 @@
         }
     </style>
 
-    <div class="lehieuit-bottom-contact">
+    {{-- <div class="lehieuit-bottom-contact">
     <ul>
         <li>
             <a id="goidien" href="tel: 09.16.18.16.14">
@@ -157,7 +159,7 @@
             </a>
         </li>
     </ul>
-    </div>
+    </div> --}}
 
     <style>
         .overflow_my_body_popup{position: relative;}

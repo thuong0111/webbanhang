@@ -56,5 +56,4 @@
             @endforeach
         </tbody>
     </table>
-    {!! $sliders->links() !!}
 @endsection

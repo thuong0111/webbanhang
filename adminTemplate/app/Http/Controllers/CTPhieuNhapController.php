@@ -14,6 +14,7 @@ class CTPhieuNhapController extends Controller
     public function index()
     {
             return view('contact');
+
     }
 
     /**

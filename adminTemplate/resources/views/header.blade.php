@@ -65,7 +65,7 @@
                         {!! $menusHtml !!}
 
                         <li>
-                            <a href="/lien-he">Liên Hệ</a>
+                            <a href="/contact">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -141,7 +141,7 @@
             {!! $menusHtml !!}    
             
             <li>
-                <a href="/lien-he">Liên Hệ</a>
+                <a href="/contact">Liên Hệ</a>
             </li>
         </ul>
     </div>

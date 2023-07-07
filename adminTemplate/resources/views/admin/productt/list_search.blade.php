@@ -56,7 +56,6 @@
         </tbody>
     </table>
     <div class="card-footer clear-fix">
-        {!! $productts->links() !!}
     </div>
     
 @endsection

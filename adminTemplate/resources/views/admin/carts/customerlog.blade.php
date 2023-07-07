@@ -54,7 +54,17 @@
         white-space: nowrap
     }
   </style>
-  
+    <div class="row w3-res-tb">
+        <div class="col-sm-3">
+        <form action="/tim-kiem-bill" method="POST">
+            {{ csrf_field() }}
+            <div class="input-group" style="display: flex; padding: 5px 0 5px 0;">
+            <input type="text" name="keywords_submit" class="input-sm form-control" placeholder="Enter Name Bill">
+            <input type="submit" name="search_items" style="color:#000;margin-top: 0"class="btn btn-primary btn-sm" value="Tìm kiếm"/>
+            </div>
+        </form>
+        </div>
+    </div>
     <div class="VYJdTQ">
     <a href="customerslog" class="OFl2GI gAImis" style="">
         <span class="_20hgQK">Tất cả</span>

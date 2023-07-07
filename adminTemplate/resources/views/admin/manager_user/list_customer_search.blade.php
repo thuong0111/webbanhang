@@ -44,7 +44,7 @@
         </tbody>
     </table>
     <div class="card-footer clear-fix">
-        {!! $Users->links() !!}
+        {{-- {!! $Users->links() !!} --}}
     </div>
     
 @endsection

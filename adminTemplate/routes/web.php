@@ -15,6 +15,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SelectController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\ChangePasswordController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\CTHoaDonController;
 use App\Http\Controllers\CTPhieuNhapController;
@@ -29,6 +30,7 @@ use App\Http\Livewire\Assignment;
 use App\Http\Services\Productt\ProducttService;
 use App\Models\Cart;
 use App\Models\CTHoaDon;
+use App\Models\CTPhieuNhap;
 use App\Models\HoaDon;
 use App\Models\TinhTP;
 use Carbon\Carbon;
@@ -153,7 +155,8 @@ Route::middleware(['auth'])->group(function(){
         #Customer Manager
         Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
         Route::get('customermanagers/view/{user}',[ App\Http\Controllers\Admin\UserManagerController::class, 'show']);
-
+        
+        
     });
 });
 //End_Admin
@@ -238,9 +241,19 @@ Route::get('/chart-sp', [ HoaDonController::class, 'chart_sp']);
 Route::get('/test', [ HoaDonController::class, 'test']);
 
 Route::post('/update-view', [ ProductController::class, 'update_view']);
-Route::get('/lien-he', [ CTPhieuNhapController::class, 'index']);
+Route::get('/contact', [ ContactController::class, 'index']);
+Route::post('/contactadd', [ ContactController::class, 'addContact']);
 Route::get('/print/{hoadon}', [ App\Http\Controllers\Admin\CartController::class, 'convert_html_pdf']);
 Route::post('/check-coupon', [App\Http\Controllers\CartController::class, 'giamgia']);
+Route::post('/tim-kiem-category', [App\Http\Controllers\Admin\SearchController::class, 'search_category']);
+Route::post('/tim-kiem-product', [App\Http\Controllers\Admin\SearchController::class, 'search_product']);
+Route::post('/tim-kiem-mau', [App\Http\Controllers\Admin\SearchController::class, 'search_color']);
+Route::post('/tim-kiem-size', [App\Http\Controllers\Admin\SearchController::class, 'search_size']);
+Route::post('/tim-kiem-slider', [App\Http\Controllers\Admin\SearchController::class, 'search_slider']);
+Route::post('/tim-kiem-discount', [App\Http\Controllers\Admin\SearchController::class, 'search_discount']);
+Route::post('/tim-kiem-bill', [App\Http\Controllers\Admin\SearchController::class, 'search_bill']);
+Route::post('/tim-kiem-user', [App\Http\Controllers\Admin\SearchController::class, 'search_user']);
+Route::post('/tim-kiem-uservl', [App\Http\Controllers\Admin\SearchController::class, 'search_uservl']);
 
 
 

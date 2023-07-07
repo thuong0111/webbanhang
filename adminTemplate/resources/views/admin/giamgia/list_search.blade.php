@@ -61,5 +61,5 @@
             @endforeach
         </tbody>
     </table>
-    {!! $sizes->links() !!}
+    {{-- {!! $sizes->links() !!} --}}
 @endsection
