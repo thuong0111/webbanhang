@@ -120,6 +120,7 @@ class CartController extends Controller
         // $this->cartService->remove($id);
         if(Cart::Count()==0){
             Session::forget('carts');
+            Session::forget('coupon');
         }
 
 

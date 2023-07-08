@@ -71,11 +71,12 @@ class MenuController extends Controller
     }
 
     public function show(Menu $menu)
-    {$sp=Productt::all()->count();
+    {
+        $sp=Productt::all()->count();
         $hd=HoaDon::all()->count();
         $user=User::all()->count();
-        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
         $hdvl=Cart::all()->count();
+        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
         return view('admin.menu.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
             'title'=>'Edit Category: ' . $menu->name,

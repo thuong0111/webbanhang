@@ -45,5 +45,4 @@
             @endforeach
         </tbody>
     </table>
-    {!! $maus->links() !!}
 @endsection

@@ -49,29 +49,28 @@
     @include('header')
     @extends('slidebarprofile')
     @section('main-admin')
- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <div class="container">
                 
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <i class='fas fa-angle-left' style='font-size:36px'></i>                
-                </a>
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Thông Tin Người Dùng 
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
- 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
- 
-                    </ul>  
-                </div>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <i class='fas fa-angle-left' style='font-size:36px'></i>                
+            </a>
+            <a class="navbar-brand" href="{{ url('/') }}">
+                Thông Tin Người Dùng 
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
+
+                </ul>  
             </div>
-        </nav>
+        </div>
+    </nav>
     <div class="container mt-4">
-       
         <form method="POST" enctype="multipart/form-data" id="profile_setup_frm" action="{{ route('update.profile') }}" >
             <div class="row">
                 <div class="col-md-4 border-right">
@@ -85,50 +84,45 @@
                     </div>
                 </div>
                 <div class="col-md-8 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Cài đặt thông tin</h4>
-                    </div>
-                <div class="row" id="res"></div>
-                <div class="row mt-2">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Cài đặt thông tin</h4>
+                        </div>
+                        <div class="row" id="res"></div>
+                        <div class="row mt-2">
 
-                    <div class="col-md-6">
-                        <label class="labels">Tên</label>
-                        <input type="text" name="name" class="form-control" placeholder="first name" value="{{ auth()->user()->name }}">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="labels">Mail</label>
-                        <input type="text" name="email" disabled class="form-control" value="{{ auth()->user()->email }}" placeholder="Email">
-                    </div>
+                            <div class="col-md-6">
+                                <label class="labels">Tên</label>
+                                <input type="text" name="name" class="form-control" placeholder="first name" value="{{ auth()->user()->name }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Mail</label>
+                                <input type="text" name="email" disabled class="form-control" value="{{ auth()->user()->email }}" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <label class="labels">Số Điện Thoại</label>
+                                <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="labels">Địa Chỉ</label>
+                                <input type="text" name="address" id="address" class="form-control" value="{{ auth()->user()->address }}" placeholder="Address">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                                @include("select.selectlist_profile")
+                        </div>
+                    </div>        
+                    <div class="text-center" style="position: absolute"><button id="btn" class="btn btn-primary profile-button" type="submit">Lưu</button></div>
                 </div>
-             <div class="row mt-2">
-                 <div class="col-md-6">
-                     <label class="labels">Số Điện Thoại</label>
-                     <input type="text" name="phone" class="form-control" placeholder="Phone Number" value="{{ auth()->user()->phone }}">
-                 </div>
-                 <div class="col-md-6">
-                     <label class="labels">Địa Chỉ</label>
-                     <input type="text" name="address" id="address" class="form-control" value="{{ auth()->user()->address }}" placeholder="Address">
-                 </div>
-                 
-             </div>
-             <div class="row mt-2">
-                @include("select.selectlist_profile")
             </div>
-                
-            </div>
-            
-             <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Lưu</button></div>
-         </div>
-     </div>
     
- </div>   
+        </form>   
        
-     </form>
-
-     <form action="/viewdoimk" method="get">
-        <div class="mt-5 text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Đổi Mật Khẩu</button></div>
-     </form>
+        <form action="/viewdoimk" method="get" style="">
+            <div class="text-center"><button id="btn" class="btn btn-primary profile-button" type="submit">Đổi Mật Khẩu</button></div>
+        </form>
     </div>
  
    

@@ -173,6 +173,7 @@ class CartService
            
             FacadesCart::destroy();
             Session::forget('carts');
+            Session::forget('coupon');
         } catch (\Exception $err) {
             DB::rollBack();
             Session::flash('error', 'Đặt Hàng Thất Bại.');

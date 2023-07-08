@@ -50,7 +50,7 @@
         </tbody>
     </table>
     <div class="card-footer clear-fix">
-        {!! $customers->links() !!}
+        {{-- {!! $customers->links() !!} --}}
     </div>
     
 @endsection

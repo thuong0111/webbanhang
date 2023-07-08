@@ -65,7 +65,7 @@
                         {!! $menusHtml !!}
 
                         <li>
-                            <a href="/lien-he">Liên Hệ</a>
+                            <a href="/contact">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -83,7 +83,7 @@
                      </form>
                     <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
                          data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')):0 }}">
-                        <i class="zmdi zmdi-shopping-cart" style="font-size: 25px;"></i>
+                        <i class="zmdi zmdi-shopping-cart" style="font-size: 30px;"></i>
                     </div>
                 </div>
             </nav>
@@ -141,7 +141,7 @@
             {!! $menusHtml !!}    
             
             <li>
-                <a href="/lien-he">Liên Hệ</a>
+                <a href="/contact">Liên Hệ</a>
             </li>
         </ul>
     </div>

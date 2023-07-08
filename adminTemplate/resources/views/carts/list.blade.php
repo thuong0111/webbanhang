@@ -2,11 +2,13 @@
 
 @section('content')
        
+    <div class="div-head" style="padding-top: 165px">
 
-    <form action="/check-coupon" method="POST" style="padding-top: 150px">
+    </div>
+    <form action="/check-coupon" method="POST" style="padding: 50px 0px 0 40px; display:flex; position:absolute">
         @csrf
         <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Mã Giảm Giá">
-         <button type="submit" name="check-coupon">
+         <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"type="submit" name="check-coupon">
              Xác Nhận Mã
          </button>
     </form>
@@ -20,13 +22,14 @@
         {!!session()->get('error')!!}
     </div>
     @endif
-    <form class="bg0 p-b-85" method="post">
+    {{-- p-d-85 --}}
+    <form class="bg0 p-b-0 p-t-0" method="post">
         @include('admin.alert')
 
         @if (count($productts) != 0)
-            <div class="container">
+            <div class="container" >
                 <div class="row">
-                    <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+                    <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50" style="position: inherit;">
                         <div class="m-l-25 m-r--38 m-lr-0-xl">
                             <div class="wrap-table-shopping-cart">
                                 @php $total = 0; 
@@ -113,13 +116,13 @@
 
                             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                                 <div class="flex-w flex-m m-r-20 m-tb-5">
-                                    <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
-                                           name="coupon" placeholder="Mã Giảm Giá">
+                                    {{-- <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
+                                           name="coupon" placeholder="Mã Giảm Giá"> --}}
 
-                                    <div
+                                    {{-- <div
                                         class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
                                         Xác Nhận Mã
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <input type="submit" value="Cập Nhật Sản Phẩm" formaction="/update-cart-quantity" method="post" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
@@ -129,12 +132,12 @@
                     </div>
 
                     <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-                        <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                            <h4 class="mtext-109 cl2 p-b-30">
+                        <div class="bor10 p-lr-40 p-t-20 p-b-30 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                            <h4 class="mtext-109 cl2 p-b-15">
                                 Tổng Tiền Trong Giỏ Hàng
                             </h4>
 
-                            <div class="flex-w flex-t p-t-27 p-b-33">
+                            <div class="flex-w flex-t p-t-1 p-b-1">
                                 <div class="size-208">
                                     <span class="mtext-101 cl2">
                                         Tổng Tiền:
@@ -190,37 +193,37 @@
                                 @endif
                             </li>
 
-                            <div class="flex-w flex-t bor12 p-t-15 p-b-30">
+                            <div class="flex-w flex-t bor12 p-t-0 p-t-0">
 
                                 <div class="size-100 p-r-18 p-r-0-sm w-full-ssm">
 
                                     <div class="p-t-15">
-                                        <span class="stext-112 cl8">
+                                        <span class="stext-112 cl8" style="font-weight: bold;">
                                             Thông Tin Người Mua
                                         </span>
 
                                         @if (Auth::check())
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"
                                                 id="input1" onkeypress="moveToNext(event, 'input2')" value="{{Auth::user()->name}}">
                                             </div>
 
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" title="Số điện thoại không đúng định dạng !"
                                                 maxlength="11" pattern="(\+84|0)\d{9,10}" type="text" name="phone"  value="{{Auth::user()->phone}}"
                                                 id="input2" onkeypress="moveToNext(event, 'input3')">
                                             </div>
 
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" value="{{Auth::user()->address}}"
                                                 id="input3" onkeypress="moveToNext(event, 'input4')">
                                             </div>
 
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" value="{{Auth::user()->email}}"
                                                 id="input4" onkeypress="moveToNext(event, 'input5')">
                                             </div>
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" placeholder="Ghi Chú"
                                                 id="input5" onkeypress="moveToNext(event, 'input1')"></textarea>
                                                 <input type="hidden" name="pttt" value="1">                                          
@@ -232,22 +235,22 @@
                                             </div>
                                         @else
                                         
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name" 
                                                 id="input1" onkeypress="moveToNext(event, 'input2')" placeholder="Họ và Tên">
                                             </div>
 
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input title="Số điện thoại không đúng định dạng !" class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" maxlength="11" name="phone" pattern="(\+84|0)\d{9,10}"
                                                 id="input2" onkeypress="moveToNext(event, 'input3')" placeholder="Số điện thoại">
                                             </div>
                                             
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address" 
                                                 id="input3" onkeypress="moveToNext(event, 'input4')" placeholder="Địa chỉ nhà">
                                             </div>
 
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="email" 
                                                 id="input4" onkeypress="moveToNext(event, 'input5')" placeholder="email">
                                             </div>
@@ -256,7 +259,7 @@
 
                                             @include('select.selectlist')
 
-                                            <div class="bor8 bg0 m-b-12">
+                                            <div class="bor8 bg0 m-b-5">
                                                 <textarea class="cl8 plh3 size-111 p-lr-15 textarea" name="content" 
                                                 id="input5" onkeypress="moveToNext(event, 'input1')" placeholder="Ghi Chú"></textarea>                               
                                             </div>
@@ -277,7 +280,7 @@
     </form>
     
             @if(Auth::check())
-                <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -210px 0 0 857px; width: 310px;">
+                <form action="{{ url('/vnpay') }}" method="POST" style="position: absolute; margin: -110px 0 0 857px; width: 310px;">
                     @csrf
                     <input type="hidden" name="thanhtienvnpay" value="{{$priceEnd}}">
                     <input type="hidden" name="tongtienvnpay" value="{{$total}}">
@@ -324,7 +327,7 @@
             @endif
     @else
            
-        <div class="text-center" style="padding: 50px;"><h2>Giỏ hàng trống</h2></div>
+        <div class="text-center" style="padding: 10px 0 0 0;"><h2>Giỏ hàng trống</h2></div>
     @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
