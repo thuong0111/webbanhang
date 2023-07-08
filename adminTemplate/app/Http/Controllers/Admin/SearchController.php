@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Coupon;
 use App\Models\Customer;
 use App\Models\HoaDon;
 use App\Models\Mau;
@@ -99,7 +100,7 @@ class SearchController extends Controller
         $user=User::all()->count();
         $hdvl=Cart::all()->count();
         $keywords = $request->keywords_submit;
-        $search_slider = Slider::where('name','like','%'.$keywords.'%')->get();
+        $search_slider = Coupon::where('tengg','like','%'.$keywords.'%')->get();
         return view('admin.giamgia.list_search',[
             'spss'=>$sp,
             'hds'=>$hd,

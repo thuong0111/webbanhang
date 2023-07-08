@@ -18,11 +18,11 @@
     <style type="text/css">
     .admin-button-list{
     /* line-height: 9rem; */
-    padding: 2rem 0
+    padding: 1.5rem 0
 }
 
 .admin-button-list .cl-btn{
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
 }
 #title-data {
     font-size: 2rem;
@@ -66,10 +66,12 @@ color: darkgreen;
 
 .admim-header{
 width: 18%;
-padding-left: 3rem;
+/* padding-left: 3rem; */
 height: fit-content;
 border-right: solid 2px #D3D3D3;
+border-left: solid 2px #D3D3D3;
 border-bottom: solid 2px #D3D3D3;
+border-top: solid 2px #D3D3D3;
 }
 
 .admin-app{
@@ -159,27 +161,34 @@ font-size: 1.4rem;
     text-decoration: none;
     text-shadow: 2px 2px 8px #FF0000;
 }
+a:hover{
+    color: red;
+}
 
 a{
     text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-family: bold;
+
 }
     </style>
 </head>
 
 <body id="body-admin">
 
-    <div style="display: flex; margin-top: 127px">
+    <div style="display: flex; margin-top: 135px">
         <header class="admim-header">
             <div class="admin-app">
-               <div style="display: flex; justify-content: center;">
-                    <div><img style="width:8rem" src="{{asset('img/team-1.jpg')}}" alt=""></div>
-                    <div id="title-imglog"><b>Thong Tin  <br> </b></div>
+               <div style="display: flex; justify-content: center; padding: 17px 0 0 0;">
+                    <div><img style="width:4rem" src="{{asset('img/team-1.jpg')}}" alt=""></div>
+                    <div id="title-imglog"><b>Thông Tin  <br> </b></div>
                </div>
             </div>
             <div class="admin-button-list">
-                <div class="cl-btn">
-                    {{-- <button> <i class="fa-solid fa-gauge"></i> <a href="{{ route('dashboard') }}"> Dashboard </a></button> --}}
-                </div>
+                {{-- <div class="cl-btn">
+                    <button> <i class="fa-solid fa-gauge"></i> <a href="{{ route('dashboard') }}"> Dashboard </a></button>
+                </div> --}}
                 <div class="cl-btn">
                     {{-- <button onclick="handelOnclickTable('btn-table') "> <i class="fa-solid fa-layer-group"></i> Tables </button> --}}
                     <i class="fa-solid fa-people-roof"></i> <a href="{{ route('profile') }}">Thông Tin</a> <br>

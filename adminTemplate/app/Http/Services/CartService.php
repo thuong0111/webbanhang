@@ -151,6 +151,7 @@ class CartService
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
 
             Session::forget('carts');
+            Session::forget('coupon');
         } catch (\Exception $err) {
             DB::rollBack();
             Session::flash('error', 'Đặt Hàng Thất Bại.');

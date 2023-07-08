@@ -312,11 +312,11 @@
 
                                             <div class="row p-b-25">
                                                 <div class="col-sm-6 p-b-5">
-                                                    <label>Tên</label>
+                                                    {{-- <label>Tên</label> --}}
                                                     <input class="comment_name" type="text" placeholder="Tên của bạn">
                                                 </div>
                                                 <div class="col-12 p-b-5">
-                                                    <label>Nhận xét của bạn</label>
+                                                    {{-- <label>Nhận xét của bạn</label> --}}
                                                     <textarea class="comment_ct" name="comment" style="height: 125px; width:100%;" 
                                                     placeholder="Nhận xét của bạn"></textarea>
                                                 </div>

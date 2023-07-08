@@ -1,23 +1,23 @@
 
-	<select style="width: 343px; height: 40px;text-align:center;margin-top: 15px;margin-left: 12px;" class="thanhpho" id="prod_cat_id" name="city">
+	<select style="width: 150px; height: 40px;text-align:center;margin-top: 15px;margin-left: 12px;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thành Phố--</option>
 		@foreach($prod as $cat)
 			<option value="{{$cat->id}}">{{$cat->tentp}}</option>
 		@endforeach
 	</select>
-	<select style="width: 343px; height: 40px;margin-top: 15px;text-align:center;margin-left: 21px;" class="quanhuyen" name = "district" id="quanhuyen">
+	<select style="width: 150px; height: 40px;margin-top: 15px;text-align:center;margin-left: 21px;" class="quanhuyen" name = "district" id="quanhuyen">
 		<option value="0" disabled="true" selected="true"> --Quận Huyện--</option>
 		@foreach($prod as $cat)
 			<option value="{{$cat->id}}">{{$cat->tenqh}}</option>
 		@endforeach
 	</select>
 	
-	<select style="width: 343px;margin-left: 191px; height: 40px;margin-top: 15px;text-align: center" class="phuongxa" name="ward" id="phuongxa">
+	<select style="width: 150px;margin-left: 21px; height: 40px;margin-top: 15px;text-align: center" class="phuongxa" name="ward" id="phuongxa">
 		<option value="0" disabled="true" selected="true">  --Phường Xã--</option>
 	</select>
 
-	<div class="bor8 bg0 m-b-12">
-        <input class="stext-111 cl8 plh3 size-111 p-lr-15 " type="text" name="diachi" id="diachi" placeholder="Địa chỉ nhà">
+	<div class="m-b-12" style="padding-top: 10px">
+        <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="diachi" id="diachi" placeholder="Địa chỉ nhà cụ thể">
     </div>
 	
 

@@ -1,5 +1,5 @@
 
-	<select style="width: 350px; height: 40px;text-align:center;" class="thanhpho" id="prod_cat_id" name="city">
+	<select style="width: 320px; height: 40px;text-align:center;" class="thanhpho" id="prod_cat_id" name="city">
 		<option value="0" disabled="true" selected="true"> --Thành Phố--</option>
 		@foreach($prod as $cat)
 			<option value="{{$cat->id}}">{{$cat->tentp}}</option>
@@ -7,7 +7,7 @@
 	</select>
 	<br>
 	<br>
-	<select style="width: 350px; height: 40px;text-align:center;" class="quanhuyen" name = "district" id="quanhuyen">
+	<select style="width: 320px; height: 40px;text-align:center;" class="quanhuyen" name = "district" id="quanhuyen">
 		<option value="0" disabled="true" selected="true"> --Quận Huyện--</option>
 		@foreach($prod as $cat)
 			<option value="{{$cat->id}}">{{$cat->tenqh}}</option>
@@ -15,7 +15,7 @@
 	</select>
 	<br>
 	<br>
-	<select style="width: 350px; height: 40px;text-align:center;" class="phuongxa" name="ward" id="phuongxa">
+	<select style="width: 320px; height: 40px;text-align:center;" class="phuongxa" name="ward" id="phuongxa">
 		<option value="0" disabled="true" selected="true">  --Phường Xã--</option>
 	</select>
 	<br>
