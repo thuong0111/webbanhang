@@ -11,6 +11,7 @@ use App\Models\CTHoaDon;
 use App\Models\DSTrangThai;
 use App\Models\Productt;
 use Carbon\Carbon;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Constraint\Count;
@@ -22,6 +23,8 @@ class HoaDonController extends Controller
      */
     public function test()
     { Session::forget('coupon');
+        Cart::destroy();
+
     }
     public function index()
     {

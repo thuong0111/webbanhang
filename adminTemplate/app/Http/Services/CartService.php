@@ -2,7 +2,7 @@
 
 namespace App\Http\Services;
 
-use App\Jobs\SendMail;
+// use App\Jobs\SendMail;
 use App\Models\BienThe;
 use App\Models\Cart;
 use App\Models\Coupon;
@@ -18,7 +18,7 @@ use Gloudemans\Shoppingcart\Facades\Cart as FacadesCart;
 use Illuminate\Support\Facades\Auth;
 use ZipStream\Bigint;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Mail;
 class CartService
 {
     public function create($request)
@@ -86,7 +86,7 @@ class CartService
     public function addCart($request)
     {
         try {
-            DB::beginTransaction();
+            // DB::beginTransaction();
             if(Auth::check()){
                 $hd = HoaDon::create([
                     'user_id' => Auth::user()->id,
@@ -122,7 +122,7 @@ class CartService
                     
                 }
                 CTHoaDon::insert($data);
-                FacadesCart::destroy();
+
             }else{
                 $customer = Customer::create([
                     'name' => $request->input('name'),
@@ -142,14 +142,36 @@ class CartService
                 FacadesCart::destroy();
             }
 
-            
-            DB::commit();
+            $email=$request->input('email');
+            $name=$request->input('name');
+            $hdid=$hd->id;
+            $hdtg=$hd->thoigian;
+            $hdpttt=$hd->pt_thanh_toan_id;
+            $hdtongtien=$hd->ds_trang_thai_id;
+
+
+            $item=FacadesCart::content();
+            Mail::send('mail.ordersuccess',[
+                'name'=> $name,
+                'order'=> $hdid,
+                'tg'=> $hdtg,
+                'pttt'=> $hdpttt,
+                'tongtien'=> $hdtongtien,
+                'items'=> $item,
+
+            ], function ($mail) use($email,$name) {
+                $mail->from('congthuong01112002@gmail.com');
+                $mail->to($email,$name);
+                $mail->subject('Email odered');
+            });
+            // DB::commit();
             Session::flash('success', 'Đặt Hàng Thành Công.');
             // return redirect('/thanhcong');
 
             #Queue
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
-
+           
+            FacadesCart::destroy();
             Session::forget('carts');
         } catch (\Exception $err) {
             DB::rollBack();
