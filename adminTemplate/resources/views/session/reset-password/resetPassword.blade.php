@@ -8,7 +8,7 @@
             <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
                 <div class="card card-plain mt-8">
                     <div class="card-header pb-0 text-left bg-transparent">
-                        <h4 class="mb-0">Change password</h4>
+                        <h4 class="mb-0">Thay đổi mật khẩu</h4>
                     </div>
                     <div class="card-body">
                         <form role="form" action="/reset-password" method="POST">
@@ -42,7 +42,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Recover your password</button>
+                                <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Đổi mật khẩu</button>
                             </div>
                         </form>
                     </div>

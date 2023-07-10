@@ -30,7 +30,7 @@ class SliderController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.slider.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'List Slider',
+            'title' => 'Danh Sách Sliders',
             'sliders'=>$this->slider->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -54,7 +54,7 @@ class SliderController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.slider.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Add New Slider',
+            'title' => 'Thêm Sliders',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -91,7 +91,7 @@ class SliderController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.slider.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'Edit Sliders: ',
+            'title' => 'Sửa Sliders: ',
             'slider' => $slider,
             'spss'=>$sp,
             'hds'=>$hd,
@@ -130,7 +130,7 @@ class SliderController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete slider success'
+                'message'=>'Xóa sliders thành công'
             ]);
         }
         return response()->json([

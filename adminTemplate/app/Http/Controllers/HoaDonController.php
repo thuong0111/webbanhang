@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\StoreHoaDonRequest;
 use App\Http\Requests\UpdateHoaDonRequest;
+use App\Models\BienThe;
 use App\Models\CTHoaDon;
 use App\Models\DSTrangThai;
 use App\Models\Productt;
@@ -240,11 +241,15 @@ class HoaDonController extends Controller
      $data = $request->all();
      $from_date=$data['from_date'];
      $to_date=$data['to_date'];
-     $get=HoaDon::whereBetween('thoigian', [$from_date, $to_date])->orderBy('thoigian', 'ASC')->get();
+     $get=HoaDon::whereBetween('thoigian', [$from_date, $to_date])
+     ->selectRaw('sum(tongtien) as tt, DATE(thoigian) as day')
+            ->groupByRaw('DATE(thoigian)')
+            ->orderBy('thoigian', 'ASC')
+            ->get();
      foreach($get as $key=> $val){
         $chart_data[] = array(
-        'thoigian'=> $val->thoigian,
-        'tongtien'=>$val->tongtien
+        'thoigian'=> $val->day,
+        'tongtien'=>$val->tt
         );
         } 
          echo $data=json_encode($chart_data);        
@@ -260,18 +265,35 @@ class HoaDonController extends Controller
         $sub365days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(365)->toDateString();
         $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
             if($data['dashboard_value']=='7ngay'){
-            $get = HoaDon::whereBetween('thoigian', [$sub7days, $now])->orderBy('thoigian', 'ASC')->get();
+            $get = HoaDon::whereBetween('thoigian', [$sub7days, $now])
+            ->selectRaw('sum(tongtien) as tt, DATE(thoigian) as day')
+            ->groupByRaw('DATE(thoigian)')
+            ->orderBy('thoigian', 'ASC')
+            ->get();
             }elseif ($data['dashboard_value']=='thangtruoc'){
-            $get = HoaDon::whereBetween('thoigian', [$dau_thangtruoc, $cuoi_thangtruoc])->orderBy('thoigian', 'ASC')->get();
+            $get = HoaDon::whereBetween('thoigian', [$dau_thangtruoc, $cuoi_thangtruoc])
+            ->selectRaw('sum(tongtien) as tt, DATE(thoigian) as day')
+            ->groupByRaw('DATE(thoigian)')
+            ->orderBy('thoigian', 'ASC')
+            ->get();
             }elseif($data['dashboard_value']=='thangnay'){
-            $get = HoaDon::whereBetween('thoigian', [$dauthangnay, $now])->orderBy('thoigian', 'ASC')->get();
+            $get = HoaDon::whereBetween('thoigian', [$dauthangnay, $now])
+            ->selectRaw('sum(tongtien) as tt, DATE(thoigian) as day')
+            ->groupByRaw('DATE(thoigian)')
+            ->orderBy('thoigian', 'ASC')
+            ->get();
             }else{
-            $get =HoaDon::whereBetween('thoigian', [$sub365days, $now])->orderBy('thoigian', 'ASC')->get(); }
+            $get =HoaDon::whereBetween('thoigian', [$sub365days, $now])
+            ->selectRaw('sum(tongtien) as tt, DATE(thoigian) as day')
+            ->groupByRaw('DATE(thoigian)')
+            ->orderBy('thoigian', 'ASC')
+            ->get();
+             }
             
             foreach($get as $key=> $val){
                 $chart_data[] = array(
-                'thoigian'=> $val->thoigian,
-                'tongtien'=>$val->tongtien
+                'thoigian'=> $val->day,
+                'tongtien'=>$val->tt
                 );
                 } 
                 echo $data=json_encode($chart_data);        
@@ -283,11 +305,17 @@ class HoaDonController extends Controller
                 $sub30days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(30)->toDateString();
                 $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
                 
-                $get=HoaDon::whereBetween('thoigian', [$sub30days, $now])->orderBy('thoigian', 'ASC')->get();
+                $get=HoaDon::whereBetween('thoigian', [$sub30days, $now])
+                // ->select('thoigian')
+                ->selectRaw('sum(tongtien) as tt, DATE(thoigian) as day')
+                ->groupByRaw('DATE(thoigian)')
+                ->orderBy('thoigian', 'ASC')
+                ->get();
+                
                 foreach($get as $key=> $val){
                     $chart_data[] = array(
-                    'thoigian'=> $val->thoigian,
-                    'tongtien'=>$val->tongtien
+                    'thoigian'=> $val->day,
+                    'tongtien'=>$val->tt,
                     );
                  } 
                     echo $data=json_encode($chart_data);        
@@ -315,11 +343,20 @@ class HoaDonController extends Controller
 
             public function tonkho(Request $request)
             {
-                $get=Productt::all();
+                // $get=Productt::all();
+                $get=DB::table('bien_thes')
+                ->join('productts','bien_thes.san_pham_id','=','productts.id')
+                ->join('sizes','bien_thes.size_id','=','sizes.id')
+                ->join('maus','bien_thes.mau_id','=','maus.id')
+                ->select('productts.name','bien_thes.size_id','bien_thes.mau_id','bien_thes.SL')
+                ->get();
+
                 foreach($get as $key=> $val){
                     $chart_data[] = array(
                     'name'=> $val->name,
-                    'SL'=>$val->SL
+                    'SL'=>$val->SL,
+                    'size'=> $val->size_id,
+                    'mau'=> $val->mau_id,
                     );
                     }
                     echo $data=json_encode($chart_data);        

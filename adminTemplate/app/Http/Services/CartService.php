@@ -40,7 +40,6 @@ class CartService
             } 
         $carts[$product_id] = $qty;
         Session::put('carts', $carts);
-        
         return true;
     }
 
@@ -242,7 +241,26 @@ class CartService
             //     // $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
             //     FacadesCart::destroy();
             // }
+            $email=$request->input('emailvnpay');
+            $name=$request->input('namevnpay');
+            $hdid=$hd->id;
+            $hdtg=$hd->thoigian;
+            $hdpttt=$hd->pt_thanh_toan_id;
+            $hdtongtien=$hd->tongtien;
+            $item=FacadesCart::content();
+            Mail::send('mail.ordersuccess',[
+                'name'=> $name,
+                'order'=> $hdid,
+                'tg'=> $hdtg,
+                'pttt'=> $hdpttt,
+                'tongtien'=> $hdtongtien,
+                'items'=> $item,
 
+            ], function ($mail) use($email,$name) {
+                $mail->from('congthuong01112002@gmail.com');
+                $mail->to($email,$name);
+                $mail->subject('Email odered');
+            });
             DB::commit();
             
 

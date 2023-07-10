@@ -17,12 +17,12 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name Discount</th>
-                <th>Discount Code</th>
-                <th>Quantity</th>
-                <th>Discount type</th>
-                <th>Moneys Or Percent</th>
-                <th>Active</th>
+                <th>Tên giảm giá</th>
+                <th>Mã giảm giá</th>
+                <th>Số lượng</th>
+                <th>Tính năng</th>
+                <th>Số tiền hoặc %</th>
+                <th>Trạng thái</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

@@ -19,7 +19,7 @@ class MainController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.home', [
             'icons'=>'<i class="fa fa-home" aria-hidden="true"></i>',
-            'title'=>'Admin Pages',
+            'title'=>'Trang Admin',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,

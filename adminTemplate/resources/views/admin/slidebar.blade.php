@@ -4,7 +4,7 @@
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
       <img src="/template/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin Management</span>
+      <span class="brand-text font-weight-light">Trang Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -22,7 +22,7 @@
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="Search" placeholder="Tìm kiếm" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -39,7 +39,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                CATEGORY
+                Loại Quần Áo
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -47,13 +47,13 @@
               <li class="nav-item">
                 <a href="/admin/menus/add" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Category</p>
+                  <p>Thêm</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/admin/menus/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>List Category</p>
+                  <p>Danh Sách</p>
                 </a>
               </li>
             </ul>
@@ -63,7 +63,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-store-alt"></i>
-                <p> PRODUCTS
+                <p> Quần Áo
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -71,13 +71,13 @@
                 <li class="nav-item">
                     <a href="/admin/productts/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Add Product</p>
+                        <p>Thêm</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/productts/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Products</p>
+                        <p>Danh Sách </p>
                     </a>
                 </li>
             </ul>
@@ -87,7 +87,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fa fa-link" aria-hidden="true"></i>
-              <p> SIZE
+              <p> Size
                   <i class="right fas fa-angle-left"></i>
               </p>
           </a>
@@ -95,13 +95,13 @@
               <li class="nav-item">
                   <a href="/admin/size/add" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Add Size</p>
+                      <p>Thêm </p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="/admin/size/list" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>List Size</p>
+                      <p>Danh Sách </p>
                   </a>
               </li>
 
@@ -112,7 +112,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fa fa-link" aria-hidden="true"></i>
-              <p> COLOR
+              <p> Màu
                   <i class="right fas fa-angle-left"></i>
               </p>
           </a>
@@ -120,13 +120,13 @@
               <li class="nav-item">
                   <a href="/admin/mau/add" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Add Colors</p>
+                      <p>Thêm </p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="/admin/mau/list" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>List Colors</p>
+                      <p>Danh Sách </p>
                   </a>
               </li>
 
@@ -137,7 +137,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fa fa-link" aria-hidden="true"></i>
-              <p> DETAIL PRODUCTS
+              <p> Chi Tiết Quần Áo
                   <i class="right fas fa-angle-left"></i>
               </p>
           </a>
@@ -145,13 +145,13 @@
               <li class="nav-item">
                   <a href="/admin/ctsp/add" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>Add Detail Products</p>
+                      <p>Thêm</p>
                   </a>
               </li>
               <li class="nav-item">
                   <a href="/admin/ctsp/list" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
-                      <p>List Detail Products</p>
+                      <p>Danh Sách</p>
                   </a>
               </li>
 
@@ -162,7 +162,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> SLIDERS
+                <p> Sliders
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -170,13 +170,13 @@
                 <li class="nav-item">
                     <a href="/admin/sliders/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Add Slider</p>
+                        <p>Thêm</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/sliders/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Slider</p>
+                        <p>Danh Sách</p>
                     </a>
                 </li>
 
@@ -187,7 +187,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> BILL LOGIN
+                <p> Hóa Đơn Đăng Nhập
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -196,7 +196,7 @@
                 <li class="nav-item">
                     <a href="/admin/customerslog" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Bill</p>
+                        <p>Danh Sách</p>
                     </a>
                 </li>
 
@@ -207,7 +207,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                <p> SHOPPING CART
+                <p> Hóa Đơn Vãn Lai
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -215,7 +215,7 @@
                 <li class="nav-item">
                     <a href="/admin/customers" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Order</p>
+                        <p>Danh Sách</p>
                     </a>
                 </li>
             </ul>
@@ -225,7 +225,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                <p> USER MANAGER
+                <p> Khách Hàng Vãn Lai
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -233,7 +233,7 @@
                 <li class="nav-item">
                     <a href="/admin/customermanagers" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List User</p>
+                        <p>Danh Sách</p>
                     </a>
                 </li>
             </ul>
@@ -243,7 +243,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                <p> USER MANAGER LOGIN
+                <p> Khách Hàng Đăng Nhập
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -251,7 +251,7 @@
                 <li class="nav-item">
                     <a href="/admin/customermanagers" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List User_Lg</p>
+                        <p>Danh Sách</p>
                     </a>
                 </li>
             </ul>
@@ -261,7 +261,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-link" aria-hidden="true"></i>
-                <p> DISCOUNT
+                <p> Giảm Giá
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -269,13 +269,13 @@
                 <li class="nav-item">
                     <a href="/admin/giamgia/add" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Add Discount Code</p>
+                        <p>Thêm</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="/admin/giamgia/list" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>List Distcount Code</p>
+                        <p>Danh Sách</p>
                     </a>
                 </li>
 

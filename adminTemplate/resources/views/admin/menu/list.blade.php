@@ -16,11 +16,11 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name</th>
-                <th>Active</th>
-                <th>Description</th>
+                <th>Tên Loại</th>
+                <th>Trạng Thái</th>
+                <th>Mô tả</th>
                 <th>Slug</th>
-                <th>Update</th>
+                <th>Thời gian</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

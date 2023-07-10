@@ -30,7 +30,7 @@ class SizeController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.size.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'List Size',
+            'title' => 'Danh Sách Size',
             'sizes'=>$this->size->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -52,7 +52,7 @@ class SizeController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.size.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Add New Size',
+            'title' => 'Thêm Size',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -90,7 +90,7 @@ class SizeController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.size.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'Edit Size: ',
+            'title' => 'Sửa Size: ',
             'size' => $size,
             'spss'=>$sp,
             'hds'=>$hd,
@@ -128,7 +128,7 @@ class SizeController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete Size success'
+                'message'=>'Xóa Size thành công'
             ]);
         }
         return response()->json([

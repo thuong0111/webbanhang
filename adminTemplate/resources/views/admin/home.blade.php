@@ -49,10 +49,10 @@
      <ol class="list-view">
       @foreach ($sp_view as $key=>$sp)
         <li>
-          <b>
-            {{ $sp->name }} Có:
-            <span style="color: black">{{ $sp->view }} lượt xem.</span>
-        </b>
+          <span>
+            {{ $sp->name }} có:
+            <span style="color: #332cf5">{{ $sp->view }} lượt xem.</span>
+          </span>
         </li>
       @endforeach
      </ol>

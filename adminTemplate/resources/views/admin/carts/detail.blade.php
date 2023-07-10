@@ -3,18 +3,18 @@
 @section('content')
     <div class="customer mt-3">
         <ul>
-            <li>Customer Name: <strong>{{ $customer->name }}</strong></li>
-            <li>Phone: <strong>{{ $customer->phone }}</strong></li>
-            <li>Adress: <strong>{{ $customer->address }}</strong></li>
+            <li>Tên khách hàng: <strong>{{ $customer->name }}</strong></li>
+            <li>Số điện thoại: <strong>{{ $customer->phone }}</strong></li>
+            <li>Địa chủ: <strong>{{ $customer->address }}</strong></li>
             <li>
                @foreach ($adr_customers as $adr_customer)
-                    CiTy: <strong>{{ $adr_customer->tenTP }}</strong>
-                    District: <strong>{{ $adr_customer->tenQH }}</strong>
-                    Ward: <strong>{{ $adr_customer->tenPX }}</strong>
+                    Thành phố: <strong>{{ $adr_customer->tenTP }}</strong>
+                    Quận: <strong>{{ $adr_customer->tenQH }}</strong>
+                    Huyện: <strong>{{ $adr_customer->tenPX }}</strong>
                @endforeach
             </li>
             <li>Email: <strong>{{ $customer->email }}</strong></li>
-            <li>Content: <strong>{{ $customer->content }}</strong></li>
+            <li>Ghi chú: <strong>{{ $customer->content }}</strong></li>
         </ul>
     </div>
 
@@ -23,15 +23,15 @@
         <table class="table">
             <tbody>
             <tr class="table_head">
-                <th class="column-1">IMG</th>
-                <th class="column-2">Product</th>
-                <th class="column-3">Price</th>
-                <th class="column-4">Quantity</th>
+                <th class="column-1">Hình ảnh</th>
+                <th class="column-2">Tên sản phẩm</th>
+                <th class="column-3">Giá</th>
+                <th class="column-4">Số lượng</th>
                 <th class="column-5">Size</th>
-                <th class="column-5">Color</th>
-                <th class="column-5">Payment Pethods</th>
-                <th class="column-5">Active</th>
-                <th class="column-6">Total</th>
+                <th class="column-5">Màu</th>
+                <th class="column-5">PTTT</th>
+                <th class="column-5">Trạng thái</th>
+                <th class="column-6">Tổng tiền</th>
             </tr>
 
             @foreach($carts as $key => $cart)

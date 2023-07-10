@@ -40,7 +40,7 @@ class CartController extends Controller
        
         return view('admin.carts.customer',[
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
-            'title' => 'List Product Orders',
+            'title' => 'Danh Sách Hóa Đơn',
             'customers'=>$this->cart->getCustomer(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -59,7 +59,9 @@ class CartController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
-        ->get();
+        ->orderByDesc('hoa_dons.id')
+        ->paginate(10);
+        
 
         $sp=Productt::all()->count();
         $hd2=HoaDon::all()->count();
@@ -68,7 +70,7 @@ class CartController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.carts.customerlog',[
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
-            'title' => 'List Product Orders',
+            'title' => 'Danh Sách Hóa Đơn',
             'hoadons'=>$hd,
             'spss'=>$sp,
             'hds'=>$hd2,
@@ -115,7 +117,7 @@ class CartController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.carts.detail', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
-            'title' => 'Order Detail > ' . $customer->name,
+            'title' => 'Chi Tiết Hóa Đơn > ' . $customer->name,
             'customer' => $customer,
             'ctcart' =>$ctcart,
             'carts' => $carts,
@@ -159,6 +161,7 @@ class CartController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.carts.detaillog', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
+            'title' => 'Chi Tiết Hóa Đơn',
             'cthd' => $cthd,
             'ctproducts' => $cthd_product,
             'maus' => $Mau_user,

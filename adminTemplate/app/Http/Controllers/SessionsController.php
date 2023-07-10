@@ -103,14 +103,21 @@ class SessionsController extends Controller
     public function doimk(Request $request)
     {
         $customer_id = Auth()->user()->id;
+        $customer_password = Auth()->user()->password;
+        $passold = $request->passwordold;
         $pass = $request->password;
         $repass = $request->password_confirmation;
         $newpass = FacadesHash::make($pass);
-        if($pass ==  $repass){
-            User::where('id',$customer_id)->update(['password'=>$newpass]);
-            Session::put('message','Cập nhật mật khẩu thành công.');
-        }else{
-            Session::put('message','Mật khẩu không trùng khớp.');
+        if(FacadesHash::check($passold,$customer_password)){
+            if($pass ==  $repass){
+                User::where('id',$customer_id)->update(['password'=>$newpass]);
+                Session::put('message','Cập nhật mật khẩu thành công.');
+            }else{
+                Session::put('message','Mật khẩu không trùng khớp.');
+            }
+         }
+        else{
+            Session::put('message','Mật khẩu cũ không trùng khớp.');
         }
         return redirect('/viewdoimk');   
      }

@@ -5,10 +5,10 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name Product</th>
-                <th>Name Size</th>
-                <th>Name Color</th>
-                <th>Quantity</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Tên Size</th>
+                <th>Tên Màu</th>
+                <th>Số Lượng</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

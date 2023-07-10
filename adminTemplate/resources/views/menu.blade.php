@@ -49,13 +49,13 @@
                                 </li>
 
                                 <li class="p-b-6">
-                                    <a href="{{ request()->fullUrlWithQuery(['price' => 'asc']) }}" class="filter-link stext-106 trans-04">
+                                    <a href="{{ request()->fullUrlWithQuery(['price_sale' => 'asc']) }}" class="filter-link stext-106 trans-04">
                                         Giá: Thấp đến Cao
                                     </a>
                                 </li>
 
                                 <li class="p-b-6">
-                                    <a href="{{ request()->fullUrlWithQuery(['price' => 'desc']) }}" class="filter-link stext-106 trans-04">
+                                    <a href="{{ request()->fullUrlWithQuery(['price_sale' => 'desc']) }}" class="filter-link stext-106 trans-04">
                                         Giá: Cao đến Thấp
                                     </a>
                                 </li>

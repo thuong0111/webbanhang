@@ -30,7 +30,7 @@ class CouponController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.giamgia.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'List Size',
+            'title' => 'Danh Sách Giảm Giá',
             'sizes'=>$this->coupon->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -52,7 +52,7 @@ class CouponController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.giamgia.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Add New Size',
+            'title' => 'Thêm Giảm Giá',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -90,7 +90,7 @@ class CouponController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.giamgia.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'Edit Size: ',
+            'title' => 'Sửa Giảm Giá ',
             'size' => $giamgia,
             'spss'=>$sp,
             'hds'=>$hd,
@@ -128,7 +128,7 @@ class CouponController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete Giam Gia success'
+                'message'=>'Xóa Giam Gia thành công'
             ]);
         }
         return response()->json([

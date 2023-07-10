@@ -43,7 +43,9 @@
             <div class="card card-primary">
               <div class="card-header">
 
-                {{-- <h3 class="card-title">{!!$icons!!} {{$title}}</h3> --}}
+                <b class="card-title" style="font-size: 30px;
+                width: 900px;
+                text-align: center;"> {{$title}}</b>
 
               </div>
 

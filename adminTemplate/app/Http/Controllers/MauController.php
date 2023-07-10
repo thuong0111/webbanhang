@@ -31,7 +31,7 @@ class MauController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.mau.list', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'List Mau',
+            'title' => 'Danh Sách Màu',
             'maus'=>$this->mau->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -54,7 +54,7 @@ class MauController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.mau.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Add New Mau',
+            'title' => 'Thêm Màu',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -92,7 +92,7 @@ class MauController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.mau.edit', [
             'icons'=>'<i class="fa fa-link" aria-hidden="true"></i>',
-            'title' => 'Edit Mau: ',
+            'title' => 'Sửa Màu: ',
             'mau' => $mau,
             'spss'=>$sp,
             'hds'=>$hd,
@@ -130,7 +130,7 @@ class MauController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete Mau success'
+                'message'=>'Xóa Mau thành công'
             ]);
         }
         return response()->json([

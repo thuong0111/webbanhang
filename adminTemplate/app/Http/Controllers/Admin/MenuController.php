@@ -33,7 +33,7 @@ class MenuController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.menu.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title'=>'Add New Category',
+            'title'=>'Thêm Loại Quần Áo',
             'menus'=> $this->menuService->getParent(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -60,7 +60,7 @@ class MenuController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.menu.list', [
             'icons'=>'<i class="nav-icon fas fa-tachometer-alt"></i>',
-            'title'=>'List Category',
+            'title'=>'Danh Sach Loại Quần Áo',
             'menus'=>$this->menuService->getAll(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -79,7 +79,7 @@ class MenuController extends Controller
         $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
         return view('admin.menu.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
-            'title'=>'Edit Category: ' . $menu->name,
+            'title'=>'Sửa Loại : ' . $menu->name,
             'menu'=>$menu,
             'menus'=> $this->menuService->getParent(),
             'spss'=>$sp,
@@ -104,7 +104,7 @@ class MenuController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete success'
+                'message'=>'Xóa thành công'
             ]);
         }
         return response()->json([

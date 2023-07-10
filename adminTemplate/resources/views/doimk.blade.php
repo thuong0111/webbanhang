@@ -90,6 +90,15 @@
                 </div>
             </div> --}}
             <div>
+                <label for="password">Nhập Mật Khẩu Cũ</label>
+                <div class="">
+                    <input id="password" name="passwordold" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                    @error('password')
+                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+            <div>
                 <label for="password">Nhập Mật Khẩu Mới</label>
                 <div class="">
                     <input id="password" name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">

@@ -16,8 +16,8 @@
         <thead>
             <tr>
                 <th style="width: 50px">Id</th>
-                <th>Name Color</th>
-                <th>Active</th>
+                <th>Tên màu</th>
+                <th>Trạng thái</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

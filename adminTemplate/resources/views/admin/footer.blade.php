@@ -31,9 +31,9 @@
         labels: ['Tổng Tiền']
         });
 
-        var chartsp=new Morris.Bar({
+        var chartsp=new Morris.Line({
         element: 'chart-sp',
-        lineColors: ['#819C79','#FF6541'],
+        lineColors: ['#979b9c'],
         // pointFillColors: ['#ffffff'],
         // pointStrokeColors: ['black'],
         // fillOpacity: 0.6,
@@ -42,19 +42,19 @@
         xkey: 'product_id',
         ykeys: ['sumsl'],
         // behaveLikeLine: true,
-        labels: ['Tổng SL']
+        labels: ['Số Lượng Đã Bán']
         });
 
 
         var tonkho=new Morris.Area({
         element: 'tonkho',
-        lineColors: ['#819C79','#FF6541'],
+        lineColors: ['#34c6eb','#FF6541','#0330fc'],
         parseTime: false,
         hideHover: 'auto',
         xkey: 'name',
-        ykeys: ['SL'],
-        // behaveLikeLine: true,
-        labels: ['SL']
+        ykeys: ['SL','size','mau'],
+        //behaveLikeLine: true,
+        labels: ['SL','Size','Màu']
         });
 
 
@@ -182,8 +182,8 @@
         colors: [
             '#E0F7FA',
             '#B2EBF2',
-            '#80DEEA',
-            '#4DD0E1',
+            '#40c758',
+            '#eb2cf5',
             '#26C6DA',
             '#00BCD4',
             '#00ACC1',
@@ -193,10 +193,10 @@
         ],
         
         data: [
-            {label:"San Pham", value: {{$spss}} , color:colorDanger},
-            {label:"Don hang", value: {{$hds}} },
-            {label:"Don hang van lai", value: {{$hdvls}} },
-            {label:"Khach Hang", value: {{$users}}}
+            {label:"Sản Phẩm", value: {{$spss}} , color:colorDanger},
+            {label:"Đơn Hàng", value: {{$hds}} },
+            {label:"Đơn Hàng Vãn Lai", value: {{$hdvls}} },
+            {label:"Khách Hàng", value: {{$users}}}
         ]
         });
     });

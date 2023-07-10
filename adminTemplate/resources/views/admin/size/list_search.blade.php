@@ -17,7 +17,7 @@
             <tr>
                 <th style="width: 50px">ID</th>
                 <th>Tên Size</th>
-                <th>Active</th>
+                <th>Trạng thái</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

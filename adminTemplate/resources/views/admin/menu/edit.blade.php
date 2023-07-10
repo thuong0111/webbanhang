@@ -8,7 +8,7 @@
 <form action="" method="POST">
     <div class="card-body">
       <div class="form-group">
-        <label for="menu">Name Category</label>
+        <label for="menu">Tên Loại</label>
         <input type="text" name="name" value="{{$menu->name}}" class="form-control" placeholder="Enter name">
       </div>
 
@@ -26,32 +26,32 @@
       </div>
 
       <div class="form-group">
-        <label>Description</label>
+        <label>Mô tả</label>
         <textarea name="description" class="form-control">{{$menu->description}}</textarea>
       </div>
 
       <div class="form-group">
-        <label>Description Detail</label>
+        <label>Mô tả chi tiết</label>
         <textarea id="content" name="content" class="form-control">{{$menu->content}}</textarea>
       </div>
 
       <div class="form-group">
-        <label>Activated</label>
+        <label>Trạng thái</label>
         <div class="custom-control custom-radio">
           <input class="custom-control-input" type="radio" value="1" id="active" name="active" 
           {{-- nếu menu active ==1 thì sẽ check --}}
             {{$menu->active == 1 ? 'checked = "" ':''}}>
-          <label for="active" class="custom-control-label">Yes</label>
+          <label for="active" class="custom-control-label">Hoạt động</label>
         </div>
         <div class="custom-control custom-radio">
           <input class="custom-control-input" type="radio" value="0" id="no_active" name="active"
           {{$menu->active == 0  ? 'checked = "" ':''}}>
-          <label for="no_active" class="custom-control-label">No</label>
+          <label for="no_active" class="custom-control-label">Không hoạt động</label>
         </div>
       </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Update Category</button>
+      <button type="submit" class="btn btn-primary">Lưu</button>
     </div>
     @csrf
   </form>

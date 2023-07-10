@@ -29,7 +29,7 @@ class ProductController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.productt.list', [
             'icons'=>'<i class="nav-icon fas fa-store-alt"></i>',
-            'title' => 'List Products',
+            'title' => 'Danh Sach Quần Áo',
             'productts' => $this->productService->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -48,7 +48,7 @@ class ProductController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.productt.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Add New Products',
+            'title' => 'Thêm Quần Áo',
             'menus' => $this->productService->getMenu(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -73,7 +73,7 @@ class ProductController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.productt.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
-            'title' => 'Edit Products: ',
+            'title' => 'Sửa Quần Áo ',
             'productt' => $productt,
             'menus' => $this->productService->getMenu(),
             'spss'=>$sp,
@@ -99,7 +99,7 @@ class ProductController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete product success'
+                'message'=>'Xóa Sản Phẩm thành công'
             ]);
         }
         return response()->json(['error'=>true]);

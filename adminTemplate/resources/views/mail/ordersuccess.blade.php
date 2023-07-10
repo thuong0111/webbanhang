@@ -1,8 +1,8 @@
 <h2>Hi {{ $name }}</h2>
     <p>
-        <b>Ban đã đặt hàng thành công tại cửa hàng ARB</b>
+        <b style="font-size: 40px; text-align: center">Ban đã đặt hàng thành công tại cửa hàng ARB</b>
     </p>
-    <h4>Thông tin đơn hàng của bạn</h4> <h4>Mã đơn hàng: {{ $order }}</h4> <h4>Ngày đơn hàng: {{ $tg }}</h4>
+    <h4>Thông tin đơn hàng của bạn</h4> <h4>Mã đơn hàng: {{ $order }}</h4> <h4>Ngày đặt hàng: {{ $tg }}</h4>
     <h4>Phương thức thanh toán: {{ $pttt }}</h4>
     <h4>Tổng tiền: {{ $tongtien }}</h4>
 

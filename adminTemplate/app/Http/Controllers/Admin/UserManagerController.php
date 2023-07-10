@@ -28,7 +28,7 @@ class UserManagerController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.manager_user.list_customer',[
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
-            'title' => 'List Users',
+            'title' => 'Danh Sách Khách Hàng',
             'Users'=>$this->User->getUser(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -48,7 +48,7 @@ class UserManagerController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.manager_user.detail_customer', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',
-            'title' => 'Infor >'. $users->name,
+            'title' => 'Thông Tin Khách Hàng >'. $users->name,
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,

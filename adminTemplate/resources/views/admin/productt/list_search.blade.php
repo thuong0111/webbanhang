@@ -16,13 +16,13 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name Product</th>
-                <th>Category</th>
+                <th>Tên sản phẩm</th>
+                <th>Loại sản phẩm</th>
                 {{-- <th>Quantity</th> --}}
-                <th>Price</th>
-                <th>Price Sale</th>
-                <th>Active</th>
-                <th>Update</th>
+                <th>Giá</th>
+                <th>Giá giảm</th>
+                <th>Trạng thái</th>
+                <th>Thời gian</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>
@@ -55,7 +55,7 @@
             @endforeach
         </tbody>
     </table>
-    <div class="card-footer clear-fix">
+    <div class="card-footer clear-fix"> 
     </div>
     
 @endsection
