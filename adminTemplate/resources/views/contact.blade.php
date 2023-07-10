@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-6">
             <div>
-                <form action="/contactadd" method="POST">
+                <form action="{{ url('/contactadd') }}" method="POST">
                     <div class="form-group">
                         <p>
                             Quý khách có thể liên hệ với chúng tôi bằng việc điền đầy đủ các thông tin
