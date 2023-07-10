@@ -78,16 +78,16 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Phone</th>
+                <th>Tên</th>
+                <th>SĐT</th>
                 <th>Email</th>
-                <th>Time</th>
-                <th>Payment</th>
-                <th>Active</th>
-                <th>Total</th>
-                <th>Sale</th>
-                <th>Payables</th>
-                <th>Options</th>
+                <th>Thời gian</th>
+                <th>PTTT</th>
+                <th>Trạng thái</th>
+                <th>Tổng tiền</th>
+                <th>Giá giảm</th>
+                <th>Tiền trả</th>
+                <th>Chức năng</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>
@@ -101,16 +101,13 @@
                     <td>{{$hoadon->thoigian}}</td>
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
-<<<<<<< HEAD
                     <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
                     <td>{{number_format($hoadon->tiengg).' '.' VND'}}</td>
                     <td>{{number_format($hoadon->tientra).' '.' VND'}}</td>
                     <td>&nbsp;</td>
-=======
-                    <td>{{number_format($hoadon->tongtien, '0', '', '.')}}</td>
+                    {{-- <td>{{number_format($hoadon->tongtien, '0', '', '.')}}</td>
                     <td>{{number_format($hoadon->tiengg, '0', '', '.')}}</td>
-                    <td>{{number_format($hoadon->tientra, '0', '', '.')}}</td>
->>>>>>> bae385526b3c7b0b4ed8e06016f58262c549ebe6
+                    <td>{{number_format($hoadon->tientra, '0', '', '.')}}</td> --}}
                     <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px;
                             margin-bottom:2px">
@@ -151,7 +148,7 @@
         </tbody>
     </table>
     {{-- <div class="card-footer clear-fix">
-        {!! $customers->links() !!}
+        {!! $hoadons->links() !!}
     </div> --}}
     
 @endsection

@@ -16,10 +16,10 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name</th>
-                <th>Phone</th>
+                <th>Tên</th>
+                <th>SĐT</th>
                 <th>Email</th>
-                <th>The order date</th>
+                <th>Ngày đặt</th>
                 {{-- <th>PT Thanh Toán</th>
                 <th>Trạng Thái ĐH</th> --}}
                 <th style="width: 50px">&nbsp;</th>

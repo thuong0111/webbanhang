@@ -30,7 +30,7 @@ class BienTheController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.ctsp.list', [
             'icons'=>'<i class="nav-icon fas fa-store-alt"></i>',
-            'title' => 'List CTSP',
+            'title' => 'Danh Sách CTSP',
             'ctsps' => $this->btService->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -49,7 +49,7 @@ class BienTheController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.ctsp.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Add New CTSP',
+            'title' => 'Thêm CTSP',
             'sps' => $this->btService->getSP(),
             'sizes' => $this->btService->getSize(),
             'maus' => $this->btService->getMau(),
@@ -76,7 +76,7 @@ class BienTheController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.ctsp.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
-            'title' => 'Edit CTSP: ',
+            'title' => 'Sửa CTSP: ',
             'ctsp' => $ctsp,
             'sps' => $this->btService->getSP(),
             'sizes' => $this->btService->getSize(),
@@ -105,7 +105,7 @@ class BienTheController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Delete CTSP success'
+                'message'=>'Xóa CTSP thành công'
             ]);
         }
         return response()->json(['error'=>true]);

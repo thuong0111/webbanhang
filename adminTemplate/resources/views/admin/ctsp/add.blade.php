@@ -7,7 +7,7 @@
 @section('content')
 <form action="" method="POST">
   <div class="form-group">
-    <label >Product</label>
+    <label >Tên sản phẩm</label>
     <select class="form-control" name="san_pham_id">
         @foreach ($sps as $sp)
           <option value="{{$sp->id}}">{{$sp->name}}</option>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="form-group">
-    <label >Color</label>
+    <label >Màu</label>
     <select class="form-control" name="mau_id">
         @foreach ($maus as $mau)
           <option value="{{$mau->id}}">{{$mau->tenmau}}</option>
@@ -33,12 +33,12 @@
     </select>
   </div>
   <div class="form-group">
-    <label>Quantity</label>
+    <label>Số lượng</label>
     <input type="number" name="SL" value="{{old('SL')}}" class="form-control">
   </div>
     <!-- /.card-body -->
     <div class="card-footer">
-      <button type="submit" class="btn btn-primary">Add Detail</button>
+      <button type="submit" class="btn btn-primary">Thêm</button>
     </div>
     @csrf
   </form>

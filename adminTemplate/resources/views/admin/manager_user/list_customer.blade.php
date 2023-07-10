@@ -16,11 +16,11 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name</th>
-                <th>Account</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
                 {{-- <th>PassWord</th> --}}
-                <th>Phone</th>
-                <th>Adress</th>
+                <th>Số điện thoại</th>
+                <th>Địa chỉ</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

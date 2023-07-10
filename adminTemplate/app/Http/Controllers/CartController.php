@@ -28,7 +28,7 @@ class CartController extends Controller
 
     public function index(Request $request)
     {
-        $message='tt k hop le';
+        
         $qty =(int)$request->input('num_product');
         $result = $this->cartService->create($request);
         $size_id =(int)$request->input('size_id');
@@ -41,14 +41,19 @@ class CartController extends Controller
         ->where('id', $product_id)
         ->get();
         if (empty($size_id) || empty($mau_id) || $qty <= 0) {
-
-            return $message;
+            Session::forget('carts');
+            return redirect()->back()->with('error','Vui lòng kiểm tra lại thông tin');
         }
         else{
             foreach($productts as $tam){
                 $name=$tam->name;
+                if($tam->price_sale == null){
                 $price=$tam->price;
                 $thumb=$tam->thumb;
+                }else{
+                    $price=$tam->price_sale;
+                    $thumb=$tam->thumb;
+                }
             }
             foreach($tensize as $tam){
                 $laytensize=$tam->tensize;

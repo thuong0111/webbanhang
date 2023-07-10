@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row w3-res-tb">
-        <div class="col-sm-3">
+        <div class="col-sm-3" style="display: flex">
         <form action="/tim-kiem-product" method="POST">
             {{ csrf_field() }}
             <div class="input-group" style="display: flex; padding: 5px 0 5px 0;">
@@ -10,19 +10,24 @@
             <input type="submit" name="search_items" style="color:#000;margin-top: 0"class="btn btn-primary btn-sm" value="Tìm kiếm"/>
             </div>
         </form>
+        <a class="btn btn-primary btn-sm" href="/admin/productts/add" style="width:30px;height: 36px;
+        margin-top: 5px;
+        margin-left: 20px;">
+            <span class="icon" title="Add Product"><i class="fas fa-plus"></i></span>
+        </a>
         </div>
     </div>
     <table class="table">
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Name Product</th>
-                <th>Category</th>
+                <th>Tên sản phẩm</th>
+                <th>Loại sản phẩm</th>
                 {{-- <th>Quantity</th> --}}
-                <th>Price</th>
-                <th>Price Sale</th>
-                <th>Active</th>
-                <th>Update</th>
+                <th>Giá</th>
+                <th>Giá giảm</th>
+                <th>Trạng thái</th>
+                <th>Thời gian</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>
@@ -39,9 +44,7 @@
                     <td>{{$productt->updated_at}}</td>
                     
                     <td style="text-align: center; display:flex">
-                        <a class="btn btn-primary btn-sm" href="/admin/productts/add" style="width:30px">
-                            <span class="icon" title="Add Product"><i class="fas fa-plus"></i></span>
-                        </a>
+                        
                         <a class="btn btn-primary btn-sm" href="/admin/productts/edit/{{$productt->id}}" style="width:30px; margin:0 2px 0 2px;">
                             <span class="icon" title="Edit Product"><i class="fas fa-edit"></i></span>
                         </a>

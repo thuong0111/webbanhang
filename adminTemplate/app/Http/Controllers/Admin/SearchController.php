@@ -115,7 +115,8 @@ class SearchController extends Controller
         $user=User::all()->count();
         $hdvl=Cart::all()->count();
         $keywords = $request->keywords_submit;
-        $search_bill = User::where('phone','like','%'.$keywords.'%')->get();
+        $search_bill = User::where('phone','like','%'.$keywords.'%')->orderByDesc('id')
+        ->paginate(10);
         return view('admin.carts.customerlog',[
             'spss'=>$sp,
             'hds'=>$hd,
