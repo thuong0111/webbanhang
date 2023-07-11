@@ -39,12 +39,12 @@
                 
                 <tr>
                     <td class="column-1">
-                        <div class="how-itemcart1">
-                            <img src="{{ $ctproduct->thumb }}" alt="IMG" style="width: 100px">
+                        <div class="">
+                        <a href="/san-pham/{{ $ctproduct->id }}-{{ Str::slug($ctproduct->name, '-') }}.html">    <img src="{{ $ctproduct->thumb }}" alt="IMG" style="width: 100px"></a>
                         </div>
                     </td>
                     <td class="column-2">{{ $ctproduct->name }}</td>
-                    <td class="column-3">{{ number_format($ctproduct->price, 0, '', '.') }}</td>
+                    <td class="column-3">{{ number_format($ctproduct->price_sale, 0, '', '.') }}</td>
                     <td class="column-4">{{ $ctproduct->SL }}</td>
                     <td class="column-5">
                         @foreach ($sizes as $key => $Size)

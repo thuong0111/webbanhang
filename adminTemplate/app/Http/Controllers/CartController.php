@@ -40,7 +40,16 @@ class CartController extends Controller
         $productts = Productt::select('id', 'name', 'price', 'price_sale', 'thumb')
         ->where('id', $product_id)
         ->get();
-        if (empty($size_id) || empty($mau_id) || $qty <= 0) {
+        $slctsp=BienThe::where('san_pham_id', $product_id)
+        ->where('mau_id',$mau_id)
+        ->where('size_id',$size_id)
+        ->select('SL')
+        ->get();
+        foreach($slctsp as $sl){
+            $slton=$sl->SL;
+        }
+
+        if (empty($size_id) || empty($mau_id) || $qty <= 0||$qty>$slton) {
             Session::forget('carts');
             return redirect()->back()->with('error','Vui lòng kiểm tra lại thông tin');
         }

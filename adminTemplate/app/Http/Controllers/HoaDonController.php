@@ -119,7 +119,7 @@ class HoaDonController extends Controller
         $cthd_product = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
-        ->select('productts.thumb','productts.name','productts.price','ct_hoa_dons.SL','ct_hoa_dons.thanhtien' )
+        ->select('productts.id','productts.thumb','productts.name','productts.price_sale','ct_hoa_dons.SL','ct_hoa_dons.thanhtien' )
         ->get();
 
         $Size_user = DB::table('ct_hoa_dons')

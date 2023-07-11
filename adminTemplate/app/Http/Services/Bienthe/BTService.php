@@ -35,9 +35,33 @@ class BTService
       
         try {
             $request->except('_token');
+            $sl= $request->SL;
+
+            $size= $request->size_id;
+            $mau= $request->mau_id;
+            $sp= $request->san_pham_id;
+            $kiemtrabt=BienThe::all();
+            
+            foreach ($kiemtrabt as $kiemtra){
+                if($kiemtra->san_pham_id == $sp){
+                    if( $kiemtra->size_id == $size){
+                        if($kiemtra->mau_id == $mau){
+                            $slupdate=$kiemtra->SL+$sl;
+                            BienThe::where('san_pham_id',$sp)
+                            ->where('mau_id',$mau)
+                            ->where('size_id',$size)
+                            ->update(['SL'=>$slupdate]);
+                            Session::flash('success', 'Đã cập nhật lại số lượng vì sản phẩm đã có');
+                            return true;
+
+                        }
+                    }
+                }
+            }
+            
             BienThe::create($request->all());
 
-            Session::flash('success', 'Add CTSP success');
+            Session::flash('success', 'Thêm Chi Tiết Thành Công');
         } catch (\Exception $err) {
             Session::flash('error', 'Add CTSP fail');
             Log::info($err->getMessage());
