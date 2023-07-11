@@ -261,6 +261,7 @@ Route::post('/tim-kiem-discount', [App\Http\Controllers\Admin\SearchController::
 Route::post('/tim-kiem-bill', [App\Http\Controllers\Admin\SearchController::class, 'search_bill']);
 Route::post('/tim-kiem-user', [App\Http\Controllers\Admin\SearchController::class, 'search_user']);
 Route::post('/tim-kiem-uservl', [App\Http\Controllers\Admin\SearchController::class, 'search_uservl']);
+Route::post('/tim-kiem-ctsp', [App\Http\Controllers\Admin\SearchController::class, 'search_ctsp']);
 
 
 Route::get('/viewdoimk', [SessionsController::class, 'viewdoimk']);

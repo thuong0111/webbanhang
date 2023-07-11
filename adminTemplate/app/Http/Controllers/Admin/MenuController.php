@@ -33,7 +33,7 @@ class MenuController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.menu.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title'=>'Thêm Loại Quần Áo',
+            'title'=>'Thêm Loại Sản Phẩm',
             'menus'=> $this->menuService->getParent(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -60,7 +60,7 @@ class MenuController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.menu.list', [
             'icons'=>'<i class="nav-icon fas fa-tachometer-alt"></i>',
-            'title'=>'Danh Sach Loại Quần Áo',
+            'title'=>'Danh Sách Loại Sản Phẩm',
             'menus'=>$this->menuService->getAll(),
             'spss'=>$sp,
             'hds'=>$hd,

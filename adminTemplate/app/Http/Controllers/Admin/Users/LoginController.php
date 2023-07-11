@@ -58,7 +58,7 @@ class LoginController extends Controller
             return redirect()->route('admin');
         }
         
-        Session::flash('error', 'Email or pass not correct');
+        Session::flash('error', 'Tài khoản hoặc mật khẩu không chính xác!');
         // Session::flash('success', 'Login success');
         return redirect()->back();
     }
