@@ -29,7 +29,7 @@ class ProductController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.productt.list', [
             'icons'=>'<i class="nav-icon fas fa-store-alt"></i>',
-            'title' => 'Danh Sach Quần Áo',
+            'title' => 'Danh Sách Sản Phẩm',
             'productts' => $this->productService->get(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -48,7 +48,7 @@ class ProductController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.productt.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-            'title' => 'Thêm Quần Áo',
+            'title' => 'Thêm Sản Phẩm',
             'menus' => $this->productService->getMenu(),
             'spss'=>$sp,
             'hds'=>$hd,
@@ -73,7 +73,7 @@ class ProductController extends Controller
         $hdvl=Cart::all()->count();
         return view('admin.productt.edit', [
             'icons'=>'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>',
-            'title' => 'Sửa Quần Áo ',
+            'title' => 'Sửa Sản Phẩm ',
             'productt' => $productt,
             'menus' => $this->productService->getMenu(),
             'spss'=>$sp,

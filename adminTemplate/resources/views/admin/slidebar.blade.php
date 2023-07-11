@@ -39,7 +39,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Loại Quần Áo
+                Loại Sản Phẩm
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -63,7 +63,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-store-alt"></i>
-                <p> Quần Áo
+                <p> Sản Phẩm
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -137,7 +137,7 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fa fa-link" aria-hidden="true"></i>
-              <p> Chi Tiết Quần Áo
+              <p> Chi Tiết Sản Phẩm
                   <i class="right fas fa-angle-left"></i>
               </p>
           </a>
@@ -207,7 +207,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                <p> Hóa Đơn Vãn Lai
+                <p> Hóa Đơn Vãng Lai
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -225,7 +225,7 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                <p> Khách Hàng Vãn Lai
+                <p> Khách Hàng Vãng Lai
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>

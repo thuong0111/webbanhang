@@ -350,6 +350,7 @@ class CartController extends Controller
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
         ->get();
         return view('admin.carts.bill_processing',[
+            'title'=>'Danh Sách Hóa Đơn',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -372,6 +373,7 @@ class CartController extends Controller
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
         ->get();
         return view('admin.carts.bill_delivering',[
+            'title'=>'Danh Sách Hóa Đơn',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -394,6 +396,7 @@ class CartController extends Controller
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
         ->get();
         return view('admin.carts.bill_finish',[
+            'title'=>'Danh Sách Hóa Đơn',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -416,6 +419,7 @@ class CartController extends Controller
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
         ->get();
         return view('admin.carts.bill_cancel',[
+            'title'=>'Danh Sách Hóa Đơn',
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,

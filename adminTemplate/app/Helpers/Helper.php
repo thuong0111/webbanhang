@@ -22,15 +22,12 @@ class Helper
                         <td>' . $menu->updated_at .'</td>
                         <td>&nbsp;</th>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="/admin/menus/add">
-                                <span class="icon" title="Add Category"><i class="fas fa-plus"></i></span>
-                            </a>
                             <a class="btn btn-primary btn-sm" href="/admin/menus/edit/' . $menu->id . '">
-                                <span class="icon" title="Edit Category"><i class="fas fa-edit"></i></span>
+                                <span class="icon" title="Sửa"><i class="fas fa-edit"></i></span>
                             </a>
                             <a class="btn btn-danger btn-sm" href="#" 
                                 onclick="removeRow(' . $menu->id . ', \'/admin/menus/destroy\')">
-                                <span class="icon" title="Delete Category"><i class="fas fa-trash"></i></span>
+                                <span class="icon" title="Xóa"><i class="fas fa-trash"></i></span>
                             </a>
                         </td>
                     </tr>

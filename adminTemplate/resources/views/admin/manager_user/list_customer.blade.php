@@ -16,7 +16,7 @@
         <thead>
             <tr>
                 <th style="width: 50px">ID</th>
-                <th>Họ và tên</th>
+                <th>Tên</th>
                 <th>Email</th>
                 {{-- <th>PassWord</th> --}}
                 <th>Số điện thoại</th>

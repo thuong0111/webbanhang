@@ -59,7 +59,7 @@
         <form action="/tim-kiem-bill" method="POST">
             {{ csrf_field() }}
             <div class="input-group" style="display: flex; padding: 5px 0 5px 0;">
-            <input type="text" name="keywords_submit" class="input-sm form-control" placeholder="Enter Name Bill">
+            <input type="text" name="keywords_submit" class="input-sm form-control" placeholder="Nhập tên KH">
             <input type="submit" name="search_items" style="color:#000;margin-top: 0"class="btn btn-primary btn-sm" value="Tìm kiếm"/>
             </div>
         </form>
@@ -111,7 +111,7 @@
                     <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px;
                             margin-bottom:2px">
-                            <span class="icon" title="View Order"><i class="fas fa-eye"></i></span>
+                            <span class="icon" title="Xem Chi TIết"><i class="fas fa-eye"></i></span>
                         </a>
                         <form action="/capnhat2" method="POST">
                             @csrf
@@ -119,7 +119,7 @@
                             <input type="hidden" name="id" value="{{$hoadon->id}}">
                             <button type="submit" style="background: #007bff; border: none; width: 30px; 
                                 height: 30px; border-radius: 3px; margin-bottom:2px">
-                                <span class="icon" title="Delivering">
+                                <span class="icon" title="Đang Giao">
                                     <i class="fa fa-truck" style="color: white"></i>
                                 </span>
                             </button>
@@ -131,13 +131,13 @@
                             <input type="hidden" name="idhoanthanh" value="{{$hoadon->id}}">
                             <button type="submit" style="background: #007bff; border: none; width: 30px; 
                                 height: 30px; border-radius: 3px; margin-bottom:2px">
-                                <span class="icon" title="Finish">
+                                <span class="icon" title="Hoàn Thành">
                                     <i class="fa fa-check" style="color: rgb(120, 243, 120)"></i>
                                 </span>
                             </button>
                         </form>
                         <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px">
-                            <span class="icon" title="Print Bill">
+                            <span class="icon" title="In Hóa Đơn">
                                 <i class="fa fa-print"></i>
                             </span>
                         </a>
@@ -147,8 +147,8 @@
             @endforeach
         </tbody>
     </table>
-    {{-- <div class="card-footer clear-fix">
+    <div class="card-footer clear-fix">
         {!! $hoadons->links() !!}
-    </div> --}}
+    </div>
     
 @endsection
