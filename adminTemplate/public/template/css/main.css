@@ -380,7 +380,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .main-menu > li > a {
-  font-family: 'PlayfairDisplay-Bold';
+  /* font-family: 'PlayfairDisplay-Bold'; */
+  font-family: 'Roboto';
   font-size: 22px;
   color: #1b1800;
   padding: 5px 0px;
@@ -656,7 +657,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     color: #1b1800;
     font-weight: bold !important;
     font-size: 25px;
-    font-family: 'PlayfairDisplay-Bold';
+    font-family: 'Roboto';
 }
 
 
@@ -2362,7 +2363,8 @@ input.num-product::-webkit-inner-spin-button {
 /*//////////////////////////////////////////////////////////////////
 [ L-Text >= 26 ]*/
 .ltext-101 {
-  font-family: Poppins-Regular;
+  /* font-family: Poppins-Regular; */
+  font-family: 'Roboto';
   font-size: 28px;
   line-height: 1.2857;
 }
@@ -2374,45 +2376,51 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .ltext-103 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   font-size: 36px;
   line-height: 1.1;
   text-transform: uppercase;
 }
 
 .ltext-104 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   font-size: 60px;
   line-height: 1.1;
   text-transform: uppercase;
 }
 
 .ltext-105 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   font-size: 50px;
   line-height: 1.1;
 }
 
 .ltext-106 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   font-size: 36px;
   line-height: 1.2;
 }
 
 .ltext-107 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   font-size: 30px;
   line-height: 1.1;
 }
 
 .ltext-108 {
-  font-family: Poppins-Bold;
-  font-size: 26px;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   line-height: 1.3846;
 }
 
 .ltext-109 {
-  font-family: Poppins-Bold;
+  /* font-family: Poppins-Bold; */
+  font-family: 'Roboto';
   font-size: 36px;
   line-height: 1.2;
 }
@@ -2420,14 +2428,16 @@ input.num-product::-webkit-inner-spin-button {
 
 /*---------------------------------------------*/
 .ltext-201 {
-  font-family: PlayfairDisplay-Bold;
+  /* font-family: PlayfairDisplay-Bold; */
+  font-family: 'Roboto';
   font-size: 60px;
   line-height: 1.1;
   text-transform: uppercase;
 }
 
 .ltext-202 {
-  font-family: PlayfairDisplay-Regular;
+  /* font-family: PlayfairDisplay-Regular; */
+  font-family: 'Roboto';
   font-size: 28px;
   line-height: 1.2857;
 }
