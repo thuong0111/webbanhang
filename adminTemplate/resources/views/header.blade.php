@@ -65,7 +65,7 @@
                         {!! $menusHtml !!}
 
                         <li>
-                            <a href="/contact">Liên Hệ</a>
+                            <a href="/contact" style="font-size: 25px">Liên Hệ</a>
                         </li>
                     </ul>
                 </div>

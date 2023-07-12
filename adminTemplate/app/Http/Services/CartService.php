@@ -43,8 +43,6 @@ class CartService
         return true;
     }
 
-    
-
     public function getProduct()
     {
         $carts = Session::get('carts');
@@ -56,18 +54,10 @@ class CartService
             ->get();
     }
    
-
     public function update($request)
     {
 
         Session::put('carts', $request->input('num_product'));
-        // $product_id=(int)$request->input('id_product');
-        // dd($product_id);
-        // $rowId=$request->input('rowId_cart');
-        // $carts=Session::get('carts');
-        // $sl=$carts[$product_id];
-        // dd($sl);
-        // FacadesCart::update($rowId,$sl);
         return true;
         
     }
@@ -81,7 +71,6 @@ class CartService
         return true;
     }
     
-
     public function addCart($request)
     {
         try {
@@ -141,28 +130,28 @@ class CartService
                 FacadesCart::destroy();
             }
 
-            $email=$request->input('email');
-            $name=$request->input('name');
-            $hdid=$hd->id;
-            $hdtg=$hd->thoigian;
-            $hdpttt=$hd->pt_thanh_toan_id;
-            $hdtongtien=$hd->ds_trang_thai_id;
+            // $email=$request->input('email');
+            // $name=$request->input('name');
+            // $hdid=$hd->id;
+            // $hdtg=$hd->thoigian;
+            // $hdpttt=$hd->pt_thanh_toan_id;
+            // $hdtongtien=$hd->ds_trang_thai_id;
 
 
-            $item=FacadesCart::content();
-            Mail::send('mail.ordersuccess',[
-                'name'=> $name,
-                'order'=> $hdid,
-                'tg'=> $hdtg,
-                'pttt'=> $hdpttt,
-                'tongtien'=> $hdtongtien,
-                'items'=> $item,
+            // $item=FacadesCart::content();
+            // Mail::send('mail.ordersuccess',[
+            //     'name'=> $name,
+            //     'order'=> $hdid,
+            //     'tg'=> $hdtg,
+            //     'pttt'=> $hdpttt,
+            //     'tongtien'=> $hdtongtien,
+            //     'items'=> $item,
 
-            ], function ($mail) use($email,$name) {
-                $mail->from('congthuong01112002@gmail.com');
-                $mail->to($email,$name);
-                $mail->subject('Email odered');
-            });
+            // ], function ($mail) use($email,$name) {
+            //     $mail->from('congthuong01112002@gmail.com');
+            //     $mail->to($email,$name);
+            //     $mail->subject('Email odered');
+            // });
             // DB::commit();
             Session::flash('success', 'Đặt Hàng Thành Công.');
             // return redirect('/thanhcong');
@@ -409,13 +398,13 @@ class CartService
                     // ->where('size_id',$size)
                     // ->where('mau_id',$mau)
                     // ->update(['SL'=>$slend]);
-        $slsp=Productt::Where('id',$sp)->get();
-        $slspend=0;
-        foreach($slsp as $sllsp) {
-        $slspend=$sllsp->SL-=$sl3; 
-        }
-                 Productt::where('id',$sp)
-                ->update(['SL'=>$slspend]); 
+        // $slsp=Productt::Where('id',$sp)->get();
+        // $slspend=0;
+        // foreach($slsp as $sllsp) {
+        // $slspend=$sllsp->SL-=$sl3; 
+        // }
+        //          Productt::where('id',$sp)
+        //         ->update(['SL'=>$slspend]); 
           
         return true;
     }

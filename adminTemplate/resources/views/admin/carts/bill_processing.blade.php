@@ -87,6 +87,7 @@
                     <td>{{$hoadon->id}}</td>
                     <td>{{$hoadon->name}}</td>
                     <td>{{$hoadon->phone}}</td>
+<<<<<<< HEAD
                     <td>{{$hoadon->email}}</td>
                     <td>
                         <?php
@@ -94,45 +95,59 @@
                         echo date('H:m:s d/m/Y', strtotime($thoigian));
                         ?>
                     </td>
+=======
+>>>>>>> d26ce4ac9faf81b09638723609721e948ae0073e
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
-                    <td>{{number_format($hoadon->tongtien, '0', '', '.')}}</td>
-                    <td>{{number_format($hoadon->tiengg, '0', '', '.')}}</td>
-                    <td>{{number_format($hoadon->tientra, '0', '', '.')}}</td>
-                    <td style="text-align: center">
-                        <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px">
-                            <span class="icon" title="View Order"><i class="fas fa-eye"></i></span>
+                    <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
+                    <td>{{number_format($hoadon->tiengg).' '.' VND'}}</td>
+                    <td>{{number_format($hoadon->tientra).' '.' VND'}}</td>
+                    <td style="text-align: center; display: flex">
+                        <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px;
+                            margin-bottom:2px">
+                            <span class="icon" title="Xem Chi TIết"><i class="fas fa-eye"></i></span>
                         </a>
-                        <form action="/capnhat2" method="POST">
+                        <form action="/capnhat2" method="POST" style="padding: 0px 3px 0 3px;">
                             @csrf
                             <input type="hidden" name="trangthaihd" value="2">
                             <input type="hidden" name="id" value="{{$hoadon->id}}">
                             <button type="submit" style="background: #007bff; border: none; width: 30px; 
-                                height: 30px; border-radius: 3px;">
-                                <span class="icon" title="Delivering">
+                                height: 30px; border-radius: 3px; margin-bottom:2px">
+                                <span class="icon" title="Đang Giao">
                                     <i class="fa fa-truck" style="color: white"></i>
                                 </span>
                             </button>
                         </form>
-
-                        <form action="/capnhat3" method="POST">
+                        <form action="/capnhat3" method="POST" style="padding: 0px 3px 0 0;">
                             @csrf
                             <input type="hidden" name="trangthaihd3" value="3">
                             <input type="hidden" name="idhoanthanh" value="{{$hoadon->id}}">
                             <button type="submit" style="background: #007bff; border: none; width: 30px; 
-                                height: 30px; border-radius: 3px;">
-                                <span class="icon" title="Finish">
+                                height: 30px; border-radius: 3px; margin-bottom:2px">
+                                <span class="icon" title="Hoàn Thành">
                                     <i class="fa fa-check" style="color: rgb(120, 243, 120)"></i>
                                 </span>
                             </button>
                         </form>
-                        <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px">
-                            <span class="icon" title="Print Bill">
+                        
+                        <form action="/capnhat4" method="POST" style="padding: 0px 3px 0 0px;">
+                            @csrf
+                            <input type="hidden" name="trangthaihd4" value="4">
+                            <input type="hidden" name="hoadonhuy" value="{{$hoadon->id}}">
+                            <button type="submit" style="background: #007bff; border: none; width: 30px; 
+                                height: 30px; border-radius: 3px; margin-bottom:2px">
+                                <span class="icon" title="Hủy Đơn">
+                                    <i class="fas fa-trash" style="color: rgb(235, 35, 35)"></i>
+                                </span>
+                            </button>
+                        </form>
+
+                        <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px; height: 30px">
+                            <span class="icon" title="In Hóa Đơn">
                                 <i class="fa fa-print"></i>
                             </span>
                         </a>
                     </td>
-                    <td>&nbsp;</td>
                 </tr>
             @endforeach
         </tbody>
