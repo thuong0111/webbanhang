@@ -183,6 +183,7 @@ class CartController extends Controller
         Session::flash('success', 'Cập nhật trạng thái thành công');
         return redirect('/admin/customerslog');
     }
+
     public function hoanthanh(Request $request)
     {
         $capnhat=$request->input('trangthaihd3');
@@ -192,6 +193,53 @@ class CartController extends Controller
         Session::flash('success', 'Cập nhật trạng thái thành công');
         return redirect('/admin/customerslog');
     }
+
+    public function huydon(Request $request)
+    {
+        $capnhat=$request->input('trangthaihd4');
+        $id=$request->input('hoadonhuy');
+        $laysp = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $id)
+        ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
+        ->select('productts.id','ct_hoa_dons.size','ct_hoa_dons.mau')
+        ->get();
+
+        $sl3 = DB::table('ct_hoa_dons')
+        ->where('ct_hoa_dons.hoa_don_id', $id)
+        ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
+        ->select('ct_hoa_dons.SL','productts.id')
+        ->get();
+
+        $slend=0;
+        foreach ($laysp as $laysps){
+        $bienthe = DB::table('bien_thes')
+        ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
+        ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
+        ->where('bien_thes.san_pham_id',$laysps->id)
+        ->where('sizes.tensize',$laysps->size)
+        ->where('maus.tenmau',$laysps->mau)
+        ->get();
+
+        foreach($bienthe as $bienthes) {
+            foreach($sl3 as $sl){
+                if($bienthes->san_pham_id==$sl->id)
+                $slend=$bienthes->SL+=$sl->SL; 
+            }
+        }
+        DB::table('bien_thes')
+        ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
+        ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
+        ->where('san_pham_id',$laysps->id)
+        ->where('sizes.tensize',$laysps->size)
+        ->where('maus.tenmau',$laysps->mau)
+        ->update(['SL'=>$slend]);
+        }
+        HoaDon::where('id',$id)
+        ->update(['ds_trang_thai_id'=>$capnhat]);
+        Session::flash('success', 'Cập nhật trạng thái thành công');
+        return redirect('/admin/customerslog');
+    }
+
     public function convert_html_pdf(HoaDon $hoadon){
 
         $pdf=App::make('dompdf.wrapper');

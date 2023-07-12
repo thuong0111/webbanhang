@@ -68,16 +68,13 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Time</th>
-                <th>Payment</th>
-                <th>Active</th>
-                <th>Total</th>
-                <th>Sale</th>
-                <th>Payables</th>
-                <th style="width: 50px">&nbsp;</th>
+                <th>Tên</th>
+                <th>SĐT</th>
+                <th>PTTT</th>
+                <th style="width: 120px">Trạng thái</th>
+                <th>Tổng tiền</th>
+                <th style="width: 100px">Giá giảm</th>
+                <th>Tiền trả</th>
             </tr>
         </thead>
         <tbody>
@@ -86,47 +83,16 @@
                     <td>{{$hoadon->id}}</td>
                     <td>{{$hoadon->name}}</td>
                     <td>{{$hoadon->phone}}</td>
-                    <td>{{$hoadon->email}}</td>
-                    <td>{{$hoadon->thoigian}}</td>
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
-                    <td>{{number_format($hoadon->tongtien, '0', '', '.')}}</td>
-                    <td>{{number_format($hoadon->tiengg, '0', '', '.')}}</td>
-                    <td>{{number_format($hoadon->tientra, '0', '', '.')}}</td>
-                    {{-- <td style="text-align: center">
+                    <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
+                    <td>{{number_format($hoadon->tiengg).' '.' VND'}}</td>
+                    <td>{{number_format($hoadon->tientra).' '.' VND'}}</td>
+                    <td style="text-align: center">
                         <a class="btn btn-primary btn-sm" href="/admin/customerslog/viewlog/{{$hoadon->id}}" style="width:30px">
-                            <span class="icon" title="View Order"><i class="fas fa-eye"></i></span>
+                            <span class="icon" title="Xem chi tiết"><i class="fas fa-eye"></i></span>
                         </a>
-                        <form action="/capnhat2" method="POST">
-                            @csrf
-                            <input type="hidden" name="trangthaihd" value="2">
-                            <input type="hidden" name="id" value="{{$hoadon->id}}">
-                            <button type="submit" style="background: #007bff; border: none; width: 30px; 
-                                height: 30px; border-radius: 3px;">
-                                <span class="icon" title="Delivering">
-                                    <i class="fa fa-truck" style="color: white"></i>
-                                </span>
-                            </button>
-                        </form>
-
-                        <form action="/capnhat3" method="POST">
-                            @csrf
-                            <input type="hidden" name="trangthaihd3" value="3">
-                            <input type="hidden" name="idhoanthanh" value="{{$hoadon->id}}">
-                            <button type="submit" style="background: #007bff; border: none; width: 30px; 
-                                height: 30px; border-radius: 3px;">
-                                <span class="icon" title="Finish">
-                                    <i class="fa fa-check" style="color: rgb(120, 243, 120)"></i>
-                                </span>
-                            </button>
-                        </form>
-                        <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px">
-                            <span class="icon" title="Print Bill">
-                                <i class="fa fa-print"></i>
-                            </span>
-                        </a>
-                    </td> --}}
-                    <td>&nbsp;</td>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

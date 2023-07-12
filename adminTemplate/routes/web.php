@@ -228,6 +228,7 @@ Route::get('/tab', function () {
 
 Route::post('/capnhat2', [ App\Http\Controllers\Admin\CartController::class, 'danggiao']);
 Route::post('/capnhat3', [ App\Http\Controllers\Admin\CartController::class, 'hoanthanh']);
+Route::post('/capnhat4', [ App\Http\Controllers\Admin\CartController::class, 'huydon']);
 Route::post('/capnhathuy', [ HoaDonController::class, 'dahuy']);
 Route::post('/mualai', [ HoaDonController::class, 'ud_dangxuly']);
 Route::post('/filterbydate', [ HoaDonController::class, 'filterbydate']);

@@ -3,17 +3,9 @@
 @section('content')
        
     <div class="div-head" style="padding-top: 165px">
-
     </div>
-    <form action="/check-coupon" method="POST" style="padding: 50px 0px 0 40px; display:flex; position:absolute">
-        @csrf
-        <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Mã Giảm Giá">
-         <button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5"type="submit" name="check-coupon">
-             Xác Nhận Mã
-         </button>
-    </form>
 
-    @if(session()->has('message'))
+    {{-- @if(session()->has('message'))
     <div class="alert alert-success">
         {!!session()->get('message')!!}
     </div>
@@ -21,7 +13,7 @@
     <div class="alert alert-danger">
         {!!session()->get('error')!!}
     </div>
-    @endif
+    @endif --}}
     {{-- p-d-85 --}}
     <form class="bg0 p-b-0 p-t-0" method="post">
         @include('admin.alert')
@@ -56,6 +48,7 @@
 
                                     @foreach($content as $productt)
                                         @php
+                                            $priceEnd = 0;
                                             $price=$productt->price;
                                             $priceEnd = $price * $productt->qty;
                                             $total += $priceEnd;
@@ -75,7 +68,7 @@
                                                     </div>
 
                                                     <input class="mtext-104 cl3 txt-center num-product" type="number"
-                                                           name="num_product[{{ $productt->rowId }}]" id="slhang" value="{{ $productt->qty }}">
+                                                        min="1" name="num_product[{{ $productt->rowId }}]" id="slhang" value="{{ $productt->qty }}">
 
                                                     <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" >
                                                         <i class="fs-16 zmdi zmdi-plus" id="slupdate"></i>
@@ -93,21 +86,16 @@
                                                 <input type="hidden" name="maussss" value="{{$mausss}}">
                                                 <b>{{$productt->options->colors}}</b>
                                            </td>
-                                            <td class="p-r-15" style="width:59px">
+                                            <td class="p-r-15" style="width:59px; text-align: center;">
                                                 
                                                 <input type="hidden" id="layid_product" name="id_product[{{$productt->id }}]" value="{{$productt->id }}">
-                                                <a href="/carts/delete/{{ $productt->rowId}}" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Xóa</a>
-                                                
-                                                    
-                                            </td>
-                                            <td style="width:78px">
-                                                
-
+                                                <a href="/carts/delete/{{ $productt->rowId}}"><i class="fas fa-trash" style="font-size: 20px; color:red;"></i></a>
                                                 <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart[{{$productt->id }}]" id="rowid" class="form control">
-                                                {{-- <a href="/update-cart-quantity/{{ $productt->qty }}/{{$productt->rowId}}" id="href" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Cập Nhật</a> --}}
-                                                
-                                                {{-- <input type="hidden" name="slcart" id="slupdatecart" value="">                                                 --}}
                                             </td>
+                                            {{-- <td style="width:78px"> --}}
+                                                {{-- <a href="/update-cart-quantity/{{ $productt->qty }}/{{$productt->rowId}}" id="href" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Cập Nhật</a> --}}                               
+                                                {{-- <input type="hidden" name="slcart" id="slupdatecart" value="">                                                 --}}
+                                            {{-- </td> --}}
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -116,13 +104,12 @@
 
                             <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
                                 <div class="flex-w flex-m m-r-20 m-tb-5">
-                                    {{-- <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text"
-                                           name="coupon" placeholder="Mã Giảm Giá"> --}}
+                                    <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Mã Giảm Giá">
 
-                                    {{-- <div
+                                    <button formaction="/check-coupon" name="check-coupon" type="submit"
                                         class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
                                         Xác Nhận Mã
-                                    </div> --}}
+                                    </button>
                                 </div>
 
                                 <input type="submit" value="Cập Nhật Sản Phẩm" formaction="/update-cart-quantity" method="post" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
@@ -301,7 +288,7 @@
                     <input type="hidden" name="sizevnpay" id="sizevnpay" value="{{ $sizesss }}"> 
                     <input type="hidden" name="mauvnpay" id="mauvnpay" value="{{ $mausss }}"> 
                     <button type="submit" name="redirect" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-                        Thanh Toan VNPay
+                        Thanh Toán VNPay
                     </button>
                 </form>   
             {{-- @else

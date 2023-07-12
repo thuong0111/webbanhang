@@ -119,7 +119,7 @@ class CartController extends Controller
         Cart::destroy();
         Session::forget('carts');
         Session::forget('coupon');
-        Session::flash('success', 'Orders success.');
+        Session::flash('success', 'Thanh Toán Thành Công.');
         return redirect('/carts');
     }
     public function remove($id = 0)
