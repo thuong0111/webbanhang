@@ -3,13 +3,11 @@
 @section('content')
     <div class="customer mt-3">
         <ul>
-            @foreach ( $cthd as $cthds)
-            <li>Tên: <strong>{{ $cthds->name }}</strong></li>
-            <li>SĐT: <strong>{{ $cthds->phone }}</strong></li>
-            <li>Địa Chỉ: <strong>{{ $cthds->address }}</strong></li>
-            <li>Email: <strong>{{ $cthds->email }}</strong></li>
-            <li>Ghi Chú: <strong>{{ $cthds->content }}</strong></li>
-            @endforeach
+            <li>Tên: <strong>{{ $cthd->name }}</strong></li>
+            <li>SĐT: <strong>{{ $cthd->phone }}</strong></li>
+            <li>Địa Chỉ: <strong>{{ $cthd->address }}</strong></li>
+            <li>Email: <strong>{{ $cthd->email }}</strong></li>
+            <li>Ghi Chú: <strong>{{ $cthd->content }}</strong></li>
         </ul>
     </div>
 

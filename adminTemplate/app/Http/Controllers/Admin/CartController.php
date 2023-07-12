@@ -137,7 +137,7 @@ class CartController extends Controller
         $cthd = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->select('ct_hoa_dons.name','ct_hoa_dons.phone','ct_hoa_dons.email','ct_hoa_dons.address','ct_hoa_dons.content')
-        ->get();
+        ->first();
         
         $cthd_product = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
@@ -320,7 +320,7 @@ class CartController extends Controller
         <thead>
             <tr>
                 <td style="width: 200px; padding-top: 50px"></td>
-                <td style="width: 800px; text-align: center; padding-top: 50px">........,Ngày......Tháng......Năm.......</td>
+                
             </tr>
 
             <tr>

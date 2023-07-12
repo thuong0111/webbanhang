@@ -19,12 +19,12 @@
 <div class="container demo-1">
 	<div class="content">
         <div id="large-header" class="large-header">
-			<h1>Admin Login Form</h1>
+			<h1>Admin Đăng Nhập</h1>
 				<div class="main-agileits">
 				<!--form-stars-here-->
 						<div class="form-w3-agile">
                             @include('admin.alert')
-							<h2>Login Now</h2>
+							<h2>Đăng Nhập</h2>
 							<form action="/admin/users/login/store" method="post">
 								<div class="form-sub-w3">
                                     {{-- email --}}
@@ -39,15 +39,15 @@
 									<i class="fa fa-unlock-alt" aria-hidden="true"></i>
 								</div>
 								</div>
-								<p class="p-bottom-w3ls">Forgot Password?<a class href="#">  Click here</a></p>
-								<p class="p-bottom-w3ls1">New User?<a class href="#">  Register here</a></p>
+								{{-- <p class="p-bottom-w3ls">Forgot Password?<a class href="#">  Click here</a></p> --}}
+								{{-- <p class="p-bottom-w3ls1">New User?<a class href="#">  Register here</a></p> --}}
 								<div class="clear"></div>
                                 <input type="checkbox" name="remember" id="remember">
                                 <label for="remember" style="color: white">
-                                    Remember Me
+                                    Nhớ Mật Khẩu
                                 </label>
 								<div class="submit-w3l">
-									<input type="submit" value="Sign In"/>
+									<input type="submit" value="Xác Nhận"/>
 								</div>
                                 @csrf
 							</form>
