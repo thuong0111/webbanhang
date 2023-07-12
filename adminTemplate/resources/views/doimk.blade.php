@@ -54,14 +54,7 @@
                 </a>
                 <a class="navbar-brand" href="{{ url('/profile') }}">
                     Đổi Mật Khẩu
-                    <?php
-                        use Illuminate\Support\Facades\Session;
-                        $message = Session::get('message');
-                        if($message){
-                            echo '<span class="text-alert">',$message.'</span>';
-                            Session::put('message',null);
-                        }
-                    ?>
+                    
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -75,6 +68,17 @@
                 </div>
             </div>
         </nav>
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {!!session()->get('success')!!}
+        </div>
+        @elseif(session()->has('error'))
+        <div class="alert alert-danger">
+            {!!session()->get('error')!!}
+        </div>
+        @endif
+
+        
     <div class="container mt-4">
        
         <form role="form" action="/doimk" method="POST">
@@ -92,7 +96,7 @@
             <div>
                 <label for="password">Nhập Mật Khẩu Cũ</label>
                 <div class="">
-                    <input id="password" name="passwordold" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                    <input id="password" name="passwordold" type="password" class="form-control" placeholder="Mật khẩu cũ" aria-label="Password" aria-describedby="password-addon">
                     @error('password')
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                     @enderror
@@ -101,7 +105,7 @@
             <div>
                 <label for="password">Nhập Mật Khẩu Mới</label>
                 <div class="">
-                    <input id="password" name="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                    <input id="password" name="password" type="password" class="form-control" placeholder="Mật khẩu mới" aria-label="Password" aria-describedby="password-addon">
                     @error('password')
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                     @enderror
@@ -110,7 +114,7 @@
             <div>
                 <label for="password_confirmation">Nhập Lại Mật Khẩu Mới</label>
                 <div class="">
-                    <input id="password-confirmation" name="password_confirmation" type="password" class="form-control" placeholder="Password-confirmation" aria-label="Password-confirmation" aria-describedby="Password-addon">
+                    <input id="password-confirmation" name="password_confirmation" type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" aria-label="Password-confirmation" aria-describedby="Password-addon">
                     @error('password')
                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                     @enderror

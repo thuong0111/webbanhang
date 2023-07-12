@@ -222,6 +222,9 @@ Route::get('/profile', [InforUserController::class, 'index'])->name('profile');
 
 Route::post('/updateProfile', [InforUserController::class, 'updateProfile'])->name('update.profile');
 Route::post('/update-cart-quantity', [App\Http\Controllers\CartController::class, 'update_cart_quantity']);
+Route::get('/giohangtrong', function () {
+    return view('carts.giohangtrong');
+})->name('giohang');
 Route::get('/tab', function () {
     return view('tabhistory');
 })->name('tab');
@@ -229,6 +232,7 @@ Route::get('/tab', function () {
 Route::post('/capnhat2', [ App\Http\Controllers\Admin\CartController::class, 'danggiao']);
 Route::post('/capnhat3', [ App\Http\Controllers\Admin\CartController::class, 'hoanthanh']);
 Route::post('/capnhathuy', [ HoaDonController::class, 'dahuy']);
+
 Route::post('/mualai', [ HoaDonController::class, 'ud_dangxuly']);
 Route::post('/filterbydate', [ HoaDonController::class, 'filterbydate']);
 Route::post('/dashboard-filter', [ HoaDonController::class, 'dashboard_filter']);

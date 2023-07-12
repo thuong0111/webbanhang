@@ -59,7 +59,7 @@ class CartController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
-        ->orderByDesc('hoa_dons.id')
+        ->orderByDesc('hoa_dons.id','desc')
         ->paginate(10);
         
 
@@ -142,17 +142,19 @@ class CartController extends Controller
         $cthd_product = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
-        ->select('productts.thumb','productts.name','productts.price','ct_hoa_dons.SL','ct_hoa_dons.thanhtien' )
+        ->select('productts.thumb','productts.name','productts.price','ct_hoa_dons.SL','ct_hoa_dons.thanhtien','ct_hoa_dons.size','ct_hoa_dons.mau' )
         ->get();
 
-        $Size_user = DB::table('ct_hoa_dons')
-        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
-        ->select('ct_hoa_dons.size')
-        ->get();
-        $Mau_user = DB::table('ct_hoa_dons')
-        ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
-        ->select('ct_hoa_dons.mau')
-        ->get();
+        // $Size_user = DB::table('ct_hoa_dons')
+        // ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        // ->select('ct_hoa_dons.size')
+        // ->get();
+        // dd($Size_user);
+
+        // $Mau_user = DB::table('ct_hoa_dons')
+        // ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
+        // ->select('ct_hoa_dons.mau')
+        // ->get();
 
         $sp=Productt::all()->count();
         $hd=HoaDon::all()->count();
@@ -164,8 +166,8 @@ class CartController extends Controller
             'title' => 'Chi Tiết Hóa Đơn',
             'cthd' => $cthd,
             'ctproducts' => $cthd_product,
-            'maus' => $Mau_user,
-            'sizes' => $Size_user,
+            // 'maus' => $Mau_user,
+            // 'sizes' => $Size_user,
             'spss'=>$sp,
             'hds'=>$hd,
             'users'=>$user,
@@ -348,6 +350,7 @@ class CartController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
+        ->orderByDesc('hoa_dons.id','desc')
         ->get();
         return view('admin.carts.bill_processing',[
             'title'=>'Danh Sách Hóa Đơn',
@@ -371,6 +374,7 @@ class CartController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
+        ->orderByDesc('hoa_dons.id','desc')
         ->get();
         return view('admin.carts.bill_delivering',[
             'title'=>'Danh Sách Hóa Đơn',
@@ -394,6 +398,7 @@ class CartController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
+        ->orderByDesc('hoa_dons.id','desc')
         ->get();
         return view('admin.carts.bill_finish',[
             'title'=>'Danh Sách Hóa Đơn',
@@ -417,6 +422,7 @@ class CartController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.tiengg','hoa_dons.tientra')
+        ->orderByDesc('hoa_dons.id','desc')
         ->get();
         return view('admin.carts.bill_cancel',[
             'title'=>'Danh Sách Hóa Đơn',
@@ -427,4 +433,6 @@ class CartController extends Controller
             'hoadons' => $hd,
         ]);
     }
+
+    
 }

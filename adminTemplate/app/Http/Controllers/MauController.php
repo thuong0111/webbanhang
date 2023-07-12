@@ -130,7 +130,7 @@ class MauController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Xóa Mau thành công'
+                'message'=>'Xóa màu thành công'
             ]);
         }
         return response()->json([

@@ -128,7 +128,7 @@ class CouponController extends Controller
         if ($result) {
             return response()->json([
                 'error'=>false,
-                'message'=>'Xóa Giam Gia thành công'
+                'message'=>'Xóa giảm giá thành công'
             ]);
         }
         return response()->json([

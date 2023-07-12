@@ -37,6 +37,7 @@ class HoaDonController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
+        ->orderBy('hoa_dons.id','desc')
         ->get();
         return view('history.history_order',[
             'hoadons' => $layhd,
@@ -53,6 +54,8 @@ class HoaDonController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
+        ->orderBy('hoa_dons.id','desc')
+
         ->get();
         return view('history.dang_xu_ly',[
             'hoadons_dxl' => $layhd,
@@ -70,6 +73,7 @@ class HoaDonController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
+        ->orderBy('hoa_dons.id','desc')
         ->get();
         return view('history.da_huy',[
             'hoadons_dh' => $layhd,
@@ -87,6 +91,7 @@ class HoaDonController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
+        ->orderBy('hoa_dons.id','desc')
         ->get();
         return view('history.dang_giao',[
             'hoadons_dg' => $layhd,
@@ -103,6 +108,7 @@ class HoaDonController extends Controller
         ->join('pt_thanh_toans', 'hoa_dons.pt_thanh_toan_id', '=', 'pt_thanh_toans.id')
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
+        ->orderBy('hoa_dons.id','desc')
         ->get();
         return view('history.da_hoan_thanh',[
             'hoadons_ht' => $layhd,
@@ -126,7 +132,6 @@ class HoaDonController extends Controller
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->select('ct_hoa_dons.size')
         ->get();
-
         $Mau_user = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->select('ct_hoa_dons.mau')
@@ -180,11 +185,6 @@ class HoaDonController extends Controller
         ->update(['SL'=>$slend]);
         }
         
-        
-       
-
-       
-
         HoaDon::where('id',$id)
         ->update(['ds_trang_thai_id'=>$capnhat]);
         Session::flash('success', 'Cập nhật trạng thái thành công');
@@ -381,6 +381,8 @@ class HoaDonController extends Controller
                 echo $data=json_encode($chart_data);        
             }
 
+
+           
 
 
    

@@ -86,7 +86,7 @@
                 <div class="col-md-8 border-right">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Cài đặt thông tin</h4>
+                            <h4 class="text-right">Thông tin cá nhân</h4>
                         </div>
                         <div class="row" id="res"></div>
                         <div class="row mt-2">

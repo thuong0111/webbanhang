@@ -33,7 +33,6 @@
                         <div class="m-l-25 m-r--38 m-lr-0-xl">
                             <div class="wrap-table-shopping-cart">
                                 @php $total = 0; 
-                                
                                 $content = Cart::content();
                                 @endphp
                                 <table class="table-shopping-cart">
@@ -48,12 +47,7 @@
                                         <th class="column-7" style="width: 60px; text-align: center">Màu</th>
                                         <th class="column-8" >&nbsp;</th>
                                         <th class="column-8" >&nbsp;</th>
-
-
-
                                     </tr>
-
-
                                     @foreach($content as $productt)
                                         @php
                                             $price=$productt->price;
@@ -326,7 +320,6 @@
                 </form> --}}
             @endif
     @else
-           
         <div class="text-center" style="padding: 10px 0 0 0;"><h2>Giỏ hàng trống</h2></div>
     @endif
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

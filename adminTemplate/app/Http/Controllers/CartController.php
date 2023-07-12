@@ -119,7 +119,7 @@ class CartController extends Controller
         Cart::destroy();
         Session::forget('carts');
         Session::forget('coupon');
-        Session::flash('success', 'Orders success.');
+        Session::flash('success', 'Bạn đã đặt hàng thành công.');
         return redirect('/carts');
     }
     public function remove($id = 0)
@@ -164,9 +164,10 @@ class CartController extends Controller
     public function update_cart_quantity(Request $request){
         $rowId = $request->input('rowId_cart');
         $qty = $request->input('num_product');
-        foreach ($rowId as $row){
-            Cart::update($row,$qty[$row]);
-        }
+            foreach ($rowId as $row){
+                Cart::update($row,$qty[$row]);
+            }
+        
         return redirect('/carts');
     }
     public function findmau(Request $request){

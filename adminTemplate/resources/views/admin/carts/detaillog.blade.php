@@ -37,14 +37,17 @@
                     <td class="column-3">{{ number_format($ctproduct->price, 0, '', '.') }}</td>
                     <td class="column-4">{{ $ctproduct->SL }}</td>
                     <td class="column-5">
-                        @foreach ($sizes as $key => $Size)
+                        {{$ctproduct->size}}
+                        {{-- @foreach ($sizes as $key => $Size)
                             {{$Size->size}}
-                        @endforeach
+                        @endforeach --}}
                     </td>
                     <td class="column-5">
-                        @foreach ($maus as $key => $Mau)
+                        {{-- @foreach ($maus as $key => $Mau)
                             {{$Mau->mau}}
-                        @endforeach
+                        @endforeach --}}
+                        {{$ctproduct->mau}}
+
                     </td>
                     <td class="column-6">{{ number_format($ctproduct->thanhtien, 0, '', '.') }}</td>
                 </tr>

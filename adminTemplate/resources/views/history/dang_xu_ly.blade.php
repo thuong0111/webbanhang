@@ -8,10 +8,12 @@
 
         <!-- Header -->
         @include('header')
+        @extends('slidebarprofile')
+        @section('main-admin')
 
             {{-- @include('admin.alert') --}}
                 <div class="container">
-                    <div class="row" style="margin-top: 134px;">
+                    <div class="row" style="">
                          <div class="VYJdTQ">
                              <a href="/history" class="OFl2GI" style="">
                                  <span class="_20hgQK">Tất cả</span>
@@ -39,7 +41,12 @@
                                         @foreach ($hoadons_dxl as $key =>$hoadon)
                                         <tr>
                                             <td style="text-align: center">{{$hoadon->id}}</td>
-                                            <td style="text-align: center">{{$hoadon->thoigian}}</td>
+                                            <td style="text-align: center">
+                                                <?php
+                                                $thoigian=$hoadon->thoigian;
+                                                echo date('H:m:s d/m/Y', strtotime($thoigian));
+                                                ?>
+                                            </td>
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
                                             <td style="text-align: center">{{$hoadon->tongtien}}</td>
@@ -70,9 +77,10 @@
                         </div>
                     </div>
                 </div>
+                @endsection
 
         <!-- Footer -->
-        @include('footer')
+        {{-- @include('footer') --}}
 
     </body>
 </html>

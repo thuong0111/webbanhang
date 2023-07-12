@@ -20,7 +20,6 @@ class ContactController extends Controller
 
     public function addContact(Request $request)
     {
-        dd($request);
         $this->contactservice->addContactsv($request);
         return redirect()->back();
     }

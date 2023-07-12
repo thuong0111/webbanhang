@@ -111,13 +111,13 @@ class SessionsController extends Controller
         if(FacadesHash::check($passold,$customer_password)){
             if($pass ==  $repass){
                 User::where('id',$customer_id)->update(['password'=>$newpass]);
-                Session::put('message','Cập nhật mật khẩu thành công.');
+                Session::flash('success','Cập nhật mật khẩu thành công.');
             }else{
-                Session::put('message','Mật khẩu không trùng khớp.');
+                Session::flash('error','Mật khẩu không trùng khớp.');
             }
          }
         else{
-            Session::put('message','Mật khẩu cũ không trùng khớp.');
+            Session::flash('error','Mật khẩu cũ không trùng khớp.');
         }
         return redirect('/viewdoimk');   
      }

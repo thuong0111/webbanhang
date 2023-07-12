@@ -98,7 +98,13 @@
                     <td>{{$hoadon->name}}</td>
                     <td>{{$hoadon->phone}}</td>
                     <td>{{$hoadon->email}}</td>
-                    <td>{{$hoadon->thoigian}}</td>
+                    <td>
+                        <?php
+                        $thoigian=$hoadon->thoigian;
+                        echo date('H:m:s d/m/Y', strtotime($thoigian));
+                        ?>
+                    
+                    </td>
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
                     <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
@@ -136,6 +142,9 @@
                                 </span>
                             </button>
                         </form>
+                        
+                           
+                        
                         <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px">
                             <span class="icon" title="In Hóa Đơn">
                                 <i class="fa fa-print"></i>

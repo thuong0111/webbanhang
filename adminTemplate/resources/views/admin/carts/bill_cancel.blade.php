@@ -87,7 +87,13 @@
                     <td>{{$hoadon->name}}</td>
                     <td>{{$hoadon->phone}}</td>
                     <td>{{$hoadon->email}}</td>
-                    <td>{{$hoadon->thoigian}}</td>
+                    <td>
+
+                        <?php
+                        $thoigian=$hoadon->thoigian;
+                        echo date('H:m:s d/m/Y', strtotime($thoigian));
+                        ?>
+                    </td>
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
                     <td>{{number_format($hoadon->tongtien, '0', '', '.')}}</td>

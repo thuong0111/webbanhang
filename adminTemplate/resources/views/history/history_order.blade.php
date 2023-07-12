@@ -38,7 +38,13 @@
                                             {{-- <td style="text-align: center">{{$hoadon->name}}</td> --}}
                                             {{-- <td>{{$hoadon->phone}}</td>
                                             <td>{{$hoadon->email}}</td> --}}
-                                            <td style="text-align: center">{{$hoadon->thoigian}}</td>
+                                            <td style="text-align: center">
+                                                <?php
+                                                    $thoigian=$hoadon->thoigian;
+                                                    echo date('H:m:s d/m/Y', strtotime($thoigian));
+                                                    ?>
+                                               
+                                            </td>
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
                                             <td style="text-align: center">{{$hoadon->tongtien}}</td>
