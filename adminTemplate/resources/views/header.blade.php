@@ -59,7 +59,7 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu"><a href="/">
-                            <i class="fa fa-home"></i> Trang Chủ</a> 
+                            <i class="fa fa-home"></i>Trang Chủ</a> 
                         </li>
 
                         {!! $menusHtml !!}
