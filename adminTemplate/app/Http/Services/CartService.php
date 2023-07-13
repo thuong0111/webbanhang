@@ -9,8 +9,10 @@ use App\Models\Coupon;
 use App\Models\CTHoaDon;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\DSTrangThai;
 use App\Models\HoaDon;
 use App\Models\Productt;
+use App\Models\PTThanhToan;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -110,6 +112,32 @@ class CartService
                     
                 }
                 CTHoaDon::insert($data);
+                $tt=$request->input('pttt');
+                $tentrangthai=PTThanhToan::where('id',$tt)->get();
+                foreach($tentrangthai as $ten){
+                    $tentt=$ten->tenthanhtoan;
+                }      
+                         
+                $email=$request->input('email');
+                $name=$request->input('name');
+                $hdid=$hd->id;
+                $hdtg=$hd->thoigian;
+                $hdpttt=$tentt;
+                $hdtongtien=(int)$request->input('tongtien');
+                $item=FacadesCart::content();
+                Mail::send('mail.ordersuccess',[
+                    'name'=> $name,
+                    'order'=> $hdid,
+                    'tg'=> $hdtg,
+                    'pttt'=> $hdpttt,
+                    'tongtien'=> $hdtongtien,
+                    'items'=> $item,
+
+                ], function ($mail) use($email,$name) {
+                    $mail->from('congthuong01112002@gmail.com');
+                    $mail->to($email,$name);
+                    $mail->subject('Email odered');
+                });
 
             }else{
                 $customer = Customer::create([
@@ -122,39 +150,47 @@ class CartService
                     'email' => $request->input('email'),
                     'content' => $request->input('content'),
                 ]);
-                $size_ctm = $request->input('sizessss');
-                $mau_ctm = $request->input('maussss');
                 $pttt = $request->input('pttt');
                 $dstt = $request->input('dstt');
-                $this->infoProductCart($customer->id, $size_ctm, $mau_ctm,$pttt,$dstt);
+                $content = FacadesCart::content();
+                $data=[];
+                foreach($content as $v_content){
+                    $size_cart=$v_content->options->sizes;
+                    $mau_cart=$v_content->options->colors;
+                    $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
+                    $this->infoProductCart($customer->id, $size_cart, $mau_cart,$pttt,$dstt);
+                    
+                }
+
+                $tentrangthai=PTThanhToan::where('id',$pttt)->get();
+                foreach($tentrangthai as $ten){
+                    $tentt=$ten->tenthanhtoan;
+                } 
+                $email=$request->input('email');
+                $name=$request->input('name');
+                $hdtg=$customer->created_at;
+                $hdpttt=$tentt;
+                // $hdtongtien=$dstt;
+                $item=FacadesCart::content();
+                Mail::send('mail.ordervl',[
+                    'name'=> $name,
+                    'tg'=> $hdtg,
+                    'pttt'=> $hdpttt,
+                    // 'tongtien'=> $hdtongtien,
+                    'items'=> $item,
+
+                ], function ($mail) use($email,$name) {
+                    $mail->from('congthuong01112002@gmail.com');
+                    $mail->to($email,$name);
+                    $mail->subject('Email odered');
+                });
                 FacadesCart::destroy();
             }
 
-            // $email=$request->input('email');
-            // $name=$request->input('name');
-            // $hdid=$hd->id;
-            // $hdtg=$hd->thoigian;
-            // $hdpttt=$hd->pt_thanh_toan_id;
-            // $hdtongtien=$hd->ds_trang_thai_id;
-
-
-            // $item=FacadesCart::content();
-            // Mail::send('mail.ordersuccess',[
-            //     'name'=> $name,
-            //     'order'=> $hdid,
-            //     'tg'=> $hdtg,
-            //     'pttt'=> $hdpttt,
-            //     'tongtien'=> $hdtongtien,
-            //     'items'=> $item,
-
-            // ], function ($mail) use($email,$name) {
-            //     $mail->from('congthuong01112002@gmail.com');
-            //     $mail->to($email,$name);
-            //     $mail->subject('Email odered');
-            // });
-            // DB::commit();
+            
+            DB::commit();
             Session::flash('success', 'Đặt Hàng Thành Công.');
-            // return redirect('/thanhcong');
+           
 
             #Queue
             // SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));
@@ -230,11 +266,17 @@ class CartService
             //     // $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
             //     FacadesCart::destroy();
             // }
+
+            $tt=$request->input('ptttvnpay');
+                $tentrangthai=PTThanhToan::where('id',$tt)->get();
+                foreach($tentrangthai as $ten){
+                    $tentt=$ten->tenthanhtoan;
+                } 
             $email=$request->input('emailvnpay');
             $name=$request->input('namevnpay');
             $hdid=$hd->id;
             $hdtg=$hd->thoigian;
-            $hdpttt=$hd->pt_thanh_toan_id;
+            $hdpttt=$tentt;
             $hdtongtien=$hd->tongtien;
             $item=FacadesCart::content();
             Mail::send('mail.ordersuccess',[
@@ -271,7 +313,6 @@ class CartService
 
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
             $vnp_Returnurl = "http://localhost:8000/thanhcong";
-           
             $vnp_TmnCode = "70EQN4UN";//Mã website tại VNPAY 
             $vnp_HashSecret = "WQUTQTGBQZQKMQQFONPXCGKOSANAINQH"; //Chuỗi bí mật
             $vnp_TxnRef = $id; //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
@@ -394,17 +435,14 @@ class CartService
         ->where('sizes.tensize',$size)
         ->where('maus.tenmau',$mau)
         ->update(['SL'=>$slend]);
-                    // BienThe::where('san_pham_id',$sp)
-                    // ->where('size_id',$size)
-                    // ->where('mau_id',$mau)
-                    // ->update(['SL'=>$slend]);
-        // $slsp=Productt::Where('id',$sp)->get();
-        // $slspend=0;
-        // foreach($slsp as $sllsp) {
-        // $slspend=$sllsp->SL-=$sl3; 
-        // }
-        //          Productt::where('id',$sp)
-        //         ->update(['SL'=>$slspend]); 
+                    
+        $slsp=Productt::Where('id',$sp)->get();
+        $slspend=0;
+        foreach($slsp as $sllsp) {
+        $slspend=$sllsp->SL-=$sl3; 
+        }
+                 Productt::where('id',$sp)
+                ->update(['SL'=>$slspend]); 
           
         return true;
     }

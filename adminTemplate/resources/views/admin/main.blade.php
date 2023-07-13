@@ -42,11 +42,9 @@
             <!-- jquery validation -->
             <div class="card card-primary">
               <div class="card-header">
-
                 <b class="card-title" style="font-size: 20px;
                 width: 900px;
                 text-align: center;"> {{$title}}</b>
-
               </div>
 
               @yield('content')

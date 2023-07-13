@@ -2,18 +2,14 @@
     <p>
         <b style="font-size: 40px; text-align: center">Bạn đã đặt hàng thành công tại cửa hàng ARB</b>
     </p>
-    <h4>+ Thông tin đơn hàng của bạn</h4> <h4>Mã đơn hàng: 
-        {{ $order }}</h4>
      <h4>Ngày đặt hàng: 
         <?php
         $thoigian=$tg;
         echo date('H:m:s d/m/Y', strtotime($thoigian));
         ?>
     </h4>
-    <h4>+ Phương thức thanh toán: {{ $pttt }}
-       
-    </h4>
-    <h4>+ Tổng tiền: {{ $tongtien }}</h4>
+    <h4>+ Phương thức thanh toán: {{ $pttt }}</h4>
+    
 
     <h4>+ Chi tiết sản phẩm</h4>
     <table border="1" cellspacing="0" cellpadding="10" width="400">
