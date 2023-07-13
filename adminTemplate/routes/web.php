@@ -58,27 +58,29 @@ use Symfony\Component\Console\Input\Input;
 Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
 Route::middleware(['auth'])->group(function(){
-
+    
     Route::prefix('admin')->group(function(){
         Route::get('/',[MainController::class, 'index'])->name('admin');
         Route::get('main',[MainController::class, 'index']);
-
+        
         #Menu
         Route::prefix('menus')->group(function(){
             Route::get('add', [MenuController::class, 'create']);
             Route::post('add', [MenuController::class, 'store']);
             Route::get('list', [MenuController::class, 'index']);
+            Route::post('tim-kiem-category', [App\Http\Controllers\Admin\SearchController::class, 'search_category']);
             Route::get('edit/{menu}', [MenuController::class, 'show']);
             Route::post('edit/{menu}', [MenuController::class, 'update']);
             Route::DELETE('destroy', [MenuController::class, 'destroy']);
-
+            
         });
         #Product
-
+        
         Route::prefix('productts')->group(function(){
             Route::get('add', [ProductController::class, 'create']);
             Route::post('add', [ProductController::class, 'store']);
             Route::get('list', [ProductController::class, 'index']);
+            Route::post('tim-kiem-product', [App\Http\Controllers\Admin\SearchController::class, 'search_product']);
             Route::get('edit/{productt}', [ProductController::class, 'show']);
             Route::post('edit/{productt}', [ProductController::class, 'update']);
             Route::DELETE('destroy', [ProductController::class, 'destroy']);
@@ -91,6 +93,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('add', [BienTheController::class, 'create']);
             Route::post('add', [BienTheController::class, 'store']);
             Route::get('list', [BienTheController::class, 'index']);
+            Route::post('tim-kiem-ctsp', [App\Http\Controllers\Admin\SearchController::class, 'search_ctsp']);
             Route::get('edit/{ctsp}', [BienTheController::class, 'show']);
             Route::post('edit/{ctsp}', [BienTheController::class, 'update']);
             Route::DELETE('destroy', [BienTheController::class, 'destroy']);
@@ -98,12 +101,13 @@ Route::middleware(['auth'])->group(function(){
 
         #Upload
         Route::post('upload/services',[UploadController::class, 'store']);
-
+        
         #Sliders
         Route::prefix('sliders')->group(function(){
             Route::get('add', [SliderController::class, 'create']);
             Route::post('add', [SliderController::class, 'store']);
             Route::get('list', [SliderController::class, 'index']);
+            Route::post('tim-kiem-slider', [App\Http\Controllers\Admin\SearchController::class, 'search_slider']);
             Route::get('edit/{slider}', [SliderController::class, 'show']);
             Route::post('edit/{slider}', [SliderController::class, 'update']);
             Route::DELETE('destroy', [SliderController::class, 'destroy']);
@@ -113,6 +117,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('add', [SizeController::class, 'create']);
             Route::post('add', [SizeController::class, 'store']);
             Route::get('list', [SizeController::class, 'index']);
+            Route::post('tim-kiem-size', [App\Http\Controllers\Admin\SearchController::class, 'search_size']);
             Route::get('edit/{size}', [SizeController::class, 'show']);
             Route::post('edit/{size}', [SizeController::class, 'update']);
             Route::DELETE('destroy', [SizeController::class, 'destroy']);
@@ -123,6 +128,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('add', [MauController::class, 'create']);
             Route::post('add', [MauController::class, 'store']);
             Route::get('list', [MauController::class, 'index']);
+            Route::post('tim-kiem-mau', [App\Http\Controllers\Admin\SearchController::class, 'search_color']);
             Route::get('edit/{mau}', [MauController::class, 'show']);
             Route::post('edit/{mau}', [MauController::class, 'update']);
             Route::DELETE('destroy', [MauController::class, 'destroy']);
@@ -133,6 +139,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('add', [CouponController::class, 'create']);
             Route::post('add', [CouponController::class, 'store']);
             Route::get('list', [CouponController::class, 'index']);
+            Route::post('tim-kiem-discount', [App\Http\Controllers\Admin\SearchController::class, 'search_discount']);
             Route::get('edit/{giamgia}', [CouponController::class, 'show']);
             Route::post('edit/{giamgia}', [CouponController::class, 'update']);
             Route::DELETE('destroy', [CouponController::class, 'destroy']);
@@ -150,8 +157,9 @@ Route::middleware(['auth'])->group(function(){
         Route::get('bill_finish',[ App\Http\Controllers\Admin\CartController::class, 'hoanthanh_admin']);
         Route::get('bill_cancel',[ App\Http\Controllers\Admin\CartController::class, 'dahuy_admin']);
         Route::get('customerslog/viewlog/{hoadon}',[ App\Http\Controllers\Admin\CartController::class, 'showlog']);
-
-
+        Route::post('tim-kiem-bill', [App\Http\Controllers\Admin\SearchController::class, 'search_bill']);
+        Route::post('tim-kiem-user', [App\Http\Controllers\Admin\SearchController::class, 'search_user']);
+        Route::post('tim-kiem-uservl', [App\Http\Controllers\Admin\SearchController::class, 'search_uservl']);
         #Customer Manager
         Route::get('customermanagers',[ App\Http\Controllers\Admin\UserManagerController::class, 'index']);
         Route::get('customermanagers/view/{user}',[ App\Http\Controllers\Admin\UserManagerController::class, 'show']);
@@ -257,17 +265,7 @@ Route::get('/contact', [ ContactController::class, 'index']);
 Route::post('/contactadd', [ ContactController::class, 'addContact']);
 Route::get('/print/{hoadon}', [ App\Http\Controllers\Admin\CartController::class, 'convert_html_pdf']);
 Route::post('/check-coupon', [App\Http\Controllers\CartController::class, 'giamgia']);
-Route::post('/tim-kiem-category', [App\Http\Controllers\Admin\SearchController::class, 'search_category']);
-Route::post('/tim-kiem-product', [App\Http\Controllers\Admin\SearchController::class, 'search_product']);
-Route::post('/tim-kiem-mau', [App\Http\Controllers\Admin\SearchController::class, 'search_color']);
-Route::post('/tim-kiem-size', [App\Http\Controllers\Admin\SearchController::class, 'search_size']);
-Route::post('/tim-kiem-slider', [App\Http\Controllers\Admin\SearchController::class, 'search_slider']);
-Route::post('/tim-kiem-discount', [App\Http\Controllers\Admin\SearchController::class, 'search_discount']);
-Route::post('/tim-kiem-bill', [App\Http\Controllers\Admin\SearchController::class, 'search_bill']);
 Route::post('/tim-kiem-user', [App\Http\Controllers\Admin\SearchController::class, 'search_user']);
-Route::post('/tim-kiem-uservl', [App\Http\Controllers\Admin\SearchController::class, 'search_uservl']);
-Route::post('/tim-kiem-ctsp', [App\Http\Controllers\Admin\SearchController::class, 'search_ctsp']);
-
 
 Route::get('/viewdoimk', [SessionsController::class, 'viewdoimk']);
 Route::post('/doimk', [ SessionsController::class, 'doimk']);
@@ -276,19 +274,3 @@ Route::post('/doimk', [ SessionsController::class, 'doimk']);
 Route::get('/slidebar', function () {
     return view('slidebarprofile');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
