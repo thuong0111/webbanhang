@@ -1,6 +1,6 @@
   
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #007bff;">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background: #1d1f20;">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
       <img src="/template/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -62,7 +62,7 @@
           {{-- Product --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-store-alt"></i>
+              <i class="fab fa-product-hunt" aria-hidden="true"></i>
                 <p> Sản Phẩm
                     <i class="right fas fa-angle-left"></i>
                 </p>
@@ -111,7 +111,7 @@
         {{-- Manager Mau--}}
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="fa fa-link" aria-hidden="true"></i>
+            <i class="fas fa-palette" aria-hidden="true"></i>
               <p> Màu
                   <i class="right fas fa-angle-left"></i>
               </p>
@@ -136,7 +136,7 @@
         {{-- Manager CTSP--}}
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="fa fa-link" aria-hidden="true"></i>
+            <i class="fas fa-info-circle" aria-hidden="true"></i>
               <p> Chi Tiết Sản Phẩm
                   <i class="right fas fa-angle-left"></i>
               </p>
@@ -161,7 +161,7 @@
           {{-- Slider --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
+              <i class="fas fa-sliders-h" aria-hidden="true"></i>
                 <p> Sliders
                     <i class="right fas fa-angle-left"></i>
                 </p>
@@ -186,7 +186,7 @@
           {{--Bill Login--}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
+              <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
                 <p> Hóa Đơn Đăng Nhập
                     <i class="right fas fa-angle-left"></i>
                 </p>
@@ -206,7 +206,7 @@
           {{-- ShoppingCart --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa fa-cart-plus" aria-hidden="true"></i>
+              <i class="fas fa-file-invoice-dollar" aria-hidden="true"></i>
                 <p> Hóa Đơn Vãng Lai
                     <i class="right fas fa-angle-left"></i>
                 </p>
@@ -222,7 +222,7 @@
           </li>
 
           {{-- Manager User--}}
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fa fa-cart-plus" aria-hidden="true"></i>
                 <p> Khách Hàng Vãng Lai
@@ -237,13 +237,13 @@
                     </a>
                 </li>
             </ul>
-          </li>
+          </li> --}}
           
           {{-- Manager User Login--}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                <p> Khách Hàng Đăng Nhập
+              <i class="fas fa-user-circle" aria-hidden="true"></i>
+                <p>Tài Khoản Khách Hàng
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -260,7 +260,7 @@
           {{-- Disount --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa fa-link" aria-hidden="true"></i>
+              <i class="fas fa-tags" aria-hidden="true"></i>
                 <p> Giảm Giá
                     <i class="right fas fa-angle-left"></i>
                 </p>

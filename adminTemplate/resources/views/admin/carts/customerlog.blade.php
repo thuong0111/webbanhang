@@ -56,11 +56,11 @@
   </style>
     <div class="row w3-res-tb">
         <div class="col-sm-3">
-        <form action="/tim-kiem-bill" method="POST">
+        <form action="tim-kiem-bill" method="POST">
             {{ csrf_field() }}
             <div class="input-group" style="display: flex; padding: 5px 0 5px 0;">
             <input type="text" name="keywords_submit" class="input-sm form-control" placeholder="Nhập tên KH">
-            <input type="submit" name="search_items" style="color:#000;margin-top: 0"class="btn btn-primary btn-sm" value="Tìm kiếm"/>
+            <input type="submit" name="search_items" style="color:#ffffff;margin-top: 0; background: #1d1f20"class="btn btn-primary btn-sm" value="Tìm kiếm"/>
             </div>
         </form>
         </div>
@@ -78,8 +78,8 @@
         <thead style="border-top: 1px soilid #e8e0e0">
             <tr>
                 <th>Id</th>
+                <th>Tên</th>
                 <th>Thời Gian</th>
-
                 <th>PTTT</th>
                 <th style="width: 120px">Trạng thái</th>
                 <th>Tổng tiền</th>
@@ -93,7 +93,7 @@
             @foreach ($hoadons as $key =>$hoadon)
                 <tr>
                     <td>{{$hoadon->id}}</td>
-                    
+                    <td>{{$hoadon->name}}</td>
                     <td>
                         <?php
                         $thoigian=$hoadon->thoigian;

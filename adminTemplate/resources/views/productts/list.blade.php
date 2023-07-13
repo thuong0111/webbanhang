@@ -5,7 +5,9 @@
             <div class="block2">
                 @csrf
                 <div class="block2-pic hov-img0">
-                    <img src="{{ $productt->thumb }}" alt="{{ $productt->name }}">
+                    <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html">
+                        <img src="{{ $productt->thumb }}" alt="{{ $productt->name }}">
+                    </a>
                 </div>
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
@@ -13,10 +15,12 @@
                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                             {{ $productt->name }}
                         </a>
-                        <em style="text-decoration: line-through; padding:0 0 0 110px">{!! \App\Helpers\Helper::price($productt->price) !!}</em>
+                        <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html">
+                        <em style="text-decoration: line-through; padding:0 0 0 110px">{!! \App\Helpers\Helper::price($productt->price) !!} VND</em>
                         <span class="stext-105 cl3" style=" padding:0 0 0 110px">
-							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
+							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!} VND
                         </span>
+                        </a>
                     </div>
                     {{-- <input type="hidden" class="product-id" value="{{$productt->id}}"> --}}
                     <div class="btn-qv" style="padding: 0 0 0 90px;">

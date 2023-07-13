@@ -73,9 +73,8 @@
                         <h1 class="mtext-105 cl2 js-name-detail p-b-14">
                             {{ $title }}
                         </h1>
-
                         <span class="mtext-106 cl2">
-							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!}
+							{!! \App\Helpers\Helper::price($productt->price, $productt->price_sale) !!} VND
 						</span>
 
                         <p class="stext-102 cl3 p-t-23">
@@ -210,7 +209,7 @@
                         </li>
 
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Đánh Giá (1)</a>
+                            <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Bình Luận</a>
                         </li>
                     </ul>
 
@@ -218,7 +217,7 @@
                     <div class="tab-content p-t-43">
                         <!-- Description -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
-                            <div class="how-pos2 p-lr-15-md">
+                            <div class="how-pos2 p-lr-15-md" style="font-size: 19px">
                                 <p class="stext-102 cl6">
                                     {!! $productt->content !!}
                                 </p>
@@ -232,7 +231,7 @@
                                     <ul class="p-lr-28 p-lr-15-sm">
                                         <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Weight
+												Rộng
 											</span>
 
                                             <span class="stext-102 cl6 size-206">
@@ -242,7 +241,7 @@
 
                                         <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Dimensions
+												kích thước
 											</span>
 
                                             <span class="stext-102 cl6 size-206">
@@ -252,7 +251,7 @@
 
                                         <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Materials
+												Chất Liệu
 											</span>
 
                                             <span class="stext-102 cl6 size-206">
@@ -262,11 +261,11 @@
 
                                         <li class="flex-w flex-t p-b-7">
 											<span class="stext-102 cl3 size-205">
-												Color
+												Màu
 											</span>
 
                                             <span class="stext-102 cl6 size-206">
-												Black, Blue, Grey, Green, Red, White
+												Trắng, Đỏ, Đen
 											</span>
                                         </li>
 

@@ -21,12 +21,14 @@
                             $sumPriceCart += $productt->price_sale != 0 ? $productt->price_sale : $productt->price;
                         @endphp
                         <li class="header-cart-item flex-w flex-t m-b-12">
-                            <div class="header-cart-item-img">
-                                <img src="{{ $productt->thumb }}" alt="IMG">
-                            </div>
+                            <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html">
+                                <div class="header-cart-item-img">
+                                    <img src="{{ $productt->thumb }}" alt="IMG">
+                                </div>
+                            </a>
 
                             <div class="header-cart-item-txt p-t-8">
-                                <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                <a href="/san-pham/{{ $productt->id }}-{{ Str::slug($productt->name, '-') }}.html" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
                                     {{ $productt->name }}
                                 </a>
 

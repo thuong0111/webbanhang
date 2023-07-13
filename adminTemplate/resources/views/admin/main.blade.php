@@ -41,7 +41,7 @@
           <div class="col-md-12">
             <!-- jquery validation -->
             <div class="card card-primary">
-              <div class="card-header">
+              <div class="card-header" style="background: #1d1f20">
 
                 <b class="card-title" style="font-size: 20px;
                 width: 900px;
@@ -69,7 +69,7 @@
     <div class="float-right d-none d-sm-block">
       <b>&copy;Version</b> 9.9.9
     </div>
-    <strong>Copyright &copy; 2014-2023 <a href="https://adminlte.io">AdminTemplate.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">AdminTemplate.io</a>.</strong> All rights reserved.
   </footer>
 </div>
     <!-- ./wrapper -->
