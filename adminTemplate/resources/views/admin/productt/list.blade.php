@@ -39,7 +39,14 @@
                     <td>{{$productt->price}}</td>
                     <td>{{$productt->price_sale}}</td>
                     <td>{!! \App\Helpers\Helper::active($productt->active) !!}</td>
-                    <td>{{$productt->updated_at}}</td>
+                    {{-- <td>{{$productt->updated_at}}</td> --}}
+                    <td>
+                        <?php
+                        $thoigian=$productt->updated_at;
+                        echo date('H:m:s d/m/Y', strtotime($thoigian));
+                        ?>
+
+                    </td>
                     
                     <td style="text-align: center; display:flex">
                         

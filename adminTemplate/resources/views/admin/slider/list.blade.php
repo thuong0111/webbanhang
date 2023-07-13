@@ -20,7 +20,7 @@
             <tr>
                 <th style="width: 50px">ID</th>
                 <th>Tiêu đề</th>
-                <th>Url</th>
+                <th style="width:200px">Url</th>
                 <th>Hình ảnh</th>
                 <th>Trạng thái</th>
                 <th>Thời gian</th>
@@ -34,14 +34,21 @@
                 <tr>
                     <td>{{$slider->id}}</td>
                     <td>{{$slider->name}}</td>
-                    <td>{{$slider->url}}</td>
+                    <td style="width:200px">{{$slider->url}}</td>
                     <td>
                         <a href="{{$slider->thumb}}" target="_blank">
                             <img src="{{$slider->thumb}}" alt="Err" width="50px">
                         </a>
                     </td>
                     <td>{!! \App\Helpers\Helper::active($slider->active) !!}</td>
-                    <td>{{$slider->updated_at}}</td>
+                    <td>
+                        <?php
+                        $thoigian=$slider->updated_at;
+                        echo date('H:m:s d/m/Y', strtotime($thoigian));
+                        ?>
+
+                    </td>
+
                     <td style="text-align: center; display:flex">
                         <a class="btn btn-primary btn-sm" href="/admin/sliders/edit/{{$slider->id}}" style="width:30px;margin: 0 2px 0 2px;">
                             <span class="icon" title="Sửa"><i class="fas fa-edit"></i>

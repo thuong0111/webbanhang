@@ -23,7 +23,6 @@
                 <th>Trạng Thái</th>
                 <th>Mô tả</th>
                 <th>Slug</th>
-                <th>Thời gian</th>
                 <th style="width: 50px">&nbsp;</th>
             </tr>
         </thead>

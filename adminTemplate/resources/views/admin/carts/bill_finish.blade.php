@@ -68,23 +68,22 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Tên</th>
-                <th>SĐT</th>
+                
+                <th>Thời Gian</th>
                 <th>PTTT</th>
                 <th style="width: 120px">Trạng thái</th>
-                <th>Tổng tiền</th>
-                <th style="width: 100px">Giá giảm</th>
-                <th>Tiền trả</th>
+                <th>Tổng Tiền</th>
+                <th style="width: 100px">Tiền giảm</th>
+                <th>Tiền Trả</th>
+                <th>Chức Năng</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach ($hoadons as $key =>$hoadon)
                 <tr>
                     <td>{{$hoadon->id}}</td>
-                    <td>{{$hoadon->name}}</td>
-                    <td>{{$hoadon->phone}}</td>
-<<<<<<< HEAD
-                    <td>{{$hoadon->email}}</td>
+                  
                     <td>
                         <?php
                         $thoigian=$hoadon->thoigian;
@@ -92,8 +91,6 @@
                         ?>
 
                     </td>
-=======
->>>>>>> d26ce4ac9faf81b09638723609721e948ae0073e
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
                     <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
@@ -126,7 +123,6 @@
                                 </span>
                             </button>
                         </form>
-                        
                         <form action="/capnhat4" method="POST" style="padding: 0px 3px 0 0px;">
                             @csrf
                             <input type="hidden" name="trangthaihd4" value="4">

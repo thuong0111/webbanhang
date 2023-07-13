@@ -78,32 +78,28 @@
         <thead style="border-top: 1px soilid #e8e0e0">
             <tr>
                 <th>Id</th>
-                <th>Tên</th>
-                <th>SĐT</th>
+                <th>Thời Gian</th>
+
                 <th>PTTT</th>
                 <th style="width: 120px">Trạng thái</th>
                 <th>Tổng tiền</th>
                 <th style="width: 100px">Giá giảm</th>
                 <th>Tiền trả</th>
+                <th>Chức Năng</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach ($hoadons as $key =>$hoadon)
                 <tr>
                     <td>{{$hoadon->id}}</td>
-                    <td>{{$hoadon->name}}</td>
-                    <td>{{$hoadon->phone}}</td>
-<<<<<<< HEAD
-                    <td>{{$hoadon->email}}</td>
+                    
                     <td>
                         <?php
                         $thoigian=$hoadon->thoigian;
                         echo date('H:m:s d/m/Y', strtotime($thoigian));
                         ?>
-                    
                     </td>
-=======
->>>>>>> d26ce4ac9faf81b09638723609721e948ae0073e
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
                     <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>
@@ -135,13 +131,8 @@
                                     <i class="fa fa-check" style="color: rgb(120, 243, 120)"></i>
                                 </span>
                             </button>
-                        </form>
+                        </form>                           
                         
-<<<<<<< HEAD
-                           
-                        
-                        <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px">
-=======
                         <form action="/capnhat4" method="POST" style="padding: 0px 3px 0 0px;">
                             @csrf
                             <input type="hidden" name="trangthaihd4" value="4">
@@ -155,7 +146,6 @@
                         </form>
 
                         <a target="_blank" class="btn btn-primary btn-sm" href="/print/{{$hoadon->id}}" style="width:30px; height: 30px">
->>>>>>> d26ce4ac9faf81b09638723609721e948ae0073e
                             <span class="icon" title="In Hóa Đơn">
                                 <i class="fa fa-print"></i>
                             </span>

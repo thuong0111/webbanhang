@@ -68,35 +68,27 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Time</th>
-                <th>Payment</th>
-                <th>Active</th>
-                <th>Total</th>
-                <th>Sale</th>
-                <th>Payables</th>
-                <th>Options</th>
-                <th style="width: 50px">&nbsp;</th>
+              
+                <th>Thời Gian</th>
+                <th>PTTT</th>
+                <th>Trạng Thái</th>
+                <th>Tổng Tiền</th>
+                <th>Tiền Giảm</th>
+                <th>Tiền Trả</th>
+                <th>Chức Năng</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($hoadons as $key =>$hoadon)
                 <tr>
                     <td>{{$hoadon->id}}</td>
-                    <td>{{$hoadon->name}}</td>
-                    <td>{{$hoadon->phone}}</td>
-<<<<<<< HEAD
-                    <td>{{$hoadon->email}}</td>
+                    
                     <td>
                         <?php
                         $thoigian=$hoadon->thoigian;
                         echo date('H:m:s d/m/Y', strtotime($thoigian));
                         ?>
                     </td>
-=======
->>>>>>> d26ce4ac9faf81b09638723609721e948ae0073e
                     <td>{{$hoadon->tenthanhtoan}}</td>
                     <td>{{$hoadon->tenTT}}</td>
                     <td>{{number_format($hoadon->tongtien).' '.' VND'}}</td>

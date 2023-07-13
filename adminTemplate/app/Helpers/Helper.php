@@ -19,7 +19,7 @@ class Helper
                         <td>' . self::active($menu->active) .'</td>
                         <td>' . $menu->description .'</td>
                         <td>' . $menu->slug .'</td>
-                        <td>' . $menu->updated_at .'</td>
+                        
                         <td>&nbsp;</th>
                         <td>
                             <a class="btn btn-primary btn-sm" href="/admin/menus/edit/' . $menu->id . '">

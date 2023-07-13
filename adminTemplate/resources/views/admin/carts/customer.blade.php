@@ -32,7 +32,13 @@
                     <td>{{$customer->name}}</td>
                     <td>{{$customer->phone}}</td>
                     <td>{{$customer->email}}</td>
-                    <td>{{$customer->created_at}}</td>
+                    <td>
+                        <?php
+                        $thoigian=$customer->created_at;
+                        echo date('H:m:s d/m/Y', strtotime($thoigian));
+                        ?>
+
+                    </td>
                     {{-- <td>{{$customer->pt_thanh_toan_id}}</td>
                     <td>{{$customer->ds_trang_thai_id}}</td> --}}
                     <td>&nbsp;</td>
