@@ -131,11 +131,11 @@ class HoaDonController extends Controller
         $Size_user = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->select('ct_hoa_dons.size')
-        ->get();
+        ->first();
         $Mau_user = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $hoadon->id)
         ->select('ct_hoa_dons.mau')
-        ->get();
+        ->first();
 
         return view('history.history_detail', [
             'icons'=>'<i class="fa fa-cart-plus" aria-hidden="true"></i>',

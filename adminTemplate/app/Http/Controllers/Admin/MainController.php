@@ -8,6 +8,7 @@ use App\Models\HoaDon;
 use App\Models\Productt;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class MainController extends Controller
 {
@@ -17,17 +18,20 @@ class MainController extends Controller
         $user=User::all()->count();
         $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
         $hdvl=Cart::all()->count();
-        return view('admin.home', [
-            'icons'=>'<i class="fa fa-home" aria-hidden="true"></i>',
-            'title'=>'Trang Admin',
-            'spss'=>$sp,
-            'hds'=>$hd,
-            'users'=>$user,
-            'sp_view'=>$view_sp,
-            'hdvls'=>$hdvl
-
-
-        ]);
+        if (Gate::allows('is-admin')) {
+            return view('admin.home', [
+                'icons'=>'<i class="fa fa-home" aria-hidden="true"></i>',
+                'title'=>'Trang Admin',
+                'spss'=>$sp,
+                'hds'=>$hd,
+                'users'=>$user,
+                'sp_view'=>$view_sp,
+                'hdvls'=>$hdvl
+            ]);
+        }
+        else{
+            return view('admin.users.err');
+        }
     }
 
 }
