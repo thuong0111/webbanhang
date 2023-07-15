@@ -46,7 +46,7 @@
 
                 <b class="card-title" style="font-size: 20px;
                 width: 900px;
-                text-align: center;color: white;"> {{$title}}</b>
+                text-align: center;"> {{$title}}</b>
               </div>
               @yield('content')
 
