@@ -21,8 +21,8 @@
         </div> --}}
 
     <div class="carts" style="padding: 125px 0 0 0;">
+        <h2 style="background: #3ead2a; color: white; height: 3rem; text-align: center; padding-top:5px">Chi Tiết Đơn Hàng</h2>
         @include('tabhistory')
-
         <table class="table">
             <tbody>
             <tr class="table_head">
@@ -47,14 +47,10 @@
                     <td class="column-3">{{ number_format($ctproduct->price_sale, 0, '', '.') }}</td>
                     <td class="column-4">{{ $ctproduct->SL }}</td>
                     <td class="column-5">
-                        @foreach ($sizes as $key => $Size)
-                            {{$Size->size}}
-                        @endforeach
+                            {{$sizes->size}}
                     </td>
                     <td class="column-5">
-                        @foreach ($maus as $key => $Mau)
-                            {{$Mau->mau}}
-                        @endforeach
+                            {{$maus->mau}}
                     </td>
                     <td class="column-6">{{ number_format($ctproduct->thanhtien, 0, '', '.') }}</td>
                 </tr>

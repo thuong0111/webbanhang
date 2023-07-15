@@ -33,9 +33,8 @@
                                             <th class="column-6" style="text-align: center">Thanh Toán</th>
                                             <th class="column-7" style="text-align: center">Trạng Thái HD</th>
                                             <th class="column-8" style="text-align: center">Tổng Tiền</th>
-                                            <th style="width: 50px;text-align: center">&nbsp;</th>
-                                            <td style="width: 50px;text-align: center">&nbsp;</td>
-                                            <td style="width: 50px;text-align: center">&nbsp;</td>
+                                            <th></th>
+
                                         </tr>
                                         @foreach ($hoadons_dh as $key =>$hoadon)
                                         <tr>
@@ -49,13 +48,10 @@
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
                                             <td style="text-align: center">{{$hoadon->tongtien}}</td>
-                                            <td style="text-align: center">&nbsp;</td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: center; display:flex">
                                                 <a class="btn btn-primary btn-sm" href="/history/{{$hoadon->id}}" style="width:30px">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                            </td>
-                                            <td style="text-align: center">
                                                 <form action="/mualai" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="trangthai_dxl" value="1">

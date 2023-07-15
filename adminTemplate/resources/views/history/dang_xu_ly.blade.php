@@ -34,9 +34,7 @@
                                             <th class="column-6" style="text-align: center">Thanh Toán</th>
                                             <th class="column-7" style="text-align: center">Trạng Thái HD</th>
                                             <th class="column-8" style="text-align: center">Tổng Tiền</th>
-                                            <th style="width: 50px;text-align: center">&nbsp;</th>
-                                            <td style="width: 50px;text-align: center">&nbsp;</td>
-                                            <td style="width: 50px;text-align: center">&nbsp;</td>
+                                            <th></th>
                                         </tr>
                                         @foreach ($hoadons_dxl as $key =>$hoadon)
                                         <tr>
@@ -50,14 +48,11 @@
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
                                             <td style="text-align: center">{{$hoadon->tongtien}}</td>
-                                            <td style="text-align: center">&nbsp;</td>
-                                            <td style="text-align: center">
+                                            <td style="text-align: center;display: flex">
                                                 <a class="btn btn-primary btn-sm" href="/history/{{$hoadon->id}}" style="width:30px">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                            </td>
-                                            @if($hoadon->ds_trang_thai_id<2)
-                                            <td style="text-align: center">
+                                                @if($hoadon->ds_trang_thai_id<2)
                                                 <form action="/capnhathuy" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="trangthaihd4" value="4">
@@ -66,8 +61,8 @@
                                                         height: 30px; border-radius: 3px;"><i class="fas fa-trash" style="color: white"></i>
                                                     </button>
                                                 </form>
+                                                @endif
                                             </td>
-                                            @endif
                                         </tr>
                                     @endforeach
                                         </tbody>

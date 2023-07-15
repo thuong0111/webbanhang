@@ -48,7 +48,6 @@
                 width: 900px;
                 text-align: center;color: white;"> {{$title}}</b>
               </div>
-
               @yield('content')
 
             </div>

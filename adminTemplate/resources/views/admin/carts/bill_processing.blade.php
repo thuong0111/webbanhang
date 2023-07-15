@@ -56,7 +56,7 @@
   </style>
     <div class="row w3-res-tb">
         <div class="col-sm-3">
-        <form action="/tim-kiem-bill" method="POST">
+        <form action="tim-kiem-bill" method="POST">
             {{ csrf_field() }}
             <div class="input-group" style="display: flex; padding: 5px 0 5px 0;">
             <input type="text" name="keywords_submit" class="input-sm form-control" placeholder="Nhập tên KH">
