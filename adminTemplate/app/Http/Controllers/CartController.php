@@ -166,6 +166,7 @@ class CartController extends Controller
         $qty = $request->input('num_product');
             foreach ($rowId as $row){
                 Cart::update($row,$qty[$row]);
+                
             }
         
         return redirect('/carts');

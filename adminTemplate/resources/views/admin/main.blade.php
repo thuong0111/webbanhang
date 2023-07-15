@@ -41,12 +41,12 @@
           <div class="col-md-12">
             <!-- jquery validation -->
             <div class="card card-primary">
-              <div class="card-header">
+              <div class="header">
               <div class="card-header" style="background: #1d1f20">
 
                 <b class="card-title" style="font-size: 20px;
                 width: 900px;
-                text-align: center;"> {{$title}}</b>
+                text-align: center;color: white;"> {{$title}}</b>
               </div>
 
               @yield('content')

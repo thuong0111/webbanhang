@@ -84,7 +84,7 @@
                                                 
                                                 <input type="hidden" id="layid_product" name="id_product[{{$productt->id }}]" value="{{$productt->id }}">
                                                 <a href="/carts/delete/{{ $productt->rowId}}"><i class="fas fa-trash" style="font-size: 20px; color:red;"></i></a>
-                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart[{{$productt->id }}]" id="rowid" class="form control">
+                                                <input type="hidden" value="{{$productt->rowId}}" name="rowId_cart[{{$productt->id }}{{ $productt->options->sizes }}{{ $productt->options->colors }}]" id="rowid" class="form control">
                                             </td>
                                             {{-- <td style="width:78px"> --}}
                                                 {{-- <a href="/update-cart-quantity/{{ $productt->qty }}/{{$productt->rowId}}" id="href" style="border: 1px solid #000;border-radius: 20px;color: #333;background-color: #f3f3f3;">Cập Nhật</a> --}}                               

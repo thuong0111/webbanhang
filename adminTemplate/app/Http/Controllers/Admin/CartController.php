@@ -209,7 +209,7 @@ class CartController extends Controller
         $sl3 = DB::table('ct_hoa_dons')
         ->where('ct_hoa_dons.hoa_don_id', $id)
         ->join('productts', 'productts.id', '=', 'ct_hoa_dons.product_id')
-        ->select('ct_hoa_dons.SL','productts.id')
+        ->select('ct_hoa_dons.SL','productts.id','ct_hoa_dons.size','ct_hoa_dons.mau')
         ->get();
 
         $slend=0;
@@ -224,7 +224,7 @@ class CartController extends Controller
 
         foreach($bienthe as $bienthes) {
             foreach($sl3 as $sl){
-                if($bienthes->san_pham_id==$sl->id)
+                if($bienthes->san_pham_id==$sl->id && $bienthes->tensize==$sl->size && $bienthes->tenmau==$sl->mau)
                 $slend=$bienthes->SL+=$sl->SL; 
             }
         }
