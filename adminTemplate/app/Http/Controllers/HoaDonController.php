@@ -38,10 +38,10 @@ class HoaDonController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
         ->orderBy('hoa_dons.id','desc')
-        ->get();
+        ->paginate(10);
         return view('history.history_order',[
             'hoadons' => $layhd,
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
     public function DangXuLy()
     {
@@ -56,10 +56,10 @@ class HoaDonController extends Controller
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
         ->orderBy('hoa_dons.id','desc')
 
-        ->get();
+        ->paginate(10);
         return view('history.dang_xu_ly',[
             'hoadons_dxl' => $layhd,
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
 
     public function DaHuyHD()
@@ -74,10 +74,10 @@ class HoaDonController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
         ->orderBy('hoa_dons.id','desc')
-        ->get();
+        ->paginate(10);
         return view('history.da_huy',[
             'hoadons_dh' => $layhd,
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
 
     public function DangGiaoHang()
@@ -92,10 +92,10 @@ class HoaDonController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
         ->orderBy('hoa_dons.id','desc')
-        ->get();
+        ->paginate(10);
         return view('history.dang_giao',[
             'hoadons_dg' => $layhd,
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
 
     public function HoaDonDaHoanThanh()
@@ -109,10 +109,10 @@ class HoaDonController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
         ->orderBy('hoa_dons.id','desc')
-        ->get();
+        ->paginate(10);
         return view('history.da_hoan_thanh',[
             'hoadons_ht' => $layhd,
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
 
     public function showdetail(HoaDon $hoadon)

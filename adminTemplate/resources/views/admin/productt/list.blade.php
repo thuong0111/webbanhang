@@ -18,6 +18,7 @@
     <table class="table">
         <thead>
             <tr>
+                    
                 <th style="width: 50px">ID</th>
                 <th>Tên sản phẩm</th>
                 <th>Loại sản phẩm</th>
@@ -32,6 +33,7 @@
         <tbody>
             @foreach ($productts as $key =>$productt)
                 <tr>
+                    
                     <td>{{$productt->id}}</td>
                     <td>{{$productt->name}}</td>
                     <td>{{$productt->menu->name}}</td>

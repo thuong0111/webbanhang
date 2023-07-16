@@ -67,6 +67,9 @@
                                     @endforeach
                                         </tbody>
                                     </table>
+                                    <div class="card-footer clear-fix">
+                                        {!! $hoadons_dxl->links() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>

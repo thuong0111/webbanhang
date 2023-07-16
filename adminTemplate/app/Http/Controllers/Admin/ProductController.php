@@ -36,7 +36,7 @@ class ProductController extends Controller
             'users'=>$user,
             'sp_view'=>$view_sp,
             'hdvls'=>$hdvl
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
 
     public function create()
