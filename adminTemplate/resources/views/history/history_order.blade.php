@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Lịch Sử Mua Hàng</title>
     @include('head')
 </head>
 

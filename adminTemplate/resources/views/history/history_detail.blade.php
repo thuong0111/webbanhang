@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('head')
+    <title>Chi Tiết Đơn Hàng</title>
 </head>
 
     <body >

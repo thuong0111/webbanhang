@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     @include('head')
+    <title>Lịch Sử Mua Hàng</title>
 </head>
 
     <body >
