@@ -60,7 +60,11 @@ class BTService
             }
             
             BienThe::create($request->all());
-
+            $slsp=Productt::where('id', $sp)->select('SL')->get();
+            foreach ($slsp as $slsanp){
+                $slproduct=$slsanp->SL+=$sl;
+            }
+            Productt::where('id', $sp)->update(['SL'=>$slproduct]);
             Session::flash('success', 'Thêm Chi Tiết Thành Công');
         } catch (\Exception $err) {
             Session::flash('error', 'Add CTSP fail');

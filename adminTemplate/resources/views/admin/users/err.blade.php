@@ -8,7 +8,7 @@
 </head>
 <body style="background: #1a202c; padding-top: 180px">
     <div class="content" style="text-align: center; color:rgb(251, 251, 251); font-size: 25px;">
-        Bạn Được Truy Cập Vào Trang Này !!! | <a href="{{route('login')}}" style="color:rgb(251, 251, 251)">Về Trang Đăng Nhập</a>
+        Bạn Không Được Truy Cập Vào Trang Này !!! | <a href="{{route('login')}}" style="color:rgb(251, 251, 251)">Về Trang Đăng Nhập</a>
     </div>
 </body>
 </html>

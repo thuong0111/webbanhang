@@ -92,7 +92,8 @@
             @foreach ($hoadons as $key =>$hoadon)
                 <tr>
                     <td>{{$hoadon->id}}</td>
-                    <th>Tên</th>
+                    <td>{{$hoadon->name}}</td>
+
 
                     <td>
                         <?php

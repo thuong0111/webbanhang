@@ -301,10 +301,10 @@ class CartController extends Controller
         ';
         }
         $print.='
-        <table class="table" style="border: 1px solid #000000">
+        <table class="table" style="border: 1px solid #000000;width: 700px">
         <thead>
             <tr>
-                <th style="margin-right:500px">Tên Sản Phẩm</th>
+                <th style="margin-right: 500px">Tên Sản Phẩm</th>
                 <th>Size</th>
                 <th>Màu</th>
                 <th>Số Lượng</th>

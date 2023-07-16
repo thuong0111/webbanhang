@@ -51,7 +51,7 @@ class SearchController extends Controller
             'users'=>$user,
             'hdvls'=>$hdvl,
             'productts'=>$search_prd,
-        ]);
+        ])->with('i',(request()->input('page',1)-1)*5);
     }
     public function search_color(Request $request){
         $sp=Productt::all()->count();

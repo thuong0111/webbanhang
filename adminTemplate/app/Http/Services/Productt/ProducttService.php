@@ -36,11 +36,9 @@ class ProducttService
 
     public function getSize($id)
     {
-       $idsize=BienThe::select('size_id')->where('san_pham_id', '=', $id)->get();
+       $idsize=BienThe::select('size_id')->where('san_pham_id', '=', $id)->distinct()->get();
        foreach($idsize as $ids){
         $tam[]=Size::select('id', 'tensize')->where('id',$ids->size_id)->get();
-        
-
        }
         return $tam;
 
