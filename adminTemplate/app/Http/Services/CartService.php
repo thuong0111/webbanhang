@@ -110,6 +110,20 @@ class CartService
                     $mau_cart=$v_content->options->colors;
                     $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
                     
+                    
+                }
+                if(Session::get('coupon')){
+                    foreach(Session::get('coupon') as $key=>$ma){
+                        $lay_ma = $ma['magg'];
+                    }
+                    //dd( $lay_ma);
+                    $slgiamgia = 0;
+                    $slgg = Coupon::where('magg',$lay_ma)->select('slgg')->get();
+                    //dd($slgg);
+                    foreach($slgg as $sl){
+                    $slgiamgia=$sl->slgg-1;
+                    }
+                    Coupon::where('magg',$lay_ma)->update(['slgg'=>$slgiamgia]);
                 }
                 CTHoaDon::insert($data);
                 $tt=$request->input('pttt');
@@ -247,6 +261,20 @@ class CartService
                     $mau_cart=$v_content->options->colors;
                     $this->addsl($v_content->id,$size_cart,$mau_cart,$v_content->qty);
                     
+                    
+                }
+                if(Session::get('coupon')){
+                    foreach(Session::get('coupon') as $key=>$ma){
+                        $lay_ma = $ma['magg'];
+                    }
+                    //dd( $lay_ma);
+                    $slgiamgia = 0;
+                    $slgg = Coupon::where('magg',$lay_ma)->select('slgg')->get();
+                    //dd($slgg);
+                    foreach($slgg as $sl){
+                    $slgiamgia=$sl->slgg-1;
+                    }
+                    Coupon::where('magg',$lay_ma)->update(['slgg'=>$slgiamgia]);
                 }
                 CTHoaDon::insert($data);
             }
@@ -263,7 +291,7 @@ class CartService
             //     ]);
             //     $size_ctm = $request->input('sizessss');
             //     $mau_ctm = $request->input('maussss');
-            //     // $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
+            //     $this->infoProductCart($customer->id, $size_ctm, $mau_ctm);
             //     FacadesCart::destroy();
             // }
 
@@ -310,13 +338,12 @@ class CartService
            
     }
     public function vnpay($id,$tongtien){
-
             $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
             $vnp_Returnurl = "http://localhost:8000/thanhcong";
             $vnp_TmnCode = "70EQN4UN";//Mã website tại VNPAY 
             $vnp_HashSecret = "WQUTQTGBQZQKMQQFONPXCGKOSANAINQH"; //Chuỗi bí mật
             $vnp_TxnRef = $id; //$_POST['order_id'] $_POST['order_desc'] $_POST['order_type'] $_POST['amount'] $_POST['language']  $_POST['bank_code']Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
-            $vnp_OrderInfo ='Thanh Toan Don Hang Test';
+            $vnp_OrderInfo ='Thanh Toán Đơn Hàng';
             $vnp_OrderType = 'billpayment';
             $vnp_Amount = $tongtien * 100;
             $vnp_Locale = 'vn';

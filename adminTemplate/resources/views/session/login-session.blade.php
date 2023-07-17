@@ -13,6 +13,15 @@
                   <h3 class="font-weight-bolder text-info text-gradient">Đăng Nhập</h3>
                 </div>
                 <div class="card-body">
+                  @if(session()->has('message'))
+                  <div class="alert alert-success">
+                      {!!session()->get('message')!!}
+                  </div>
+                  @elseif(session()->has('error'))
+                  <div class="alert alert-danger">
+                      {!!session()->get('error')!!}
+                  </div>
+                  @endif
                   <form role="form" method="POST" action="/session">
                     @csrf
                     <label>Email</label>

@@ -45,7 +45,7 @@ class BienTheController extends Controller
         $sp=Productt::all()->count();
         $hd=HoaDon::all()->count();
         $user=User::all()->count();
-        $view_sp=Productt::orderBy('view','DESC')->take(10)->get();
+        $view_sp=Productt::orderBy('view','ASC')->take(10)->get();
         $hdvl=Cart::all()->count();
         return view('admin.ctsp.add', [
             'icons'=>'<i class="fa fa-plus-circle" aria-hidden="true"></i>',

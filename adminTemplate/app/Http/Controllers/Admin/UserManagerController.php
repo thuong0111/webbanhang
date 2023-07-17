@@ -10,6 +10,7 @@ use App\Models\Productt;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserManagerController extends Controller
 {
@@ -56,6 +57,16 @@ class UserManagerController extends Controller
             'hdvls'=>$hdvl,
             'users'=> $users
         ]);
+    }
+    public function unactive_account($customer_id){
+        User::where('id',$customer_id)->update(['TT'=>1]);
+        Session::flash('message','Kích hoạt tài khoản.');
+        return redirect()->to('admin/customermanagers');
+    }
+    public function active_account($customer_id){
+        User::where('id',$customer_id)->update(['TT'=>0]);
+        Session::flash('message','Khóa tài khoản.');
+        return redirect()->to('admin/customermanagers');
     }
 
 }

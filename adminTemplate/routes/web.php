@@ -216,7 +216,6 @@ Route::post('/vnpay', [App\Http\Controllers\CartController::class, 'vnpay']);
 Route::get('/thanhcong', [App\Http\Controllers\CartController::class, 'thanhcong']);
 
 Route::post('/momo', [OnlineCheckoutController::class, 'momo']);
-Route::get('/lichsu', [ App\Http\Controllers\CartController::class, 'history']);
 Route::get('/ip', [ImportController::class, 'create']);
 Route::post('/import', [ImportController::class, 'upload']);
 Route::get('/history',[HoaDonController::class, 'index'])->name('history_order');
@@ -274,3 +273,7 @@ Route::post('/doimk', [ SessionsController::class, 'doimk']);
 Route::get('/slidebar', function () {
     return view('slidebarprofile');
 });
+
+
+Route::get('/unactive/{customer_id}',[App\Http\Controllers\Admin\UserManagerController::class, 'unactive_account']);
+Route::get('/active/{customer_id}',[App\Http\Controllers\Admin\UserManagerController::class, 'active_account']);

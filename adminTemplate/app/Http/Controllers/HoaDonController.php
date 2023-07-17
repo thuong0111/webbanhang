@@ -38,7 +38,7 @@ class HoaDonController extends Controller
         ->join('ds_trang_thais', 'hoa_dons.ds_trang_thai_id', '=', 'ds_trang_thais.id')
         ->select( 'hoa_dons.id','users.name','users.phone','users.email', 'pt_thanh_toans.tenthanhtoan','ds_trang_thais.tenTT','hoa_dons.thoigian','hoa_dons.tongtien','hoa_dons.ds_trang_thai_id')
         ->orderBy('hoa_dons.id','desc')
-        ->paginate(10);
+        ->paginate(6);
         return view('history.history_order',[
             'hoadons' => $layhd,
         ])->with('i',(request()->input('page',1)-1)*5);

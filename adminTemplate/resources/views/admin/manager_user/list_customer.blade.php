@@ -3,6 +3,15 @@
 @section('content')
 <div class="row w3-res-tb">
     <div class="col-sm-3">
+        @if(session()->has('message'))
+    <div class="alert alert-success">
+        {!!session()->get('message')!!}
+    </div>
+    @elseif(session()->has('error'))
+    <div class="alert alert-danger">
+        {!!session()->get('error')!!}
+    </div>
+    @endif
     <form action="/tim-kiem-user" method="POST">
         {{ csrf_field() }}
         <div class="input-group" style="display: flex; padding: 5px 0 5px 0;">
@@ -22,6 +31,7 @@
                 <th>Số điện thoại</th>
                 <th>Địa chỉ</th>
                 <th style="width: 50px">&nbsp;</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -33,12 +43,15 @@
                     {{-- <td>{{$User->password}}</td> --}}
                     <td>{{$User->phone}}</td>
                     <td>{{$User->address}}</td>
-                    <td>&nbsp;</td>
-                    {{-- <td style="text-align: center; display:flex">
-                        <a class="btn btn-primary btn-sm" href="/admin/customermanagers/view/{{$User->id}}" style="width:30px">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                    </td> --}}
+                    
+                    <td><span class="text-ellipsis">
+                        @if($User->TT==0)
+                            <a href="{{URL::to('/unactive/'.$User->id)}}"> <span class="fa-thumb-styling fa fa-thumbs-down" style="color: red"></span> </a>
+                        @else
+                            <a href="{{URL::to('/active/'.$User->id)}}"> <span class="fa-thumb-styling fa fa-thumbs-up"></span>  </a>
+                        @endif
+                         </span>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

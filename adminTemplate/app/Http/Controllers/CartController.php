@@ -16,6 +16,9 @@ use App\Models\TinhTP;
 use App\Models\QuanHuyen;
 use App\Models\Size;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\URL;
+
+
 use Carbon\Carbon;
 
 class CartController extends Controller
@@ -113,8 +116,9 @@ class CartController extends Controller
         $this->cartService->createvnpay($request);
         return redirect('/carts');
     }
-    public function thanhcong()
+    public function thanhcong(Request $request)
     {
+        dd($request->vnp_Amount);
         
         Cart::destroy();
         Session::forget('carts');
@@ -229,19 +233,19 @@ class CartController extends Controller
                         }
                             else{
                                 $cou[] = array(
-                                    'magg'>$coupon->magg,
+                                    'magg'=>$coupon->magg,
                                     'tngg'=> $coupon->tngg,
                                     'sotiengg' => $coupon->sotiengg,
                             );
                         Session::put('coupon',$cou);
                     }
                         Session::save();
-                                $slgiamgia=0;
-                                $slgg=Coupon::where('magg',$data['coupon'])->select('slgg')->get();
-                                foreach($slgg as $sl){
-                                $slgiamgia=$sl->slgg-1;
-                                }
-                        Coupon::where('magg',$data['coupon'])->update(['slgg'=>$slgiamgia]);
+                        //         $slgiamgia=0;
+                        //         $slgg=Coupon::where('magg',$data['coupon'])->select('slgg')->get();
+                        //         foreach($slgg as $sl){
+                        //         $slgiamgia=$sl->slgg-1;
+                        //         }
+                        // Coupon::where('magg',$data['coupon'])->update(['slgg'=>$slgiamgia]);
                         return redirect()->back()->with('message', 'Thêm mã giảm giá thành công');
                     }
         }else{

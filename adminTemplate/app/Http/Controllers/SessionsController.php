@@ -28,13 +28,28 @@ class SessionsController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        
         if (! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => 'Your provided credentials could not be verified.'
             ]);
         }
-        session()->regenerate();
+        $email=$req->input('email');
+        
+
+        $email=User::where('email',$email)
+        ->first();
+        if($email){
+            if($email->TT==0){
+                Auth::logout();
+                 return redirect()->back()->with('error', 'Tài khoản của bạn đã bị khóa!!!');
+            }
+            session()->regenerate();
         return redirect('/');
+
+        }
+
+        
     }
 
     public function show(){

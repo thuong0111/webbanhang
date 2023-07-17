@@ -65,12 +65,12 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
+    {{-- <div class="float-right d-none d-sm-block">
       <b>&copy;Version</b> 9.9.9
     </div>
     <strong>Copyright &copy; 2023-2024 <a href="https://adminlte.io">AdminTemplate.io</a>.</strong> All rights reserved.
   </footer>
-</div>
+</div> --}}
     <!-- ./wrapper -->
     @include('admin.footer')
 </body>

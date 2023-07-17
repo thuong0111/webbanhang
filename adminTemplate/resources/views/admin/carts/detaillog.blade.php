@@ -34,7 +34,7 @@
                         </div>
                     </td>
                     <td class="column-2">{{ $ctproduct->name }}</td>
-                    <td class="column-3">{{ number_format($ctproduct->price, 0, '', '.') }}</td>
+                    <td class="column-3">{{ number_format($ctproduct->price_sale, 0, '', '.') }} VND</td>
                     <td class="column-4">{{ $ctproduct->SL }}</td>
                     <td class="column-5">
                         {{$ctproduct->size}}

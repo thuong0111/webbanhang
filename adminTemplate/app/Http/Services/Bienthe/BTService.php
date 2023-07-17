@@ -16,7 +16,7 @@ class BTService
 {
     public function getSP()
     {
-        return Productt::where('active', 1)->get();
+        return Productt::where('active', 1)->orderBy('id','desc')->get();
     } 
     public function getSize()
     {
@@ -98,7 +98,7 @@ class BTService
         ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
         ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
         ->select('productts.name', 'sizes.tensize', 'maus.tenmau','bien_thes.id','bien_thes.SL')
-        ->get();
+        ->paginate(10);
         return $bt;
     }
 

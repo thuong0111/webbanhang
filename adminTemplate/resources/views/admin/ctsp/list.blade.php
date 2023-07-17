@@ -48,6 +48,8 @@
             @endforeach
         </tbody>
     </table>
-    
+    <div class="card-footer clear-fix">
+        {!! $ctsps->links() !!}
+    </div>
     
 @endsection

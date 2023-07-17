@@ -275,6 +275,8 @@
                     @if(Session::get('coupon'))
                     <input type="hidden" name="tiengg" value="{{ $total_coupon }}"> 
                     <input type="hidden" name="tientra" value="{{$totalend}}"> 
+                   
+
                     @else
                     <input type="hidden" name="tiengg" value="0"> 
                     <input type="hidden" name="tientra" value="{{$total}}"> 
