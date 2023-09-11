@@ -43,9 +43,9 @@ class ProducttAdminService
             $request->except('_token');
             Productt::create($request->all());
 
-            Session::flash('success', 'Add product success');
+            Session::flash('success', 'Thêm sản phẩm thành công');
         } catch (\Exception $err) {
-            Session::flash('error', 'Add product fail');
+            Session::flash('error', 'Thêm sản phẩm thất bại !');
             Log::info($err->getMessage());
             return  false;
         }
@@ -68,9 +68,9 @@ class ProducttAdminService
         try {
             $productt->fill($request->input());
             $productt->save();
-            Session::flash('success', 'Update success');
+            Session::flash('success', 'Cập nhật thành công');
         } catch (\Exception $err) {
-            Session::flash('error', 'Error plase again !');
+            Session::flash('error', 'Cập nhật thất bại !');
             Log::info($err->getMessage());
             return false;
         }

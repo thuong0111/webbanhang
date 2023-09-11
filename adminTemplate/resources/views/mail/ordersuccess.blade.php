@@ -25,7 +25,7 @@
                 <th>Số lượng</th>
                 <th>Size</th>
                 <th>Màu</th>
-                <th>Thành tiền</th>
+                {{-- <th>Thành tiền</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -38,7 +38,7 @@
                 <td>{{ $item->qty }}</td>
                 <td>{{ $item->options->sizes }}</td>
                 <td>{{ $item->options->colors }}</td>
-                <td>{{ $item->price*$item->qty}}</td>
+                {{-- <td>{{ $item->price*$item->qty}}</td> --}}
             </tr>
             <?php $n++; ?>
             @endforeach

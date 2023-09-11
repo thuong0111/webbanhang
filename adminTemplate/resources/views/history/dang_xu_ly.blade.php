@@ -35,7 +35,8 @@
                                             <th class="column-6" style="text-align: center">Thanh Toán</th>
                                             <th class="column-7" style="text-align: center">Trạng Thái HD</th>
                                             <th class="column-8" style="text-align: center">Tổng Tiền</th>
-                                            <th></th>
+                                            <th class="column-9" style="text-align: center">Xem Đơn</th>
+                                            <th class="column-9" style="text-align: center">Hủy Đơn</th>
                                         </tr>
                                         @foreach ($hoadons_dxl as $key =>$hoadon)
                                         <tr>
@@ -48,21 +49,23 @@
                                             </td>
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
-                                            <td style="text-align: center">{{$hoadon->tongtien}}</td>
-                                            <td style="text-align: center;display: flex">
+                                            <td style="text-align: center">{{number_format($hoadon->tongtien).' '.' VND'}}</td>
+                                            <td style="text-align: center;">
                                                 <a class="btn btn-primary btn-sm" href="/history/{{$hoadon->id}}" style="width:30px">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                @if($hoadon->ds_trang_thai_id<2)
-                                                <form action="/capnhathuy" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="trangthaihd4" value="4">
-                                                    <input type="hidden" name="idhoadonhuy" value="{{$hoadon->id}}">
-                                                    <button type="submit" style="background: red; border: none; width: 30px; 
-                                                        height: 30px; border-radius: 3px;"><i class="fas fa-trash" style="color: white"></i>
-                                                    </button>
-                                                </form>
-                                                @endif
+                                            </td>
+                                            <td style="text-align: center;">
+                                            @if($hoadon->ds_trang_thai_id<2)
+                                            <form action="/capnhathuy" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="trangthaihd4" value="4">
+                                                <input type="hidden" name="idhoadonhuy" value="{{$hoadon->id}}">
+                                                <button type="submit" style="background: red; border: none; width: 30px; 
+                                                    height: 30px; border-radius: 3px;"><i class="fas fa-trash" style="color: white"></i>
+                                                </button>
+                                            </form>
+                                            @endif
                                             </td>
                                         </tr>
                                     @endforeach

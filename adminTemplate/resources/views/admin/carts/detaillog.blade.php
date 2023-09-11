@@ -22,7 +22,7 @@
                 <th class="column-4">Số lượng</th>
                 <th class="column-5">Size</th>
                 <th class="column-5">Màu</th>
-                <th class="column-6">Tổng tiền</th>
+                {{-- <th class="column-6">Thành tiền</th> --}}
             </tr>
 
             @foreach($ctproducts as $key => $ctproduct)
@@ -49,7 +49,7 @@
                         {{$ctproduct->mau}}
 
                     </td>
-                    <td class="column-6">{{ number_format($ctproduct->thanhtien, 0, '', '.') }}</td>
+                    {{-- <td class="column-6">{{ number_format($ctproduct->thanhtien, 0, '', '.') }}</td> --}}
                 </tr>
             @endforeach
                 {{-- <tr>

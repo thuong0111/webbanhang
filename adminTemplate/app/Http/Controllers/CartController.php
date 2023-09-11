@@ -51,8 +51,11 @@ class CartController extends Controller
         foreach($slctsp as $sl){
             $slton=$sl->SL;
         }
-
-        if (empty($size_id) || empty($mau_id) || $qty <= 0||$qty>$slton) {
+        if($qty>$slton){
+            Session::forget('carts');
+            return redirect()->back()->with('error','Số lượng trong kho không đủ');
+        }
+        if (empty($size_id) || empty($mau_id) || $qty <= 0) {
             Session::forget('carts');
             return redirect()->back()->with('error','Vui lòng kiểm tra lại thông tin');
         }
@@ -118,7 +121,6 @@ class CartController extends Controller
     }
     public function thanhcong(Request $request)
     {
-        dd($request->vnp_Amount);
         
         Cart::destroy();
         Session::forget('carts');

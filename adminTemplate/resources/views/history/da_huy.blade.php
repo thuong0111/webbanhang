@@ -34,7 +34,8 @@
                                             <th class="column-6" style="text-align: center">Thanh Toán</th>
                                             <th class="column-7" style="text-align: center">Trạng Thái HD</th>
                                             <th class="column-8" style="text-align: center">Tổng Tiền</th>
-                                            <th></th>
+                                            <th class="column-9" style="text-align: center">Xem Đơn</th>
+                                            <th class="column-9" style="text-align: center">Mua Lại</th>
 
                                         </tr>
                                         @foreach ($hoadons_dh as $key =>$hoadon)
@@ -48,19 +49,21 @@
                                             </td>
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
-                                            <td style="text-align: center">{{$hoadon->tongtien}}</td>
-                                            <td style="text-align: center; display:flex">
+                                            <td style="text-align: center">{{number_format($hoadon->tongtien).' '.' VND'}}</td>
+                                            <td style="text-align: center;">
                                                 <a class="btn btn-primary btn-sm" href="/history/{{$hoadon->id}}" style="width:30px">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <form action="/mualai" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="trangthai_dxl" value="1">
-                                                    <input type="hidden" name="idhoadon_dxl" value="{{$hoadon->id}}">
-                                                    <button type="submit" style="background: red; border: none; width: 30px; 
-                                                        height: 30px; border-radius: 3px;"><i class='fas fa-undo' style='color:white'></i>
-                                                    </button>
-                                                </form>
+                                            </td>
+                                            <td style="text-align: center"
+                                            <form action="/mualai" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="trangthai_dxl" value="1">
+                                                <input type="hidden" name="idhoadon_dxl" value="{{$hoadon->id}}">
+                                                <button type="submit" style="background: red; border: none; width: 30px; 
+                                                    height: 30px; border-radius: 3px;"><i class='fas fa-undo' style='color:white'></i>
+                                                </button>
+                                            </form>
                                             </td>
                                         </tr>
                                     @endforeach

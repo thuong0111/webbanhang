@@ -67,7 +67,7 @@ class BTService
             Productt::where('id', $sp)->update(['SL'=>$slproduct]);
             Session::flash('success', 'Thêm Chi Tiết Thành Công');
         } catch (\Exception $err) {
-            Session::flash('error', 'Add CTSP fail');
+            Session::flash('error', 'Thêm CTSP thất bại');
             Log::info($err->getMessage());
             return  false;
         }
@@ -82,9 +82,9 @@ class BTService
         try {
             $ctsp->fill($request->input());
             $ctsp->save();
-            Session::flash('success', 'Update success');
+            Session::flash('success', 'Cập nhật thành công');
         } catch (\Exception $err) {
-            Session::flash('error', 'Error plase again !');
+            Session::flash('error', 'Cập nhật thất bại !');
             Log::info($err->getMessage());
             return false;
         }
@@ -98,6 +98,7 @@ class BTService
         ->join('sizes', 'bien_thes.size_id', '=', 'sizes.id')
         ->join('maus', 'bien_thes.mau_id', '=', 'maus.id')
         ->select('productts.name', 'sizes.tensize', 'maus.tenmau','bien_thes.id','bien_thes.SL')
+        ->orderBy('id','desc')
         ->paginate(10);
         return $bt;
     }

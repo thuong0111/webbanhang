@@ -13,9 +13,9 @@ class MauService
         try{
             $request->except('_token');
             Mau::create($request->input());
-            Session::flash('success', 'Add Mau Success.');
+            Session::flash('success', 'Thêm màu thành công.');
         }catch(\Exception $err){
-            Session::flash('error', 'Add Mau Error.');
+            Session::flash('error', 'Thêm màu thất bại.');
             Log::info($err->getMessage());
             return false;
         }
@@ -32,9 +32,9 @@ class MauService
         try {
             $mau->fill($request->input());
             $mau->save();
-            Session::flash('success', 'Update success');
+            Session::flash('success', 'Cập nhật thành công');
         } catch (\Exception $err) {
-            Session::flash('success', 'Update fail.');
+            Session::flash('success', 'Cập nhật thất bại.');
             Log::info($err->getMessage());
             
             return false;

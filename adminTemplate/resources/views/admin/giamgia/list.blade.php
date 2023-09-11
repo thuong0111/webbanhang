@@ -37,9 +37,9 @@
                     <td>{{$size->magg}}</td>
                     <td>{{$size->slgg}}</td>
                     @if($size->tngg==1)
-                    <td>Reduce by Percent (%)</td>
+                    <td>Giảm Theo %</td>
                     @else
-                    <td>Reduce by Percent (%)</td>
+                    <td>Giảm Theo Tiền</td>
                     @endif
 
                     @if($size->tngg==1)

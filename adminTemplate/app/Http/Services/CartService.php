@@ -90,6 +90,7 @@ class CartService
                 $content = FacadesCart::content();
                 $data=[];
                 foreach($content as $v_content){
+                    $thanhtien='thanhtien'.$v_content->options->sizes.$v_content->options->colors;
                     $data[] = [
                         'name' => $request->input('name'),
                         'phone' => $request->input('phone'),
@@ -104,7 +105,7 @@ class CartService
                         'mau'=> $v_content->options->colors,
                         'SL'=>$v_content->qty,
                         'gia'=>(int)$v_content->price,
-                        'thanhtien'=>(int)$request->input('thanhtien')
+                        'thanhtien'=>(int)$request->input($thanhtien)
                     ];
                     $size_cart=$v_content->options->sizes;
                     $mau_cart=$v_content->options->colors;

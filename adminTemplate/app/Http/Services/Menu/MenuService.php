@@ -33,7 +33,7 @@ class MenuService
                 'slug'=>Str::slug($request->input('name'),'-')
             ]);
 
-            Session::flash('success', 'Add category success.');
+            Session::flash('success', 'Thêm danh mục thành công.');
 
         } catch (\Exception $err) {
             Session::flash('error', $err->getMessage());
@@ -55,7 +55,7 @@ class MenuService
         $menu->active= (string) $request->input('active');
         $menu->save();
 
-        Session::flash('success', 'Update succsess.');
+        Session::flash('success', 'Cập nhật thành công.');
         return true;
     }
 

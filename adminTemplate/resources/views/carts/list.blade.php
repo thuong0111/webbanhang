@@ -5,7 +5,7 @@
     <div class="div-head" style="padding-top: 165px">
     </div>
 
-    {{-- @if(session()->has('message'))
+    @if(session()->has('message'))
     <div class="alert alert-success">
         {!!session()->get('message')!!}
     </div>
@@ -13,7 +13,7 @@
     <div class="alert alert-danger">
         {!!session()->get('error')!!}
     </div>
-    @endif --}}
+    @endif
     {{-- p-d-85 --}}
     <form class="bg0 p-b-0 p-t-0" method="post">
         @include('admin.alert')
@@ -70,7 +70,7 @@
                                                 </div>
                                             </td>
                                             <td class="column-5">{{ number_format($priceEnd, '0', '', '.') }}</td>
-                                            <input type="hidden" name="thanhtien" value="{{$priceEnd}}">
+                                            <input type="hidden" name="thanhtien{{$productt->options->sizes}}{{$productt->options->colors}}" value="{{$priceEnd}}">
                                            
                                             <td class="column-6" style="width: 60px; text-align: center" >
                                                 <input type="hidden" name="sizessss" value="{{$sizesss}}">

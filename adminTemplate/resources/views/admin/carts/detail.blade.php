@@ -71,7 +71,7 @@
                     <td class="column-8">{{ number_format($price, 0, '', '.') }}</td>
                 </tr>
             @endforeach
-                <tr>
+                {{-- <tr>
                     <td></td>
                     <td></td>
                     <td colspan="4" class="text-right" style="font-size:20px; font-family: emoji;
@@ -81,7 +81,7 @@
                     <td style="font-size:20px; font-family: emoji; font-weight: bold;">
                         {{ number_format($total, 0, '', '.') }}
                     </td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
     </div>

@@ -187,11 +187,11 @@ a{
             </div>
             <div class="admin-button-list">
                 <div class="cl-btn">
-                    <i class="fas fa-user"></i> <a href="{{ route('profile') }}">Thông Tin</a> <br>
+                    <i class="fas fa-user" style="font-size: 20px"></i> <a href="{{ route('profile') }}"> Thông Tin Tài Khoản</a> <br>
                 </div>
 
                 <div class="cl-btn">
-                    <i class="fas fa-history"></i> <a href="{{route('history_order') }}"> Lịch Sử Đặt Hàng </a> <br>
+                    <i class="fas fa-history" style="font-size: 20px"></i> <a href="{{route('history_order') }}"> Lịch Sử Đặt Hàng </a> <br>
                 </div>
             </div>
         </header>

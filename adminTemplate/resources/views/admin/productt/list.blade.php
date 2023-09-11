@@ -38,8 +38,8 @@
                     <td>{{$productt->name}}</td>
                     <td>{{$productt->menu->name}}</td>
                     {{-- <td>{{$productt->SL}}</td> --}}
-                    <td>{{$productt->price}}</td>
-                    <td>{{$productt->price_sale}}</td>
+                    <td>{{number_format($productt->price).' '.' VND'}}</td>
+                    <td>{{number_format($productt->price_sale).' '.' VND'}}</td>
                     <td>{!! \App\Helpers\Helper::active($productt->active) !!}</td>
                     {{-- <td>{{$productt->updated_at}}</td> --}}
                     <td>

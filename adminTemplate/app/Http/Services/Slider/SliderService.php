@@ -13,9 +13,9 @@ class SliderService
         try{
             $request->except('_token');
             Slider::create($request->input());
-            Session::flash('success', 'Add Slider Success.');
+            Session::flash('success', 'Thêm size thành công.');
         }catch(\Exception $err){
-            Session::flash('error', 'Add Slider Error.');
+            Session::flash('error', 'Thêm size thất bại.');
             Log::info($err->getMessage());
             return false;
         }
@@ -32,9 +32,9 @@ class SliderService
         try {
             $slider->fill($request->input());
             $slider->save();
-            Session::flash('success', 'Update success');
+            Session::flash('success', 'Cập nhật thất bại');
         } catch (\Exception $err) {
-            Session::flash('success', 'Update fail.');
+            Session::flash('success', 'Cập nhật thành công.');
             Log::info($err->getMessage());
             
             return false;

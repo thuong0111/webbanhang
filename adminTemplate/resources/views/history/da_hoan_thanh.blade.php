@@ -35,6 +35,7 @@
                                             <th class="column-6" style="text-align: center">Thanh Toán</th>
                                             <th class="column-7" style="text-align: center">Trạng Thái HD</th>
                                             <th class="column-8" style="text-align: center">Tổng Tiền</th>
+                                            <th class="column-8" style="text-align: center">Xem Đơn</th>
                                             <th></th>
                                         </tr>
                                         @foreach ($hoadons_ht as $key =>$hoadon)
@@ -48,8 +49,8 @@
                                             </td>
                                             <td style="text-align: center">{{$hoadon->tenthanhtoan}}</td>
                                             <td style="text-align: center">{{$hoadon->tenTT}}</td>
-                                            <td style="text-align: center">{{$hoadon->tongtien}}</td>
-                                            <td style="text-align: center; display:flex">
+                                            <td style="text-align: center">{{number_format($hoadon->tongtien).' '.' VND'}}</td>
+                                            <td style="text-align: center;">
                                                 <a class="btn btn-primary btn-sm" href="/history/{{$hoadon->id}}" style="width:30px">
                                                     <i class="fas fa-eye"></i>
                                                 </a>

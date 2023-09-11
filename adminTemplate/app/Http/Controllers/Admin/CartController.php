@@ -309,7 +309,7 @@ class CartController extends Controller
                 <th>Màu</th>
                 <th>Số Lượng</th>
                 <th>Đơn Giá</th>
-                <th>Thành Tiền</th>
+                
             </tr>
         </thead>
         <tbody>';
@@ -321,7 +321,7 @@ class CartController extends Controller
                     <td style="text-align:center">'.$dl->mau.'</td>
                     <td style="text-align:center">'.$dl->SL.'</td>
                     <td style="text-align:center">'.$dl->gia.'</td>
-                    <td style="text-align:center">'.$dl->thanhtien.'</td>
+                    
                 </tr>';
                     }
                    
